@@ -1,0 +1,58 @@
+* *Archive Name: ComentarioDAO.java
+----------------------------------------------------------------------
+
+* Atribute Name: comentario
+* Atribute Description: Comentario object instance
+
+* Atribute Name: utilizador
+* Atribute Description: Utilizador object instance. Is the name of who published.
+
+* Atribute Name: publicacao
+* Atribute Description: Publicacao object instance
+
+* Atribute Name: agora
+* Atribute Description: Date object instance. Time of the publication.
+
+* Atribute Name: sqlDate
+* Atribute Description: java.sql.Date object instance
+
+* Atribute Name: conexao
+* Atribute Description: Call of getConexao method
+
+* Atribute Name: pstm
+* Atribute Description: Call of method conexao.prepareStatement
+
+* Atribute Name: idComentario
+* Atribute Description: Parameter of excluirComentario method. Unique identifier of a comment.
+
+* Atribute Name: idPublicacao
+* Atribute Description: Parameter of criarComentario and ListarComentarioBlog method. Unique identifier of a publication.
+
+* Atribute Name: idBlog 	
+* Atribute Description: Parameter of criarComentario and ListarComentarioBlogDelete method. Unique identifier of a blog.
+
+* Atribute Name: listaComentario
+* Atribute Description: ArrayList of Comentario object instance to store the comments of a publication.
+
+* Atribute Name: stm
+* Atribute Description: Call of conexao.createStatement method
+
+* Atribute Name: rs
+* Atribute Description: Call of stm.executeQuery method
+----------------------------------------------------------------------
+
+* Method Name: criarComentario
+* Method Description: Creates a comment in the database
+
+* Method Name: excluirComentario
+* Method Description: Deletes a comment of database
+
+* Method Name: ListarComentarioBlog
+* Method Description: Add a comment in a comments list 
+
+* Method Name: ListarComentarioBlogDelete
+* Method Description: Delete a comment of a comments list 
+-----------------------------------------------------------------------
+
+* Class Name: ComentarioDAO
+* Class Description: Establish database conection and execute methods for create and delete comments and list of comments
