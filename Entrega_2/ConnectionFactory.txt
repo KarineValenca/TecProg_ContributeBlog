@@ -1,0 +1,22 @@
+* *Archive Name: ConnectionFactory.java
+----------------------------------------------------------------------
+
+* Atribute Name: conexao
+* Atribute Description: variable states equal null. The getConexao method trys to stablish a connection to return the variable conexao.
+
+* Atribute Name: usuario
+* Atribute Description: Database user
+
+* Atribute Name: senha
+* Atribute Description: Database password
+
+* Atribute Name: nomeBancoDados
+* Atribute Description: Database name
+----------------------------------------------------------------------
+
+* Method Name: getConexao
+* Method Description: Try to stablish database connections passing user, password and name databases.
+-----------------------------------------------------------------------
+
+* Class Name: ConnectionFactory
+* Class Description: Responsible for the database connections. Used by other data persistence classes.
