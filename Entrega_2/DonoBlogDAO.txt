@@ -1,0 +1,27 @@
+* *Archive Name: DonoBlogDAO.java
+----------------------------------------------------------------------
+* Atribute Name: donoBlog
+* Atribute Description: Parameter of type string of listarBlogDono method
+
+* Atribute Name: lista
+* Atribute Description: ArrayList of Blog object instance to store the blogs.
+
+* Atribute Name: conexao
+* Atribute Description: Call of getConexao method
+
+* Atribute Name: stm
+* Atribute Description: Call of conexao.createStatement method
+
+* Atribute Name: rs
+* Atribute Description: Call of stm.executeQuery method
+
+* Atribute Name: blog
+* Atribute Description: Blog object instance 
+----------------------------------------------------------------------
+
+* Method Name: listarBlogDono
+* Method Description: Trys to stablish a connection database and creates a blogs list. The list is composed by id, title, creation date and category.  
+-----------------------------------------------------------------------
+
+* Class Name: DonoBlogDAO
+* Class Description: Responsible to create a blogs list
