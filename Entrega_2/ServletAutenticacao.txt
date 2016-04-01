@@ -1,0 +1,43 @@
+** *Archive Name: ServletAutenticacao.java
+------------------------------------------
+* Atribute name: serialVersionUID
+* Atribute Description: this attribute is a serialization version identifier the class.
+
+* Atribute Name: rd
+* Atribute Description: this attribute allows for including content in a request/response or forwarding a request/response to a resource.
+
+* Atribute Name: email
+* Atribute Description: this attribute is the email from a register user and it is used to allows login at the server
+
+* Atribute Name: senha
+* Atribute Description: this attribute is the password from a register user and it is used to allow login at the server
+
+* Atribute Name: request
+* Atribute Description: this attribute is used to represent the HTTP request that a browser sends to the application.
+
+* Atribute Name: response
+* Atribute Description: this attribute is used to represent the HTTP response that the application sends to a browser.
+
+* Atribute Name: autenticacaoDAO
+* Atribute Description: this attribute is a instance of AutenticacaoDAO. The class AutenticacaoDAO is the class responsible to do  communication with the database.
+
+* Atribute name: utilizador
+* Atribute Description: this attribute is a instance of Utilizador. The classe Utilizador is a the class that has all atributes from a user register at system.
+
+* Atribute name: autorizacao
+* Atribute Description: this attribute is used to verify if the method verificarUtilizador returns true or false
+
+--------------------------------------
+* Method name: doGet
+* Method description: this method is used to intercept HTTP GET requests. The HTTP GET requests are used when you get the same result everytime you execute the request
+
+* Method name: doPost 
+* Method description: this method is used to intercept HTTP POST requests. The HTTP POST request are used when the results of the requests will not be the same
+
+* Method name: verificarUtilizador
+* Method description: this method do the user verification by using the object user, its email and its password. This method return true or false.
+
+--------------------------------------
+* Class name: ServletAutenticacao
+* Class description: This class is used to allow a user login at the system.
+
