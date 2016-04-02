@@ -1,0 +1,43 @@
+* *Archive Name: Comentario.java
+----------------------------------------------------------------------
+
+* Atribute Name: idComentario
+* Atribute Description: Unique identifier of a comment. Integer type. 
+
+* Atribute Name: conteudoComentario
+* Atribute Description: Content of a comment. String type.
+
+* Atribute Name: dataComentario
+* Atribute Description: Date of a comment. Date type.
+
+* Atribute Name: utilizadorComentario
+* Atribute Description: User of a blog that make a comment
+----------------------------------------------------------------------
+
+* Method Name: getIdComentario
+* Method Description: For verify the unique identifier of a comment.
+
+* Method Name: setIdComentario
+* Method Description: For modify the unique identifier of a comment.
+
+* Method Name: getConteudoComentario
+* Method Description: For verify the content of a comment.
+
+* Method Name: setConteudoComentario
+* Method Description: For modify the content of a comment.
+
+* Method Name: getDataComentario
+* Method Description: For verify the date of when the comment was made.
+
+* Method Name: setDataComentario
+* Method Description: For modify the date of when the comment was made.
+
+* Method Name: getUtilizadorComentario
+* Method Description: For verify the blog user that make a comment.
+
+* Method Name: setUtilizadorComentario
+* Method Description: For modify the blog user that make a comment.
+-----------------------------------------------------------------------
+
+* Class Name: Comentario
+* Class Description: Defines the atttibutes of a comment.

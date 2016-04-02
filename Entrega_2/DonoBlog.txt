@@ -1,0 +1,19 @@
+* *Archive Name: DonoBlog.java
+----------------------------------------------------------------------
+
+* Atribute Name: blogs
+* Atribute Description: List of blog type.
+----------------------------------------------------------------------
+
+* Method Name: getBlogs
+* Method Description: For verify the list blog.
+
+* Method Name: setBlogs
+* Method Description: For modify the the list blog.
+
+* Method Name: DonoBlog
+* Method Description: Constructor method of the class
+-----------------------------------------------------------------------
+
+* Class Name: DonoBlog
+* Class Description: This class is an extension of Utilizador class. Creates a list of blogs.

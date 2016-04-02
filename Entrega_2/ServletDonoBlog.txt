@@ -1,0 +1,38 @@
+** *Archive Name: ServletDonoBlog.java
+----------------------------------------------------------------------
+
+* Atribute name: serialVersionUID
+* Atribute Description: serialization version identifier the class.
+
+* Atribute Name: rd
+* Atribute Description: for including content in a request/response or forwarding a request/response to a resource 
+
+* Atribute Name: request
+* Atribute Description: to represent the HTTP request that a browser sends to the application.
+
+* Atribute Name: response
+* Atribute Description: to represent the HTTP response that the application sends to a browser.
+
+* Atribute Name: lista
+* Atribute Description: ArrayList of blog
+
+* Atribute Name: acao
+* Atribute Description: call of getParameter method  
+
+* Atribute Name: donoBlogDAO
+* Atribute Description: DonoBlogDAO instance
+
+* Atribute Name: idDonoBlog
+* Atribute Description: call of getParameter method 
+----------------------------------------------------------------------
+
+* Method Name: doGet
+* Method Description: this method is used to intercept HTTP GET requests. The HTTP GET requests are used when you get the same result everytime you execute the request
+
+* Method Name: doPost
+* Method Description: this method is used to intercept HTTP POST requests. The HTTP POST request are used when the results of the requests will not be the same
+-----------------------------------------------------------------------
+
+* Class Name: ServletDonoBlog
+* Class Description: Responsible for, using the RequestDispatcher objetc, acess the blogs list views pages, according to the requested action.     
+
