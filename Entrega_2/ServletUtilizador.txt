@@ -1,0 +1,60 @@
+** *Archive Name: ServletUtilizador
+----------------------------------
+* Attribute Name: serialVersionUID 
+* Attribute Description: this attribute is a serialization version identifier the class.
+
+* Attribute Name: rd
+* Attribute Description: this attribute allows for including content in a request/response or forwarding a request/response to a resource.
+
+* Attribute Name: request
+* Attribute Description: this attribute is used to represent the HTTP request that a browser sends to the application.
+
+* Attribute Name: response
+* Attribute Description: this attribute is used to represent the HTTP response that the application sends to a browser.
+
+* Attribute Name: acao
+* Attribute Description: this attribute get the view command and acccording this command use a switch case to do some action.
+
+* Attribute Name: destino
+* Attribute Description: this attribute should be used to redirect before a action is completed, but at code, is not use at the code...
+
+* Attribute Name: mensagem
+* Attribute Description: this atribute is a string of some message that the system
+
+* Attribute Name: lista
+* Attribute Description: this attribute is used to return the a list of all users registers at system.
+
+* Attribute Name: utilizadordao
+* Attribute Description: this attribute is a instance of the object UtilizadorDAO, and it's used to do requests at the database.
+
+* Attribute Name: utilizador
+* Attribute Description: this attribute is a instance of the object Utilizador and it's used to get attributes from model.
+
+* Attribute Name: dataNascimento
+* Attribute Description: this attribute gets the birth date of the user
+
+* Attribute Name: formatter
+* Attribute Description: this attribute is used to define the format of the birth date
+
+* Attribute Name: date
+* Attribute Description: this attribute is used to convert the string dataNascimento in the format especified by attribute formatter
+
+* Attribute Name: retorno
+* Attribute Description: this attribute is used like a auxiliar to the function validarUtilizador, whether the retorno is equals 0, it means that the email or the nickname insert in registry is not being used.
+
+* Attribute Name: id
+* Attribute Description: this attribute is used to to get the user id from the view.
+
+* Attribute Name: data
+* Attribute Description: this attribute is used to convert the string dataNascimento in the format especified by attribute formatter
+
+------------------------------
+* Method name: doGet
+* Method description: this method is used to intercept HTTP GET requests. The HTTP GET requests are used when you get the same result everytime you execute the request
+
+* Method name: doPost
+* Method description: this method is used to intercept HTTP POST requests. The HTTP POST request are used when the results of the requests will not be the same. At this class, are included the methods: list, include, delete, edit and show.
+
+-----------------------------
+* Class name: ServletUtilizador 
+* Class description: This class is used to the methods list, include, delete, edit and show related with user.
