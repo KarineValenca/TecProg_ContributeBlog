@@ -1,0 +1,53 @@
+** *Archive Name: ServletBlog.java
+------------------------------------------
+
+* Atribute name: serialVersionUID
+* Atribute Description: This attribute is a serialization version identifier the class.
+
+* Atribute Name: rd
+* Atribute Description: This attribute allows for including content in a request/response or forwarding a request/response to a resource.
+
+* Atribute Name: acao
+* Atribute Description: Is the type "string". Identifies the type of action that should be performed.
+
+* Atribute Name: destino
+* Atribute Description: This attribute is call paths to a file.
+
+* Atribute Name: mensagem
+* Atribute Description: This attribute is a message attribute.
+
+* Atribute Name: lista
+* Atribute Description: Corresponds to a list of blogs.
+
+* Atribute Name: listaPublicacao
+* Atribute Description: Corresponds to a list of publications.
+
+* Atribute name: blogdao
+* Atribute Description: Matches the persistence of class blog.
+
+* Atribute name: blog
+* Atribute Description: Corresponds to instantiates a new blog.
+
+* Atribute name: donoBlog
+* Atribute Description: Corresponds to instantiates a new owner blog
+
+* Atribute name: idBlog
+* Atribute Description: Corresponds to the responsible for receiving the id blog collected in the bank.
+
+* Atribute name: idBlogP
+* Atribute Description: Corresponds to the responsible for receiving the id blog collected in the bank
+
+* Atribute name: idBlogI
+* Atribute Description: Corresponds to the responsible for receiving the id blog collected in the bank
+
+--------------------------------------
+* Method name: doGet
+* Method description: this method is used to intercept HTTP GET requests. The HTTP GET requests are used when you get the same result everytime you execute the request
+
+* Method name: doPost 
+* Method description: this method is used to intercept HTTP POST requests. The HTTP POST request are used when the results of the requests will not be the same
+
+--------------------------------------
+* Class name: ServletBlog
+* Class description: This class holds Blogs. It has some specific tasks, such as adding, list, delete, list publications, blogs.
+
