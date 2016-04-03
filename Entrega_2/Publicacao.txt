@@ -5,7 +5,7 @@
 * Atribute Description: Is the type "int". Corresponds to the Publication class unique identifier.
 
 * Atribute Name: tituloPublicacao
-* Atribute Description: Is the type "string". Corresponds to the title of the publication
+* Atribute Description: Is the type "string". Corresponds to the title of the publication.
 
 * Atribute Name: categoriaPublicacao
 * Atribute Description: Is the type "string". Matches the category the publication falls.
@@ -14,7 +14,7 @@
 * Atribute Description: Is the type "string". Corresponds to the content of the publication.
 
 * Atribute Name: idBlog
-* Atribute Description: Is the type "blog". Corresponds to foreign key relationship between two classes.
+* Atribute Description: Is the type "blog". Corresponds to foreign key relationship between two classes, Blog and Publicacao.
 
 * Atribute Name: nota
 * Atribute Description: Is the type "int". Corresponds to a note received by the publication.
@@ -30,7 +30,7 @@
 * Method Description: It corresponds to the class constructor method
 
 * Method Name: getIdPublicacao()
-* Method Description: Corresponds to a persistence of method IdPublicacao attribute.
+* Method Description: Corresponds to a receiving method IdPublicacao attribute.
 
 * Method Name: setIdPublicacao
 * Method Description: Corresponds to a persistence of method IdPublicacao attribute.

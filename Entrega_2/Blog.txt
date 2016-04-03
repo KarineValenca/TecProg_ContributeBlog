@@ -1,0 +1,61 @@
+* *Archive Name: Blog.java
+----------------------------------------------------------------------
+
+* Atribute Name: idBlog
+* Atribute Description: Is the type "int". Corresponds to the Blog class unique identifier.
+
+* Atribute Name: titulo
+* Atribute Description: Is the type "string". Corresponds to the title of the blog.
+
+* Atribute Name: categoria
+* Atribute Description: Is the type "string". Corresponds to division of blogs by category.
+
+* Atribute Name: dataCriacao
+* Atribute Description: Is the type "date". Matches the date of creation of the blog.
+
+* Atribute Name: idDonoBlog
+* Atribute Description: Is the type "DonoBlog". Corresponds to the foreign key relationship between two classes, User and Blog.
+
+* Atribute Name: publicacoes
+* Atribute Description: Is the type "List<Publicacao>". Corresponds to publications list the Blog.
+----------------------------------------------------------------------
+
+* Method Name: getIdBlog
+* Method Description: Corresponds to a receiving method IdBlog attribute.
+
+* Method Name: setIdBlog
+* Method Description: For modify the unique identifier of a blog.
+
+* Method Name: getTitulo
+* Method Description: Corresponds to a receiving method Titulo attribute.
+
+* Method Name: setTitulo
+* Method Description: Corresponds to a persistence of method Titulo attribute.
+
+* Method Name: getCategoria
+* Method Description: Corresponds to a receiving method Categoria attribute.
+
+* Method Name: setCategoria
+* Method Description: Corresponds to a persistence of method Categoria attribute.
+
+* Method Name: getDataCriacao
+* Method Description: Corresponds to a receiving method DataCriacao attribute.
+
+* Method Name: setDataCriacao
+* Method Description: Corresponds to a persistence of method DataCriacao attribute.
+
+* Method Name: getIdDonoBlog
+* Method Description: Corresponds to a receiving method DonoBlog attribute.
+
+* Method Name: setIdDonoBlog
+* Method Description: Corresponds to a persistence of method DonoBlog attribute.
+
+* Method Name: getPublicacoes
+* Method Description: Corresponds to a receiving method Publicacoes attribute.
+
+* Method Name: setPublicacoes
+* Method Description: Corresponds to a persistence of method Publicacoes attribute.
+-----------------------------------------------------------------------
+
+* Class Name: Blog
+* Class Description: Class that defines attributes and methods of blog creation.
