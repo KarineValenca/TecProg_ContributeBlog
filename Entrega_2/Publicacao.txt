@@ -1,65 +1,64 @@
-*Archive Name: Publicacao.java
+* *Archive Name: Publicacao.java
+----------------------------------------------------------------------
 
-Atribute Name: idPublicacao 
-Atribute Description: Is the type "int". Corresponds to the Publication class unique identifier.
+* Atribute Name: idPublicacao 
+* Atribute Description: Is the type "int". Corresponds to the Publication class unique identifier.
 
-Atribute Name: tituloPublicacao
-Atribute Description: Is the type "string". Corresponds to the title of the publication
+* Atribute Name: tituloPublicacao
+* Atribute Description: Is the type "string". Corresponds to the title of the publication
 
-Atribute Name: categoriaPublicacao
-Atribute Description: Is the type "string". Matches the category the publication falls.
+* Atribute Name: categoriaPublicacao
+* Atribute Description: Is the type "string". Matches the category the publication falls.
 
-Atribute Name: conteudoPublicacao
-Atribute Description: Is the type "string". Corresponds to the content of the publication.
+* Atribute Name: conteudoPublicacao
+* Atribute Description: Is the type "string". Corresponds to the content of the publication.
 
-Atribute Name: idBlog
-Atribute Description: Is the type "blog". Corresponds to foreign key relationship between two classes.
+* Atribute Name: idBlog
+* Atribute Description: Is the type "blog". Corresponds to foreign key relationship between two classes.
 
-Atribute Name: nota
-Atribute Description: Is the type "int". Corresponds to a note received by the publication.
+* Atribute Name: nota
+* Atribute Description: Is the type "int". Corresponds to a note received by the publication.
 
-Atribute Name: statusPublicacao
-Atribute Description: Is the type "boolean". Corresponds to approve or not the application can be approved and published or are waiting for approval.
+* Atribute Name: statusPublicacao
+* Atribute Description: Is the type "boolean". Corresponds to approve or not the application can be approved and published or are waiting for approval.
 
-Atribute Name: utilizador
-Atribute Description: Is the type "utilizador". Is the name of who published.
+* Atribute Name: utilizador
+* Atribute Description: Is the type "utilizador". Is the name of who published.
+----------------------------------------------------------------------
 
-...
+* Method Name: public Publicacao ()
+* Method Description: It corresponds to the class constructor method
 
-Method Name: public Publicacao ()
-Method Description: It corresponds to the class constructor method
+* Method Name: getIdPublicacao()
+* Method Description: Corresponds to a persistence of method IdPublicacao attribute.
 
-Method Name: getIdPublicacao()
-Method Description: Corresponds to a persistence of method IdPublicacao attribute.
-
-Method Name: setIdPublicacao
-Method Description: Corresponds to a persistence of method IdPublicacao attribute.
+* Method Name: setIdPublicacao
+* Method Description: Corresponds to a persistence of method IdPublicacao attribute.
 	
-Method Name: setConteudoPublicacao()
-Method Description: Corresponds to a persistence of method ConteudoPublicacao attribute.
+* Method Name: setConteudoPublicacao()
+* Method Description: Corresponds to a persistence of method ConteudoPublicacao attribute.
 
-Method Name: getConteudoPublicacao()
-Method Description: Description: Corresponds to a receiving method ConteudoPublicacao attribute.
+* Method Name: getConteudoPublicacao()
+* Method Description: Description: Corresponds to a receiving method ConteudoPublicacao attribute.
 
-Method Name: getTituloPublicacao()
-Method Description: Description: Corresponds to a receiving method TituloPublicacao attribute.
+* Method Name: getTituloPublicacao()
+* Method Description: Description: Corresponds to a receiving method TituloPublicacao attribute.
 
-Method Name: setTituloPublicacao()
-Method Description: Corresponds to a persistence of method TituloPublicacao attribute.
+* Method Name: setTituloPublicacao()
+* Method Description: Corresponds to a persistence of method TituloPublicacao attribute.
 
-Method Name: getCategoriaPublicacao()
-Method Description: Description: Corresponds to a receiving method CategoriaPublicacao attribute.
+* Method Name: getCategoriaPublicacao()
+* Method Description: Description: Corresponds to a receiving method CategoriaPublicacao attribute.
 
-Method Name: setCategoriaPublicacao()
-Method Description: Corresponds to a persistence of method CategoriaPublicacao attribute.
+* Method Name: setCategoriaPublicacao()
+* Method Description: Corresponds to a persistence of method CategoriaPublicacao attribute.
 
-Method Name: getNota()
-Method Description: Corresponds to a receiving method Nota attribute.
+* Method Name: getNota()
+* Method Description: Corresponds to a receiving method Nota attribute.
 
-Method Name: setNota()
-Method Description: Corresponds to a persistence of method Nota attribute.
+* Method Name: setNota()
+* Method Description: Corresponds to a persistence of method Nota attribute.
+----------------------------------------------------------------------
 
-...
-
-Class Name: Publicacao
-Class Description: Corresponds to a publications class blogs.
+* Class Name: Publicacao
+* Class Description: Corresponds to a publications class blogs.
