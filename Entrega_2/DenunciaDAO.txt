@@ -1,0 +1,11 @@
+** *Archive Name: DenunciaDAO.java
+------------------------------
+* Method Name: listarDenuncia
+* Method Description: Setting method listarDenuncia.
+
+* Method Name: excluirDenuncia
+* Method Description: Setting method excluirDenuncia.
+
+------------------------------
+* Interface Name: DenunciaDAO
+* Interface Description: Interface that defines the methods: listarDenuncia and excluirDenuncia.
