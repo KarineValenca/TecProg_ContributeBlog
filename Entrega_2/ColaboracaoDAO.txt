@@ -1,0 +1,56 @@
+** *Archive Name: ColaboracaoDAO.java
+----------------------------------
+* Atribute Name: publicacaoColaborativa
+* Atribute Description: This attribute is a instance of Publicacao. The class Publicacao corresponds to a publications class blogs.
+
+* Atribute Name: blog
+* Atribute Description: This attribute is a instance of Blog. The class Blog has some specific tasks such as changing the layout design, list posts related to it, list your most viewed posts, list by category.
+
+* Atribute Name: idBlog
+* Atribute Description: Is the type "int". Parameter of publicar method and listarColaboracaAprovar method. Unique identifier for the blog to be included publication.
+
+* Atribute Name: publicacao
+* Atribute Description: Is the type "Publicacao". Parameter of publicar method. Identifies the publication that will be included in blog.
+
+* Atribute Name: conexao
+* Atribute Description: Is the type "Connection". This attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Atribute Name: pstm
+* Atribute Description: Call of method conexao.prepareStatement.
+
+* Atribute Name: pubColaborativas
+* Atribute Description: Parameter of listarColaboracaAprovar method. ArrayList of collaborative publications to be approved.
+
+* Atribute Name: stm
+* Atribute Description: Call of method conexao.createStatement.
+
+* Atribute Name: rs
+* Atribute Description:  Call of stm.executeQuery method
+
+* Atribute Name: idPublicacao
+* Atribute Description: Is the type "int". Parameter of AprovarPublicacao method. Unique identifier of a publication.
+
+* Atribute Name: idPublicacao
+* Atribute Description: Is the type "string". Parameter of listar method. Unique identifier of a publication. 
+
+------------------------------
+* Method Name: publicar
+* Method Description: Method responsible to insert the publication in the database.
+
+* Method Name: listarColaboracaAprovar
+* Method Description: Method responsible for listing the publications for approval.
+
+* Method Name: AprovarPublicacao
+* Method Description: Method responsible for approving publications.
+
+* Method Name: listar
+* Method Description: Method responsible for listing all publications.
+
+------------------------------
+* Class Name: ColaboracaoDAO
+* Class Description: This class has the methods used to connect to the database and execute methods to list and make changes related publications.
+
+
+
+
+
