@@ -1,0 +1,34 @@
+** * Archive Name: Utilizador.java
+-----------------------------------
+* Attribute Name: id
+* Attribute Description: this attribut is a integer type and it is the user id
+
+* Attribute Name: nome
+* Attribute Description: this attribute is a string type and it is the user name
+
+* Attribute Name: sobrenome
+* Attribute Description: this attribute is a string type and it is the user lastname
+
+* Attribute Name: email
+* Attribute Description: this attribute is a string type and it is the user email
+
+* Attribute Name: genero
+* Attribute Description: this attribute is a string type and it is the user gender
+
+* Attribute Name: senha
+* Attribute Description: this attribute is a string type and it is the user password
+
+* Attribute Name: apelido
+* Attribute Description: this attribute is string type and it is the user nickname
+
+* Attribute Name: dataNascimento
+* Attribute Description: this attribute is date type and it is the user birth date 
+------------------------------------
+* Method Name: getMethods
+* Method Description: these methods are used to get the attributes and return it.
+
+* Method Name: setMethods
+* Method Description: these methods are used to set the attributes at some place of code.
+------------------------------------
+* Class name: Utilizador
+* Class Description: This class store all attributes from a user.
