@@ -1,0 +1,44 @@
+* *Archive Name: BlogDAO.java
+----------------------------------------------------------------------
+
+* Atribute Name: blog
+* Atribute Description: This attribute is an instance of Blog, and it has all information of a blog.
+
+* Atribute Name: agora
+* Atribute Description: Date object instance. Time of create blog.
+
+* Atribute Name: sqlDate
+* Atribute Description: This attribute is an instance of java.sql.Date, and persists the "agora" attribute with the date of the moment.
+
+* Atribute Name: conexao
+* Atribute Description: This attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Atribute Name: pstm
+* Atribute Description: This attribute is a kind of statement and it is used for the specific to the database.
+
+* Atribute Name: stm
+* Atribute Description: This attribute is a Statement type and it is used to for general access at the database.
+
+* Atribute Name: rs
+* Atribute Description: This attribute is a ResultSet type and it is used to getter methods for retrieving columns values from the current row.
+
+* Atribute Name: publicacao
+* Atribute Description: This attribute is an instance of Publicacao, and it has all information of a publication.
+
+----------------------------------------------------------------------
+
+* Method Name: criarBlog
+* Method Description:  This method takes two parameters, blog and donoBlog, and create a blog.
+
+* Method Name: listarBlog
+* Method Description: This method lets you view a blog.
+
+* Method Name: excluir
+* Method Description: This method takes a parameter, idBlog, and lets you delete a blog.
+
+* Method Name: listarPublicacaoBlog
+* Method Description: this method a parameter, idBlog, and allows you to list publications of a blog.
+-----------------------------------------------------------------------
+
+* Class Name: BlogDAO
+* Class Description: Establish database conection and execute methods for create and delete and list blogs and list specific publications of a blog.
