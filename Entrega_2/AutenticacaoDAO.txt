@@ -1,0 +1,25 @@
+** *Archive Name: AutenticacaoDAO.java
+--------------------------------------
+* Attribute Name: utilizador
+* Attribute Description: this attribute is an instance of Utilizador, and it has all information of a user.
+
+* Attribute Name: email
+* Attribute Description: this attribute is an email of a user and it is used to authenticate a user at system.
+
+* Attribute Name: senha
+* Attribute Description: this attribute is a password of a user and it is used to authenticate a user at system.
+
+* Attribute Name: conexao
+* Attribute Description: this attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Attribute Name: stm
+* Attribute Description: this attribute is a Statement type and it is used to for general access at the database.
+
+* Attribute Name: rs
+* Attribute Description: this attribute is a ResultSet type and it is used to getter methods for retrieving columns values from the current row.
+-------------------------------------
+* Method Name: autenticarUtilizador
+* Method Description: this method recieve two params, an email and a password, and by consulting the database, verify the has a user with this values.
+-------------------------------------
+* Class Name: AutenticacaoDAO
+* Class Description: This class has the methods used to authenticate a user at the system.
