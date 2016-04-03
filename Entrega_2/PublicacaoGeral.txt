@@ -1,0 +1,16 @@
+* *Archive Name: PublicacaoGeral.java
+----------------------------------------------------------------------
+
+* Method Name: PublicacaoGeral
+* Method Description: Represents the association of a text with a blog.
+
+* Method Name: publicar
+* Method Description: Creates a comment in the database
+
+* Method Name: listar
+* Method Description: Matches the publication of Data Display you want to input the identification attribute it.
+
+-----------------------------------------------------------------------
+
+* Class Name: Publicacao
+* Class Description: Corresponds to a publications class blogs.
