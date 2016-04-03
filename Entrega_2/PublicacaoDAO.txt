@@ -1,0 +1,54 @@
+* *Archive Name: PublicacaoDAO.java
+----------------------------------------------------------------------
+* Atribute Name: publicacao
+* Atribute Description: This attribute is an instance of Publicacao, and it has all information of a Publication.
+
+* Atribute Name: blog
+* Atribute Description: This attribute is an instance of Blog, and it has all information of a blog.
+
+* Atribute Name: conexao
+* Atribute Description: This attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Atribute Name: pstm
+* Atribute Description: This attribute is a kind of statement and it is used for the specific to the database.
+
+* Atribute Name: stm
+* Atribute Description: This attribute is a Statement type and it is used to for general access at the database.
+
+* Atribute Name: rs
+* Atribute Description: This attribute is a ResultSet type and it is used to getter methods for retrieving columns values from the current row.
+
+* Atribute Name: comentarios
+* Atribute Description: This attribute lists the specific comments of the publication.
+
+* Atribute Name: idUtilizador
+* Atribute Description: It is responsible for receiving the id user collected in the bank.
+
+* Atribute Name: apelidoUtilizador
+* Atribute Description: It is responsible for receiving the nickname of the collected User on the bench with the iDUtilizador.
+----------------------------------------------------------------------
+
+* Method Name: publicar
+* Method Description:  This method takes two parameters, blog and publicacao, and create a publication.
+
+* Method Name: editarPublicacao
+* Method Description: This method takes two parameters, publicacao and idPublicacao, and allows you to edit a publication
+
+* Method Name: listar
+* Method Description: This method takes a parameter, idPublicacao, and lets you view a publication.
+
+* Method Name: excluirPublicacao
+* Method Description: This method takes a parameter, idPublicacao, and lets you delete a publication.
+
+* Method Name: avaliarPublicacao
+* Method Description: This method takes three parameters, publicacao and nota and idPublicacao, and allows to quantitatively evaluate a publication.
+
+* Method Name: listarComentarios
+* Method Description: this method a parameter, idPublicacao, and allows you to list comments of a publication.
+
+* Method Name: identificarUsuario
+* Method Description: this method a parameter, idUtilizador, and returns the nickname used.
+-----------------------------------------------------------------------
+
+* Class Name: PublicacaoDAO
+* Class Description: Establish database conection and execute methods for create and delete and list publications and review publication and comment list and identify User.
