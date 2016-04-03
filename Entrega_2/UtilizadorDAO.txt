@@ -1,0 +1,58 @@
+* **Archive Name: UtilizadorDAO.java
+-------------------------------------
+* Attribute Name: utilizador
+* Attribute Description: this attribute is an intance of Utilizador.
+
+* Attribute Name: apelido
+* Attribute Description: this attribute is the nickname of a user, and it is used to verify uniqueness.
+
+* Attribute Name: email
+* Attribute Description: this attribute is the email of the user, and it is used to verify uniqueness.
+
+* Attribute Name: retorno
+* Attribute Description: by this attribute is verify if email or apelido already exists. If retorno > 0, a email or a apelido exists.
+
+* Attribute Name: conexao
+* Attribute Description: this attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Attribute Name: stm
+* Attribute Description: this attribute is a Statement type and it is used to for general access at the database.
+
+* Attribute Name: rs
+* Attribute Description: this attribute is a ResultSet type and it is used to getter methods for retrieving columns values from the current row.
+
+* Attribute Name: utilDate 
+* Attribute Description: this attribute is java.util.Date type and it is used to get the birthdate of the user
+
+* Attribute Name: sqlDate
+* Attribute Description: this attribute is java.sql.Date type and it is used to convert the utilData in sql data format.
+
+* Attribute Name: pstm
+* Attribute Description: this attribute if PreparedStatement type and it is used to used to precompiled and stored PreparedStatemente object. It is util when you want used efficiently execute a statement multiple lines.
+
+* Attribute Name: lista
+* Attribute Description: this attribute is an arraylist of Utilizador type and it is used to get all user at the database.
+
+* Attribute Name: id
+* Attribute Description: this attribute is the user id and it is used to exclude a user, show, or edit it.
+-------------------------------------
+* Method Name: validarUtilizador
+* Method Description: this method is used to verify if a email or nickname from the user who is registering at the system is already in use. it returns a integer value, if the value is diffent from zero, the email or nick name is already in use.
+
+* Method Name: criarUtilizador
+* Method Description: this method is used to create a user at system.
+
+* Method Name: listarUtilizador
+* Method Description: this method is used to list all the users at the system.
+
+* Method Name: excluirUtilizador
+* Method Description: this method is used to exclude a user of the database. it receives user's id and execute the exclusion.
+
+* Method Name: editarUtilizador
+* Method Description: this method is used to edit a user at the system, receiving a user and a id as parameters.
+
+* Method Name: listarPerfilUtilizador
+* Method Description: this method is used to show the user profile. It shows all information that are registred in the database.
+-------------------------------------
+* Class Name: UtilizadorDAO
+* Class Description: this class is used to do all the method relates with the user.
