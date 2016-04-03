@@ -1,0 +1,33 @@
+** *Archive Name: DenunciaBlogDAO.java
+----------------------------------
+* Atribute Name: lista
+* Atribute Description: Parameter of listarDenuncia method. ArrayList of denounces blog.
+
+* Atribute Name: conexao
+* Atribute Description: Is the type "Connection". Parameter of listarDenuncia method.This attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Atribute Name: stm
+* Atribute Description: Call of method conexao.createStatement.
+
+* Atribute Name: rs
+* Atribute Description: Call of stm.executeQuery method.
+
+* Atribute Name: denunciaBlog
+* Atribute Description: This attribute is a instance of Denuncia. This class Denuncia keeps denounces. 
+
+* Atribute Name: pstm
+* Atribute Description: Call of method conexao.prepareStatement.
+
+------------------------------
+* Method Name: listarDenuncia
+* Method Description: Method responsible for listing the denounces.
+
+* Method Name: excluirDenuncia
+* Method Description: method responsible for making the exclusion of a denounce database.
+
+* Method Name: pesquisarBlogDenuncia
+* Method Description: Method responsible for researching denounces on the blog.
+
+------------------------------
+* Class Name: DenunciaBlogDAO
+* Class Description: This class has the methods used to connect to the database and execute methods to list and make changes related to denounces. It is used by other classes of data persistence.
