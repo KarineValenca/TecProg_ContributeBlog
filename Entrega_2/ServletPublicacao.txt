@@ -1,0 +1,56 @@
+** *Archive Name: ServletPublicacao.java
+------------------------------------------
+
+* Atribute name: serialVersionUID
+* Atribute Description: This attribute is a serialization version identifier the class.
+
+* Atribute Name: rd
+* Atribute Description: This attribute allows for including content in a request/response or forwarding a request/response to a resource.
+
+* Atribute Name: acao
+* Atribute Description: Is the type "string". Identifies the type of action that should be performed.
+
+* Atribute Name: publicacao
+* Atribute Description: This attribute is a instance of Publicacao. The class Publicacao is a the class that has all atributes from a publications at system.
+
+* Atribute Name: publicacaoDAO
+* Atribute Description: This attribute is a instance of PublicacaoBlogDAO. It is a persistence class object Publication.
+
+* Atribute Name: blog
+* Atribute Description: This attribute is a instance of Blog.
+
+* Atribute Name: listaComentarios
+* Atribute Description: It is a creator attribute of the comments list.
+
+* Atribute name: comentariodao 
+* Atribute Description: Matches the persistence of class comments.
+
+* Atribute name: idBlogInsert
+* Atribute Description: Corresponds to the collection attribute recorded by a parserInt database.
+
+* Atribute name: idBlog
+* Atribute Description: Corresponds to the collection referencial to idBlog.
+
+* Atribute name: idPublicacao
+* Atribute Description: Corresponds to the receipt of id publication.
+
+* Atribute name: notaPublicacao
+* Atribute Description: Corresponte compiled the note received by publication by user.
+
+* Atribute name: notaAtual
+* Atribute Description: Corresponds to the current note compiled publication.
+
+* Atribute name: notaFinal
+* Atribute Description: Is the final note compiled publication.
+
+--------------------------------------
+* Method name: doGet
+* Method description: this method is used to intercept HTTP GET requests. The HTTP GET requests are used when you get the same result everytime you execute the request
+
+* Method name: doPost 
+* Method description: this method is used to intercept HTTP POST requests. The HTTP POST request are used when the results of the requests will not be the same
+
+--------------------------------------
+* Class name: ServletPublicacao
+* Class description: This class holds publications. It has some specific tasks, such as adding, instantiating, edit, list, delete, review and list, publications.
+
