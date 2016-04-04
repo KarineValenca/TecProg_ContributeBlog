@@ -1,0 +1,18 @@
+** *Archive Name: FabricaDenunciaDAO.java
+------------------------------
+* Atribute Name: id
+* Atribute Description: Is the type "int". Parameter of criarDenuncia method.
+
+* Atribute Name: denuncia
+* Atribute Description: Is the type "Denuncia". Parameter of criarDenuncia method.
+
+* Atribute Name: utilizador
+* Atribute Description: Is the type "int". Parameter of criarDenuncia method.
+
+------------------------------
+* Method Name: criarDenuncia
+* Method Description: Method responsible for creating the complaints. 
+
+------------------------------
+* Interface Name: FabricaDenunciaDAO
+* Interface Description: Interface that defines the method criarDenuncia.
