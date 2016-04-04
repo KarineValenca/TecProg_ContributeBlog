@@ -9,18 +9,18 @@ import java.util.List;
 
 import model.Utilizador;
 
-public class AutenticacaoDAO extends ConnectionFactory{
+public class AutenticationDAO extends ConnectionFactory{
 	Utilizador utilizador = new Utilizador();
 	
 	
-	public Utilizador autenticarUtilizador(String email, String senha){
+	public Utilizador autenticarUtilizador(String email, String password){
 		this.utilizador.setEmail("");
 		this.utilizador.setSenha("");
 		
 		try{
-			Connection conexao = getConexao();
-			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("select * from Utilizador where email='"+ email+"' and senha='"+senha+"'" );
+			Connection connection = getConexao();
+			Statement stm = connection.createStatement();
+			ResultSet rs = stm.executeQuery("select * from Utilizador where email='"+ email+"' and senha='"+password+"'" );
 			while(rs.next()){
 			
 				this.utilizador.setId(rs.getInt("id"));
@@ -33,7 +33,7 @@ public class AutenticacaoDAO extends ConnectionFactory{
 				this.utilizador.setDataNascimento(rs.getDate("dataNascimento"));
 			}
 			rs.close();
-			conexao.close();
+			connection.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 			

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AutenticacaoDAO;
+import dao.AutenticationDAO;
 import dao.UtilizadorDAO;
 import model.Utilizador;
 
@@ -48,7 +48,7 @@ public class ServletAutentication extends HttpServlet{
         System.out.println("hhhhhh" + this.email);
         System.out.println(this.password);
         
-        AutenticacaoDAO autenticacaoDAO = new AutenticacaoDAO(); 
+        AutenticationDAO autenticacaoDAO = new AutenticationDAO(); 
         Utilizador utilizador = new Utilizador();
         utilizador = autenticacaoDAO.autenticarUtilizador(this.email, this.password);
         
