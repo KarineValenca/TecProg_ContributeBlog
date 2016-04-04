@@ -1,0 +1,31 @@
+** *Archive Name: PublicacaoColaborativa.java
+----------------------------------
+* Atribute Name: statusPublicacao
+* Atribute Description: Is the type "boolean". Identifier the status of a publication.
+
+* Atribute Name: idPublicacao
+* Atribute Description: Is the type "int". Unique publication identifier.
+
+* Atribute Name: tituloPublicacao
+* Atribute Description: Is the type "String". Publication title.
+
+* Atribute Name: categoriaPublicacao
+* Atribute Description: Is the type "String". Publication category.
+
+* Atribute Name: conteudoPublicacao
+* Atribute Description: Is the type "String". Content of a publication.
+
+* Atribute Name: idBlog
+* Atribute Description: Is the type "int". Unique publication identifier
+
+* Atribute Name: nota
+* Atribute Description: Is the type "in". Note attributed to publication.
+
+------------------------------
+* Method Name: PublicacaoColaborativa
+* Method Description: It corresponds to the class constructor method.
+
+------------------------------
+* Class Name: PublicacaoColaborativa
+* Class Description: Defines the atttibutes of a publication.
+
