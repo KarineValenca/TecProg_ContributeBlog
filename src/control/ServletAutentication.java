@@ -18,8 +18,8 @@ import dao.AutenticacaoDAO;
 import dao.UtilizadorDAO;
 import model.Utilizador;
 
-@WebServlet("/ServletAutenticacao")
-public class ServletAutenticacao extends HttpServlet{
+@WebServlet("/ServletAutentication")
+public class ServletAutentication extends HttpServlet{
 	/**
 	 * Servlet de Autenticação de Login de usuário 
 	 */
@@ -27,11 +27,11 @@ public class ServletAutenticacao extends HttpServlet{
 	
 	private RequestDispatcher rd;
 	private String email = "";
-	private String senha = "";
+	private String password = "";
 	
 	
 	
-	public ServletAutenticacao(){
+	public ServletAutentication(){
 		super();
 	}
 	
@@ -43,16 +43,16 @@ public class ServletAutenticacao extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
 							IOException {
 		this.email = request.getParameter("email");
-        this.senha = request.getParameter("senha");
+        this.password = request.getParameter("password");
                
         System.out.println("hhhhhh" + this.email);
-        System.out.println(this.senha);
+        System.out.println(this.password);
         
         AutenticacaoDAO autenticacaoDAO = new AutenticacaoDAO(); 
         Utilizador utilizador = new Utilizador();
-        utilizador = autenticacaoDAO.autenticarUtilizador(this.email, this.senha);
+        utilizador = autenticacaoDAO.autenticarUtilizador(this.email, this.password);
         
-        boolean autorizacao = verificarUtilizador(utilizador, this.email, this.senha);
+        boolean autorizacao = verificarUtilizador(utilizador, this.email, this.password);
         if(autorizacao==true){
         	this.rd = request.getRequestDispatcher("painelAdministrativoUsuario.jsp");
         	request.getSession().setAttribute("utilizador", utilizador);
@@ -63,7 +63,7 @@ public class ServletAutenticacao extends HttpServlet{
         }        
 	}
 	
-	public boolean verificarUtilizador(Utilizador utilizador, String email, String senha){
+	public boolean verificarUtilizador(Utilizador utilizador, String email, String password){
 	
 		/*Método de verificação de Utilizador  
 		 * Recebe uma instancia de utilizador 
