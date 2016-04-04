@@ -1,0 +1,19 @@
+** *Archive Name: DenunciaPublicacao.java
+----------------------------------
+* Atribute Name: idDenuncia
+* Atribute Description: Is the type "int". Unique identifier of a denounce.
+
+* Atribute Name: conteudoDenuncia
+* Atribute Description: Is the type "String". Content of a denounce.
+
+* Atribute Name: dataDenuncia
+* Atribute Description: Is the type "Date". Date of a denounce.
+
+------------------------------
+* Method Name: DenunciaPublicacao
+* Method Description: It corresponds to the class constructor method.
+
+------------------------------
+* Class Name: DenunciaPublicacao
+* Class Description: Defines the atttibutes of a denounce of publication.
+
