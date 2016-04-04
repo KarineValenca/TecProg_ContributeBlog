@@ -1,0 +1,32 @@
+** *Archive Name: FabricaDenunciaBlogDAO.java
+------------------------------
+
+* Atribute Name: agora
+* Atribute Description: Date object instance. Time of the publication.
+
+* Atribute Name: sqlDate
+* Atribute Description: java.sql.Date object instance.
+
+* Atribute Name: conexao
+* Atribute Description: Is the type "Connection". This attribute is a Connection type and SQL statements are executed and results are returned within the context of a connection.
+
+* Atribute Name: pstm
+* Atribute Description: Call of method conexao.prepareStatement.
+
+* Atribute Name: id
+* Atribute Description: Is the type "int". Parameter of criarDenuncia method.
+
+* Atribute Name: denuncia
+* Atribute Description: Is the type "Denuncia". Parameter of criarDenuncia method.
+
+* Atribute Name: utilizador
+* Atribute Description: Is the type "Utilizador". Parameter of criarDenuncia method.
+
+------------------------------
+* Method Name: criarDenuncia
+* Method Description: Method responsible for creating the denounces. 
+
+------------------------------
+* Class Name: FabricaDenunciaBlogDAO
+* Class Description: This class has the methods used to connect to the database and execute methods to create the blog denounces. Class responsible for the connection to the database. It is used by other classes of
+ data persistence
