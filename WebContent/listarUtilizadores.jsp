@@ -22,8 +22,8 @@
 				<tr>
 					<td>${utilizador.id}</td>
 					<td>${utilizador.nome}</td>
-					<td><a href="ServletUtilizador?acao=ListarPerfil&id=${utilizador.id}">Editar</a></td>
-					<td><a href="ServletUtilizador?acao=Excluir&id=${utilizador.id}">Excluir</a></td>
+					<td><a href="ServletUser?action=ListProfile&id=${utilizador.id}">Editar</a></td>
+					<td><a href="ServletUser?action=DeleteUser&id=${utilizador.id}">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</table>

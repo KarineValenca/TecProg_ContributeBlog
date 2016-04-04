@@ -33,8 +33,8 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6 col-md-6">
-                                    <a href="ServletUtilizador?acao=ListarPerfil&id=${utilizador.id}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Editar Perfil</a>
-                                    <a href="ServletUtilizador?acao=Excluir&id=${utilizador.id}" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-remove"></span> <br/>Excluir Perfil</a>
+                                    <a href="ServletUser?action=ListProfile&id=${utilizador.id}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Editar Perfil</a>
+                                    <a href="ServletUser?action=DeleteUser&id=${utilizador.id}" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-remove"></span> <br/>Excluir Perfil</a>
                                 </div>
                                 <div class="col-xs-6 col-md-6">
                                     <a href="ServletDonoBlog?acao=ListarDono&idDonoBlog=${utilizador.id}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Meus Blogs</a>

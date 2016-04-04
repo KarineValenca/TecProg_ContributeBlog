@@ -25,7 +25,7 @@
                                 <h3 class="panel-title">Editar cadastro</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form" method="post" action="ServletUtilizador?acao=Editar">
+                                <form role="form" method="post" action="ServletUser?action=EditUser">
                                     <div class="row">
                                         <input type="hidden"  class="form-control input-sm" name="apelido" autofocus="autofocus" placeholder="Apelido"  value="${utilizador.apelido}">
                                         <input type="hidden"  class="form-control input-sm" name="id" autofocus="autofocus" placeholder="id" value="${utilizador.id}">

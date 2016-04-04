@@ -18,8 +18,8 @@ import dao.UtilizadorDAO;
 import model.Utilizador;
 
 
-@WebServlet("/ServletUtilizador")
-public class ServletUtilizador extends HttpServlet {
+@WebServlet("/ServletUser")
+public class ServletUser extends HttpServlet {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -35,82 +35,82 @@ public class ServletUtilizador extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	
-		String acao = request.getParameter("acao");
-		String destino = "sucesso.jsp";
-		String mensagem = "";
-		List<Utilizador> lista = new ArrayList<>();
-		UtilizadorDAO utilizadordao = new UtilizadorDAO();
-		Utilizador utilizador = new Utilizador();
+		String action = request.getParameter("action");
+		//String destino = "sucesso.jsp";
+		String message = "";
+		List<Utilizador> userList = new ArrayList<>();
+		UtilizadorDAO userDAO = new UtilizadorDAO();
+		Utilizador user = new Utilizador();
 		
-		String dataNascimento = request.getParameter("dataNascimento");
+		String birthDate = request.getParameter("dataNascimento");
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
-			switch (acao) {
+			switch (action) {
 				
-			case "Listar":
-				lista = utilizadordao.listarUtilizador();
-				request.setAttribute("listaUtilizador", lista);
+			case "ListUser":
+				userList = userDAO.listarUtilizador();
+				request.setAttribute("listaUtilizador", userList);
 				this.rd = request.getRequestDispatcher("listarUtilizadores.jsp");
 				this.rd.forward(request, response);
 				break;
-			case "Incluir":
-				utilizador.setNome(request.getParameter("nome"));
-				utilizador.setSobrenome(request.getParameter("sobrenome"));
-				utilizador.setGenero(request.getParameter("genero"));
-				utilizador.setEmail(request.getParameter("email"));
-				utilizador.setSenha(request.getParameter("senha"));
-				utilizador.setApelido(request.getParameter("apelido"));
+			case "CreateUser":
+				user.setNome(request.getParameter("nome"));
+				user.setSobrenome(request.getParameter("sobrenome"));
+				user.setGenero(request.getParameter("genero"));
+				user.setEmail(request.getParameter("email"));
+				user.setSenha(request.getParameter("senha"));
+				user.setApelido(request.getParameter("apelido"));
 				
 				
-				Date date = (Date) formatter.parse(dataNascimento);
-				utilizador.setDataNascimento(date);				
+				Date date = (Date) formatter.parse(birthDate);
+				user.setDataNascimento(date);				
 			
-				int retorno=0;
+				int occurence = 0;
 
 				
-				retorno = utilizadordao.validarUtilizador(utilizador.getApelido(), utilizador.getEmail(), retorno);
+				occurence = userDAO.validarUtilizador(user.getApelido(), user.getEmail(), occurence);
 				
-				if(retorno==0){
-					utilizadordao.criarUtilizador(utilizador);
+				if(occurence == 0){
+					userDAO.criarUtilizador(user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 				}else{
-					mensagem = "Email ou Apelido já utilizado";
+					message = "Email ou Apelido já utilizado";
 					this.rd = request.getRequestDispatcher("utilizador.jsp");
 					this.rd.forward(request, response);
 				}
 				
 				break;
-			case "Excluir":
+			case "DeleteUser":
 				String id = request.getParameter("id");				
-				utilizadordao.excluir(id);
+				userDAO.excluir(id);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				
 			break;
-			case "Editar":
+			case "EditUser":
 				id = request.getParameter("id");
 				
-				utilizador.setNome(request.getParameter("nome"));
-				utilizador.setSobrenome(request.getParameter("sobrenome"));
-				utilizador.setGenero(request.getParameter("genero"));
-				utilizador.setSenha(request.getParameter("senha"));
-				utilizador.setApelido(request.getParameter("apelido"));
+				user.setNome(request.getParameter("nome"));
+				user.setSobrenome(request.getParameter("sobrenome"));
+				user.setGenero(request.getParameter("genero"));
+				user.setSenha(request.getParameter("senha"));
+				user.setApelido(request.getParameter("apelido"));
 				
-				Date data = (Date) formatter.parse(dataNascimento);
-				utilizador.setDataNascimento(data);
+				Date data = (Date) formatter.parse(birthDate);
+				user.setDataNascimento(data);
 				
-				utilizadordao.editarUtilizador(utilizador, id);
+				userDAO.editarUtilizador(user, id);
 				this.rd = request.getRequestDispatcher("ServletAutenticacao");
 				this.rd.forward(request, response);
 				
 				break;
 			
-			case "ListarPerfil":
+			case "DistProfile":
 				id = request.getParameter("id");
-				utilizador = utilizadordao.listarPerfilUtilizador(id);
-				request.setAttribute("utilizador", utilizador);
+				user = userDAO.listarPerfilUtilizador(id);
+				request.setAttribute("utilizador", user);
 				this.rd = request.getRequestDispatcher("editarUtilizador.jsp");
 				this.rd.forward(request, response);
 				

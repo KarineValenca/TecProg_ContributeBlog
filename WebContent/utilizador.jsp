@@ -24,7 +24,7 @@
                             <h3 class="panel-title">Cadastro de Utilizadores</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="post" action="ServletUtilizador?acao=Incluir" onsubmit="return checkForm(this);">
+                            <form role="form" method="post" action="ServletUser?action=CreateUser" onsubmit="return checkForm(this);">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
