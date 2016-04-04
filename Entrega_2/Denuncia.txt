@@ -1,0 +1,46 @@
+** *Archive Name: Denuncia.java
+----------------------------------
+* Atribute Name: idDenuncia
+* Atribute Description: Is the type "int". Unique identifier of a denounce.
+
+* Atribute Name: dataDenuncia
+* Atribute Description: Is the type "Date". Date of a denounce.
+
+* Atribute Name: conteudoDenuncia
+* Atribute Description: Is the type "String". Content of a denounce.
+
+* Atribute Name: idBlog
+* Atribute Description: Is the type "int". Unique identifier of a blog.
+
+------------------------------
+* Method Name: Denuncia
+* Method Description: It corresponds to the class constructor method.
+
+* Method Name: getIdDenuncia
+* Method Description: Corresponds to a receiving method IdDenuncia attribute.
+
+* Method Name: getIdBlog
+* Method Description: Corresponds to a receiving method IdBlog attribute.
+
+* Method Name: setIdBlog
+* Method Description: Corresponds to a persistence of method IdBlog attribute.
+
+* Method Name: setIdDenuncia
+* Method Description: Corresponds to a persistence of method IdDenuncia attribute.
+
+* Method Name: getDataDenuncia
+* Method Description: Corresponds to a receiving method DataDenuncia attribute.
+
+* Method Name: setDataDenuncia
+* Method Description: Corresponds to a persistence of method DataDenuncia attribute 
+
+* Method Name: getConteudoDenuncia
+* Method Description: Corresponds to a receiving method ConteudoDenuncia attribute.
+
+* Method Name: setConteudoDenuncia
+* Method Description: Corresponds to a persistence of method ConteudoDenuncia attribute
+
+------------------------------
+* Class Name: Denuncia
+* Class Description: Defines the atttibutes of a denounce.
+
