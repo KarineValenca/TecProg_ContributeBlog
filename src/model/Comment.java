@@ -3,34 +3,34 @@ package model;
 import java.util.Date;
 
 public class Comment {
-	private int idComentario;
-	private String conteudoComentario;
-	private Date dataComentario;
-	private String utilizadorComentario;
+	private int idComment;
+	private String commentContent;
+	private Date commentDate;
+	private String commentUser;
 	
-	public int getIdComentario() {
-		return idComentario;
+	public int getIdComment() {
+		return idComment;
 	}
-	public void setIdComentario(int idComentario) {
-		this.idComentario = idComentario;
+	public void setIdComment(int idComment) {
+		this.idComment = idComment;
 	}
-	public String getConteudoComentario() {
-		return conteudoComentario;
+	public String getCommentContent() {
+		return commentContent;
 	}
-	public void setCommentContent(String conteudoComentario) {
-		this.conteudoComentario = conteudoComentario;
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
 	}
-	public Date getDataComentario() {
-		return dataComentario;
+	public Date getCommentDate() {
+		return commentDate;
 	}
-	public void setDataComentario(Date dataComentario) {
-		this.dataComentario = dataComentario;
+	public void setCommentDate(Date commentDate) {
+		this.commentDate = commentDate;
 	}
-	public String getUtilizadorComentario() {
-		return utilizadorComentario;
+	public String getCommentUser() {
+		return commentUser;
 	}
-	public void setUtilizadorComentario(String utilizadorComentario) {
-		this.utilizadorComentario = utilizadorComentario;
+	public void setCommentUser(String commentUser) {
+		this.commentUser = commentUser;
 	}
 	
 	

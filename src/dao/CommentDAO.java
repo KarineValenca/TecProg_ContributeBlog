@@ -29,7 +29,7 @@ public class CommentDAO extends ConnectionFactory{
 			Connection conexao = getConexao();
 			PreparedStatement pstm = conexao.prepareStatement("INSERT INTO Comentario (conteudoComentario, "
 					+ "dataCriacaoComentario, idUtilizador, idPublicacao) VALUES (?,?,?,?);");
-			pstm.setString(1, comentario.getConteudoComentario());
+			pstm.setString(1, comentario.getCommentContent());
 			pstm.setDate(2, sqlDate);
 			pstm.setInt(3, utilizador.getId());
 			pstm.setInt(4, idPublicacao);
@@ -64,11 +64,11 @@ public class CommentDAO extends ConnectionFactory{
 			
 			while (rs.next()) {
 				Comment comentario = new Comment();
-				comentario.setIdComentario(rs.getInt("idComentario"));
-				System.out.println(comentario.getIdComentario());
+				comentario.setIdComment(rs.getInt("idComentario"));
+				System.out.println(comentario.getIdComment());
 				comentario.setCommentContent(rs.getString("conteudoComentario"));
-				comentario.setUtilizadorComentario(rs.getString("idUtilizador"));
-				System.out.println(comentario.getConteudoComentario());
+				comentario.setCommentUser(rs.getString("idUtilizador"));
+				System.out.println(comentario.getCommentContent());
 				listaComentario.add(comentario);
 				
 			}
@@ -88,11 +88,11 @@ public class CommentDAO extends ConnectionFactory{
 			
 			while (rs.next()) {
 				Comment comentario = new Comment();
-				comentario.setIdComentario(rs.getInt("idComentario"));
-				System.out.println(comentario.getIdComentario());
+				comentario.setIdComment(rs.getInt("idComentario"));
+				System.out.println(comentario.getIdComment());
 				comentario.setCommentContent(rs.getString("conteudoComentario"));
-				comentario.setUtilizadorComentario(rs.getString("idUtilizador"));
-				System.out.println(comentario.getConteudoComentario());
+				comentario.setCommentUser(rs.getString("idUtilizador"));
+				System.out.println(comentario.getCommentContent());
 				listaComentario.add(comentario);
 				
 			}

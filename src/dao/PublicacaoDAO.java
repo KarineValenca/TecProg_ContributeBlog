@@ -121,13 +121,13 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 			while (rs.next()) {
 				Comment comentario = new Comment();
 				
-				comentario.setIdComentario(rs.getInt("idComentario"));
+				comentario.setIdComment(rs.getInt("idComentario"));
 				comentario.setCommentContent(rs.getString("conteudoComentario"));
-				comentario.setDataComentario(rs.getDate("dataCriacaoComentario"));
+				comentario.setCommentDate(rs.getDate("dataCriacaoComentario"));
 				
 				int idUtilizador = rs.getInt("idUtilizador");
 				String apelidoUtilizador = identificarUsuario(idUtilizador);
-				comentario.setUtilizadorComentario(apelidoUtilizador);
+				comentario.setCommentUser(apelidoUtilizador);
 				
 				comentarios.add(comentario);
 			}
