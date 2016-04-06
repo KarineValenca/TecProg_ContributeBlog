@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.AuthenticationDAO;
-import dao.UtilizadorDAO;
+import dao.UserDAO;
 import model.Utilizador;
 
 @WebServlet("/ServletAuthentication")

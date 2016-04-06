@@ -23,7 +23,7 @@
                             <h3 class="panel-title">Preencha para entrar</h3>
                         </div>
                         <div class="panel-body">
-                            <form action="ServletAutentication" method="post" accept-charset="UTF-8" role="form">
+                            <form action="ServletAuthentication" method="post" accept-charset="UTF-8" role="form">
                                 <fieldset>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="E-mail" name="email" type="email" value="${utilizador.email}"  required>

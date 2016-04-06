@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UtilizadorDAO;
+import dao.UserDAO;
 import model.Utilizador;
 
 
@@ -39,7 +39,7 @@ public class ServletUser extends HttpServlet {
 		//String destino = "sucesso.jsp";
 		String message = "";
 		List<Utilizador> userList = new ArrayList<>();
-		UtilizadorDAO userDAO = new UtilizadorDAO();
+		UserDAO userDAO = new UserDAO();
 		Utilizador user = new Utilizador();
 		
 		String birthDate = request.getParameter("dataNascimento");
@@ -49,7 +49,7 @@ public class ServletUser extends HttpServlet {
 			switch (action) {
 				
 			case "ListUser":
-				userList = userDAO.listarUtilizador();
+				userList = userDAO.listUser();
 				request.setAttribute("listaUtilizador", userList);
 				this.rd = request.getRequestDispatcher("listarUtilizadores.jsp");
 				this.rd.forward(request, response);
@@ -69,10 +69,10 @@ public class ServletUser extends HttpServlet {
 				int occurence = 0;
 
 				
-				occurence = userDAO.validarUtilizador(user.getApelido(), user.getEmail(), occurence);
+				occurence = userDAO.validateUser(user.getApelido(), user.getEmail(), occurence);
 				
 				if(occurence == 0){
-					userDAO.criarUtilizador(user);
+					userDAO.createUser(user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 				}else{
@@ -84,7 +84,7 @@ public class ServletUser extends HttpServlet {
 				break;
 			case "DeleteUser":
 				String id = request.getParameter("id");				
-				userDAO.excluir(id);
+				userDAO.deleteUser(id);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				
@@ -101,7 +101,7 @@ public class ServletUser extends HttpServlet {
 				Date data = (Date) formatter.parse(birthDate);
 				user.setDataNascimento(data);
 				
-				userDAO.editarUtilizador(user, id);
+				userDAO.editUser(user, id);
 				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
 				
@@ -109,7 +109,7 @@ public class ServletUser extends HttpServlet {
 			
 			case "ListProfile":
 				id = request.getParameter("id");
-				user = userDAO.listarPerfilUtilizador(id);
+				user = userDAO.showUserProfile(id);
 				request.setAttribute("utilizador", user);
 				this.rd = request.getRequestDispatcher("editarUtilizador.jsp");
 				this.rd.forward(request, response);
