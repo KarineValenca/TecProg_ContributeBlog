@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AuthenticationDAO;
 import dao.UserDAO;
-import model.Utilizador;
+import model.User;
 
 @WebServlet("/ServletAuthentication")
 public class ServletAuthentication extends HttpServlet{
@@ -47,7 +47,7 @@ public class ServletAuthentication extends HttpServlet{
         System.out.println(this.password);
         
         AuthenticationDAO authenticacaoDAO = new AuthenticationDAO(); 
-        Utilizador utilizador = new Utilizador();
+        User utilizador = new User();
         utilizador = authenticacaoDAO.authenticateUser(this.email, this.password);
         
         boolean autorization = verifyUser(utilizador, this.email, this.password);
@@ -61,7 +61,7 @@ public class ServletAuthentication extends HttpServlet{
         }        
 	}
 	
-	public boolean verifyUser(Utilizador utilizador, String email, String password){
+	public boolean verifyUser(User utilizador, String email, String password){
 	
 		/*Método de verificação de Utilizador  
 		 * Recebe uma instancia de utilizador 

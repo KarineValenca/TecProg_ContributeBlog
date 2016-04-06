@@ -11,17 +11,17 @@ import java.util.List;
 import javax.swing.plaf.synth.SynthScrollBarUI;
 
 import model.Blog;
-import model.Comentario;
-import model.Publicacao;
-import model.Utilizador;
+import model.Comment;
+import model.Publication;
+import model.User;
 
 public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 
-	Publicacao publicacao = new Publicacao();
+	Publication publicacao = new Publication();
 	Blog blog = new Blog();
 	
 	
-	public void publicar( int blog, Publicacao publicacao){
+	public void publicar( int blog, Publication publicacao){
 		try{
 			Connection conexao = getConexao();
 			PreparedStatement pstm = conexao.
@@ -41,7 +41,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		
 	}
 	
-	public void editarPublicacao(Publicacao publicacao, String idPublicacao){
+	public void editarPublicacao(Publication publicacao, String idPublicacao){
 		try{
 			Connection conexao = getConexao();
 			PreparedStatement pstm = conexao.prepareStatement("update Publicacao set tituloPublicacao=?, "
@@ -62,8 +62,8 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		}
 	}
 	
-	public Publicacao listar(String idPublicacao) {
-		Publicacao publicacao = new Publicacao();
+	public Publication listar(String idPublicacao) {
+		Publication publicacao = new Publication();
 		publicacao.setTituloPublicacao("");
 		try {
 			Connection conexao = getConexao();
@@ -95,7 +95,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		}
 	}
 	
-	public void avaliarPublicacao(Publicacao publicacao, String nota, String idPublicacao){
+	public void avaliarPublicacao(Publication publicacao, String nota, String idPublicacao){
 		try{
 			Connection conexao = getConexao();
 			PreparedStatement pstm = conexao.prepareStatement("Update Publicacao set notaPublicacao = notaPublicacao + ? where idPublicacao = ?");
@@ -110,8 +110,8 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		}
 	}
 
-	public List<Comentario> listarComentarios(String idPublicacao){
-		List<Comentario> comentarios = new  ArrayList<>();
+	public List<Comment> listarComentarios(String idPublicacao){
+		List<Comment> comentarios = new  ArrayList<>();
 		
 		
 		try{
@@ -119,10 +119,10 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Comentario where idPublicacao="+idPublicacao);
 			while (rs.next()) {
-				Comentario comentario = new Comentario();
+				Comment comentario = new Comment();
 				
 				comentario.setIdComentario(rs.getInt("idComentario"));
-				comentario.setConteudoComentario(rs.getString("conteudoComentario"));
+				comentario.setCommentContent(rs.getString("conteudoComentario"));
 				comentario.setDataComentario(rs.getDate("dataCriacaoComentario"));
 				
 				int idUtilizador = rs.getInt("idUtilizador");

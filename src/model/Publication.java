@@ -1,6 +1,6 @@
 package model;
 
-public class Publicacao {
+public class Publication {
 	private int idPublicacao;
 	private String tituloPublicacao;
 	private String categoriaPublicacao;
@@ -8,13 +8,13 @@ public class Publicacao {
 	private Blog idBlog;
 	private int nota;
 	private boolean statusPublicacao;
-	private Utilizador utilizador;
+	private User utilizador;
 	
-	public Publicacao(){
+	public Publication(){
 		
 	}
 	
-	public Publicacao(int idPublicacao, String tituloPublicacao, String categoriaPublicacao, 
+	public Publication(int idPublicacao, String tituloPublicacao, String categoriaPublicacao, 
 			String conteudoPublicacao, Blog idBlog, int nota){
 		this.idPublicacao = idPublicacao;
 		this.tituloPublicacao = tituloPublicacao;

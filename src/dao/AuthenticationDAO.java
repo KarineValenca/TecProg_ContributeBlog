@@ -7,13 +7,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Utilizador;
+import model.User;
 
 public class AuthenticationDAO extends ConnectionFactory{
-	Utilizador utilizador = new Utilizador();
+	User utilizador = new User();
 	
 	
-	public Utilizador authenticateUser(String email, String password){
+	public User authenticateUser(String email, String password){
 		this.utilizador.setEmail("");
 		this.utilizador.setSenha("");
 		

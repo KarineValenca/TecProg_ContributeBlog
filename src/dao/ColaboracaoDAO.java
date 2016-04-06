@@ -9,16 +9,16 @@ import java.util.Date;
 import java.util.List;
 
 import model.Blog;
-import model.Publicacao;
+import model.Publication;
 import model.PublicacaoColaborativa;
 
 public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGeral{
 
-	Publicacao publicacaoColaborativa = new Publicacao();
+	Publication publicacaoColaborativa = new Publication();
 	Blog blog = new Blog();
 	
 	
-	public void publicar(int idBlog, Publicacao publicacao){
+	public void publicar(int idBlog, Publication publicacao){
 		try {
 			Connection conexao = getConexao();
 			PreparedStatement pstm = conexao.
@@ -39,8 +39,8 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 	}
 	
 	
-	public List<Publicacao> listarColaboracaAprovar(int idBlog){
-		List<Publicacao>  pubColaborativas= new ArrayList<>();
+	public List<Publication> listarColaboracaAprovar(int idBlog){
+		List<Publication>  pubColaborativas= new ArrayList<>();
 		System.out.println("Listar Colaboração");
 		System.out.println(idBlog + "fdffff");
 		
@@ -85,8 +85,8 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 	}
 
 
-	public Publicacao listar(String idPublicacao) {
-		Publicacao publicacao = new Publicacao();
+	public Publication listar(String idPublicacao) {
+		Publication publicacao = new Publication();
 		publicacao.setTituloPublicacao("");
 		try {
 			Connection conexao = getConexao();

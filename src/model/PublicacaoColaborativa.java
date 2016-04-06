@@ -1,10 +1,10 @@
 package model;
 
-public class PublicacaoColaborativa extends Publicacao {
+public class PublicacaoColaborativa extends Publication {
 
 	
 	boolean statusPublicacao;
-	Utilizador utilizador;
+	User utilizador;
 	
 	
 	public PublicacaoColaborativa() {

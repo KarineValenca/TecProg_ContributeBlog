@@ -1,10 +1,10 @@
 package dao;
 
-import model.Publicacao;
+import model.Publication;
 
 public interface PublicacaoGeral {
 	
-	public void publicar(int idBlog, Publicacao publicacao);
-	public Publicacao listar(String idPublicacao);
+	public void publicar(int idBlog, Publication publicacao);
+	public Publication listar(String idPublicacao);
 
 }

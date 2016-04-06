@@ -12,14 +12,14 @@ import model.Blog;
 import model.Denuncia;
 import model.DenunciaBlog;
 import model.DenunciaPublicacao;
-import model.Utilizador;
+import model.User;
 
 public class FabricaDenunciaBlogDAO extends ConnectionFactory implements FabricaDenunciaDAO {
 	
 	Date agora = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
 	
-	public void criarDenuncia(int id, Denuncia denuncia, Utilizador utilizador){
+	public void criarDenuncia(int id, Denuncia denuncia, User utilizador){
 		try{
 			
 			Connection conexao = getConexao();

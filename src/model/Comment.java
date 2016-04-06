@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Comentario {
+public class Comment {
 	private int idComentario;
 	private String conteudoComentario;
 	private Date dataComentario;
@@ -17,7 +17,7 @@ public class Comentario {
 	public String getConteudoComentario() {
 		return conteudoComentario;
 	}
-	public void setConteudoComentario(String conteudoComentario) {
+	public void setCommentContent(String conteudoComentario) {
 		this.conteudoComentario = conteudoComentario;
 	}
 	public Date getDataComentario() {

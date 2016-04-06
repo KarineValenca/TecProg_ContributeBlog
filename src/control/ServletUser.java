@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
-import model.Utilizador;
+import model.User;
 
 
 @WebServlet("/ServletUser")
@@ -38,9 +38,9 @@ public class ServletUser extends HttpServlet {
 		String action = request.getParameter("action");
 		//String destino = "sucesso.jsp";
 		String message = "";
-		List<Utilizador> userList = new ArrayList<>();
+		List<User> userList = new ArrayList<>();
 		UserDAO userDAO = new UserDAO();
-		Utilizador user = new Utilizador();
+		User user = new User();
 		
 		String birthDate = request.getParameter("dataNascimento");
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

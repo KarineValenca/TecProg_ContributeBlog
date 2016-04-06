@@ -12,7 +12,7 @@ public class Blog {
 	private String categoria;
 	private Date dataCriacao;
 	private DonoBlog idDonoBlog;
-	private List<Publicacao> publicacoes;
+	private List<Publication> publicacoes;
 	
 	
 	public Blog() {
@@ -21,7 +21,7 @@ public class Blog {
 
 
 	public Blog(int idBlog, String titulo, String categoria, Date dataCriacao, DonoBlog idDonoBlog, 
-			ArrayList<Publicacao> publicacoes) {
+			ArrayList<Publication> publicacoes) {
 
 		this.idBlog = idBlog;
 		this.titulo = titulo;
@@ -80,13 +80,13 @@ public class Blog {
 
 
 
-	public List<Publicacao> getPublicacoes() {
+	public List<Publication> getPublicacoes() {
 		return publicacoes;
 	}
 
 
 
-	public void setPublicacoes(List<Publicacao> publicacoes) {
+	public void setPublicacoes(List<Publication> publicacoes) {
 		this.publicacoes = publicacoes;
 	}
 	

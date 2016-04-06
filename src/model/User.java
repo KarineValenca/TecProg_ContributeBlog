@@ -1,7 +1,7 @@
 package model;
 import java.util.Date;
 
-public class Utilizador {
+public class User {
 
 	private int id;
 	private String nome;
@@ -13,11 +13,11 @@ public class Utilizador {
 	private Date dataNascimento;
 	
 	
-	public Utilizador() {
+	public User() {
 	}
 
 
-	public Utilizador(int id, String nome, String sobrenome, String email,
+	public User(int id, String nome, String sobrenome, String email,
 			String genero, String senha, String apelido, Date dataNascimento) {
 
 		this.id = id;

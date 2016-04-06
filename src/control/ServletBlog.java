@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.BlogDAO;
 import model.Blog;
 import model.DonoBlog;
-import model.Publicacao;
+import model.Publication;
 
 
 
@@ -43,7 +43,7 @@ public class ServletBlog extends HttpServlet {
 		String destino = "sucesso.jsp";
 		String mensagem = "";
 		List<Blog> lista = new ArrayList<>();
-		List<Publicacao> listaPublicacao = new ArrayList<>();
+		List<Publication> listaPublicacao = new ArrayList<>();
 		BlogDAO blogdao = new BlogDAO();
 		Blog blog = new Blog();
 		DonoBlog donoBlog = new DonoBlog();

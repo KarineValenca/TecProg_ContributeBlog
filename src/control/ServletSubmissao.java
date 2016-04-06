@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
-import model.Comentario;
-import model.Publicacao;
+import model.Comment;
+import model.Publication;
 import model.PublicacaoColaborativa;
 import dao.ColaboracaoDAO;
-import dao.ComentarioDAO;
+import dao.CommentDAO;
 
 /**
  * Servlet implementation class ServletSubmissao
@@ -46,7 +46,7 @@ public class ServletSubmissao extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Publicacao> lista= new ArrayList<>();
+		List<Publication> lista= new ArrayList<>();
 		String acao = request.getParameter("acao");
 		System.out.println(acao);
 		
@@ -100,9 +100,9 @@ public class ServletSubmissao extends HttpServlet {
 				this.rd.forward(request, response);
 				break;
 			case "ListaComentario":
-				ComentarioDAO comentarioDAO = new ComentarioDAO();				
+				CommentDAO comentarioDAO = new CommentDAO();				
 				String idPostagem = request.getParameter("idPostagem");
-				List<Comentario> comentarios = comentarioDAO.listarComentarioBlog(idPostagem);
+				List<Comment> comentarios = comentarioDAO.listarComentarioBlog(idPostagem);
 				request.setAttribute("comentarios", comentarios);
 				this.rd = request.getRequestDispatcher("deletarComentario.jsp");
 				this.rd.forward(request, response);	

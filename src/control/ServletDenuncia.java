@@ -22,7 +22,7 @@ import model.Blog;
 import model.Denuncia;
 import model.DenunciaBlog;
 import model.DenunciaPublicacao;
-import model.Utilizador;
+import model.User;
 
 @WebServlet("/ServletDenuncia")
 public class ServletDenuncia extends HttpServlet{
@@ -45,7 +45,7 @@ public class ServletDenuncia extends HttpServlet{
 		DenunciaBlogDAO denunciaBlogDAO = new DenunciaBlogDAO();
 		FabricaDenunciaPublicacaoDAO fabricaDenunciaPublicacaoDAO = new FabricaDenunciaPublicacaoDAO();
 		DenunciaPublicacaoDAO denunciaPublicacaoDAO = new DenunciaPublicacaoDAO();
-		Utilizador utilizador = new Utilizador();
+		User utilizador = new User();
 		Blog blog = new Blog();
 		List<Denuncia> listaDenunciaBlog = new ArrayList<>();
 		List<Denuncia> listaDenunciaPublicacao = new ArrayList<>();

@@ -9,12 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Utilizador;
+import model.User;
 
 
 public class UserDAO  extends ConnectionFactory{
 	
-	Utilizador user = new Utilizador();
+	User user = new User();
 	
 	public int validateUser(String nickname, String email, int value){
 		try{
@@ -35,7 +35,7 @@ public class UserDAO  extends ConnectionFactory{
 		return value;
 	}
 	
-	public void createUser(Utilizador user) {
+	public void createUser(User user) {
 		try {
 			java.util.Date utilDate = user.getDataNascimento();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -57,14 +57,14 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 
-	public List<Utilizador> listUser() {
-		List<Utilizador> userList = new ArrayList<>();
+	public List<User> listUser() {
+		List<User> userList = new ArrayList<>();
 		try {
 			Connection connection = getConexao();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Utilizador");
 			while (rs.next()) {
-				Utilizador utilizador = new Utilizador();
+				User utilizador = new User();
 				utilizador.setId(rs.getInt("id"));
 				utilizador.setNome(rs.getString("nome"));
 				utilizador.setEmail(rs.getString("email"));
@@ -95,7 +95,7 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
-	public void editUser(Utilizador user, String id){
+	public void editUser(User user, String id){
 		try{
 			java.util.Date utilDate = user.getDataNascimento();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -120,8 +120,8 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
-	public Utilizador showUserProfile(String id) {
-		Utilizador user = new Utilizador();
+	public User showUserProfile(String id) {
+		User user = new User();
 		user.setNome("");
 		try {
 			Connection connection = getConexao();

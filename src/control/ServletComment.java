@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
-import dao.ComentarioDAO;
+import dao.CommentDAO;
 import model.Blog;
-import model.Comentario;
-import model.Publicacao;
-import model.Utilizador;
+import model.Comment;
+import model.Publication;
+import model.User;
 
-@WebServlet("/ServletComentario")
-public class ServletComentario extends HttpServlet{
+@WebServlet("/ServletComment")
+public class ServletComment extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
@@ -39,48 +39,48 @@ public class ServletComentario extends HttpServlet{
 			
 		
 		
-		String acao = request.getParameter("acao");
+		String action = request.getParameter("action");
 
 		
-		Comentario comentario = new Comentario();
-		ComentarioDAO comentarioDAO = new ComentarioDAO();
-		Utilizador utilizador = new Utilizador();
-		Publicacao publicacao = new Publicacao();
-		java.util.List<Comentario> comentarios = new ArrayList<Comentario>();
+		Comment comment = new Comment();
+		CommentDAO commentDAO = new CommentDAO();
+		User user = new User();
+		Publication publication = new Publication();
+		java.util.List<Comment> comments = new ArrayList<Comment>();
 		
 		try {
-			switch (acao) {
+			switch (action) {
 			
-			case "Criar":
-				comentario.setConteudoComentario(request.getParameter("conteudoComentario"));
-				utilizador.setId(Integer.parseInt(request.getParameter("idUtilizador")));
-				int idPublicacaoCriar = (Integer.parseInt(request.getParameter("idPublicacao")));
+			case "Create":
+				comment.setCommentContent(request.getParameter("commentContent"));
+				user.setId(Integer.parseInt(request.getParameter("idUser")));
+				int idPublicationCreate = (Integer.parseInt(request.getParameter("idPublication")));
 				
-				comentarioDAO.criarComentario(comentario, utilizador, idPublicacaoCriar);
+				commentDAO.createComment(comment, user, idPublicationCreate);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				
 				break;
 				
-			case "InstanciaPublicacao":
-				String idPublicacao = request.getParameter("idPublicacao");
-				request.setAttribute("idPublicacao", idPublicacao);
-				this.rd = request.getRequestDispatcher("criarComentario.jsp");
+			case "PublicationInstance":
+				String idPublication = request.getParameter("idPublication");
+				request.setAttribute("idPublication", idPublication);
+				this.rd = request.getRequestDispatcher("createComment.jsp");
 				this.rd.forward(request, response);
 				break;
 				
-			case "ListarComentarioDelete":
-				String idPostagem = request.getParameter("idPostagem");
+			case "ListCommentDelete":
+				String idPost = request.getParameter("idPost");
 				String idBlog = request.getParameter("idBlog");
-				comentarios = comentarioDAO.listarComentarioBlog(idPostagem);
-				request.setAttribute("comentarios", comentarios);
-				this.rd = request.getRequestDispatcher("deletarComentario.jsp");
+				comments = commentDAO.listBlogComment(idPost);
+				request.setAttribute("comments", comments);
+				this.rd = request.getRequestDispatcher("deleteComment.jsp");
 				this.rd.forward(request, response);	
 				
 				break;
-			case "ExcluirComentario":
-				String idComentario = request.getParameter("idComentario");
-				comentarioDAO.excluirComentario(idComentario);
+			case "CommentDelete":
+				String idComment = request.getParameter("idComment");
+				commentDAO.deleteComment(idComment);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);	
 				break;

@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ComentarioDAO;
+import dao.CommentDAO;
 import dao.PublicacaoDAO;
 import model.Blog;
-import model.Comentario;
-import model.Publicacao;
+import model.Comment;
+import model.Publication;
 
 @WebServlet("/ServletPublicacao")
 public class ServletPublicacao extends HttpServlet{
@@ -36,11 +36,11 @@ public class ServletPublicacao extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
-		Publicacao publicacao = new Publicacao();
+		Publication publicacao = new Publication();
 		PublicacaoDAO publicacaoDAO = new PublicacaoDAO();
 		Blog blog = new Blog();
-		List<Comentario> listaComentarios = new ArrayList();
-		ComentarioDAO comentariodao = new ComentarioDAO();
+		List<Comment> listaComentarios = new ArrayList();
+		CommentDAO comentariodao = new CommentDAO();
 		
 		try{
 			switch(acao){
