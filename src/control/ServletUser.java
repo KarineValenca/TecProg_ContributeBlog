@@ -102,12 +102,12 @@ public class ServletUser extends HttpServlet {
 				user.setDataNascimento(data);
 				
 				userDAO.editarUtilizador(user, id);
-				this.rd = request.getRequestDispatcher("ServletAutenticacao");
+				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
 				
 				break;
 			
-			case "DistProfile":
+			case "ListProfile":
 				id = request.getParameter("id");
 				user = userDAO.listarPerfilUtilizador(id);
 				request.setAttribute("utilizador", user);

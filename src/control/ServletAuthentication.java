@@ -14,15 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AutenticationDAO;
+import dao.AuthenticationDAO;
 import dao.UtilizadorDAO;
 import model.Utilizador;
 
-@WebServlet("/ServletAutentication")
-public class ServletAutentication extends HttpServlet{
-	/**
-	 * Servlet de Autenticação de Login de usuário 
-	 */
+@WebServlet("/ServletAuthentication")
+public class ServletAuthentication extends HttpServlet{
+	
 	private static final long serialVersionUID = 1L;
 	
 	private RequestDispatcher rd;
@@ -31,7 +29,7 @@ public class ServletAutentication extends HttpServlet{
 	
 	
 	
-	public ServletAutentication(){
+	public ServletAuthentication(){
 		super();
 	}
 	
@@ -48,12 +46,12 @@ public class ServletAutentication extends HttpServlet{
         System.out.println("hhhhhh" + this.email);
         System.out.println(this.password);
         
-        AutenticationDAO autenticacaoDAO = new AutenticationDAO(); 
+        AuthenticationDAO authenticacaoDAO = new AuthenticationDAO(); 
         Utilizador utilizador = new Utilizador();
-        utilizador = autenticacaoDAO.autenticarUtilizador(this.email, this.password);
+        utilizador = authenticacaoDAO.authenticateUser(this.email, this.password);
         
-        boolean autorizacao = verificarUtilizador(utilizador, this.email, this.password);
-        if(autorizacao==true){
+        boolean autorization = verifyUser(utilizador, this.email, this.password);
+        if(autorization==true){
         	this.rd = request.getRequestDispatcher("painelAdministrativoUsuario.jsp");
         	request.getSession().setAttribute("utilizador", utilizador);
         	this.rd.forward(request, response);
@@ -63,7 +61,7 @@ public class ServletAutentication extends HttpServlet{
         }        
 	}
 	
-	public boolean verificarUtilizador(Utilizador utilizador, String email, String password){
+	public boolean verifyUser(Utilizador utilizador, String email, String password){
 	
 		/*Método de verificação de Utilizador  
 		 * Recebe uma instancia de utilizador 

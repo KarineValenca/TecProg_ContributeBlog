@@ -9,11 +9,11 @@ import java.util.List;
 
 import model.Utilizador;
 
-public class AutenticationDAO extends ConnectionFactory{
+public class AuthenticationDAO extends ConnectionFactory{
 	Utilizador utilizador = new Utilizador();
 	
 	
-	public Utilizador autenticarUtilizador(String email, String password){
+	public Utilizador authenticateUser(String email, String password){
 		this.utilizador.setEmail("");
 		this.utilizador.setSenha("");
 		
