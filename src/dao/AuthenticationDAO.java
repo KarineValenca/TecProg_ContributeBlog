@@ -18,7 +18,7 @@ public class AuthenticationDAO extends ConnectionFactory{
 		this.utilizador.setSenha("");
 		
 		try{
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("select * from Utilizador where email='"+ email+"' and senha='"+password+"'" );
 			while(rs.next()){

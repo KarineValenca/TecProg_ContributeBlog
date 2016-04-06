@@ -15,93 +15,93 @@ import model.User;
 
 public class CommentDAO extends ConnectionFactory{
 	
-	Comment comentario = new Comment();
-	User utilizador = new User();
-	Publication publicacao = new Publication();
+	Comment comment = new Comment();
+	User user = new User();
+	Publication publication = new Publication();
 	
-	Date agora = new Date();
-	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
+	Date now = new Date();
+	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 	
-	public void criarComentario(Comment comentario, User utilizador, int idPublicacao){
+	public void createComment(Comment comment, User user, int idPublication){
 		try{
 			
 			
-			Connection conexao = getConexao();
-			PreparedStatement pstm = conexao.prepareStatement("INSERT INTO Comentario (conteudoComentario, "
-					+ "dataCriacaoComentario, idUtilizador, idPublicacao) VALUES (?,?,?,?);");
-			pstm.setString(1, comentario.getCommentContent());
+			Connection connection = getConnection();
+			PreparedStatement pstm = connection.prepareStatement("INSERT INTO Comment (commentContent, "
+					+ "commentCreateDate, idUser, idPublication) VALUES (?,?,?,?);");
+			pstm.setString(1, comment.getCommentContent());
 			pstm.setDate(2, sqlDate);
-			pstm.setInt(3, utilizador.getId());
-			pstm.setInt(4, idPublicacao);
+			pstm.setInt(3, user.getId());
+			pstm.setInt(4, idPublication);
 			
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connection.close();
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
-	public void excluirComentario(String idComentario){
+	public void deleteComment(String idComment){
 		try{
-			Connection conexao = getConexao();
-			PreparedStatement pstm = conexao.prepareStatement("Delete from Comentario where idComentario =" +idComentario);
+			Connection connection = getConnection();
+			PreparedStatement pstm = connection.prepareStatement("Delete from Comentario where idComment =" +idComment);
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public List<Comment> listarComentarioBlog(String idPublicacao) {
-		List<Comment> listaComentario = new ArrayList<Comment>();
+	public List<Comment> listBlogComment(String idPublication) {
+		List<Comment> listComment = new ArrayList<Comment>();
 		try {
-			Connection conexao = getConexao();
-			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("select * from Comentario where idPublicacao=" + idPublicacao);
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
+			ResultSet rs = stm.executeQuery("select * from Comentario where idPublication=" + idPublication);
 			
 			while (rs.next()) {
-				Comment comentario = new Comment();
-				comentario.setIdComment(rs.getInt("idComentario"));
-				System.out.println(comentario.getIdComment());
-				comentario.setCommentContent(rs.getString("conteudoComentario"));
-				comentario.setCommentUser(rs.getString("idUtilizador"));
-				System.out.println(comentario.getCommentContent());
-				listaComentario.add(comentario);
+				Comment comment = new Comment();
+				comment.setIdComment(rs.getInt("idComment"));
+				System.out.println(comment.getIdComment());
+				comment.setCommentContent(rs.getString("commentContent"));
+				comment.setCommentUser(rs.getString("idUser"));
+				System.out.println(comment.getCommentContent());
+				listComment.add(comment);
 				
 			}
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return listaComentario;
+		return listComment;
 	}
-	public List<Comment> listarComentarioBlogDelete(String idBlog) {
-		List<Comment> listaComentario = new ArrayList<Comment>();
+	public List<Comment> listBlogCommentDelete(String idBlog) {
+		List<Comment> listComment = new ArrayList<Comment>();
 		try {
-			Connection conexao = getConexao();
-			Statement stm = conexao.createStatement();
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("select * from Comentario where idBlog" + idBlog);
 			
 			while (rs.next()) {
-				Comment comentario = new Comment();
-				comentario.setIdComment(rs.getInt("idComentario"));
-				System.out.println(comentario.getIdComment());
-				comentario.setCommentContent(rs.getString("conteudoComentario"));
-				comentario.setCommentUser(rs.getString("idUtilizador"));
-				System.out.println(comentario.getCommentContent());
-				listaComentario.add(comentario);
+				Comment comment = new Comment();
+				comment.setIdComment(rs.getInt("idComment"));
+				System.out.println(comment.getIdComment());
+				comment.setCommentContent(rs.getString("commentContent"));
+				comment.setCommentUser(rs.getString("idUser"));
+				System.out.println(comment.getCommentContent());
+				listComment.add(comment);
 				
 			}
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return listaComentario;
+		return listComment;
 	}
 	
 	

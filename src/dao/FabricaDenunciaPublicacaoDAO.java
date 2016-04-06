@@ -19,7 +19,7 @@ public class FabricaDenunciaPublicacaoDAO extends ConnectionFactory implements F
 	public void criarDenuncia(int id, Denuncia denuncia, User utilizador){
 		try{
 			
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
 					prepareStatement("INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, idPublicacao, idUtilizador) VALUES (?,?,?,?)");
 			pstm.setDate(1, sqlDate);

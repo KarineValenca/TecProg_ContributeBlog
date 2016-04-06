@@ -20,7 +20,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 	
 	public void publicar(int idBlog, Publication publicacao){
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
 					prepareStatement("INSERT INTO Publicacao (tituloPublicacao, categoriaPublicacao, "
 							+ "conteudoPublicacao, idBlog, notaPublicacao, statusPublicacao) VALUES (?,?,?,?,0,false)");
@@ -45,7 +45,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 		System.out.println(idBlog + "fdffff");
 		
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
 			System.out.println("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
@@ -68,7 +68,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 	
 	public void AprovarPublicacao(int idPublicacao, PublicacaoColaborativa publicacaoColaborativa){
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
 					prepareStatement("update Publicacao set tituloPublicacao=?, categoriaPublicacao=?, conteudoPublicacao=?, notaPublicacao=? where idPublicacao=?");
 			pstm.setString(1, publicacaoColaborativa.getTituloPublicacao());
@@ -89,7 +89,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 		Publication publicacao = new Publication();
 		publicacao.setTituloPublicacao("");
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="+idPublicacao);
 			while (rs.next()) {

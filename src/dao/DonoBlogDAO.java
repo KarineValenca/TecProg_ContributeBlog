@@ -18,7 +18,7 @@ public class DonoBlogDAO extends ConnectionFactory{
 	public List<Blog> listarBlogDono(String donoBlog) {
 		List<Blog> lista = new ArrayList<>();
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Blog where idUtilizador=" + donoBlog);
 			

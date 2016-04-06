@@ -18,7 +18,7 @@ public class UserDAO  extends ConnectionFactory{
 	
 	public int validateUser(String nickname, String email, int value){
 		try{
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("select count(*) as rowcount from Utilizador "
 					+ "where apelido='"+nickname+"' or email='"+email+"'");
@@ -39,7 +39,7 @@ public class UserDAO  extends ConnectionFactory{
 		try {
 			java.util.Date utilDate = user.getDataNascimento();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			PreparedStatement pstm = connection
 					.prepareStatement("INSERT INTO Utilizador (nome,sobrenome,email,genero,senha,apelido, dataNascimento) VALUES(?,?,?,?,?,?,?);");
 			pstm.setString(1, user.getNome());
@@ -60,7 +60,7 @@ public class UserDAO  extends ConnectionFactory{
 	public List<User> listUser() {
 		List<User> userList = new ArrayList<>();
 		try {
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Utilizador");
 			while (rs.next()) {
@@ -83,7 +83,7 @@ public class UserDAO  extends ConnectionFactory{
 		
 	public void deleteUser(String id) {
 		try {
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			PreparedStatement pstm = connection
 					.prepareStatement("Delete from Utilizador where id ="+id);
 		
@@ -99,7 +99,7 @@ public class UserDAO  extends ConnectionFactory{
 		try{
 			java.util.Date utilDate = user.getDataNascimento();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("update Utilizador set nome=?, sobrenome=?, genero=?, senha=?, apelido=?, dataNascimento=? where id=?");
 			pstm.setString(1, user.getNome());
 			pstm.setString(2, user.getSobrenome());
@@ -124,7 +124,7 @@ public class UserDAO  extends ConnectionFactory{
 		User user = new User();
 		user.setNome("");
 		try {
-			Connection connection = getConexao();
+			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Utilizador where id="+id);
 			while (rs.next()) {

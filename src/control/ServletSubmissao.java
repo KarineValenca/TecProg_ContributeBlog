@@ -102,7 +102,7 @@ public class ServletSubmissao extends HttpServlet {
 			case "ListaComentario":
 				CommentDAO comentarioDAO = new CommentDAO();				
 				String idPostagem = request.getParameter("idPostagem");
-				List<Comment> comentarios = comentarioDAO.listarComentarioBlog(idPostagem);
+				List<Comment> comentarios = comentarioDAO.listBlogComment(idPostagem);
 				request.setAttribute("comentarios", comentarios);
 				this.rd = request.getRequestDispatcher("deletarComentario.jsp");
 				this.rd.forward(request, response);	

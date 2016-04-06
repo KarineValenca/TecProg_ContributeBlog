@@ -15,7 +15,7 @@ public class DenunciaPublicacaoDAO extends ConnectionFactory implements Denuncia
 	public List<Denuncia> listarDenuncia() {
 		List<Denuncia> lista = new ArrayList<>();
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Denuncia where idPublicacao IS NOT NULL");
 			
@@ -35,7 +35,7 @@ public class DenunciaPublicacaoDAO extends ConnectionFactory implements Denuncia
 	
 	public void excluirDenuncia(String idDenuncia) {
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
 					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenuncia);
 		

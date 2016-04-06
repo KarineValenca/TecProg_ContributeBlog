@@ -20,7 +20,7 @@ public class BlogDAO extends ConnectionFactory {
 	
 	public void criarBlog(Blog blog, DonoBlog donoBlog) {	
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
 					.prepareStatement("INSERT INTO Blog (titulo,categoria, dataCriacao, idUtilizador) VALUES(?,?,?,?);");
 			pstm.setString(1, blog.getTitulo());
@@ -38,7 +38,7 @@ public class BlogDAO extends ConnectionFactory {
 	public List<Blog> listarBlog() {
 		List<Blog> lista = new ArrayList<>();
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Blog");
 			
@@ -61,7 +61,7 @@ public class BlogDAO extends ConnectionFactory {
 	
 	public void excluir(String idBlog) {
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
 					.prepareStatement("Delete from Blog where idBlog ="+idBlog);
 		
@@ -76,7 +76,7 @@ public class BlogDAO extends ConnectionFactory {
 	public List<Publication> listarPublicacaoBlog(String idBlog) {
 		List<Publication> lista = new ArrayList<>();
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idBlog=" + idBlog);
 			

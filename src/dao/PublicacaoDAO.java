@@ -23,7 +23,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 	
 	public void publicar( int blog, Publication publicacao){
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
 					prepareStatement("INSERT INTO Publicacao (tituloPublicacao, categoriaPublicacao, "
 							+ "conteudoPublicacao, idBlog, notaPublicacao) VALUES (?,?,?,?,0)");
@@ -43,7 +43,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 	
 	public void editarPublicacao(Publication publicacao, String idPublicacao){
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.prepareStatement("update Publicacao set tituloPublicacao=?, "
 					+ "categoriaPublicacao=?, conteudoPublicacao=? where idPublicacao=?");
 			pstm.setString(1, publicacao.getTituloPublicacao());
@@ -66,7 +66,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		Publication publicacao = new Publication();
 		publicacao.setTituloPublicacao("");
 		try {
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="+idPublicacao);
 			while (rs.next()) {
@@ -85,7 +85,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 	
 	public void excluirPublicacao(String idPublicacao){
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.prepareStatement("Delete from Publicacao where idPublicacao =" +idPublicacao);
 			pstm.execute();
 			pstm.close();
@@ -97,7 +97,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 	
 	public void avaliarPublicacao(Publication publicacao, String nota, String idPublicacao){
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.prepareStatement("Update Publicacao set notaPublicacao = notaPublicacao + ? where idPublicacao = ?");
 			pstm.setInt(1, publicacao.getNota());
 			pstm.setString(2, idPublicacao);
@@ -115,7 +115,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		
 		
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Comentario where idPublicacao="+idPublicacao);
 			while (rs.next()) {
@@ -145,7 +145,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 	public String identificarUsuario(int idUtilizador){
 		String apelido = null;
 		try{
-			Connection conexao = getConexao();
+			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("select * from Utilizador where id="+idUtilizador);
 			while (rs.next()) {

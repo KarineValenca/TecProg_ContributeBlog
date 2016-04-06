@@ -9,7 +9,7 @@ import java.sql.DriverManager;
  * 
  */
 public class ConnectionFactory {
-	public static synchronized Connection getConexao() {
+	public static synchronized Connection getConnection() {
 		Connection conexao = null;
 		String usuario = "root";
 		String senha = "root";
