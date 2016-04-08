@@ -55,21 +55,21 @@ public class ServletUser extends HttpServlet {
 				this.rd.forward(request, response);
 				break;
 			case "CreateUser":
-				user.setNome(request.getParameter("nome"));
-				user.setSobrenome(request.getParameter("sobrenome"));
-				user.setGenero(request.getParameter("genero"));
+				user.setName(request.getParameter("nome"));
+				user.setLastName(request.getParameter("sobrenome"));
+				user.setGender(request.getParameter("genero"));
 				user.setEmail(request.getParameter("email"));
-				user.setSenha(request.getParameter("senha"));
-				user.setApelido(request.getParameter("apelido"));
+				user.setPassword(request.getParameter("senha"));
+				user.setNickname(request.getParameter("apelido"));
 				
 				
 				Date date = (Date) formatter.parse(birthDate);
-				user.setDataNascimento(date);				
+				user.setBirthDate(date);				
 			
 				int occurence = 0;
 
 				
-				occurence = userDAO.validateUser(user.getApelido(), user.getEmail(), occurence);
+				occurence = userDAO.validateUser(user.getNickname(), user.getEmail(), occurence);
 				
 				if(occurence == 0){
 					userDAO.createUser(user);
@@ -92,14 +92,14 @@ public class ServletUser extends HttpServlet {
 			case "EditUser":
 				id = request.getParameter("id");
 				
-				user.setNome(request.getParameter("nome"));
-				user.setSobrenome(request.getParameter("sobrenome"));
-				user.setGenero(request.getParameter("genero"));
-				user.setSenha(request.getParameter("senha"));
-				user.setApelido(request.getParameter("apelido"));
+				user.setName(request.getParameter("nome"));
+				user.setLastName(request.getParameter("sobrenome"));
+				user.setGender(request.getParameter("genero"));
+				user.setPassword(request.getParameter("senha"));
+				user.setNickname(request.getParameter("apelido"));
 				
 				Date data = (Date) formatter.parse(birthDate);
-				user.setDataNascimento(data);
+				user.setBirthDate(data);
 				
 				userDAO.editUser(user, id);
 				this.rd = request.getRequestDispatcher("ServletAuthentication");

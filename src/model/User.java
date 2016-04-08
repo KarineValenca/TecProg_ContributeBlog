@@ -4,30 +4,30 @@ import java.util.Date;
 public class User {
 
 	private int id;
-	private String nome;
-	private String sobrenome;
+	private String name;
+	private String lastName;
 	private String email;
-	private String genero;
-	private String senha;
-	private String apelido;
-	private Date dataNascimento;
+	private String gender;
+	private String password;
+	private String nickname;
+	private Date birthDate;
 	
 	
 	public User() {
 	}
 
 
-	public User(int id, String nome, String sobrenome, String email,
-			String genero, String senha, String apelido, Date dataNascimento) {
+	public User(int id, String name, String lastName, String email,
+			String gender, String password, String nickname, Date birthDate) {
 
 		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
+		this.name = name;
+		this.lastName = lastName;
 		this.email = email;
-		this.genero = genero;
-		this.senha = senha;
-		this.apelido = apelido;
-		this.dataNascimento = dataNascimento;
+		this.gender = gender;
+		this.password = password;
+		this.nickname = nickname;
+		this.birthDate = birthDate;
 	}
 
 
@@ -44,26 +44,26 @@ public class User {
 
 
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
 
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
 
-	public String getSobrenome() {
-		return sobrenome;
+	public String getLastName() {
+		return lastName;
 	}
 
 
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 
@@ -80,48 +80,48 @@ public class User {
 
 
 
-	public String getGenero() {
-		return genero;
+	public String getGender() {
+		return gender;
 	}
 
 
 
-	public void setGenero(String genero) {
-		this.genero = genero;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
 
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
 
-	public String getApelido() {
-		return apelido;
+	public String getNickname() {
+		return nickname;
 	}
 
 
 
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 
-	public Date getDataNascimento() {
-		return dataNascimento;
+	public Date getBirthDate() {
+		return birthDate;
 	}
 
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 }

@@ -15,7 +15,7 @@ public class AuthenticationDAO extends ConnectionFactory{
 	
 	public User authenticateUser(String email, String password){
 		this.utilizador.setEmail("");
-		this.utilizador.setSenha("");
+		this.utilizador.setPassword("");
 		
 		try{
 			Connection connection = getConnection();
@@ -24,13 +24,13 @@ public class AuthenticationDAO extends ConnectionFactory{
 			while(rs.next()){
 			
 				this.utilizador.setId(rs.getInt("id"));
-				this.utilizador.setNome(rs.getString("nome"));
-				this.utilizador.setSobrenome(rs.getString("sobrenome"));
-				this.utilizador.setGenero(rs.getString("genero"));
-				this.utilizador.setApelido(rs.getString("apelido"));
+				this.utilizador.setName(rs.getString("nome"));
+				this.utilizador.setLastName(rs.getString("sobrenome"));
+				this.utilizador.setGender(rs.getString("genero"));
+				this.utilizador.setNickname(rs.getString("apelido"));
 				this.utilizador.setEmail(rs.getString("email"));
-				this.utilizador.setSenha(rs.getString("senha"));
-				this.utilizador.setDataNascimento(rs.getDate("dataNascimento"));
+				this.utilizador.setPassword(rs.getString("senha"));
+				this.utilizador.setBirthDate(rs.getDate("dataNascimento"));
 			}
 			rs.close();
 			connection.close();

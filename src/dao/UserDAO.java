@@ -37,17 +37,17 @@ public class UserDAO  extends ConnectionFactory{
 	
 	public void createUser(User user) {
 		try {
-			java.util.Date utilDate = user.getDataNascimento();
+			java.util.Date utilDate = user.getBirthDate();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection
 					.prepareStatement("INSERT INTO Utilizador (nome,sobrenome,email,genero,senha,apelido, dataNascimento) VALUES(?,?,?,?,?,?,?);");
-			pstm.setString(1, user.getNome());
-			pstm.setString(2, user.getSobrenome());
+			pstm.setString(1, user.getName());
+			pstm.setString(2, user.getLastName());
 			pstm.setString(3, user.getEmail());
-			pstm.setString(4, user.getGenero());
-			pstm.setString(5, user.getSenha());
-			pstm.setString(6, user.getApelido());
+			pstm.setString(4, user.getGender());
+			pstm.setString(5, user.getPassword());
+			pstm.setString(6, user.getNickname());
 			pstm.setDate(7, sqlDate);
 			pstm.execute();
 			pstm.close();
@@ -66,11 +66,11 @@ public class UserDAO  extends ConnectionFactory{
 			while (rs.next()) {
 				User utilizador = new User();
 				utilizador.setId(rs.getInt("id"));
-				utilizador.setNome(rs.getString("nome"));
+				utilizador.setName(rs.getString("nome"));
 				utilizador.setEmail(rs.getString("email"));
-				utilizador.setSenha(rs.getString("senha"));
-				utilizador.setApelido(rs.getString("apelido"));
-				utilizador.setDataNascimento(rs.getDate("dataNascimento"));
+				utilizador.setPassword(rs.getString("senha"));
+				utilizador.setNickname(rs.getString("apelido"));
+				utilizador.setBirthDate(rs.getDate("dataNascimento"));
 				userList.add(utilizador);
 			}
 			stm.close();
@@ -97,15 +97,15 @@ public class UserDAO  extends ConnectionFactory{
 	
 	public void editUser(User user, String id){
 		try{
-			java.util.Date utilDate = user.getDataNascimento();
+			java.util.Date utilDate = user.getBirthDate();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("update Utilizador set nome=?, sobrenome=?, genero=?, senha=?, apelido=?, dataNascimento=? where id=?");
-			pstm.setString(1, user.getNome());
-			pstm.setString(2, user.getSobrenome());
-			pstm.setString(3, user.getGenero());
-			pstm.setString(4, user.getSenha());
-			pstm.setString(5, user.getApelido());
+			pstm.setString(1, user.getName());
+			pstm.setString(2, user.getLastName());
+			pstm.setString(3, user.getGender());
+			pstm.setString(4, user.getPassword());
+			pstm.setString(5, user.getNickname());
 			pstm.setDate(6, sqlDate);
 			
 			pstm.setString(7, id);
@@ -122,20 +122,20 @@ public class UserDAO  extends ConnectionFactory{
 	
 	public User showUserProfile(String id) {
 		User user = new User();
-		user.setNome("");
+		user.setName("");
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Utilizador where id="+id);
 			while (rs.next()) {
 				user.setId(rs.getInt("id"));
-				user.setNome(rs.getString("nome"));
-				user.setSobrenome(rs.getString("sobrenome"));
+				user.setName(rs.getString("nome"));
+				user.setLastName(rs.getString("sobrenome"));
 				user.setEmail(rs.getString("email"));
-				user.setGenero(rs.getString("genero"));
-				user.setSenha(rs.getString("senha"));
-				user.setApelido(rs.getString("apelido"));
-				user.setDataNascimento(rs.getDate("dataNascimento"));
+				user.setGender(rs.getString("genero"));
+				user.setPassword(rs.getString("senha"));
+				user.setNickname(rs.getString("apelido"));
+				user.setBirthDate(rs.getDate("dataNascimento"));
 			}
 			stm.close();
 			connection.close();
