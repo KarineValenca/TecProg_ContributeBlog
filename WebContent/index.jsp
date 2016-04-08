@@ -42,7 +42,7 @@
 								</li>
 								
 								<c:choose>
-								    <c:when test="${utilizador.apelido != 'admin' }">
+								    <c:when test="${utilizador.nickname != 'admin' }">
 								      <li>
 								      </li>
 								    </c:when>

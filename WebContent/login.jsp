@@ -29,7 +29,7 @@
                                         <input class="form-control" placeholder="E-mail" name="email" type="email" value="${utilizador.email}"  required>
                                     </div>
                                     <div class="form-group">
-                                        <input placeholder="Senha" name="password" type="password" class="form-control" value="${utilizador.senha}"  title="Deve possuir cinco ou mais caracteres" required>
+                                        <input placeholder="Senha" name="password" type="password" class="form-control" value="${utilizador.password}"  title="Deve possuir cinco ou mais caracteres" required>
                                     </div>
                                     <div class="checkbox">
                                         <label>
