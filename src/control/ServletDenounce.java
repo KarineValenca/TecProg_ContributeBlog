@@ -14,18 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
 import dao.BlogDAO;
-import dao.DenunciaBlogDAO;
-import dao.DenunciaPublicacaoDAO;
-import dao.FabricaDenunciaBlogDAO;
-import dao.FabricaDenunciaPublicacaoDAO;
+import dao.DenounceBlogDAO;
+import dao.DenouncePublicationDAO;
+import dao.FactoryDenounceBlogDAO;
+import dao.FactoryDenounePublicationDAO;
 import model.Blog;
-import model.Denuncia;
-import model.DenunciaBlog;
-import model.DenunciaPublicacao;
+import model.Denounce;
+import model.DenounceBlog;
+import model.DenouncePublication;
 import model.User;
 
-@WebServlet("/ServletDenuncia")
-public class ServletDenuncia extends HttpServlet{
+@WebServlet("/ServletDenounce")
+public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
@@ -37,35 +37,35 @@ public class ServletDenuncia extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		String acao = request.getParameter("acao");
+		String action = request.getParameter("action");
 		
-		DenunciaBlog denunciaBlog = new DenunciaBlog();
-		DenunciaPublicacao denunciaPublicacao = new DenunciaPublicacao();
-		FabricaDenunciaBlogDAO fabricaDenunciaBlogDAO = new FabricaDenunciaBlogDAO();
-		DenunciaBlogDAO denunciaBlogDAO = new DenunciaBlogDAO();
-		FabricaDenunciaPublicacaoDAO fabricaDenunciaPublicacaoDAO = new FabricaDenunciaPublicacaoDAO();
-		DenunciaPublicacaoDAO denunciaPublicacaoDAO = new DenunciaPublicacaoDAO();
-		User utilizador = new User();
+		DenounceBlog denounceBlog = new DenounceBlog();
+		DenouncePublication denouncePublication = new DenouncePublication();
+		FactoryDenounceBlogDAO factoryDenounceBlogDAO = new FactoryDenounceBlogDAO();
+		DenounceBlogDAO denounceBlogDAO = new DenounceBlogDAO();
+		FactoryDenouncePublicationDAO factoryDenouncePublicationDAO = new FactoryDenouncePublicationDAO();
+		DenouncePublicationDAO denouncePublicationDAO = new DenouncePublicationDAO();
+		User user = new User();
 		Blog blog = new Blog();
-		List<Denuncia> listaDenunciaBlog = new ArrayList<>();
-		List<Denuncia> listaDenunciaPublicacao = new ArrayList<>();
+		List<Denounce> listDenounceBlog = new ArrayList<>();
+		List<Denounce> listDenouncePublication = new ArrayList<>();
 		
 		
 		try{
-			switch(acao){
-			case "CriarDenunciaBlog":
-				denunciaBlog.setConteudoDenuncia(request.getParameter("conteudoDenuncia"));
-				System.out.println(request.getParameter("conteudoDenuncia"));
-				utilizador.setId(Integer.parseInt(request.getParameter("idUtilizador")));
+			switch(action){
+			case "CreateDenounceBlog":
+				denounceBlog.setContentDenounce(request.getParameter("contentDenounce"));
+				System.out.println(request.getParameter("contentDenounce"));
+				user.setId(Integer.parseInt(request.getParameter("id")));
 				int idBlog = Integer.parseInt(request.getParameter("idBlog"));
-				fabricaDenunciaBlogDAO.criarDenuncia(idBlog, denunciaBlog, utilizador);
+				factoryDenounceBlogDAO.createDenounce(idBlog, denounceBlog, user);
 				
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 			
 			
-			case "InstanciaBlog":
+			case "InstanceBlog":
 				String idBlogD= request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlogD);
 				this.rd = request.getRequestDispatcher("denunciarBlog.jsp");
@@ -73,18 +73,18 @@ public class ServletDenuncia extends HttpServlet{
 				break;
 			
 		
-			case "CriarDenunciaPublicacao":
-				denunciaPublicacao.setConteudoDenuncia(request.getParameter("conteudoDenuncia"));
-				System.out.println(denunciaPublicacao.getConteudoDenuncia());
-				utilizador.setId(Integer.parseInt(request.getParameter("idUtilizador")));
+			case "CreateDenouncePublication":
+				denouncePublication.setContentDenounce(request.getParameter("contentDenounce"));
+				System.out.println(denouncePublication.getContentDenounce());
+				user.setId(Integer.parseInt(request.getParameter("id")));
 				int idPublicacao = Integer.parseInt(request.getParameter("idPublicacao"));
-				fabricaDenunciaPublicacaoDAO.criarDenuncia(idPublicacao, denunciaPublicacao, utilizador);
+				factoryDenouncePublicationDAO.createDenounce(idPublicacao, denouncePublication, user);
 				
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 				
-			case "InstanciaPublicacao":
+			case "InstancePublication":
 				String idPublicacaoD= request.getParameter("idPublicacao");
 				request.setAttribute("idPublicacao", idPublicacaoD);
 				this.rd = request.getRequestDispatcher("denunciarPublicacao.jsp");
@@ -92,19 +92,19 @@ public class ServletDenuncia extends HttpServlet{
 				break;
 			
 			
-			case "ListarDenuncia":
-				listaDenunciaBlog = denunciaBlogDAO.listarDenuncia();
-				request.setAttribute("listaDenunciaBlog", listaDenunciaBlog);
+			case "ListDenounce":
+				listDenounceBlog = denounceBlogDAO.listDenounce();
+				request.setAttribute("listDenounceBlog", listDenounceBlog);
 				
-				listaDenunciaPublicacao = denunciaPublicacaoDAO.listarDenuncia();
-				request.setAttribute("listaDenunciaPublicacao", listaDenunciaPublicacao);
+				listDenouncePublication = denuncePublicationDAO.listDenounce();
+				request.setAttribute("listDenouncePublication", listDenouncePublication);
 				
 				this.rd = request.getRequestDispatcher("listarDenuncia.jsp");
 				this.rd.forward(request, response);
 				
-			case "ExcluirDenunciaBlog":
-				String idDenuncia = request.getParameter("idDenuncia");				
-				denunciaBlogDAO.excluirDenuncia(idDenuncia);
+			case "DeleteDenounceBlog":
+				String idDenuncia = request.getParameter("idDenounce");				
+				denounceBlogDAO.deleteDenounce(idDenounce);
 				
 				
 				
@@ -112,37 +112,37 @@ public class ServletDenuncia extends HttpServlet{
 				
 			break;
 			
-			case "ExcluirDenunciaPublicacao":
+			case "DeleteDenouncePublication":
 				
-				idDenuncia = request.getParameter("idDenuncia");
+				idDenounce = request.getParameter("idDenounce");
 				
 								
-				denunciaPublicacaoDAO.excluirDenuncia(idDenuncia);
-				this.rd = request.getRequestDispatcher("ServletDenuncia?acao=ListarDenuncia");
+				denouncePublicationDAO.deleteDenounce(idDenuncia);
+				this.rd = request.getRequestDispatcher("ServletDenuncia?acao=ListDenounce");
 				this.rd.forward(request, response);
 				
 			break;
 			
-			case "ExcluirBlogDenuncia":
-				System.out.println("Excluir");
-				idDenuncia = request.getParameter("idDenuncia");
-				System.out.println(idDenuncia);
-				DenunciaBlogDAO denunciaDAO = new DenunciaBlogDAO();
+			case "DeleteBlogDenounce":
+				System.out.println("Delete");
+				idDenounce = request.getParameter("idDenounce");
+				System.out.println(idDenounce);
+				DenounceBlogDAO denounceDAO = new DenounceBlogDAO();
 				
 					BlogDAO blogDao = new BlogDAO();
 		
 				
-				Denuncia denuncia = denunciaDAO.pesquisaBlogDenuncia(idDenuncia);
+				Denounce denounce = denounceDAO.searchBlogDenounce(idDenounce);
 				
 				//System.out.println(denuncia.getIdBlog());
-				System.out.println(denuncia.getConteudoDenuncia());
+				System.out.println(denounce.getContentDenounce());
 				
 				
-				System.out.println("Aint"+denuncia.getIdBlog());
+				System.out.println("Aint"+denounce.getIdBlog());
 				
 				
 				
-				blogDao.excluir( String.valueOf(denuncia.getIdBlog()));
+				blogDao.excluir( String.valueOf(denounce.getIdBlog()));
 				
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
