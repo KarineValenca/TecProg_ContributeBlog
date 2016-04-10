@@ -10,17 +10,17 @@ import java.sql.DriverManager;
  */
 public class ConnectionFactory {
 	public static synchronized Connection getConnection() {
-		Connection conexao = null;
-		String usuario = "root";
-		String senha = "root";
-		String nomeBancoDados = "teste";
+		Connection connection = null;
+		String user = "root";
+		String password = "root";
+		String dataBaseName = "teste";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+nomeBancoDados,usuario,senha);
+			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+dataBaseName,user,password);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return conexao;
+		return connection;
 	}
 }

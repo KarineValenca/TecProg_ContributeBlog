@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BlogDAO;
 import model.Blog;
-import model.DonoBlog;
+import model.BlogOwner;
 import model.Publication;
 
 
@@ -46,15 +46,15 @@ public class ServletBlog extends HttpServlet {
 		List<Publication> listaPublicacao = new ArrayList<>();
 		BlogDAO blogdao = new BlogDAO();
 		Blog blog = new Blog();
-		DonoBlog donoBlog = new DonoBlog();
+		BlogOwner donoBlog = new BlogOwner();
 		
 		try {
 			switch (acao) {
 				
 			
 			case "Incluir":
-				blog.setTitulo(request.getParameter("titulo"));
-				blog.setCategoria(request.getParameter("categoria"));
+				blog.setTitle(request.getParameter("titulo"));
+				blog.setCategorie(request.getParameter("categoria"));
 				donoBlog.setId( Integer.parseInt(request.getParameter("idDonoBlog")));
 				
 				

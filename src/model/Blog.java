@@ -11,7 +11,7 @@ public class Blog {
 	private String titulo;
 	private String categoria;
 	private Date dataCriacao;
-	private DonoBlog idDonoBlog;
+	private BlogOwner idDonoBlog;
 	private List<Publication> publicacoes;
 	
 	
@@ -20,7 +20,7 @@ public class Blog {
 
 
 
-	public Blog(int idBlog, String titulo, String categoria, Date dataCriacao, DonoBlog idDonoBlog, 
+	public Blog(int idBlog, String titulo, String categoria, Date dataCriacao, BlogOwner idDonoBlog, 
 			ArrayList<Publication> publicacoes) {
 
 		this.idBlog = idBlog;
@@ -50,7 +50,7 @@ public class Blog {
 
 
 
-	public void setTitulo(String titulo) {
+	public void setTitle(String titulo) {
 		this.titulo = titulo;
 	}
 
@@ -62,7 +62,7 @@ public class Blog {
 
 
 
-	public void setCategoria(String categoria) {
+	public void setCategorie(String categoria) {
 		this.categoria = categoria;
 	}
 
@@ -74,7 +74,7 @@ public class Blog {
 
 
 
-	public void setDataCriacao(Date dataCriacao) {
+	public void setCriationDate(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 

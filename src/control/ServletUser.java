@@ -42,7 +42,7 @@ public class ServletUser extends HttpServlet {
 		UserDAO userDAO = new UserDAO();
 		User user = new User();
 		
-		String birthDate = request.getParameter("dataNascimento");
+		String birthDate = request.getParameter("birthDate");
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
@@ -92,11 +92,11 @@ public class ServletUser extends HttpServlet {
 			case "EditUser":
 				id = request.getParameter("id");
 				
-				user.setName(request.getParameter("nome"));
-				user.setLastName(request.getParameter("sobrenome"));
-				user.setGender(request.getParameter("genero"));
-				user.setPassword(request.getParameter("senha"));
-				user.setNickname(request.getParameter("apelido"));
+				user.setName(request.getParameter("name"));
+				user.setLastName(request.getParameter("lastName"));
+				user.setGender(request.getParameter("gender"));
+				user.setPassword(request.getParameter("password"));
+				user.setNickname(request.getParameter("nickname"));
 				
 				Date data = (Date) formatter.parse(birthDate);
 				user.setBirthDate(data);
@@ -110,8 +110,8 @@ public class ServletUser extends HttpServlet {
 			case "ListProfile":
 				id = request.getParameter("id");
 				user = userDAO.showUserProfile(id);
-				request.setAttribute("utilizador", user);
-				this.rd = request.getRequestDispatcher("editarUtilizador.jsp");
+				request.setAttribute("user", user);
+				this.rd = request.getRequestDispatcher("editUser.jsp");
 				this.rd.forward(request, response);
 				
 			case "SubmeterPostagem":

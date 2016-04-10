@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DonoBlogDAO;
+import dao.BlogOwnerDAO;
 import model.Blog;
-import model.DonoBlog;
+import model.BlogOwner;
 
 
 
 @WebServlet("/ServletDonoBlog")
-public class ServletDonoBlog extends HttpServlet {
+public class ServletBlogOwner extends HttpServlet {
 
 	/**
 	 * 
@@ -35,20 +35,20 @@ public class ServletDonoBlog extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	
-		List<Blog> lista = new ArrayList<>();
+		List<Blog> listBlog = new ArrayList<>();
 		
 		
 		
-		String acao = request.getParameter("acao");
-		DonoBlogDAO donoBlogDAO = new DonoBlogDAO();
-		switch (acao) {
+		String action = request.getParameter("action");
+		BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
+		switch (action) {
 		
-		case "ListarDono":
+		case "ListOwner":
 			
-			String idDonoBlog =  request.getParameter("idDonoBlog") ;				
-			lista = donoBlogDAO.listarBlogDono(idDonoBlog);
-			request.setAttribute("listaBlogDono", lista);
-			this.rd = request.getRequestDispatcher("listarBlogsDono.jsp");
+			String idBlogOwner =  request.getParameter("idBlogOwner") ;				
+			listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
+			request.setAttribute("listBlogOwner", listBlog);
+			this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
 			this.rd.forward(request, response);
 		
 		break;
