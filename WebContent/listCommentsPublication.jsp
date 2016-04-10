@@ -8,10 +8,10 @@
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/comentario.css" rel="stylesheet">
+    <link href="assets/css/comment.css" rel="stylesheet">
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/utilizador.js"></script>
+    <script src="assets/js/user.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
@@ -34,22 +34,22 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">
-                    <c:forEach var="comentario" items="${listaComentariosPublicacao}">
+                    <c:forEach var="comentario" items="${listCommentsPublication}">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
                                 <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
                             <div class="col-xs-10 col-md-11">
                                 <div>
                                     <div class="mic-info">
-                                        Por: <a href="#">${comentario.utilizadorComentario}</a> | Em: ${comentario.dataComentario}
+                                        Por: <a href="#">${comment.userComment}</a> | Em: ${comment.commentDate}
                                     </div>
                                 </div>
                                 <div class="comment-text">
-                                    ${comentario.conteudoComentario}<br/>
+                                    ${comment.commentContent}<br/>
                                 </div>     
                                     <div class="action">
-                                     <c:if test="${utilizador.apelido == comentario.utilizadorComentario}">
-                                    <a href="ServletComentario?acao=ExcluirComentario&idComentario=${comentario.idComentario}" class="btn btn-danger btn-xs" >Excluir Comentário</a>
+                                     <c:if test="${user.nickname == comment.userComment}">
+                                    <a href="ServletComment?action=DeleteComment&idComment=${comment.idComment}" class="btn btn-danger btn-xs" >Excluir Comentário</a>
                                    </c:if>
                                     </div>
                             </div>
