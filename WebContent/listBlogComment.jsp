@@ -19,7 +19,7 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">
-                    <c:forEach var="comentarios" items="${comentarios}">
+                    <c:forEach var="comments" items="${comments}">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
                                 <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
@@ -27,10 +27,10 @@
                                 <div>
                                 </div>
                                 <div class="comment-text">
-                                    ${comentarios.conteudoComentario}
+                                    ${comments.commentContent}
                                 </div>
                                 <div class="action">
-                                <a href="ServletComentario?acao=ExcluirComentario&idComentario=${comentarios.idComentario}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
+                                <a href="ServletComment?action=DeleteComment&idComment=${comments.idComment}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
                                 </div>
                             </div>
                         </div>
