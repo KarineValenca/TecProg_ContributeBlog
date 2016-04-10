@@ -7,10 +7,10 @@
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/utilizador.css" rel="stylesheet">
+    <link href="assets/css/user.css" rel="stylesheet">
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/utilizador.js"></script>
+    <script src="assets/js/user.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
@@ -27,20 +27,20 @@
                             <h3 class="panel-title">Nova Comentário</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletComentario?acao=Criar">
+                            <form form method="post" action="ServletComment?action=Create">
 
                                 <div class="form-group">
-                                    <input type="hidden" name="idPublicacao" id="idPublicacao" value="${idPublicacao}">
-                                    <input type="hidden" name="idUtilizador" id="idutilizador" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idPublication" id="idPublication" value="${idPublicacao}">
+                                    <input type="hidden" name="idUser" id="idUser" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Conteúdo</label>
-                                    <textarea class="form-control" maxlength="150" rows="3" name="conteudoComentario" id="conteudo" value="${comentario.conteudoComentario}" placeholder="Escreva o conteúdo aqui" required></textarea>
+                                    <textarea class="form-control" maxlength="150" rows="3" name="commentContent" id="content" value="${comment.commentContent}" placeholder="Escreva o conteúdo aqui" required></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
-                                <a href="ServletBlog?acao=ListarPublicacoesBlog&idBlog=9" class="btn btn-success btn-sm" role="button">Voltar</a>
+                                <a href="ServletBlog?action=ListBlogPublications&idBlog=9" class="btn btn-success btn-sm" role="button">Voltar</a>
                             </form>
                         </div>
                     </div>
