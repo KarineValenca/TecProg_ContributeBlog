@@ -8,35 +8,35 @@ import java.util.List;
 
 import model.Blog;
 
-public class DonoBlogDAO extends ConnectionFactory{
+public class BlogOwnerDAO extends ConnectionFactory{
 
-	public DonoBlogDAO() {
+	public BlogOwnerDAO() {
 		
 	}
 	
 		
-	public List<Blog> listarBlogDono(String donoBlog) {
-		List<Blog> lista = new ArrayList<>();
+	public List<Blog> listBlogOwner(String blogOwner) {
+		List<Blog> listBlog = new ArrayList<>();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Blog where idUtilizador=" + donoBlog);
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
+			ResultSet rs = stm.executeQuery("Select * from Blog where idUser=" + blogOwner);
 			
 			while (rs.next()) {
 				Blog blog = new Blog();
 				blog.setIdBlog(rs.getInt("idBlog"));
-				blog.setTitulo(rs.getString("titulo"));
-				blog.setCategoria(rs.getString("categoria"));
-				blog.setDataCriacao(rs.getDate("dataCriacao"));
-				lista.add(blog);
+				blog.setTitle(rs.getString("title"));
+				blog.setCategorie(rs.getString("categorie"));
+				blog.setCriationDate(rs.getDate("criationDate"));
+				listBlog.add(blog);
 				
 			}
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return listBlog;
 	}
 	
 

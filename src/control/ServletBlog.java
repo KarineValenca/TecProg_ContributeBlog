@@ -53,8 +53,8 @@ public class ServletBlog extends HttpServlet {
 				
 			
 			case "Incluir":
-				blog.setTitulo(request.getParameter("titulo"));
-				blog.setCategoria(request.getParameter("categoria"));
+				blog.setTitle(request.getParameter("titulo"));
+				blog.setCategorie(request.getParameter("categoria"));
 				donoBlog.setId( Integer.parseInt(request.getParameter("idDonoBlog")));
 				
 				

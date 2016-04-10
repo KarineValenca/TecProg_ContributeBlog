@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.Blog;
-import model.DonoBlog;
+import model.BlogOwner;
 import model.Publication;
 
 public class BlogDAO extends ConnectionFactory {
@@ -18,7 +18,7 @@ public class BlogDAO extends ConnectionFactory {
 	Date agora = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
 	
-	public void criarBlog(Blog blog, DonoBlog donoBlog) {	
+	public void criarBlog(Blog blog, BlogOwner donoBlog) {	
 		try {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
@@ -45,8 +45,8 @@ public class BlogDAO extends ConnectionFactory {
 			while (rs.next()) {
 				Blog blog = new Blog();
 				blog.setIdBlog(rs.getInt("idBlog"));
-				blog.setTitulo(rs.getString("titulo"));
-				blog.setCategoria(rs.getString("categoria"));
+				blog.setTitle(rs.getString("titulo"));
+				blog.setCategorie(rs.getString("categoria"));
 				//blog.setDataCriacao(rs.getDate("dataCriacao"));
 				lista.add(blog);
 			}

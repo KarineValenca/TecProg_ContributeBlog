@@ -3,7 +3,7 @@ package model;
 
 import java.util.*;
 
-public class DonoBlog extends User {
+public class BlogOwner extends User {
 
 	private List<Blog> blogs;
 	
@@ -24,7 +24,7 @@ public class DonoBlog extends User {
 
 
 
-	public DonoBlog() {
+	public BlogOwner() {
 	}
 	
 	
