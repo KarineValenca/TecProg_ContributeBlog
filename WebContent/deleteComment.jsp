@@ -11,7 +11,7 @@
     <link href="assets/css/comentario.css" rel="stylesheet">
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/utilizador.js"></script>
+    <script src="assets/js/user.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
@@ -34,7 +34,7 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">
-                    <c:forEach var="comentarios" items="${comentarios}">
+                    <c:forEach var="comments" items="${comments}">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
                                 <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
@@ -42,10 +42,10 @@
                                 <div>
                                 </div>
                                 <div class="comment-text">
-                                    ${comentarios.conteudoComentario}
+                                    ${comments.commentContent}
                                 </div>
                                 <div class="action">
-                                <a href="ServletComentario?acao=ExcluirComentario&idComentario=${comentarios.idComentario}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
+                                <a href="ServletComment?action=deleteComment&idComment=${comments.idComment}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
                                 </div>
                             </div>
                         </div>

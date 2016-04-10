@@ -7,7 +7,7 @@
     <link href="assets/css/utilizador.css" rel="stylesheet">
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/utilizador.js"></script>
+    <script src="assets/js/user.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
@@ -28,24 +28,24 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="nome" id="first_name" value="${utilizador.nome}" class="form-control input-sm" placeholder="Nome" required>
+                                            <input type="text" name="nome" id="first_name" value="${utilizador.name}" class="form-control input-sm" placeholder="Nome" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="sobrenome" id="last_name" class="form-control input-sm" value="${utilizador.sobrenome}" placeholder="Sobrenome" required>
+                                            <input type="text" name="sobrenome" id="last_name" class="form-control input-sm" value="${utilizador.lastName}" placeholder="Sobrenome" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="apelido" id="last_name" class="form-control input-sm" value="${utilizador.apelido}" placeholder="Apelido" required>
+                                            <input type="text" name="apelido" id="last_name" class="form-control input-sm" value="${utilizador.nickname}" placeholder="Apelido" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="genero" id="genero" value="${utilizador.genero}" class="form-control input-sm" placeholder="Masc. / Fem." required>
+                                            <input type="text" name="genero" id="genero" value="${utilizador.gender}" class="form-control input-sm" placeholder="Masc. / Fem." required>
                                         </div>
                                     </div>
                                 </div>
@@ -55,13 +55,13 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" name="dataNascimento" class="form-control input-sm" value="${utilizador.dataNascimento}" placeholder="Data de Nascimento">
+                                            <input type="date" name="dataNascimento" class="form-control input-sm" value="${utilizador.birthDate}" placeholder="Data de Nascimento">
                                         </div>
                                     </div>
                                     <label></label>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="senha" id="password" class="form-control input-sm" value="${utilizador.senha}" placeholder="Senha" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
+                                            <input type="password" name="senha" id="password" class="form-control input-sm" value="${utilizador.password}" placeholder="Senha" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
                                         </div>
                                     </div>
                                 </div>
