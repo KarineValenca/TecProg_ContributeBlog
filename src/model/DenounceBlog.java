@@ -2,13 +2,13 @@ package model;
 
 import java.util.Date;
 
-public class DenunciaBlog extends Denuncia{
+public class DenounceBlog extends Denounce{
 	
-	public DenunciaBlog(){
+	public DenounceBlog(){
 		
 	}
 	
-	public DenunciaBlog(int idDenuncia, String conteudoDenuncia, Date dataDenuncia){
+	public DenounceBlog(int idDenounce, String contentDenounce, Date dateDenounce){
 		super();
 	}
 }
