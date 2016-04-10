@@ -7,69 +7,69 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Denuncia;
-import model.DenunciaBlog;
+import model.Denounce;
+import model.DenounceBlog;
 
-public class DenunciaBlogDAO extends ConnectionFactory implements DenunciaDAO{
-	public List<Denuncia> listarDenuncia() {
-		List<Denuncia> lista = new ArrayList<>();
+public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
+	public List<Denounce> listDenounce() {
+		List<Denounce> list = new ArrayList<>();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Denuncia where idPublicacao IS NULL");
 			
 			while (rs.next()) {
-				Denuncia denunciaBlog = new DenunciaBlog();
-				denunciaBlog.setIdDenuncia(rs.getInt("idDenuncia"));
-				denunciaBlog.setConteudoDenuncia(rs.getString("conteudoDenuncia"));
+				Denounce denounceBlog = new DenounceBlog();
+				denounceBlog.setIdDenounce(rs.getInt("idDenounce"));
+				denounceBlog.setContentDenounce(rs.getString("contentDenounce"));
 				//blog.setDataCriacao(rs.getDate("dataCriacao"));
-				lista.add(denunciaBlog);
+				list.add(denounceBlog);
 			}
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return list;
 	}
 	
-	public void excluirDenuncia(String idDenuncia) {
+	public void deleteDenounce(String idDenounce) {
 		try {
-			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao
-					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenuncia);
+			Connection connection = getConnection();
+			PreparedStatement pstm = connection
+					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenounce);
 		
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Denuncia pesquisaBlogDenuncia(String idDenuncia) {
+	public Denounce pesquisaBlogDenuncia(String idDenuncia) {
 	
-		Denuncia denunciaBlog = new Denuncia();
+		Denounce denounceBlog = new Denounce();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Denuncia where idDenuncia ="+idDenuncia);
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
+			ResultSet rs = stm.executeQuery("Select * from Denuncia where idDenuncia ="+idDenounce);
 			
 			while (rs.next()) {
 				
-				denunciaBlog.setIdDenuncia(rs.getInt("idDenuncia"));
-				denunciaBlog.setConteudoDenuncia(rs.getString("conteudoDenuncia"));
-				denunciaBlog.setIdBlog( rs.getInt("idBlog"));
+				denounceBlog.setIdDenounce(rs.getInt("idDenounce"));
+				denounceBlog.setContentDenounce(rs.getString("contentDenunce"));
+				denounceBlog.setIdBlog( rs.getInt("idBlog"));
 			}
 			
 			
 			
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return denunciaBlog;
+		return denounceBlog;
 	}
 
 }

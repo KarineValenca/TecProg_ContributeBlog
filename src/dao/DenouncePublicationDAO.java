@@ -7,41 +7,41 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Denuncia;
-import model.DenunciaPublicacao;
+import model.Denounce;
+import model.DenouncePublication;
 
 
-public class DenunciaPublicacaoDAO extends ConnectionFactory implements DenunciaDAO{
-	public List<Denuncia> listarDenuncia() {
-		List<Denuncia> lista = new ArrayList<>();
+public class DenouncePublicationDAO extends ConnectionFactory implements DenounceDAO{
+	public List<Denounce> listDenounce() {
+		List<Denounce> list = new ArrayList<>();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Denuncia where idPublicacao IS NOT NULL");
 			
 			while (rs.next()) {
-				Denuncia denunciaPublicacao = new DenunciaPublicacao();
-				denunciaPublicacao.setIdDenuncia(rs.getInt("idDenuncia"));
-				denunciaPublicacao.setConteudoDenuncia(rs.getString("conteudoDenuncia"));
-				lista.add(denunciaPublicacao);
+				Denounce denouncePublication = new DenouncePublication();
+				denouncePublication.setIdDenounce(rs.getInt("idDenounce"));
+				denouncePublication.setContentDenounce(rs.getString("contentDenounce"));
+				list.add(denouncePublication);
 			}
 			stm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return list;
 	}
 	
-	public void excluirDenuncia(String idDenuncia) {
+	public void deleteDenounce(String idDenounce) {
 		try {
-			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao
-					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenuncia);
+			Connection connection = getConnection();
+			PreparedStatement pstm = connection
+					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenounce);
 		
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
