@@ -42,20 +42,20 @@
 								</li>
 								
 								<c:choose>
-								    <c:when test="${utilizador.nickname != 'admin' }">
+								    <c:when test="${user.nickname != 'admin' }">
 								      <li>
 								      </li>
 								    </c:when>
 								    <c:otherwise>
 								      <li class="special">
-										<a href="ServletDenuncia?acao=ListarDenuncia" class=""><span>Listar Denuncias</span></a>
+										<a href="ServletDenounce?action=ListDenounce" class=""><span>Listar Denuncias</span></a>
 									</li>
 								    </c:otherwise>
 								 </c:choose>
 									
 			
 								<li class="special">
-									<a href="utilizador.jsp" class=""><span>Cadastre-se</span></a>
+									<a href="user.jsp" class=""><span>Cadastre-se</span></a>
 								</li>
 								<li class="special">
 									<a href="login.jsp" class=""><span>Login</span></a>
