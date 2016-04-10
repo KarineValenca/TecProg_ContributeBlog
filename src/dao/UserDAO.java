@@ -109,7 +109,6 @@ public class UserDAO  extends ConnectionFactory{
 			pstm.setDate(6, sqlDate);
 			
 			pstm.setString(7, id);
-			
 			pstm.execute();
 			pstm.close();
 			connection.close();

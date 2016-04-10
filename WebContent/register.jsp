@@ -9,7 +9,7 @@
     <body>
         <div align="center">
             <H1>Seja bem vindo ao sistema ConTribute!</H1>
-            <a href="utilizador.jsp">Cadastrar Novo Utilizador</a><br>
+            <a href="user.jsp">Cadastrar Novo Utilizador</a><br>
             <a href="ServletUser?action=ListUser">Listar os Utilizadores</a><br>
         </div>
     </body>
