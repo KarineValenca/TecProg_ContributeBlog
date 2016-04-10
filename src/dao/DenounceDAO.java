@@ -2,9 +2,9 @@ package dao;
 
 import java.util.List;
 
-import model.Denuncia;
+import model.Denounce;
 
-public interface DenunciaDAO {
-	public List<Denuncia> listarDenuncia ();
-	public void excluirDenuncia(String idDenuncia);
+public interface DenounceDAO {
+	public List<Denounce> listDenounce ();
+	public void deleteDenounce(String idDenounce);
 }
