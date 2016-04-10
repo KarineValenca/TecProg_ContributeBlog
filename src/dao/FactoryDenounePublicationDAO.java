@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import model.Denuncia;
-import model.DenunciaBlog;
-import model.DenunciaPublicacao;
+import model.Denounce;
+import model.DenounceBlog;
+import model.DenouncePublication;
 import model.User;
 
-public class FabricaDenunciaPublicacaoDAO extends ConnectionFactory implements FabricaDenunciaDAO {
-	Date agora = new Date();
-	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
-	public void criarDenuncia(int id, Denuncia denuncia, User utilizador){
+public class FactoryDenounePublicationDAO extends ConnectionFactory implements FactoryDenounceDAO {
+	Date now = new Date();
+	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
+	public void createDenounce(int id, Denounce denounce, User user){
 		try{
 			
-			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao.
+			Connection connection = getConnection();
+			PreparedStatement pstm = connection.
 					prepareStatement("INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, idPublicacao, idUtilizador) VALUES (?,?,?,?)");
 			pstm.setDate(1, sqlDate);
-			pstm.setString(2, denuncia.getConteudoDenuncia());
+			pstm.setString(2, denounce.getContentDenounce());
 			pstm.setInt(3, id);
-			pstm.setInt(4, utilizador.getId());
+			pstm.setInt(4, user.getId());
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connection.close();
 			
 		}catch(Exception e){
 			e.printStackTrace();
