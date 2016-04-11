@@ -50,10 +50,11 @@ public class ServletUser extends HttpServlet {
 				
 			case "ListUser":
 				userList = userDAO.listUser();
-				request.setAttribute("listaUtilizador", userList);
-				this.rd = request.getRequestDispatcher("listarUtilizadores.jsp");
+				request.setAttribute("listUsers", userList);
+				this.rd = request.getRequestDispatcher("usersList.jsp");
 				this.rd.forward(request, response);
 				break;
+				
 			case "CreateUser":
 				user.setName(request.getParameter("nome"));
 				user.setLastName(request.getParameter("sobrenome"));

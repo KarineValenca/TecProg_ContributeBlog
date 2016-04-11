@@ -18,12 +18,12 @@
 				<td>ID</td>
 				<td>Nome</td>
 			</tr>
-			<c:forEach var="utilizador" items="${listaUtilizador}">
+			<c:forEach var="user" items="${listUsers}">
 				<tr>
-					<td>${utilizador.id}</td>
-					<td>${utilizador.name}</td>
-					<td><a href="ServletUser?action=ListProfile&id=${utilizador.id}">Editar</a></td>
-					<td><a href="ServletUser?action=DeleteUser&id=${utilizador.id}">Excluir</a></td>
+					<td>${user.id}</td>
+					<td>${user.name}</td>
+					<td><a href="ServletUser?action=ListProfile&id=${user.id}">Editar</a></td>
+					<td><a href="ServletUser?action=DeleteUser&id=${user.id}">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</table>

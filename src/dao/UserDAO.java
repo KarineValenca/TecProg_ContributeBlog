@@ -58,27 +58,30 @@ public class UserDAO  extends ConnectionFactory{
 	}
 
 	public List<User> listUser() {
-		List<User> userList = new ArrayList<>();
+		List<User> usersList = new ArrayList<>();
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Utilizador");
 			while (rs.next()) {
-				User utilizador = new User();
-				utilizador.setId(rs.getInt("id"));
-				utilizador.setName(rs.getString("nome"));
-				utilizador.setEmail(rs.getString("email"));
-				utilizador.setPassword(rs.getString("senha"));
-				utilizador.setNickname(rs.getString("apelido"));
-				utilizador.setBirthDate(rs.getDate("dataNascimento"));
-				userList.add(utilizador);
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("nome"));
+				user.setLastName(rs.getString("sobrenome"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("senha"));
+				user.setNickname(rs.getString("apelido"));
+				user.setBirthDate(rs.getDate("dataNascimento"));
+				
+				
+				usersList.add(user);
 			}
 			stm.close();
 			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return userList;
+		return usersList;
 	}
 		
 	public void deleteUser(String id) {
