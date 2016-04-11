@@ -31,13 +31,13 @@
                         </tr>
                     </thead>
                     <tr>
-                        <c:forEach var="denuncia" items="${listaDenunciaBlog}">
+                        <c:forEach var="denuncia" items="${listDenounceBlog}">
                     <tr>
-                    <td>${denuncia.idDenuncia}</td>
-                    <td>${denuncia.conteudoDenuncia}</td>
+                    <td>${denounce.idDenounce}</td>
+                    <td>${denounce.contentDenounce}</td>
                     <td class="text-center">
-                   <a class='btn btn-danger btn-xs' href="ServletDenuncia?acao=ExcluirDenunciaBlog&idDenuncia=${denuncia.idDenuncia}">Excluir Denuncia</a>
-                   <a class='btn btn-danger btn-xs' href="ServletDenuncia?acao=ExcluirBlogDenuncia&idDenuncia=${denuncia.idDenuncia}">Excluir Blog</a>
+                   <a class='btn btn-danger btn-xs' href="ServletDenounce?action=DeleteDenounceBlog&idDenounce=${denounce.idDenounce}">Excluir Denuncia</a>
+                   <a class='btn btn-danger btn-xs' href="ServletDenounce?action=DeleteBlogDenounce&idDenounce=${denuncia.idDenounce}">Excluir Blog</a>
                    </td>
                     </tr>
                     </c:forEach>
@@ -58,12 +58,12 @@
                         </tr>
                     </thead>
                     <tr>
-                        <c:forEach var="denuncia" items="${listaDenunciaPublicacao}">
+                        <c:forEach var="denounce" items="${listDenouncePublication}">
                     <tr>
-                    <td>${denuncia.idDenuncia}</td>
-                    <td>${denuncia.conteudoDenuncia}</td>
+                    <td>${denounce.idDenounce}</td>
+                    <td>${denounce.contentDenounce}</td>
                     <td class="text-center">
-                    <a class='btn btn-danger btn-xs' href="ServletDenuncia?acao=ExcluirDenunciaPublicacao&idDenuncia=${denuncia.idDenuncia}">Excluir Denuncia</a>
+                    <a class='btn btn-danger btn-xs' href="ServletDenounce?action=DeleteDenouncePublication&idDenounce=${denounce.idDenounce}">Excluir Denuncia</a>
                     </tr>
                     </c:forEach>
                 </table>
