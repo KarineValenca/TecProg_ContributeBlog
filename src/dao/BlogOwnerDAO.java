@@ -20,14 +20,14 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Blog where idUser=" + blogOwner);
+			ResultSet rs = stm.executeQuery("Select * from Blog where idUtilizador=" + blogOwner);
 			
 			while (rs.next()) {
 				Blog blog = new Blog();
 				blog.setIdBlog(rs.getInt("idBlog"));
-				blog.setTitle(rs.getString("title"));
-				blog.setCategorie(rs.getString("categorie"));
-				blog.setCriationDate(rs.getDate("criationDate"));
+				blog.setTitle(rs.getString("titulo"));
+				blog.setCategorie(rs.getString("categoria"));
+				blog.setCreationDate(rs.getDate("dataCriacao"));
 				listBlog.add(blog);
 				
 			}

@@ -8,9 +8,9 @@ public class Blog {
 
 	
 	private int idBlog;
-	private String titulo;
-	private String categoria;
-	private Date dataCriacao;
+	private String title;
+	private String categorie;
+	private Date creationDate;
 	private BlogOwner idDonoBlog;
 	private List<Publication> publicacoes;
 	
@@ -19,23 +19,9 @@ public class Blog {
 	}
 
 
-
-	public Blog(int idBlog, String titulo, String categoria, Date dataCriacao, BlogOwner idDonoBlog, 
-			ArrayList<Publication> publicacoes) {
-
-		this.idBlog = idBlog;
-		this.titulo = titulo;
-		this.categoria = categoria;
-		this.dataCriacao = dataCriacao;
-		this.idDonoBlog = idDonoBlog;
-		this.publicacoes = publicacoes;
-	}
-
-
 	public int getIdBlog() {
 		return idBlog;
 	}
-
 
 
 	public void setIdBlog(int idBlog) {
@@ -43,41 +29,44 @@ public class Blog {
 	}
 
 
-
-	public String getTitulo() {
-		return titulo;
+	public String getTitle() {
+		return title;
 	}
 
 
-
-	public void setTitle(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 
-
-	public String getCategoria() {
-		return categoria;
+	public String getCategorie() {
+		return categorie;
 	}
 
 
-
-	public void setCategorie(String categoria) {
-		this.categoria = categoria;
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
 
 
-
-	public Date getDataCriacao() {
-		return dataCriacao;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
 
-
-	public void setCriationDate(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
+
+	public BlogOwner getIdDonoBlog() {
+		return idDonoBlog;
+	}
+
+
+	public void setIdDonoBlog(BlogOwner idDonoBlog) {
+		this.idDonoBlog = idDonoBlog;
+	}
 
 
 	public List<Publication> getPublicacoes() {
@@ -85,9 +74,9 @@ public class Blog {
 	}
 
 
-
 	public void setPublicacoes(List<Publication> publicacoes) {
 		this.publicacoes = publicacoes;
 	}
 	
 }
+

@@ -47,13 +47,13 @@ public class ServletAuthentication extends HttpServlet{
         System.out.println(this.password);
         
         AuthenticationDAO authenticacaoDAO = new AuthenticationDAO(); 
-        User utilizador = new User();
-        utilizador = authenticacaoDAO.authenticateUser(this.email, this.password);
+        User user = new User();
+        user = authenticacaoDAO.authenticateUser(this.email, this.password);
         
-        boolean autorization = verifyUser(utilizador, this.email, this.password);
+        boolean autorization = verifyUser(user, this.email, this.password);
         if(autorization==true){
-        	this.rd = request.getRequestDispatcher("painelAdministrativoUsuario.jsp");
-        	request.getSession().setAttribute("utilizador", utilizador);
+        	this.rd = request.getRequestDispatcher("userAdministrationPanel.jsp");
+        	request.getSession().setAttribute("user", user);
         	this.rd.forward(request, response);
         }else{
         	this.rd = request.getRequestDispatcher("index.jsp");

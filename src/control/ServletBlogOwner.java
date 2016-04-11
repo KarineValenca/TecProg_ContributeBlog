@@ -17,7 +17,7 @@ import model.BlogOwner;
 
 
 
-@WebServlet("/ServletDonoBlog")
+@WebServlet("/ServletBlogOwner")
 public class ServletBlogOwner extends HttpServlet {
 
 	/**
@@ -44,7 +44,7 @@ public class ServletBlogOwner extends HttpServlet {
 		switch (action) {
 		
 		case "ListOwner":
-			
+			System.out.println("Listarblogservlet");
 			String idBlogOwner =  request.getParameter("idBlogOwner") ;				
 			listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
 			request.setAttribute("listBlogOwner", listBlog);
