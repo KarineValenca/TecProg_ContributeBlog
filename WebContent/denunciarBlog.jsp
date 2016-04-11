@@ -27,21 +27,21 @@
                             <h3 class="panel-title">Nova Denuncia</h3>
                         </div>
                         <div class="panel-body">
-                            <form method="post" action="ServletDenuncia?acao=CriarDenunciaBlog&idBlog=${idBlog}">
+                            <form method="post" action="ServletDenounce?action=CreateDenounceBlog&idBlog=${idBlog}">
 
                                 <div class="form-group">
-                                   <input type="hidden" name="idUtilizador" id="idutilizador" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                   <input type="hidden" name="idUser" id="iduser" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                      <input type="hidden" name="idBlog" id="idBlog" value="${idBlog}">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Conteúdo</label>
-                               <textarea class="form-control" maxlength="150" rows="3" name="conteudoDenuncia" id="conteudo" value="${denuncia.conteudoDenuncia}" placeholder="Escreva a denuncia aqui" required></textarea>
+                               <textarea class="form-control" maxlength="150" rows="3" name="conteudoDenuncia" id="conteudo" value="${denounce.contentDenounce}" placeholder="Escreva a denuncia aqui" required></textarea>
 
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
-                                <a href="ServletBlog?acao=Listar" class="btn btn-success btn-sm" role="button">Voltar</a>
+                                <a href="ServletBlog?action=List" class="btn btn-success btn-sm" role="button">Voltar</a>
                             </form>
                         </div>
                     </div>
