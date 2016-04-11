@@ -28,40 +28,40 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="nome" id="first_name" value="${utilizador.name}" class="form-control input-sm" placeholder="Nome" required>
+                                            <input type="text" name="name" id="name" value="${user.name}" class="form-control input-sm" placeholder="Nome" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="sobrenome" id="last_name" class="form-control input-sm" value="${utilizador.lastName}" placeholder="Sobrenome" required>
+                                            <input type="text" name="lastName" id="lastName" class="form-control input-sm" value="${user.lastName}" placeholder="Sobrenome" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="apelido" id="last_name" class="form-control input-sm" value="${utilizador.nickname}" placeholder="Apelido" required>
+                                            <input type="text" name="nickname" id="nickname" class="form-control input-sm" value="${user.nickname}" placeholder="Apelido" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="genero" id="genero" value="${utilizador.gender}" class="form-control input-sm" placeholder="Masc. / Fem." required>
+                                            <input type="text" name="gender" id="genero" value="${user.gender}" class="form-control input-sm" placeholder="Masc. / Fem." required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control input-sm" value="${utilizador.email}" placeholder="Email: exemplo@exemplo.com" required>
+                                    <input type="email" name="email" id="email" class="form-control input-sm" value="${user.email}" placeholder="Email: exemplo@exemplo.com" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" name="dataNascimento" class="form-control input-sm" value="${utilizador.birthDate}" placeholder="Data de Nascimento">
+                                            <input type="date" name="birthDate" class="form-control input-sm" value="${user.birthDate}" placeholder="Data de Nascimento">
                                         </div>
                                     </div>
                                     <label></label>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="senha" id="password" class="form-control input-sm" value="${utilizador.password}" placeholder="Senha" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
+                                            <input type="password" name="password" id="password" class="form-control input-sm" value="${user.password}" placeholder="Senha" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
                                         </div>
                                     </div>
                                 </div>

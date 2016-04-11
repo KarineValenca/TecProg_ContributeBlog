@@ -56,12 +56,12 @@ public class ServletUser extends HttpServlet {
 				break;
 				
 			case "CreateUser":
-				user.setName(request.getParameter("nome"));
-				user.setLastName(request.getParameter("sobrenome"));
-				user.setGender(request.getParameter("genero"));
+				user.setName(request.getParameter("name"));
+				user.setLastName(request.getParameter("lastName"));
+				user.setGender(request.getParameter("gender"));
 				user.setEmail(request.getParameter("email"));
-				user.setPassword(request.getParameter("senha"));
-				user.setNickname(request.getParameter("apelido"));
+				user.setPassword(request.getParameter("password"));
+				user.setNickname(request.getParameter("nickname"));
 				
 				
 				Date date = (Date) formatter.parse(birthDate);
