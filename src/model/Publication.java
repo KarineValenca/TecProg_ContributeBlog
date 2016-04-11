@@ -1,7 +1,7 @@
 package model;
 
 public class Publication {
-	private int idPublicacao;
+	private int idPublication;
 	private String tituloPublicacao;
 	private String categoriaPublicacao;
 	private String conteudoPublicacao;
@@ -9,27 +9,27 @@ public class Publication {
 	private int nota;
 	private boolean statusPublicacao;
 	private User utilizador;
-	
+
 	public Publication(){
-		
+
 	}
-	
-	public Publication(int idPublicacao, String tituloPublicacao, String categoriaPublicacao, 
+
+	public Publication(int idPublication, String tituloPublicacao, String categoriaPublicacao,
 			String conteudoPublicacao, Blog idBlog, int nota){
-		this.idPublicacao = idPublicacao;
+		this.idPublication = idPublication;
 		this.tituloPublicacao = tituloPublicacao;
 		this.categoriaPublicacao = categoriaPublicacao;
 		this.conteudoPublicacao = conteudoPublicacao;
 		this.idBlog = idBlog;
 		this.nota = nota;
-		
+
 	}
-	
-	public int getIdPublicacao() {
-		return idPublicacao;
+
+	public int getIdPublication() {
+		return idPublication;
 	}
-	public void setIdPublicacao(int idPublicacao) {
-		this.idPublicacao = idPublicacao;
+	public void setIdPublication(int idPublication) {
+		this.idPublication = idPublication;
 	}
 	public String getTituloPublicacao() {
 		return tituloPublicacao;
@@ -57,5 +57,5 @@ public class Publication {
 	public void setNota(int nota) {
 		this.nota = nota;
 	}
-	
+
 }

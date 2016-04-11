@@ -42,13 +42,13 @@
                                             </div>
                                             <div class="comment-text">
                                                 <h5>
-                                                    <label>ID:</label> ${publicacao.idPublicacao}<br/>
+                                                    <label>ID:</label> ${publicacao.idPublication}<br/>
                                                     <label>Categoria:</label> ${publicacao.categoriaPublicacao}<br/>
                                                     <label>Descrição:</label><br/>${publicacao.conteudoPublicacao}<br/>
                                                 </h5>
                                             </div>
                                             <div class="action">
-                                                <a href="ServletSubmissao?acao=AceitarPublicacao&idPublicacao=${publicacao.idPublicacao}" class="btn btn-success btn-xs" role="button">Aprovar Publicação</a>
+                                                <a href="ServletSubmissao?acao=AceitarPublicacao&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button">Aprovar Publicação</a>
                                             </div>
                                         </div>
                                     </div>

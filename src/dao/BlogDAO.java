@@ -13,12 +13,12 @@ import model.BlogOwner;
 import model.Publication;
 
 public class BlogDAO extends ConnectionFactory {
-	
+
 	Blog blog = new Blog();
 	Date agora = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
-	
-	public void criarBlog(Blog blog, BlogOwner donoBlog) {	
+
+	public void criarBlog(Blog blog, BlogOwner donoBlog) {
 		try {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
@@ -34,14 +34,14 @@ public class BlogDAO extends ConnectionFactory {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Blog> listarBlog() {
 		List<Blog> lista = new ArrayList<>();
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Blog");
-			
+
 			while (rs.next()) {
 				Blog blog = new Blog();
 				blog.setIdBlog(rs.getInt("idBlog"));
@@ -58,13 +58,13 @@ public class BlogDAO extends ConnectionFactory {
 		return lista;
 	}
 
-	
+
 	public void excluir(String idBlog) {
 		try {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
 					.prepareStatement("Delete from Blog where idBlog ="+idBlog);
-		
+
 			pstm.execute();
 			pstm.close();
 			conexao.close();
@@ -72,23 +72,23 @@ public class BlogDAO extends ConnectionFactory {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Publication> listarPublicacaoBlog(String idBlog) {
 		List<Publication> lista = new ArrayList<>();
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idBlog=" + idBlog);
-			
+
 			while (rs.next()) {
 				Publication publicacao = new Publication();
-				publicacao.setIdPublicacao(rs.getInt("idPublicacao"));
+				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTituloPublicacao(rs.getString("tituloPublicacao"));
 				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 				publicacao.setNota(rs.getInt("notaPublicacao"));
 				lista.add(publicacao);
-				
+
 			}
 			stm.close();
 			conexao.close();

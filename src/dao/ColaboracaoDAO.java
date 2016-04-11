@@ -16,14 +16,19 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 
 	Publication publicacaoColaborativa = new Publication();
 	Blog blog = new Blog();
-	
-	
+
+
 	public void publicar(int idBlog, Publication publicacao){
 		try {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
 					prepareStatement("INSERT INTO Publicacao (tituloPublicacao, categoriaPublicacao, "
-							+ "conteudoPublicacao, idBlog, notaPublicacao, statusPublicacao) VALUES (?,?,?,?,0,false)");
+							         + "conteudoPublicacao,"
+							         + "idBlog, "
+							         + "notaPublicacao,"
+							         + "statusPublicacao)"
+							         + "VALUES (?,?,?,?,0,false)");
+
 			pstm.setString(1, publicacaoColaborativa.getTituloPublicacao());
 			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
@@ -31,26 +36,27 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 			pstm.execute();
 			pstm.close();
 			conexao.close();
-				
+
 		} catch (Exception e) {
 			System.out.println("Erro adicionar Publicação Colaborativa");
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public List<Publication> listarColaboracaAprovar(int idBlog){
 		List<Publication>  pubColaborativas= new ArrayList<>();
 		System.out.println("Listar Colaboração");
 		System.out.println(idBlog + "fdffff");
-		
+
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
+			ResultSet rs = stm.executeQuery("Select * from Publicacao where statusPublicacao=0 and idBlog="
+				                                          +idBlog+"");
 			System.out.println("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
 			while (rs.next()) {
-				publicacaoColaborativa.setIdPublicacao(rs.getInt("idPublicacao"));
+				publicacaoColaborativa.setIdPublication(rs.getInt("idPublication"));
 				publicacaoColaborativa.setTituloPublicacao(rs.getString("tituloPublicacao"));
 				publicacaoColaborativa.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacaoColaborativa.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
@@ -65,19 +71,23 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 		}
 		return pubColaborativas;
 	}
-	
-	public void AprovarPublicacao(int idPublicacao, PublicacaoColaborativa publicacaoColaborativa){
+
+	public void AprovarPublicacao(int idPublication, PublicacaoColaborativa publicacaoColaborativa){
 		try {
 			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao.
-					prepareStatement("update Publicacao set tituloPublicacao=?, categoriaPublicacao=?, conteudoPublicacao=?, notaPublicacao=? where idPublicacao=?");
+			PreparedStatement pstm = conexao.prepareStatement("update Publicacao set tituloPublicacao=?,"
+					                                          + "categoriaPublicacao=?,"
+					                                          + "conteudoPublicacao=?,"
+					                                          + "notaPublicacao=?"
+					                                          + "where idPublicacao=?");
+			
 			pstm.setString(1, publicacaoColaborativa.getTituloPublicacao());
 			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
 			pstm.execute();
 			pstm.close();
 			conexao.close();
-				
+
 		} catch (Exception e) {
 			System.out.println("Erro ao aprovar Publicação Colaborativa");
 			e.printStackTrace();
@@ -85,15 +95,16 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 	}
 
 
-	public Publication listar(String idPublicacao) {
+	public Publication listar(String idPublication) {
 		Publication publicacao = new Publication();
 		publicacao.setTituloPublicacao("");
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="+idPublicacao);
+			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="
+				                                         +idPublication);
 			while (rs.next()) {
-				publicacao.setIdPublicacao(rs.getInt("idPublicacao"));
+				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTituloPublicacao(rs.getString("tituloPublicacao"));
 				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
@@ -104,8 +115,8 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 			e.printStackTrace();
 		}
 		return publicacao;}
-	
-	
-	
-	
+
+
+
+
 }

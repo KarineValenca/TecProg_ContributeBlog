@@ -25,7 +25,7 @@ import dao.CommentDAO;
 @WebServlet("/ServletSubmissao")
 public class ServletSubmissao extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,11 +49,11 @@ public class ServletSubmissao extends HttpServlet {
 		List<Publication> lista= new ArrayList<>();
 		String acao = request.getParameter("acao");
 		System.out.println(acao);
-		
-		
+
+
 		try {
 			switch (acao) {
-				
+
 			case "SubmeterPostagem":
 				System.out.println("Entrou");
 				 idBlog = Integer.parseInt(request.getParameter("idBlog"));
@@ -70,7 +70,7 @@ public class ServletSubmissao extends HttpServlet {
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
-				
+
 			case "CriaColaboracao":
 				System.out.println("Criar");
 				System.out.println(request.getParameter("idBlog"));
@@ -78,19 +78,19 @@ public class ServletSubmissao extends HttpServlet {
 				this.rd = request.getRequestDispatcher("PublicacaoColaborativa.jsp");
 				this.rd.forward(request, response);
 				break;
-			
+
 			case "AprovarPublicacoes":
-				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;				
+				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
 				lista = subDAO.listarColaboracaAprovar(idBlog);
 				System.out.println("Lista Colaborativa "+ lista);
 				request.setAttribute("listaPublicacaoBlog",lista);
 				this.rd = request.getRequestDispatcher("aprovarColaboracao.jsp");
 				this.rd.forward(request, response);
-				break;	
-				
+				break;
+
 			case "AceitarPublicacao":
-				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;	
-				pubColaborativa.setIdPublicacao( Integer.parseInt(request.getParameter("idPublicacao")));
+				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
+				pubColaborativa.setIdPublication( Integer.parseInt(request.getParameter("idPublication")));
 				pubColaborativa.setTituloPublicacao(request.getParameter("tituloPublicacao"));
 				pubColaborativa.setCategoriaPublicacao(request.getParameter(request.getParameter("categoriaPublicacao")));
 				pubColaborativa.setConteudoPublicacao(request.getParameter(request.getParameter("conteudoPublicacao")));
@@ -100,35 +100,35 @@ public class ServletSubmissao extends HttpServlet {
 				this.rd.forward(request, response);
 				break;
 			case "ListaComentario":
-				CommentDAO comentarioDAO = new CommentDAO();				
+				CommentDAO comentarioDAO = new CommentDAO();
 				String idPostagem = request.getParameter("idPostagem");
 				List<Comment> comentarios = comentarioDAO.listBlogComment(idPostagem);
 				request.setAttribute("comentarios", comentarios);
 				this.rd = request.getRequestDispatcher("deletarComentario.jsp");
-				this.rd.forward(request, response);	
-				
+				this.rd.forward(request, response);
+
 				break;
-				
+
 			default:
 				break;
-				
+
 			}
-			
-			
-			
+
+
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
-		
-		
-		
-		
-	}		
-		
-		
-		
-		
+
+
+
+
+	}
+
+
+
+
 	}
 
 

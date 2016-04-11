@@ -30,7 +30,7 @@
                             <form form method="post" action="ServletComment?action=Create">
 
                                 <div class="form-group">
-                                    <input type="hidden" name="idPublication" id="idPublication" value="${idPublicacao}">
+                                    <input type="hidden" name="idPublication" id="idPublication" value="${idPublication}">
                                     <input type="hidden" name="idUser" id="idUser" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                 </div>
 

@@ -31,7 +31,7 @@
 
                                 <div class="form-group">
                                     <input type="hidden" name="idUtilizador" id="idutilizador" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
-                                    <input type="hidden" name="idPublicacao" id="idPublicacao" value="${idPublicacao}">
+                                    <input type="hidden" name="idPublication" id="idPublication" value="${idPublication}">
                                 </div>
 
                                 <div class="form-group">

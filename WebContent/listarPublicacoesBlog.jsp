@@ -47,11 +47,11 @@
                                                 </h5>
                                             </div>
                                             <div class="action">
-                                                <a href="ServletPublicacao?acao=AvaliarPublicacao&idPublicacao=${publicacao.idPublicacao}&notaPublicacao=1" class="btn btn-success btn-xs" role="button"><span class="glyphicon glyphicon-ok"></span> Gostei</a>
-                                                <a href="ServletPublicacao?acao=AvaliarPublicacao&idPublicacao=${publicacao.idPublicacao}&notaPublicacao=-1" class="btn btn-danger btn-xs" role="button"><span class="glyphicon glyphicon-minus"></span> Não Gostei</a>
-                                                <a href="ServletComentario?acao=InstanciaPublicacao&idPublicacao=${publicacao.idPublicacao}" class="btn btn-success btn-xs" role="button"> Comentar</a>
-                                                <a href="ServletPublicacao?acao=ListarComentarios&idPublicacao=${publicacao.idPublicacao}" class="btn btn-primary btn-xs" role="button"> Ver comentários</a>
-                                                <a href="ServletDenuncia?acao=InstanciaPublicacao&idPublicacao=${publicacao.idPublicacao}" class="btn btn-danger btn-xs" role="button"> Denunciar Publicacao</a>
+                                                <a href="ServletPublicacao?acao=AvaliarPublicacao&idPublication=${publicacao.idPublication}&notaPublicacao=1" class="btn btn-success btn-xs" role="button"><span class="glyphicon glyphicon-ok"></span> Gostei</a>
+                                                <a href="ServletPublicacao?acao=AvaliarPublicacao&idPublication=${publicacao.idPublication}&notaPublicacao=-1" class="btn btn-danger btn-xs" role="button"><span class="glyphicon glyphicon-minus"></span> Não Gostei</a>
+                                                <a href="ServletComentario?acao=InstanciaPublicacao&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button"> Comentar</a>
+                                                <a href="ServletPublicacao?acao=ListarComentarios&idPublication=${publicacao.idPublication}" class="btn btn-primary btn-xs" role="button"> Ver comentários</a>
+                                                <a href="ServletDenuncia?acao=InstanciaPublicacao&idPublication=${publicacao.idPublication}" class="btn btn-danger btn-xs" role="button"> Denunciar Publicacao</a>
 
                                             </div>
                                         </div>
