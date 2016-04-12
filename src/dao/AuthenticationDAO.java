@@ -10,15 +10,15 @@ import java.util.List;
 import model.User;
 
 public class AuthenticationDAO extends ConnectionFactory{
-	User utilizador = new User();
+	User user = new User();
 	
 	
 	public User authenticateUser(String email, String password){
 		assert(email != null ) : "Unexpected error: the email is receiving null";
 		assert(password != null) : "Unexpected error: the password is receiving null";
 		
-		this.utilizador.setEmail("");
-		this.utilizador.setPassword("");
+		this.user.setEmail("");
+		this.user.setPassword("");
 		
 		try{
 			Connection connection = getConnection();
@@ -26,14 +26,14 @@ public class AuthenticationDAO extends ConnectionFactory{
 			ResultSet rs = stm.executeQuery("select * from Utilizador where email='"+ email+"' and senha='"+password+"'" );
 			while(rs.next()){
 			
-				this.utilizador.setId(rs.getInt("id"));
-				this.utilizador.setName(rs.getString("nome"));
-				this.utilizador.setLastName(rs.getString("sobrenome"));
-				this.utilizador.setGender(rs.getString("genero"));
-				this.utilizador.setNickname(rs.getString("apelido"));
-				this.utilizador.setEmail(rs.getString("email"));
-				this.utilizador.setPassword(rs.getString("senha"));
-				this.utilizador.setBirthDate(rs.getDate("dataNascimento"));
+				this.user.setId(rs.getInt("id"));
+				this.user.setName(rs.getString("nome"));
+				this.user.setLastName(rs.getString("sobrenome"));
+				this.user.setGender(rs.getString("genero"));
+				this.user.setNickname(rs.getString("apelido"));
+				this.user.setEmail(rs.getString("email"));
+				this.user.setPassword(rs.getString("senha"));
+				this.user.setBirthDate(rs.getDate("dataNascimento"));
 			}
 			rs.close();
 			connection.close();
@@ -41,6 +41,6 @@ public class AuthenticationDAO extends ConnectionFactory{
 			e.printStackTrace();
 			
 		}
-		return this.utilizador;
+		return this.user;
 	}
 }
