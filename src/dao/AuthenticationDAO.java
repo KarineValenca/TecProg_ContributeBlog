@@ -14,6 +14,9 @@ public class AuthenticationDAO extends ConnectionFactory{
 	
 	
 	public User authenticateUser(String email, String password){
+		assert(email != null ) : "Unexpected error: the email is receiving null";
+		assert(password != null) : "Unexpected error: the password is receiving null";
+		
 		this.utilizador.setEmail("");
 		this.utilizador.setPassword("");
 		
