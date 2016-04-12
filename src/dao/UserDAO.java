@@ -17,6 +17,9 @@ public class UserDAO  extends ConnectionFactory{
 	User user = new User();
 	
 	public int validateUser(String nickname, String email, int value){
+		assert(nickname != null) : "unexpected error: the nickname is recieving null";
+		assert(email != null) : "unexpected error: the email is recieving null";
+		
 		try{
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
@@ -36,6 +39,8 @@ public class UserDAO  extends ConnectionFactory{
 	}
 	
 	public void createUser(User user) {
+		assert(user != null) : "Unexpected error: the object User is null";
+		
 		try {
 			java.util.Date utilDate = user.getBirthDate();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -85,6 +90,7 @@ public class UserDAO  extends ConnectionFactory{
 	}
 		
 	public void deleteUser(String id) {
+		// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection
@@ -99,6 +105,9 @@ public class UserDAO  extends ConnectionFactory{
 	}
 	
 	public void editUser(User user, String id){
+		// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(user != null) : "Unexpected error: The object user is null";
+		
 		try{
 			java.util.Date utilDate = user.getBirthDate();
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -123,6 +132,7 @@ public class UserDAO  extends ConnectionFactory{
 	}
 	
 	public User showUserProfile(String id) {
+		// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		User user = new User();
 		user.setName("");
 		try {
