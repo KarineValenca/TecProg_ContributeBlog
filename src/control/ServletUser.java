@@ -84,13 +84,16 @@ public class ServletUser extends HttpServlet {
 				
 				break;
 			case "DeleteUser":
-				String id = request.getParameter("id");				
+				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+				String id = request.getParameter("id");
+				
 				userDAO.deleteUser(id);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				
 			break;
 			case "EditUser":
+				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
 				
 				user.setName(request.getParameter("name"));
@@ -109,6 +112,7 @@ public class ServletUser extends HttpServlet {
 				break;
 			
 			case "ListProfile":
+				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
 				user = userDAO.showUserProfile(id);
 				request.setAttribute("user", user);

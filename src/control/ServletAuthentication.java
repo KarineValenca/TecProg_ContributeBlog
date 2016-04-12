@@ -41,7 +41,10 @@ public class ServletAuthentication extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
 							IOException {
 		this.email = request.getParameter("email");
+		assert(email != null) : "Unexpected error: the email is receiving null from view";
+		
         this.password = request.getParameter("password");
+        assert(password != null) : "Unexpected error: the password is receinving null from view";
                
         System.out.println("hhhhhh" + this.email);
         System.out.println(this.password);
@@ -61,14 +64,17 @@ public class ServletAuthentication extends HttpServlet{
         }        
 	}
 	
-	public boolean verifyUser(User utilizador, String email, String password){
+	public boolean verifyUser(User user, String email, String password){
+		assert(user != null) : "Unexpected error: the object user is null";
+		assert(email != null) : "Unexpected error: the email is receiving null";
+		assert(password != null) : "Unexpected error: the password is receiving null";
 	
 		/*Método de verificação de Utilizador  
 		 * Recebe uma instancia de utilizador 
 		 * e os paramêtros de comparação 
 		 * */
 		
-		if(utilizador.getEmail() != "" ){
+		if(user.getEmail() != "" ){
 			return true;
 		}else{
 			return false;
