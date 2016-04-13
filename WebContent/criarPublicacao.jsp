@@ -27,7 +27,7 @@
                             <h3 class="panel-title">Nova Publicação</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletPublicacao?acao=Incluir">
+                            <form form method="post" action="ServletPublication?acao=Incluir">
                                 <div class="form-group">
                                     <input type="hidden" name="idBlog" id="iddonoblog" class="form-control input-sm" value="${idBlog}" placeholder="ID" required>
                                 </div>

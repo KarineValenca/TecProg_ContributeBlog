@@ -24,7 +24,7 @@
                             <h3 class="panel-title">Editar Publicação</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletPublicacao?acao=EditarPublicacao">
+                            <form form method="post" action="ServletPublication?acao=EditarPublicacao">
                                 <div class="form-group">
                                     <input type="hidden" name="idPublication" id="idPublication" class="form-control input-sm" value="${publicacao.idPublication}" placeholder="ID" required>
                                 </div>

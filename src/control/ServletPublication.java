@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CommentDAO;
-import dao.PublicacaoDAO;
+import dao.PublicationDAO;
 import model.Blog;
 import model.Comment;
 import model.Publication;
 
-@WebServlet("/ServletPublicacao")
-public class ServletPublicacao extends HttpServlet{
+@WebServlet("/ServletPublication")
+public class ServletPublication extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
@@ -37,7 +37,7 @@ public class ServletPublicacao extends HttpServlet{
 
 		String acao = request.getParameter("acao");
 		Publication publicacao = new Publication();
-		PublicacaoDAO publicacaoDAO = new PublicacaoDAO();
+		PublicationDAO publicacaoDAO = new PublicationDAO();
 		Blog blog = new Blog();
 		List<Comment> listaComentarios = new ArrayList();
 		CommentDAO comentariodao = new CommentDAO();
@@ -59,7 +59,7 @@ public class ServletPublicacao extends HttpServlet{
 			case "InstanciaPublicacao":
 				String idBlog = request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlog);
-				this.rd = request.getRequestDispatcher("criarPublicacao.jsp");
+				this.rd = request.getRequestDispatcher("createPublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
@@ -70,7 +70,7 @@ public class ServletPublicacao extends HttpServlet{
 				publicacao.setCategoryPublication(request.getParameter("categoryPublication"));
 				publicacao.setContentPublication(request.getParameter("contentPublication"));
 
-				publicacaoDAO.editarPublicacao(publicacao, idPublication);
+				publicacaoDAO.editPublication(publicacao, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 
@@ -80,13 +80,13 @@ public class ServletPublicacao extends HttpServlet{
 				idPublication = request.getParameter("idPublication");
 				publicacao = publicacaoDAO.listar(idPublication);
 				request.setAttribute("publicacao", publicacao);
-				this.rd = request.getRequestDispatcher("editarPublicacao.jsp");
+				this.rd = request.getRequestDispatcher("editPublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
 			case "ExcluirPublicacao":
 				idPublication = request.getParameter("idPublication");
-				publicacaoDAO.excluirPublicacao(idPublication);
+				publicacaoDAO.deletePublication(idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
@@ -97,14 +97,14 @@ public class ServletPublicacao extends HttpServlet{
 				int notaAtual = publicacao.getGradePublication();
 				int notaFinal = notaAtual+Integer.parseInt(gradePublication);
 				publicacao.setGradePublication(notaFinal);
-				publicacaoDAO.avaliarPublicacao(publicacao, gradePublication, idPublication);
+				publicacaoDAO.ratePublication(publicacao, gradePublication, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 
 			case "ListarComentarios":
 				idPublication = request.getParameter("idPublication");
-				listaComentarios = publicacaoDAO.listarComentarios(idPublication);
+				listaComentarios = publicacaoDAO.listComents(idPublication);
 				request.setAttribute("listaComentariosPublicacao", listaComentarios);
 				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
 				this.rd.forward(request, response);

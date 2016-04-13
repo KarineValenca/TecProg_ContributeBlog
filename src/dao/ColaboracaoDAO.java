@@ -12,7 +12,7 @@ import model.Blog;
 import model.Publication;
 import model.PublicacaoColaborativa;
 
-public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGeral{
+public class ColaboracaoDAO  extends ConnectionFactory implements PublicationGeneral{
 
 	Publication publicacaoColaborativa = new Publication();
 	Blog blog = new Blog();

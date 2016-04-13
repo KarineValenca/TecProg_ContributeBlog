@@ -7,8 +7,8 @@ public class Publication {
 	private String contentPublication;
 	private Blog idBlog;
 	private int gradePublication;
-	private boolean statusPublication;
-	private User idUser;
+	private boolean statusPublication; //VERIFY THE NEED AND USE OF THIS ATTRIBUTE
+	private User idUser; //VERIFY THE NEED AND USE OF THIS ATTRIBUTE
 
 	public Publication(){
 
