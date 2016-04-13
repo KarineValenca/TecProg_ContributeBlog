@@ -3,7 +3,7 @@ package model;
 public class PublicacaoColaborativa extends Publication {
 
 
-	boolean statusPublicacao;
+	boolean statusPublication;
 	User utilizador;
 
 

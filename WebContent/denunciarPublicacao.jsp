@@ -30,7 +30,7 @@
                             <form method="post" action="ServletDenuncia?acao=CriarDenunciaPublicacao">
 
                                 <div class="form-group">
-                                    <input type="hidden" name="idUtilizador" id="idutilizador" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idUser" id="idUser" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
                                     <input type="hidden" name="idPublication" id="idPublication" value="${idPublication}">
                                 </div>
 

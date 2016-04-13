@@ -59,7 +59,7 @@ public class ServletSubmissao extends HttpServlet {
 				 idBlog = Integer.parseInt(request.getParameter("idBlog"));
 				System.out.println(request.getParameter("idBlog"));
 				System.out.println("Entrou1");
-				String idUtilizador = request.getParameter("idUtilizador");
+				String idUser = request.getParameter("idUser");
 				pubColaborativa.setCategoryPublication(request.getParameter("categoryPublication"));
 				System.out.println(request.getParameter("categoryPublication"));
 				pubColaborativa.setContentPublication(request.getParameter("contentPublication"));

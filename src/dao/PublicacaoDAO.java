@@ -135,8 +135,8 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 				comentario.setCommentContent(rs.getString("conteudoComentario"));
 				comentario.setCommentDate(rs.getDate("dataCriacaoComentario"));
 
-				int idUtilizador = rs.getInt("idUtilizador");
-				String apelidoUtilizador = identificarUsuario(idUtilizador);
+				int idUser = rs.getInt("idUser");
+				String apelidoUtilizador = identificarUsuario(idUser);
 				comentario.setCommentUser(apelidoUtilizador);
 
 				comentarios.add(comentario);
@@ -152,12 +152,12 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 
 	}
 
-	public String identificarUsuario(int idUtilizador){
+	public String identificarUsuario(int idUser){
 		String apelido = null;
 		try{
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("select * from Utilizador where id="+idUtilizador);
+			ResultSet rs = stm.executeQuery("select * from Utilizador where id="+idUser);
 			while (rs.next()) {
 				apelido = rs.getString("apelido");
 				System.out.println(apelido);
