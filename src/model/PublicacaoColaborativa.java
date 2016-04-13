@@ -14,9 +14,9 @@ public class PublicacaoColaborativa extends Publication {
 
 	public PublicacaoColaborativa(int idPublication, String titlePublication,
 			String categoryPublication, String contentPublication, Blog idBlog,
-			int nota) {
+			int gradePublication) {
 		super(idPublication, titlePublication, categoryPublication, contentPublication,
-				idBlog, nota);
+				idBlog, gradePublication);
 		// TODO Auto-generated constructor stub
 	}
 

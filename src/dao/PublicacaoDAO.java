@@ -104,11 +104,11 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 		}
 	}
 
-	public void avaliarPublicacao(Publication publicacao, String nota, String idPublication){
+	public void avaliarPublicacao(Publication publicacao, String gradePublication, String idPublication){
 		try{
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.prepareStatement("Update Publicacao set notaPublicacao = notaPublicacao + ? where idPublicacao = ?");
-			pstm.setInt(1, publicacao.getNota());
+			pstm.setInt(1, publicacao.getGradePublication());
 			pstm.setString(2, idPublication);
 			pstm.execute();
 			pstm.close();

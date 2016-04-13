@@ -93,11 +93,11 @@ public class ServletPublicacao extends HttpServlet{
 
 			case "AvaliarPublicacao":
 				idPublication = request.getParameter("idPublication");
-				String notaPublicacao = request.getParameter("notaPublicacao");
-				int notaAtual = publicacao.getNota();
-				int notaFinal = notaAtual+Integer.parseInt(notaPublicacao);
-				publicacao.setNota(notaFinal);
-				publicacaoDAO.avaliarPublicacao(publicacao, notaPublicacao, idPublication);
+				String gradePublication = request.getParameter("gradePublication");
+				int notaAtual = publicacao.getGradePublication();
+				int notaFinal = notaAtual+Integer.parseInt(gradePublication);
+				publicacao.setGradePublication(notaFinal);
+				publicacaoDAO.avaliarPublicacao(publicacao, gradePublication, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;

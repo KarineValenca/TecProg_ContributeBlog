@@ -6,7 +6,7 @@ public class Publication {
 	private String categoryPublication;
 	private String contentPublication;
 	private Blog idBlog;
-	private int nota;
+	private int gradePublication;
 	private boolean statusPublicacao;
 	private User utilizador;
 
@@ -15,13 +15,13 @@ public class Publication {
 	}
 
 	public Publication(int idPublication, String titlePublication, String categoryPublication,
-			String contentPublication, Blog idBlog, int nota){
+			String contentPublication, Blog idBlog, int gradePublication){
 		this.idPublication = idPublication;
 		this.titlePublication = titlePublication;
 		this.categoryPublication = categoryPublication;
 		this.contentPublication = contentPublication;
 		this.idBlog = idBlog;
-		this.nota = nota;
+		this.gradePublication = gradePublication;
 
 	}
 
@@ -50,12 +50,12 @@ public class Publication {
 		this.contentPublication = contentPublication;
 	}
 
-	public int getNota() {
-		return nota;
+	public int getGradePublication() {
+		return gradePublication;
 	}
 
-	public void setNota(int nota) {
-		this.nota = nota;
+	public void setGradePublication(int gradePublication) {
+		this.gradePublication = gradePublication;
 	}
 
 }
