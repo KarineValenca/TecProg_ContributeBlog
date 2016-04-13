@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Conteúdo</label>
-                                    <textarea class="form-control" maxlength="150" rows="3" name="conteudoPublicacao" id="categoria" value="${publicacao.conteudoPublicacao}" placeholder="Escreva o conteúdo aqui" required></textarea>
+                                    <textarea class="form-control" maxlength="150" rows="3" name="contentPublication" id="categoria" value="${publicacao.contentPublication}" placeholder="Escreva o conteúdo aqui" required></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">

@@ -34,7 +34,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 
 			pstm.setString(1, publicacao.getTitlePublication());
 			pstm.setString(2, publicacao.getCategoryPublication());
-			pstm.setString(3, publicacao.getConteudoPublicacao());
+			pstm.setString(3, publicacao.getContentPublication());
 			pstm.setInt(4, blog);
 			pstm.execute();
 			pstm.close();
@@ -56,7 +56,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 
 			pstm.setString(1, publicacao.getTitlePublication());
 			pstm.setString(2, publicacao.getCategoryPublication());
-			pstm.setString(3, publicacao.getConteudoPublicacao());
+			pstm.setString(3, publicacao.getContentPublication());
 
 			pstm.setString(4, idPublication);
 
@@ -81,7 +81,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTitlePublication(rs.getString("titlePublication"));
 				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
-				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
+				publicacao.setContentPublication(rs.getString("contentPublication"));
 			}
 			stm.close();
 			conexao.close();

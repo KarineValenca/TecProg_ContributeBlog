@@ -4,7 +4,7 @@ public class Publication {
 	private int idPublication;
 	private String titlePublication;
 	private String categoryPublication;
-	private String conteudoPublicacao;
+	private String contentPublication;
 	private Blog idBlog;
 	private int nota;
 	private boolean statusPublicacao;
@@ -15,11 +15,11 @@ public class Publication {
 	}
 
 	public Publication(int idPublication, String titlePublication, String categoryPublication,
-			String conteudoPublicacao, Blog idBlog, int nota){
+			String contentPublication, Blog idBlog, int nota){
 		this.idPublication = idPublication;
 		this.titlePublication = titlePublication;
 		this.categoryPublication = categoryPublication;
-		this.conteudoPublicacao = conteudoPublicacao;
+		this.contentPublication = contentPublication;
 		this.idBlog = idBlog;
 		this.nota = nota;
 
@@ -43,11 +43,11 @@ public class Publication {
 	public void setCategoryPublication(String categoryPublication) {
 		this.categoryPublication = categoryPublication;
 	}
-	public String getConteudoPublicacao() {
-		return conteudoPublicacao;
+	public String getContentPublication() {
+		return contentPublication;
 	}
-	public void setConteudoPublicacao(String conteudoPublicacao) {
-		this.conteudoPublicacao = conteudoPublicacao;
+	public void setContentPublication(String contentPublication) {
+		this.contentPublication = contentPublication;
 	}
 
 	public int getNota() {

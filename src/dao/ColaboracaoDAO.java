@@ -31,7 +31,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 
 			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
 			pstm.setString(2, publicacaoColaborativa.getCategoryPublication());
-			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
+			pstm.setString(3, publicacaoColaborativa.getContentPublication());
 			pstm.setInt(4, idBlog);
 			pstm.execute();
 			pstm.close();
@@ -59,7 +59,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 				publicacaoColaborativa.setIdPublication(rs.getInt("idPublication"));
 				publicacaoColaborativa.setTitlePublication(rs.getString("titlePublication"));
 				publicacaoColaborativa.setCategoryPublication(rs.getString("categoryPublication"));
-				publicacaoColaborativa.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
+				publicacaoColaborativa.setContentPublication(rs.getString("contentPublication"));
 				pubColaborativas.add(publicacaoColaborativa);
 				System.out.println("Passou aqui");
 			}
@@ -83,7 +83,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 
 			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
 			pstm.setString(2, publicacaoColaborativa.getCategoryPublication());
-			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
+			pstm.setString(3, publicacaoColaborativa.getContentPublication());
 			pstm.execute();
 			pstm.close();
 			conexao.close();
@@ -107,7 +107,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTitlePublication(rs.getString("titlePublication"));
 				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
-				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
+				publicacao.setContentPublication(rs.getString("contentPublication"));
 			}
 			stm.close();
 			conexao.close();
