@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Título</label>
-                                    <input type="text" name="tituloPublicacao" id="tituloPublicacao" class="form-control input-sm" value="${publicacao.tituloPublicacao}" placeholder="Combate a Lesões" required>
+                                    <input type="text" name="titlePublication" id="titlePublication" class="form-control input-sm" value="${publicacao.titlePublication}" placeholder="Combate a Lesões" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Categoria</label>

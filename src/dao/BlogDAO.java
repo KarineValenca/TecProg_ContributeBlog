@@ -23,8 +23,8 @@ public class BlogDAO extends ConnectionFactory {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao
 					.prepareStatement("INSERT INTO Blog (titulo,categoria, dataCriacao, idUtilizador) VALUES(?,?,?,?);");
-			pstm.setString(1, blog.getTitulo());
-			pstm.setString(2, blog.getCategoria());
+			pstm.setString(1, blog.getTitle());
+			pstm.setString(2, blog.getCategorie());
 			pstm.setDate(3, sqlDate);
 			pstm.setInt(4,donoBlog.getId());
 			pstm.execute();
@@ -83,7 +83,7 @@ public class BlogDAO extends ConnectionFactory {
 			while (rs.next()) {
 				Publication publicacao = new Publication();
 				publicacao.setIdPublication(rs.getInt("idPublication"));
-				publicacao.setTituloPublicacao(rs.getString("tituloPublicacao"));
+				publicacao.setTitlePublication(rs.getString("titlePublication"));
 				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 				publicacao.setNota(rs.getInt("notaPublicacao"));

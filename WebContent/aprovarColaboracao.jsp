@@ -37,7 +37,7 @@
                                         <div class="col-xs-10 col-md-11">
                                             <div>
                                                 <a href="#">
-                                                    <h4><label>Título: ${publicacao.tituloPublicacao}</label></h4>
+                                                    <h4><label>Título: ${publicacao.titlePublication}</label></h4>
                                                 </a>
                                             </div>
                                             <div class="comment-text">

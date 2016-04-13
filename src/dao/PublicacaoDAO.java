@@ -31,8 +31,8 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 							         + "idBlog,"
 							         + "notaPublicacao)"
 							         + "VALUES (?,?,?,?,0)");
-			
-			pstm.setString(1, publicacao.getTituloPublicacao());
+
+			pstm.setString(1, publicacao.getTitlePublication());
 			pstm.setString(2, publicacao.getCategoriaPublicacao());
 			pstm.setString(3, publicacao.getConteudoPublicacao());
 			pstm.setInt(4, blog);
@@ -53,8 +53,8 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 					                                          + "categoriaPublicacao=?,"
 					                                          + "conteudoPublicacao=? "
 					                                          + "where idPublicacao=?");
-			
-			pstm.setString(1, publicacao.getTituloPublicacao());
+
+			pstm.setString(1, publicacao.getTitlePublication());
 			pstm.setString(2, publicacao.getCategoriaPublicacao());
 			pstm.setString(3, publicacao.getConteudoPublicacao());
 
@@ -72,14 +72,14 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 
 	public Publication listar(String idPublication) {
 		Publication publicacao = new Publication();
-		publicacao.setTituloPublicacao("");
+		publicacao.setTitlePublication("");
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="+idPublication);
 			while (rs.next()) {
 				publicacao.setIdPublication(rs.getInt("idPublication"));
-				publicacao.setTituloPublicacao(rs.getString("tituloPublicacao"));
+				publicacao.setTitlePublication(rs.getString("titlePublication"));
 				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 			}

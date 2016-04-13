@@ -29,7 +29,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 							         + "statusPublicacao)"
 							         + "VALUES (?,?,?,?,0,false)");
 
-			pstm.setString(1, publicacaoColaborativa.getTituloPublicacao());
+			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
 			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
 			pstm.setInt(4, idBlog);
@@ -57,7 +57,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 			System.out.println("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
 			while (rs.next()) {
 				publicacaoColaborativa.setIdPublication(rs.getInt("idPublication"));
-				publicacaoColaborativa.setTituloPublicacao(rs.getString("tituloPublicacao"));
+				publicacaoColaborativa.setTitlePublication(rs.getString("titlePublication"));
 				publicacaoColaborativa.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacaoColaborativa.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 				pubColaborativas.add(publicacaoColaborativa);
@@ -80,8 +80,8 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 					                                          + "conteudoPublicacao=?,"
 					                                          + "notaPublicacao=?"
 					                                          + "where idPublicacao=?");
-			
-			pstm.setString(1, publicacaoColaborativa.getTituloPublicacao());
+
+			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
 			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
 			pstm.execute();
@@ -97,7 +97,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 
 	public Publication listar(String idPublication) {
 		Publication publicacao = new Publication();
-		publicacao.setTituloPublicacao("");
+		publicacao.setTitlePublication("");
 		try {
 			Connection conexao = getConnection();
 			Statement stm = conexao.createStatement();
@@ -105,7 +105,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 				                                         +idPublication);
 			while (rs.next()) {
 				publicacao.setIdPublication(rs.getInt("idPublication"));
-				publicacao.setTituloPublicacao(rs.getString("tituloPublicacao"));
+				publicacao.setTitlePublication(rs.getString("titlePublication"));
 				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 			}

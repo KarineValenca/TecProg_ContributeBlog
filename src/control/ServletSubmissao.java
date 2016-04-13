@@ -64,8 +64,8 @@ public class ServletSubmissao extends HttpServlet {
 				System.out.println(request.getParameter("categoriaPublicacao"));
 				pubColaborativa.setConteudoPublicacao(request.getParameter("conteudoPublicacao"));
 				System.out.println(request.getParameter("conteudoPublicacao"));
-				pubColaborativa.setTituloPublicacao(request.getParameter("tituloPublicacao"));
-				System.out.println(request.getParameter("tituloPublicacao"));
+				pubColaborativa.setTitlePublication(request.getParameter("titlePublication"));
+				System.out.println(request.getParameter("titlePublication"));
 				subDAO.publicar(idBlog, pubColaborativa);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
@@ -91,7 +91,7 @@ public class ServletSubmissao extends HttpServlet {
 			case "AceitarPublicacao":
 				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
 				pubColaborativa.setIdPublication( Integer.parseInt(request.getParameter("idPublication")));
-				pubColaborativa.setTituloPublicacao(request.getParameter("tituloPublicacao"));
+				pubColaborativa.setTitlePublication(request.getParameter("titlePublication"));
 				pubColaborativa.setCategoriaPublicacao(request.getParameter(request.getParameter("categoriaPublicacao")));
 				pubColaborativa.setConteudoPublicacao(request.getParameter(request.getParameter("conteudoPublicacao")));
 				subDAO.AprovarPublicacao(idBlog, pubColaborativa);
