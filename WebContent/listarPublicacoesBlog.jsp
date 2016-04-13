@@ -41,7 +41,7 @@
                                                 </a>
                                             </div>
                                             <div class="comment-text">
-                                                <h5><label>Categoria:</label> ${publicacao.categoriaPublicacao}<br/>
+                                                <h5><label>Categoria:</label> ${publicacao.categoryPublication}<br/>
                                                     <label>Nota: </label> ${publicacao.nota}<br/>
                                                     <label>Descrição:</label><br/>${publicacao.conteudoPublicacao}<br/>
                                                 </h5>

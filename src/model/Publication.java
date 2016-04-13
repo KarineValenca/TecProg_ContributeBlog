@@ -3,7 +3,7 @@ package model;
 public class Publication {
 	private int idPublication;
 	private String titlePublication;
-	private String categoriaPublicacao;
+	private String categoryPublication;
 	private String conteudoPublicacao;
 	private Blog idBlog;
 	private int nota;
@@ -14,11 +14,11 @@ public class Publication {
 
 	}
 
-	public Publication(int idPublication, String titlePublication, String categoriaPublicacao,
+	public Publication(int idPublication, String titlePublication, String categoryPublication,
 			String conteudoPublicacao, Blog idBlog, int nota){
 		this.idPublication = idPublication;
 		this.titlePublication = titlePublication;
-		this.categoriaPublicacao = categoriaPublicacao;
+		this.categoryPublication = categoryPublication;
 		this.conteudoPublicacao = conteudoPublicacao;
 		this.idBlog = idBlog;
 		this.nota = nota;
@@ -37,11 +37,11 @@ public class Publication {
 	public void setTitlePublication(String titlePublication) {
 		this.titlePublication = titlePublication;
 	}
-	public String getCategoriaPublicacao() {
-		return categoriaPublicacao;
+	public String getCategoryPublication() {
+		return categoryPublication;
 	}
-	public void setCategoriaPublicacao(String categoriaPublicacao) {
-		this.categoriaPublicacao = categoriaPublicacao;
+	public void setCategoryPublication(String categoryPublication) {
+		this.categoryPublication = categoryPublication;
 	}
 	public String getConteudoPublicacao() {
 		return conteudoPublicacao;

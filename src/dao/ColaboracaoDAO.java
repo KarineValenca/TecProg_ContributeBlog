@@ -30,7 +30,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 							         + "VALUES (?,?,?,?,0,false)");
 
 			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
-			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
+			pstm.setString(2, publicacaoColaborativa.getCategoryPublication());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
 			pstm.setInt(4, idBlog);
 			pstm.execute();
@@ -58,7 +58,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 			while (rs.next()) {
 				publicacaoColaborativa.setIdPublication(rs.getInt("idPublication"));
 				publicacaoColaborativa.setTitlePublication(rs.getString("titlePublication"));
-				publicacaoColaborativa.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
+				publicacaoColaborativa.setCategoryPublication(rs.getString("categoryPublication"));
 				publicacaoColaborativa.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 				pubColaborativas.add(publicacaoColaborativa);
 				System.out.println("Passou aqui");
@@ -82,7 +82,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 					                                          + "where idPublicacao=?");
 
 			pstm.setString(1, publicacaoColaborativa.getTitlePublication());
-			pstm.setString(2, publicacaoColaborativa.getCategoriaPublicacao());
+			pstm.setString(2, publicacaoColaborativa.getCategoryPublication());
 			pstm.setString(3, publicacaoColaborativa.getConteudoPublicacao());
 			pstm.execute();
 			pstm.close();
@@ -106,7 +106,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicacaoGera
 			while (rs.next()) {
 				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTitlePublication(rs.getString("titlePublication"));
-				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
+				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 			}
 			stm.close();

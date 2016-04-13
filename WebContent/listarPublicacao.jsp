@@ -43,7 +43,7 @@
                                             <div class="comment-text">
                                                 <h5>
                                                     <label>ID:</label> ${publicacao.idPublication}<br/>
-                                                    <label>Categoria:</label> ${publicacao.categoriaPublicacao}<br/>
+                                                    <label>Categoria:</label> ${publicacao.categoryPublication}<br/>
                                                     <label>Descrição:</label><br/>${publicacao.conteudoPublicacao}<br/>
                                                 </h5>
                                             </div>

@@ -48,7 +48,7 @@ public class ServletPublicacao extends HttpServlet{
 
 			case "Incluir":
 				publicacao.setTitlePublication(request.getParameter("titlePublication"));
-				publicacao.setCategoriaPublicacao(request.getParameter("categoriaPublicacao"));
+				publicacao.setCategoryPublication(request.getParameter("categoryPublication"));
 				publicacao.setConteudoPublicacao(request.getParameter("conteudoPublicacao"));
 				int idBlogInsert =( Integer.parseInt(request.getParameter("idBlog")));
 
@@ -67,7 +67,7 @@ public class ServletPublicacao extends HttpServlet{
 				String idPublication = request.getParameter("idPublication");
 
 				publicacao.setTitlePublication(request.getParameter("titlePublication"));
-				publicacao.setCategoriaPublicacao(request.getParameter("categoriaPublicacao"));
+				publicacao.setCategoryPublication(request.getParameter("categoryPublication"));
 				publicacao.setConteudoPublicacao(request.getParameter("conteudoPublicacao"));
 
 				publicacaoDAO.editarPublicacao(publicacao, idPublication);

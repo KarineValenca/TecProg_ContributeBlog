@@ -33,7 +33,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 							         + "VALUES (?,?,?,?,0)");
 
 			pstm.setString(1, publicacao.getTitlePublication());
-			pstm.setString(2, publicacao.getCategoriaPublicacao());
+			pstm.setString(2, publicacao.getCategoryPublication());
 			pstm.setString(3, publicacao.getConteudoPublicacao());
 			pstm.setInt(4, blog);
 			pstm.execute();
@@ -55,7 +55,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 					                                          + "where idPublicacao=?");
 
 			pstm.setString(1, publicacao.getTitlePublication());
-			pstm.setString(2, publicacao.getCategoriaPublicacao());
+			pstm.setString(2, publicacao.getCategoryPublication());
 			pstm.setString(3, publicacao.getConteudoPublicacao());
 
 			pstm.setString(4, idPublication);
@@ -80,7 +80,7 @@ public class PublicacaoDAO extends ConnectionFactory implements PublicacaoGeral{
 			while (rs.next()) {
 				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTitlePublication(rs.getString("titlePublication"));
-				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
+				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 			}
 			stm.close();

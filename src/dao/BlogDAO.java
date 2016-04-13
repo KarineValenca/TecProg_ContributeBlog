@@ -84,7 +84,7 @@ public class BlogDAO extends ConnectionFactory {
 				Publication publicacao = new Publication();
 				publicacao.setIdPublication(rs.getInt("idPublication"));
 				publicacao.setTitlePublication(rs.getString("titlePublication"));
-				publicacao.setCategoriaPublicacao(rs.getString("categoriaPublicacao"));
+				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
 				publicacao.setConteudoPublicacao(rs.getString("conteudoPublicacao"));
 				publicacao.setNota(rs.getInt("notaPublicacao"));
 				lista.add(publicacao);
