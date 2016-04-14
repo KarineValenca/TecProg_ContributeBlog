@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Blog {
 
-	
+
 	private int idBlog;
 	private String title;
 	private String categorie;
 	private Date creationDate;
-	private BlogOwner idDonoBlog;
-	private List<Publication> publicacoes;
-	
-	
+	private BlogOwner idOwnerBlog;
+	private List<Publication> publications;
+
+
 	public Blog() {
 	}
 
@@ -59,24 +59,24 @@ public class Blog {
 	}
 
 
-	public BlogOwner getIdDonoBlog() {
-		return idDonoBlog;
+	public BlogOwner getIdOwnerBlog() {
+		return idOwnerBlog;
 	}
 
 
-	public void setIdDonoBlog(BlogOwner idDonoBlog) {
-		this.idDonoBlog = idDonoBlog;
+	public void setIdOwnerBlog(BlogOwner idOwnerBlog) {
+		this. idOwnerBlog = idOwnerBlog;
 	}
 
 
-	public List<Publication> getPublicacoes() {
-		return publicacoes;
+	public List<Publication> getPublications() {
+		return publications;
 	}
 
 
-	public void setPublicacoes(List<Publication> publicacoes) {
-		this.publicacoes = publicacoes;
+	public void setPublications(List<Publication> publications) {
+		this.publications = publications;
 	}
-	
+
 }
 

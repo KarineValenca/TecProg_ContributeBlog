@@ -59,7 +59,7 @@ public class ServletBlog extends HttpServlet {
 
 
 				blogdao.criarBlog(blog, donoBlog );
-				this.rd = request.getRequestDispatcher("ServletDonoBlog?acao=ListarDono&idDonoBlog.jsp");
+				this.rd = request.getRequestDispatcher("ServletDonoBlog?acao=ListarDono&idOwnerBlog.jsp");
 				this.rd.forward(request, response);
 
 				break;

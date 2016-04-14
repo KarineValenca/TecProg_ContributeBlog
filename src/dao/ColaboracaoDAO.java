@@ -18,7 +18,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicationGen
 	Blog blog = new Blog();
 
 
-	public void publicar(int idBlog, Publication publicacao){
+	public void createPublication(int idBlog, Publication publicacao){
 		try {
 			Connection conexao = getConnection();
 			PreparedStatement pstm = conexao.
@@ -95,7 +95,7 @@ public class ColaboracaoDAO  extends ConnectionFactory implements PublicationGen
 	}
 
 
-	public Publication listar(String idPublication) {
+	public Publication listPublication(String idPublication) {
 		Publication publicacao = new Publication();
 		publicacao.setTitlePublication("");
 		try {

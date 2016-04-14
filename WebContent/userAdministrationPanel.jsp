@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
- 
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <span class="glyphicon glyphicon-bookmark"></span> Bem vindo ao seu painel administrativo, 
+                                <span class="glyphicon glyphicon-bookmark"></span> Bem vindo ao seu painel administrativo,
                             ${user.name}!</h3>
                         </div>
                         <div class="panel-body">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-xs-6 col-md-6">
                                     <a href="ServletBlogOwner?action=ListOwner&idBlogOwner=${user.id}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Meus Blogs</a>
-                                    <a href="blog.jsp?idDonoBlog=${user.id}" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Criar Blog</a>
+                                    <a href="blog.jsp?idOwnerBlog=${user.id}" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Criar Blog</a>
                                 </div>
                             </div>
                         </div>

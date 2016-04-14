@@ -26,7 +26,7 @@
                         <div class="panel-body">
                             <form form method="post" action="ServletBlog?acao=Incluir">
                                 <div class="form-group">
-                                    <input type="hidden" name="idDonoBlog" id="iddonoblog" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idOwnerBlog" id="idOwnerBlog" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Título</label>

@@ -52,7 +52,7 @@ public class ServletPublication extends HttpServlet{
 				publicacao.setContentPublication(request.getParameter("contentPublication"));
 				int idBlogInsert =( Integer.parseInt(request.getParameter("idBlog")));
 
-				publicacaoDAO.publicar(idBlogInsert, publicacao);
+				publicacaoDAO.createPublication(idBlogInsert, publicacao);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
@@ -78,7 +78,7 @@ public class ServletPublication extends HttpServlet{
 
 			case "ListarPublicacao":
 				idPublication = request.getParameter("idPublication");
-				publicacao = publicacaoDAO.listar(idPublication);
+				publicacao = publicacaoDAO.listPublication(idPublication);
 				request.setAttribute("publicacao", publicacao);
 				this.rd = request.getRequestDispatcher("editPublication.jsp");
 				this.rd.forward(request, response);
