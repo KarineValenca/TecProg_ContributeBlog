@@ -15,13 +15,13 @@ import model.Publication;
 public class BlogDAO extends ConnectionFactory {
 
 	Blog blog = new Blog();
-	Date agora = new Date();
-	java.sql.Date sqlDate = new java.sql.Date(agora.getTime());
+	Date now = new Date();
+	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 
-	public void criarBlog(Blog blog, BlogOwner donoBlog) {
+	public void createBlog(Blog blog, BlogOwner donoBlog) {
 		try {
-			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao
+			Connection connetion = getConnection();
+			PreparedStatement pstm = connetion
 					.prepareStatement("INSERT INTO Blog (titulo,categoria, dataCriacao, idUtilizador) VALUES(?,?,?,?);");
 			pstm.setString(1, blog.getTitle());
 			pstm.setString(2, blog.getCategorie());
@@ -29,17 +29,17 @@ public class BlogDAO extends ConnectionFactory {
 			pstm.setInt(4,donoBlog.getId());
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connetion.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<Blog> listarBlog() {
-		List<Blog> lista = new ArrayList<>();
+	public List<Blog> listBlog() {
+		List<Blog> listBlog = new ArrayList<>();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
+			Connection connetion = getConnection();
+			Statement stm = connetion.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Blog");
 
 			while (rs.next()) {
@@ -47,55 +47,54 @@ public class BlogDAO extends ConnectionFactory {
 				blog.setIdBlog(rs.getInt("idBlog"));
 				blog.setTitle(rs.getString("titulo"));
 				blog.setCategorie(rs.getString("categoria"));
-				//blog.setDataCriacao(rs.getDate("dataCriacao"));
-				lista.add(blog);
+				listBlog.add(blog);
 			}
 			stm.close();
-			conexao.close();
+			connetion.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return listBlog;
 	}
 
 
-	public void excluir(String idBlog) {
+	public void deleteBlog(String idBlog) {
 		try {
-			Connection conexao = getConnection();
-			PreparedStatement pstm = conexao
+			Connection connetion = getConnection();
+			PreparedStatement pstm = connetion
 					.prepareStatement("Delete from Blog where idBlog ="+idBlog);
 
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			connetion.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<Publication> listarPublicacaoBlog(String idBlog) {
-		List<Publication> lista = new ArrayList<>();
+	public List<Publication> listPublicationBlog(String idBlog) {
+		List<Publication> listPublicationBlog = new ArrayList<>();
 		try {
-			Connection conexao = getConnection();
-			Statement stm = conexao.createStatement();
+			Connection connetion = getConnection();
+			Statement stm = connetion.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idBlog=" + idBlog);
 
 			while (rs.next()) {
-				Publication publicacao = new Publication();
-				publicacao.setIdPublication(rs.getInt("idPublication"));
-				publicacao.setTitlePublication(rs.getString("titlePublication"));
-				publicacao.setCategoryPublication(rs.getString("categoryPublication"));
-				publicacao.setContentPublication(rs.getString("contentPublication"));
-				publicacao.setGradePublication(rs.getInt("gradePublication"));
-				lista.add(publicacao);
+				Publication publication = new Publication();
+				publication.setIdPublication(rs.getInt("idPublication"));
+				publication.setTitlePublication(rs.getString("titlePublication"));
+				publication.setCategoryPublication(rs.getString("categoryPublication"));
+				publication.setContentPublication(rs.getString("contentPublication"));
+				publication.setGradePublication(rs.getInt("gradePublication"));
+				listPublicationBlog.add(publication);
 
 			}
 			stm.close();
-			conexao.close();
+			connetion.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return listPublicationBlog;
 	}
 
 }

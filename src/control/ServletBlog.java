@@ -58,14 +58,14 @@ public class ServletBlog extends HttpServlet {
 				ownerBlog.setId( Integer.parseInt(request.getParameter("idDonoBlog")));
 
 
-				blogdao.criarBlog(blog, ownerBlog );
+				blogdao.createBlog(blog, ownerBlog );
 				this.rd = request.getRequestDispatcher("ServletDonoBlog?action=ListarDono&idOwnerBlog.jsp");
 				this.rd.forward(request, response);
 
 				break;
 
 			case "ListBlog":
-				listBlog = blogdao.listarBlog();
+				listBlog = blogdao.listBlog();
 				request.setAttribute("listaBlog", listBlog);
 				this.rd = request.getRequestDispatcher("listBlogs.jsp");
 				this.rd.forward(request, response);
@@ -74,7 +74,7 @@ public class ServletBlog extends HttpServlet {
 
 			case "DeleteBlog":
 				String idBlog = request.getParameter("idBlog");
-				blogdao.excluir(idBlog);
+				blogdao.deleteBlog(idBlog);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 
@@ -83,7 +83,7 @@ public class ServletBlog extends HttpServlet {
 			case "ListPublications":
 
 				String idBlogP =  request.getParameter("idBlog") ;
-				listPublication = blogdao.listarPublicacaoBlog(idBlogP);
+				listPublication = blogdao.listPublicationBlog(idBlogP);
 				request.setAttribute("listaPublicacaoBlog", listPublication);
 				this.rd = request.getRequestDispatcher("listPublication.jsp");
 				this.rd.forward(request, response);
@@ -93,7 +93,7 @@ public class ServletBlog extends HttpServlet {
 			case "ListPublicationsBlog":
 
 				idBlogP =  request.getParameter("idBlog") ;
-				listPublication = blogdao.listarPublicacaoBlog(idBlogP);
+				listPublication = blogdao.listPublicationBlog(idBlogP);
 				request.setAttribute("listaPublicacaoBlog", listPublication);
 				this.rd = request.getRequestDispatcher("listPublicationsBlog.jsp");
 				this.rd.forward(request, response);

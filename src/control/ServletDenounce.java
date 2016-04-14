@@ -142,7 +142,7 @@ public class ServletDenounce extends HttpServlet{
 
 
 
-				blogDao.excluir( String.valueOf(denounce.getIdBlog()));
+				blogDao.deleteBlog( String.valueOf(denounce.getIdBlog()));
 
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
