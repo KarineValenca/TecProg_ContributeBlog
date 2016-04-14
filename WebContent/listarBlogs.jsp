@@ -33,7 +33,7 @@
                     <td>${blog.titulo}</td>
                     <td>${blog.categoria}</td>
                     <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="ServletBlog?acao=ListarPublicacoesBlog&idBlog=${blog.idBlog}"> Ver</a>
+                    <a class='btn btn-info btn-xs' href="ServletBlog?acao=ListPublicationsBlog&idBlog=${blog.idBlog}"> Ver</a>
                     <a href="ServletDenuncia?acao=InstanciaBlog&idBlog=${blog.idBlog}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Denunciar</a>
                     <a class='btn btn-info btn-xs' href="ServletSubmissao?acao=CriaColaboracao&idBlog=${blog.idBlog}">Submeter Publicação</a>
                     </td>

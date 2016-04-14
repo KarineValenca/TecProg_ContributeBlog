@@ -38,9 +38,9 @@
 									</div>
 								</li>
 								<li class="special">
-									<a href="ServletBlog?acao=Listar" class=""><span>Listar Blogs</span></a>
+									<a href="ServletBlog?acao=CreateBlog" class=""><span>Listar Blogs</span></a>
 								</li>
-								
+
 								<c:choose>
 								    <c:when test="${user.nickname != 'admin' }">
 								      <li>
@@ -52,19 +52,19 @@
 									</li>
 								    </c:otherwise>
 								 </c:choose>
-									
-			
+
+
 								<li class="special">
 									<a href="user.jsp" class=""><span>Cadastre-se</span></a>
 								</li>
 								<li class="special">
 									<a href="login.jsp" class=""><span>Login</span></a>
 								</li>
-							
+
 							</ul>
-							
-								
-							
+
+
+
 						</nav>
 					</header>
 

@@ -39,40 +39,40 @@ public class ServletBlog extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String acao = request.getParameter("acao");
+		String action = request.getParameter("action");
 		String destino = "sucesso.jsp";
-		String mensagem = "";
-		List<Blog> lista = new ArrayList<>();
-		List<Publication> listaPublicacao = new ArrayList<>();
+		String message = "";
+		List<Blog> listBlog = new ArrayList<>();
+		List<Publication> listPublication = new ArrayList<>();
 		BlogDAO blogdao = new BlogDAO();
 		Blog blog = new Blog();
-		BlogOwner donoBlog = new BlogOwner();
+		BlogOwner ownerBlog = new BlogOwner();
 
 		try {
-			switch (acao) {
+			switch (action) {
 
 
-			case "Incluir":
+			case "CreateBlog":
 				blog.setTitle(request.getParameter("titulo"));
 				blog.setCategorie(request.getParameter("categoria"));
-				donoBlog.setId( Integer.parseInt(request.getParameter("idDonoBlog")));
+				ownerBlog.setId( Integer.parseInt(request.getParameter("idDonoBlog")));
 
 
-				blogdao.criarBlog(blog, donoBlog );
-				this.rd = request.getRequestDispatcher("ServletDonoBlog?acao=ListarDono&idOwnerBlog.jsp");
+				blogdao.criarBlog(blog, ownerBlog );
+				this.rd = request.getRequestDispatcher("ServletDonoBlog?action=ListarDono&idOwnerBlog.jsp");
 				this.rd.forward(request, response);
 
 				break;
 
-			case "Listar":
-				lista = blogdao.listarBlog();
-				request.setAttribute("listaBlog", lista);
+			case "ListBlog":
+				listBlog = blogdao.listarBlog();
+				request.setAttribute("listaBlog", listBlog);
 				this.rd = request.getRequestDispatcher("listarBlogs.jsp");
 				this.rd.forward(request, response);
 
 				break;
 
-			case "Excluir":
+			case "DeleteBlog":
 				String idBlog = request.getParameter("idBlog");
 				blogdao.excluir(idBlog);
 				this.rd = request.getRequestDispatcher("index.jsp");
@@ -80,27 +80,27 @@ public class ServletBlog extends HttpServlet {
 
 			break;
 
-			case "ListarPublicacoes":
+			case "ListPublications":
 
 				String idBlogP =  request.getParameter("idBlog") ;
-				listaPublicacao = blogdao.listarPublicacaoBlog(idBlogP);
-				request.setAttribute("listaPublicacaoBlog", listaPublicacao);
+				listPublication = blogdao.listarPublicacaoBlog(idBlogP);
+				request.setAttribute("listaPublicacaoBlog", listPublication);
 				this.rd = request.getRequestDispatcher("listPublication.jsp");
 				this.rd.forward(request, response);
 
 			break;
 
-			case "ListarPublicacoesBlog":
+			case "ListPublicationsBlog":
 
 				idBlogP =  request.getParameter("idBlog") ;
-				listaPublicacao = blogdao.listarPublicacaoBlog(idBlogP);
-				request.setAttribute("listaPublicacaoBlog", listaPublicacao);
+				listPublication = blogdao.listarPublicacaoBlog(idBlogP);
+				request.setAttribute("listaPublicacaoBlog", listPublication);
 				this.rd = request.getRequestDispatcher("listarPublicacoesBlog.jsp");
 				this.rd.forward(request, response);
 
 			break;
 
-			case "InstanciaPublicacao":
+			case "InstancePublication":
 				String idBlogI = request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlogI);
 				this.rd = request.getRequestDispatcher("painelAdministrativoBlog.jsp");

@@ -24,7 +24,7 @@
                             <h3 class="panel-title">Criar Blog</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletBlog?acao=Incluir">
+                            <form form method="post" action="ServletBlog?acao=CreateBlog">
                                 <div class="form-group">
                                     <input type="hidden" name="idOwnerBlog" id="idOwnerBlog" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
                                 </div>
@@ -37,7 +37,7 @@
                                     <input type="text" name="categoria" id="categoria" class="form-control input-sm" value="${blog.categoria}" placeholder="Esporte de corrida" required>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
-                                <a href="ServletBlog?acao=Listar" class="btn btn-primary btn-sm" role="button">Listar todos Blogs</a>
+                                <a href="ServletBlog?acao=CreateBlog" class="btn btn-primary btn-sm" role="button">Listar todos Blogs</a>
                                 <a href="index.jsp" class="btn btn-success btn-sm" role="button">Voltar</a>
                             </form>
                         </div>

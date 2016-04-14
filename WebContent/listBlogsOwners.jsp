@@ -35,7 +35,7 @@
                     <td>${blog.categorie}</td>
                     <td>${blog.creationDate}</td>
                     <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="ServletBlog?acao=InstanciaPublicacao&idBlog=${blog.idBlog}"> Ver</a>
+                    <a class='btn btn-info btn-xs' href="ServletBlog?acao=InstancePublication&idBlog=${blog.idBlog}"> Ver</a>
                    </td>
                     </tr>
                     </c:forEach>
