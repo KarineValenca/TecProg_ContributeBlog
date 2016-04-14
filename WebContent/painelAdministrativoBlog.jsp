@@ -32,7 +32,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6 col-md-6">
-                                    <a href="ServletPublication?acao=InstanciaPublicacao&idBlog=${idBlog}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span><h6><br/>Criar Publicacação</h6></a>
+                                    <a href="ServletPublication?acao=PublicationInstance&idBlog=${idBlog}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span><h6><br/>Criar Publicacação</h6></a>
                                     <a href="ServletBlog?acao=Excluir&idBlog=${idBlog}" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-remove"></span> <h6><br/>Excluir Blog</h6></a>
                                 </div>
                                 <div class="col-xs-6 col-md-6">

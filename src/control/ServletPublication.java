@@ -35,77 +35,77 @@ public class ServletPublication extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String acao = request.getParameter("acao");
-		Publication publicacao = new Publication();
-		PublicationDAO publicacaoDAO = new PublicationDAO();
+		String action = request.getParameter("action");
+		Publication publication = new Publication();
+		PublicationDAO publicationDAO = new PublicationDAO();
 		Blog blog = new Blog();
-		List<Comment> listaComentarios = new ArrayList();
-		CommentDAO comentariodao = new CommentDAO();
+		List<Comment> listComments = new ArrayList();
+		CommentDAO commentsDAO = new CommentDAO();
 
 		try{
-			switch(acao){
+			switch(action){
 
 
-			case "Incluir":
-				publicacao.setTitlePublication(request.getParameter("titlePublication"));
-				publicacao.setCategoryPublication(request.getParameter("categoryPublication"));
-				publicacao.setContentPublication(request.getParameter("contentPublication"));
+			case "CreatePublication":
+				publication.setTitlePublication(request.getParameter("titlePublication"));
+				publication.setCategoryPublication(request.getParameter("categoryPublication"));
+				publication.setContentPublication(request.getParameter("contentPublication"));
 				int idBlogInsert =( Integer.parseInt(request.getParameter("idBlog")));
 
-				publicacaoDAO.createPublication(idBlogInsert, publicacao);
+				publicationDAO.createPublication(idBlogInsert, publication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
-			case "InstanciaPublicacao":
+			case "PublicationInstance":
 				String idBlog = request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlog);
 				this.rd = request.getRequestDispatcher("createPublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "EditarPublicacao":
+			case "EditPublication":
 				String idPublication = request.getParameter("idPublication");
 
-				publicacao.setTitlePublication(request.getParameter("titlePublication"));
-				publicacao.setCategoryPublication(request.getParameter("categoryPublication"));
-				publicacao.setContentPublication(request.getParameter("contentPublication"));
+				publication.setTitlePublication(request.getParameter("titlePublication"));
+				publication.setCategoryPublication(request.getParameter("categoryPublication"));
+				publication.setContentPublication(request.getParameter("contentPublication"));
 
-				publicacaoDAO.editPublication(publicacao, idPublication);
+				publicationDAO.editPublication(publication, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 
 				break;
 
-			case "ListarPublicacao":
+			case "ListPublication":
 				idPublication = request.getParameter("idPublication");
-				publicacao = publicacaoDAO.listPublication(idPublication);
-				request.setAttribute("publicacao", publicacao);
+				publication = publicationDAO.listPublication(idPublication);
+				request.setAttribute("publicacao", publication);
 				this.rd = request.getRequestDispatcher("editPublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "ExcluirPublicacao":
+			case "DeletePublication":
 				idPublication = request.getParameter("idPublication");
-				publicacaoDAO.deletePublication(idPublication);
+				publicationDAO.deletePublication(idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "AvaliarPublicacao":
+			case "RatePublication":
 				idPublication = request.getParameter("idPublication");
 				String gradePublication = request.getParameter("gradePublication");
-				int notaAtual = publicacao.getGradePublication();
-				int notaFinal = notaAtual+Integer.parseInt(gradePublication);
-				publicacao.setGradePublication(notaFinal);
-				publicacaoDAO.ratePublication(publicacao, gradePublication, idPublication);
+				int currentRate = publication.getGradePublication();
+				int endRate = currentRate+Integer.parseInt(gradePublication);
+				publication.setGradePublication(endRate);
+				publicationDAO.ratePublication(publication, gradePublication, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "ListarComentarios":
+			case "ListComments":
 				idPublication = request.getParameter("idPublication");
-				listaComentarios = publicacaoDAO.listComents(idPublication);
-				request.setAttribute("listaComentariosPublicacao", listaComentarios);
+				listComments = publicationDAO.listComents(idPublication);
+				request.setAttribute("listaComentariosPublicacao", listComments);
 				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
 				this.rd.forward(request, response);
 				break;
