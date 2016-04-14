@@ -67,7 +67,7 @@ public class ServletBlog extends HttpServlet {
 			case "ListBlog":
 				listBlog = blogdao.listarBlog();
 				request.setAttribute("listaBlog", listBlog);
-				this.rd = request.getRequestDispatcher("listarBlogs.jsp");
+				this.rd = request.getRequestDispatcher("listBlogs.jsp");
 				this.rd.forward(request, response);
 
 				break;
@@ -95,7 +95,7 @@ public class ServletBlog extends HttpServlet {
 				idBlogP =  request.getParameter("idBlog") ;
 				listPublication = blogdao.listarPublicacaoBlog(idBlogP);
 				request.setAttribute("listaPublicacaoBlog", listPublication);
-				this.rd = request.getRequestDispatcher("listarPublicacoesBlog.jsp");
+				this.rd = request.getRequestDispatcher("listPublicationsBlog.jsp");
 				this.rd.forward(request, response);
 
 			break;
