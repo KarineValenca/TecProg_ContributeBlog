@@ -24,20 +24,20 @@
                             <h3 class="panel-title">Criar Blog</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletBlog?acao=CreateBlog">
+                            <form form method="post" action="ServletBlog?action=CreateBlog">
                                 <div class="form-group">
-                                    <input type="hidden" name="idOwnerBlog" id="idOwnerBlog" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idOwnerBlog" id="idOwnerBlog" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Título</label>
-                                    <input type="text" name="titulo" id="titulo" class="form-control input-sm" value="${blog.titulo}" placeholder="E ai corredor?!" required>
+                                    <input type="text" name="title" id="title" class="form-control input-sm" value="${blog.title}" placeholder="E ai corredor?!" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    <input type="text" name="categoria" id="categoria" class="form-control input-sm" value="${blog.categoria}" placeholder="Esporte de corrida" required>
+                                    <input type="text" name="categorie" id="categorie" class="form-control input-sm" value="${blog.categorie}" placeholder="Esporte de corrida" required>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
-                                <a href="ServletBlog?acao=CreateBlog" class="btn btn-primary btn-sm" role="button">Listar todos Blogs</a>
+                                <a href="ServletBlog?action=CreateBlog" class="btn btn-primary btn-sm" role="button">Listar todos Blogs</a>
                                 <a href="index.jsp" class="btn btn-success btn-sm" role="button">Voltar</a>
                             </form>
                         </div>
