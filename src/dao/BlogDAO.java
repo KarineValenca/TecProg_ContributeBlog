@@ -19,6 +19,8 @@ public class BlogDAO extends ConnectionFactory {
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 
 	public void createBlog(Blog blog, BlogOwner donoBlog) {
+		assert(blog != null) : "Unexpected error: the attribute blog is receiving null";
+		assert(donoBlog != null ) : "Unexpected error: the donoBlog is receiving null";
 		try {
 			Connection connetion = getConnection();
 			PreparedStatement pstm = connetion
@@ -39,6 +41,7 @@ public class BlogDAO extends ConnectionFactory {
 	}
 
 	public List<Blog> listBlog() {
+		assert(listBlog!= null) : "Unexpected error: the attribute listBlog is receiving null";
 		List<Blog> listBlog = new ArrayList<>();
 		try {
 			Connection connetion = getConnection();
@@ -62,6 +65,8 @@ public class BlogDAO extends ConnectionFactory {
 
 
 	public void deleteBlog(String idBlog) {
+		// FIX-ME: THERE IS AN ERROR, THE IDBLOG ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(idBlog!= null) : "Unexpected error: the attribute idBlog is receiving null";
 		try {
 			Connection connetion = getConnection();
 			PreparedStatement pstm = connetion
@@ -76,6 +81,8 @@ public class BlogDAO extends ConnectionFactory {
 	}
 
 	public List<Publication> listPublicationBlog(String idBlog) {
+		// FIX-ME: THERE IS AN ERROR, THE IDBLOG ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(idBlog!= null) : "Unexpected error: the attribute idBlog is receiving null";
 		List<Publication> listPublicationBlog = new ArrayList<>();
 		try {
 			Connection connetion = getConnection();

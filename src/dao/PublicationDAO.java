@@ -74,6 +74,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	public Publication listPublication (String idPublication) {
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
 		Publication publication = new Publication();
 		publication.setTitlePublication("");
 		try {
@@ -110,6 +111,9 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public void ratePublication(Publication publication, String gradePublication, String idPublication){
+		assert(publication!= null) : "Unexpected error: the attribute publication is receiving null";
+		assert(gradePublication!= null) : "Unexpected error: the attribute gradePublication is receiving null";
+		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		// FIX-ME: THERE IS AN ERROR, THE GRADEPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		try{
@@ -128,6 +132,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	public List<Comment> listComents(String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(listBlog!= null) : "Unexpected error: the attribute idPublication is receiving null";
 		List<Comment> comments = new  ArrayList<>();
 
 		try{
@@ -160,6 +165,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public String findUser(int idUser){
+		assert(listBlog >= 0) : "Unexpected error: the attribute idUser is less than 0";
 		String nickname = null;
 		try{
 			Connection connection = getConnection();
