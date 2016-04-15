@@ -19,18 +19,20 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	Publication publication = new Publication();
 	Blog blog = new Blog();
-
+        unsigned int blog
 
 	public void createPublication( int blog, Publication publication){
+		assert(blog >= 0) : "Unexpected error: the attribute blog less than 0";
+		assert(publication != null ) : "Unexpected error: the publication is receiving null";
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.
 					prepareStatement("INSERT INTO Publicacao (tituloPublicacao,"
-							         + "categoriaPublicacao, "
-							         + "conteudoPublicacao,"
-							         + "idBlog,"
-							         + "notaPublicacao)"
-							         + "VALUES (?,?,?,?,0)");
+							      + "categoriaPublicacao, "
+							      + "conteudoPublicacao,"
+							      + "idBlog,"
+							      + "notaPublicacao)"
+							      + "VALUES (?,?,?,?,0)");
 
 			pstm.setString(1, publication.getTitlePublication());
 			pstm.setString(2, publication.getCategoryPublication());
@@ -47,23 +49,23 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public void editPublication(Publication publication, String idPublication){
+		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(idPublication != null) : "Unexpected error: the attribute idPublication is receiving null";
+		assert(publication != null ) : "Unexpected error: the publication is receiving null";
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("update Publicacao set tituloPublicacao=?, "
-					                                          + "categoriaPublicacao=?,"
-					                                          + "conteudoPublicacao=? "
-					                                          + "where idPublicacao=?");
+					                                                                      + "categoriaPublicacao=?,"
+					                                                                      + "conteudoPublicacao=? "
+					                                                                      + "where idPublicacao=?");
 
 			pstm.setString(1, publication.getTitlePublication());
 			pstm.setString(2, publication.getCategoryPublication());
 			pstm.setString(3, publication.getContentPublication());
-
 			pstm.setString(4, idPublication);
-
 			pstm.execute();
 			pstm.close();
 			connection.close();
-
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -71,6 +73,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public Publication listPublication (String idPublication) {
+		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		Publication publication = new Publication();
 		publication.setTitlePublication("");
 		try {
@@ -92,6 +95,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public void deletePublication(String idPublication){
+		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
+		assert(publication != null ) : "Unexpected error: the publication is receiving null";
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("Delete from Publicacao where idPublicacao ="
@@ -105,6 +110,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public void ratePublication(Publication publication, String gradePublication, String idPublication){
+		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
+		// FIX-ME: THERE IS AN ERROR, THE GRADEPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("Update Publicacao set notaPublicacao = notaPublicacao + ? where idPublicacao = ?");
@@ -120,8 +127,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public List<Comment> listComents(String idPublication){
+		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		List<Comment> comments = new  ArrayList<>();
-
 
 		try{
 			Connection connection = getConnection();
