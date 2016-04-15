@@ -63,10 +63,12 @@ public class ServletBlog extends HttpServlet {
 				break;
 
 			case "ListBlog":
+			System.out.println("EEEEEEEEEEEEEEEEEEEE");
 				listBlog = blogdao.listBlog();
-				request.setAttribute("listaBlog", listBlog);
+				request.setAttribute("listBlog", listBlog);
 				this.rd = request.getRequestDispatcher("listBlogs.jsp");
 				this.rd.forward(request, response);
+
 
 				break;
 

@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tr>
-                        <c:forEach var="blog" items="${listaBlog}">
+                        <c:forEach var="blog" items="${listBlog}">
                     <tr>
                     <td>${blog.titulo}</td>
                     <td>${blog.categoria}</td>

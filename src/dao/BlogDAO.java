@@ -60,6 +60,8 @@ public class BlogDAO extends ConnectionFactory {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(listBlog);
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
 		return listBlog;
 	}
 

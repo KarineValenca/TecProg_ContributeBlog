@@ -38,7 +38,7 @@
 									</div>
 								</li>
 								<li class="special">
-									<a href="ServletBlog?action=CreateBlog" class=""><span>Listar Blogs</span></a>
+									<a href="ServletBlog?action=ListBlog" class=""><span>Listar Blogs</span></a>
 								</li>
 
 								<c:choose>
