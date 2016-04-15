@@ -41,8 +41,8 @@ public class BlogDAO extends ConnectionFactory {
 	}
 
 	public List<Blog> listBlog() {
-		assert(listBlog!= null) : "Unexpected error: the attribute listBlog is receiving null";
 		List<Blog> listBlog = new ArrayList<>();
+		assert(listBlog != null) : "Unexpected error: the attribute listBlog is receiving null";
 		try {
 			Connection connetion = getConnection();
 			Statement stm = connetion.createStatement();

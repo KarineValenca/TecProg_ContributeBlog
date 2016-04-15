@@ -19,7 +19,6 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	Publication publication = new Publication();
 	Blog blog = new Blog();
-        unsigned int blog
 
 	public void createPublication( int blog, Publication publication){
 		assert(blog >= 0) : "Unexpected error: the attribute blog less than 0";
@@ -132,7 +131,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	public List<Comment> listComents(String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
-		assert(listBlog!= null) : "Unexpected error: the attribute idPublication is receiving null";
+		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
 		List<Comment> comments = new  ArrayList<>();
 
 		try{
@@ -165,7 +164,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	}
 
 	public String findUser(int idUser){
-		assert(listBlog >= 0) : "Unexpected error: the attribute idUser is less than 0";
+		assert(idUser >= 0) : "Unexpected error: the attribute idUser is less than 0";
 		String nickname = null;
 		try{
 			Connection connection = getConnection();

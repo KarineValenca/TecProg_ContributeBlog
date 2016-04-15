@@ -48,8 +48,8 @@
                                                 </h5>
                                             </div>
                                             <div class="action">
-                                                <a href="ServletPublication?acao=ListPublication&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button"> Editar Publicacao</a>
-                                                <a href="ServletPublication?acao=DeletePublication&idPublication=${publicacao.idPublication}" class="btn btn-danger btn-xs" role="button"> Excluir Publicacao</a>
+                                                <a href="ServletPublication?action=ListPublication&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button"> Editar Publicacao</a>
+                                                <a href="ServletPublication?action=DeletePublication&idPublication=${publicacao.idPublication}" class="btn btn-danger btn-xs" role="button"> Excluir Publicacao</a>
                                                 <a href="ServletComentario?acao=ListarComentarioDelete&idPostagem=${publicacao.idPublication}" class="btn btn-primary btn-xs" role="button"> Ver  Comentários</a>
                                             </div>
                                         </div>

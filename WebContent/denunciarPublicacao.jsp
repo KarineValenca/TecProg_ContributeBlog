@@ -40,7 +40,7 @@
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
-                                <a href="ServletBlog?acao=ListPublicationsBlog&idBlog=9" class="btn btn-success btn-sm" role="button">Voltar</a>
+                                <a href="ServletBlog?action=ListPublicationsBlog&idBlog=9" class="btn btn-success btn-sm" role="button">Voltar</a>
                             </form>
                         </div>
                     </div>
