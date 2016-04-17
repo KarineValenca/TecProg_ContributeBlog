@@ -27,21 +27,21 @@
                             <h3 class="panel-title">Nova Publicação</h3>
                         </div>
                         <div class="panel-body">
-                            <form form method="post" action="ServletSubmissao?acao=SubmeterPostagem">
+                            <form form method="post" action="ServletSubmission?action=SubmitPost">
                                 <div class="form-group">
                                     <input type="hidden" name="idBlog" id="idBlog" class="form-control input-sm" value="${idBlog}" placeholder="ID" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Título</label>
-                                    <input type="text" name="titlePublication" id="titlePublication" class="form-control input-sm" value="${publicacao.titlePublication}" placeholder="Combate a Lesões" required>
+                                    <input type="text" name="titlePublication" id="titlePublication" class="form-control input-sm" value="${publication.titlePublication}" placeholder="Combate a Lesões" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    <input type="text" name="categoryPublication" id="categoryPublication" class="form-control input-sm" value="${publicacao.categoryPublication}" placeholder="Categoria" required>
+                                    <input type="text" name="categoryPublication" id="categoryPublication" class="form-control input-sm" value="${publication.categoryPublication}" placeholder="Categoria" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Conteúdo</label>
-                                    <textarea class="form-control" maxlength="150" rows="3" name="contentPublication" id="categoria" value="${publicacao.contentPublication}" placeholder="Escreva o conteúdo aqui" required></textarea>
+                                    <textarea class="form-control" maxlength="150" rows="3" name="contentPublication" id="categoria" value="${publication.contentPublication}" placeholder="Escreva o conteúdo aqui" required></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
