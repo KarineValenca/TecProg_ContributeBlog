@@ -27,16 +27,16 @@
                             <h3 class="panel-title">Nova Denuncia</h3>
                         </div>
                         <div class="panel-body">
-                            <form method="post" action="ServletDenuncia?acao=CriarDenunciaPublicacao">
+                            <form method="post" action="ServletDenounce?action=CreateDenouncePublication">
 
                                 <div class="form-group">
-                                    <input type="hidden" name="idUser" id="idUser" class="form-control input-sm" value="${utilizador.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idUser" id="idUser" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                     <input type="hidden" name="idPublication" id="idPublication" value="${idPublication}">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Conteúdo</label>
-                               <textarea class="form-control" maxlength="150" rows="3" name="conteudoDenuncia" id="conteudo" value="${denuncia.conteudoDenuncia}" placeholder="Escreva a denuncia aqui" required></textarea>
+                               <textarea class="form-control" maxlength="150" rows="3" name="conteudoDenuncia" id="conteudo" value="${denounce.contentDenounce}" placeholder="Escreva a denuncia aqui" required></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
