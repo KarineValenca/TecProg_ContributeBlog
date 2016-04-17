@@ -68,7 +68,7 @@ public class ServletDenounce extends HttpServlet{
 			case "InstanceBlog":
 				String idBlogD= request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlogD);
-				this.rd = request.getRequestDispatcher("denunciarBlog.jsp");
+				this.rd = request.getRequestDispatcher("denounceBlog.jsp");
 				this.rd.forward(request, response);
 				break;
 
@@ -87,7 +87,7 @@ public class ServletDenounce extends HttpServlet{
 			case "InstancePublication":
 				String idPublicationD= request.getParameter("idPublication");
 				request.setAttribute("idPublication", idPublicationD);
-				this.rd = request.getRequestDispatcher("denunciarPublicacao.jsp");
+				this.rd = request.getRequestDispatcher("denouncePublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
@@ -99,11 +99,11 @@ public class ServletDenounce extends HttpServlet{
 				listDenouncePublication = denouncePublicationDAO.listDenounce();
 				request.setAttribute("listDenouncePublication", listDenouncePublication);
 
-				this.rd = request.getRequestDispatcher("listarDenuncia.jsp");
+				this.rd = request.getRequestDispatcher("listDenounce.jsp");
 				this.rd.forward(request, response);
 
 			case "DeleteDenounceBlog":
-				String idDenuncia = request.getParameter("idDenounce");
+				String idDenounce = request.getParameter("idDenounce");
 				denounceBlogDAO.deleteDenounce(idDenounce);
 
 
@@ -117,8 +117,8 @@ public class ServletDenounce extends HttpServlet{
 				idDenounce = request.getParameter("idDenounce");
 
 
-				denouncePublicationDAO.deleteDenounce(idDenuncia);
-				this.rd = request.getRequestDispatcher("ServletDenuncia?acao=ListDenounce");
+				denouncePublicationDAO.deleteDenounce(idDenounce);
+				this.rd = request.getRequestDispatcher("ServletDenounce?action=ListDenounce");
 				this.rd.forward(request, response);
 
 			break;
