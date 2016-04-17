@@ -94,7 +94,7 @@ public class ServletSubmission extends HttpServlet {
 				pubCollaborative.setTitlePublication(request.getParameter("titlePublication"));
 				pubCollaborative.setCategoryPublication(request.getParameter(request.getParameter("categoryPublication")));
 				pubCollaborative.setContentPublication(request.getParameter(request.getParameter("contentPublication")));
-				subDAO.AprovarPublicacao(idBlog, pubCollaborative);
+				subDAO.ApprovePublication(idBlog, pubCollaborative);
 				System.out.println("aprovar");
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
