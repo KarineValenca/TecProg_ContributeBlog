@@ -13,9 +13,10 @@ public class BlogOwnerDAO extends ConnectionFactory{
 	public BlogOwnerDAO() {
 		
 	}
-	
-		
+			
 	public List<Blog> listBlogOwner(String blogOwner) {
+		assert (blogOwner != null) : "The blogOwner parameter is null";
+		
 		List<Blog> listBlog = new ArrayList<>();
 		try {
 			Connection connection = getConnection();
@@ -29,7 +30,6 @@ public class BlogOwnerDAO extends ConnectionFactory{
 				blog.setCategorie(rs.getString("categoria"));
 				blog.setCreationDate(rs.getDate("dataCriacao"));
 				listBlog.add(blog);
-				
 			}
 			stm.close();
 			connection.close();
