@@ -23,9 +23,11 @@ public class CommentDAO extends ConnectionFactory{
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 	
 	public void createComment(Comment comment, User user, int idPublication){
+		assert (comment != null) : "The comment paramater is null";
+		assert (user != null) : "The user paramater is null";
+		assert (idPublication >= 0) : "The idPublication paramater is equal or less than zero";
+		
 		try{
-			
-			
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("INSERT INTO Comment (commentContent, "
 					+ "commentCreateDate, idUser, idPublication) VALUES (?,?,?,?);");
@@ -44,6 +46,8 @@ public class CommentDAO extends ConnectionFactory{
 	}
 	
 	public void deleteComment(String idComment){
+		assert (idComment != null) : "The idComment paramater is null";
+		
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("Delete from Comentario where idComment =" +idComment);
@@ -56,6 +60,8 @@ public class CommentDAO extends ConnectionFactory{
 	}
 	
 	public List<Comment> listBlogComment(String idPublication) {
+		assert (idPublication != null) : "The idPublication paramater is null";
+		
 		List<Comment> listComment = new ArrayList<Comment>();
 		try {
 			Connection connection = getConnection();
@@ -80,6 +86,8 @@ public class CommentDAO extends ConnectionFactory{
 		return listComment;
 	}
 	public List<Comment> listBlogCommentDelete(String idBlog) {
+		assert (idBlog != null) : "The idBlog paramater is null";
+		
 		List<Comment> listComment = new ArrayList<Comment>();
 		try {
 			Connection connection = getConnection();
@@ -104,13 +112,4 @@ public class CommentDAO extends ConnectionFactory{
 		return listComment;
 	}
 	
-	
-	
-	
-	
-	
-	
-		
-	
-		
 }
