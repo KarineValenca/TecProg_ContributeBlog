@@ -15,8 +15,6 @@ import dao.BlogOwnerDAO;
 import model.Blog;
 import model.BlogOwner;
 
-
-
 @WebServlet("/ServletBlogOwner")
 public class ServletBlogOwner extends HttpServlet {
 
@@ -29,15 +27,18 @@ public class ServletBlogOwner extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
+		
 		doPost(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
 	
 		List<Blog> listBlog = new ArrayList<>();
-		
-		
 		
 		String action = request.getParameter("action");
 		BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
@@ -52,16 +53,10 @@ public class ServletBlogOwner extends HttpServlet {
 			this.rd.forward(request, response);
 		
 		break;
-	
 		
-
-		default:
+			default:
 			break;
 		}
-		
-		
-		
-		
 		
 	}
 
