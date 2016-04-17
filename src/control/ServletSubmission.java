@@ -15,23 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 import model.Blog;
 import model.Comment;
 import model.Publication;
-import model.PublicacaoColaborativa;
-import dao.ColaboracaoDAO;
+import model.CollaborativePublication;
+import dao.CollaborationDAO;
 import dao.CommentDAO;
 
 /**
  * Servlet implementation class ServletSubmissao
  */
 @WebServlet("/ServletSubmissao")
-public class ServletSubmissao extends HttpServlet {
+public class ServletSubmission extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
 
-		ColaboracaoDAO subDAO = new ColaboracaoDAO();
-		PublicacaoColaborativa pubColaborativa = new PublicacaoColaborativa();
+		CollaborationDAO subDAO = new CollaborationDAO();
+		CollaborativePublication pubCollaborative = new CollaborativePublication();
 		private RequestDispatcher rd;
 		int idBlog = 0;
 
@@ -46,65 +46,65 @@ public class ServletSubmissao extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Publication> lista= new ArrayList<>();
-		String acao = request.getParameter("acao");
-		System.out.println(acao);
+		List<Publication> list= new ArrayList<>();
+		String action = request.getParameter("action");
+		System.out.println(action);
 
 
 		try {
-			switch (acao) {
+			switch (action) {
 
-			case "SubmeterPostagem":
+			case "SubmissionPost":
 				System.out.println("Entrou");
 				 idBlog = Integer.parseInt(request.getParameter("idBlog"));
 				System.out.println(request.getParameter("idBlog"));
 				System.out.println("Entrou1");
 				String idUser = request.getParameter("idUser");
-				pubColaborativa.setCategoryPublication(request.getParameter("categoryPublication"));
+				pubCollaborative.setCategoryPublication(request.getParameter("categoryPublication"));
 				System.out.println(request.getParameter("categoryPublication"));
-				pubColaborativa.setContentPublication(request.getParameter("contentPublication"));
+				pubCollaborative.setContentPublication(request.getParameter("contentPublication"));
 				System.out.println(request.getParameter("contentPublication"));
-				pubColaborativa.setTitlePublication(request.getParameter("titlePublication"));
+				pubCollaborative.setTitlePublication(request.getParameter("titlePublication"));
 				System.out.println(request.getParameter("titlePublication"));
 				subDAO.createPublication(idBlog, pubColaborativa);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "CriaColaboracao":
+			case "CreateCollaboration":
 				System.out.println("Criar");
 				System.out.println(request.getParameter("idBlog"));
 				request.setAttribute("idBlog", request.getParameter("idBlog"));
-				this.rd = request.getRequestDispatcher("PublicacaoColaborativa.jsp");
+				this.rd = request.getRequestDispatcher("collaborativePublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "AprovarPublicacoes":
+			case "ApprovePublication":
 				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
-				lista = subDAO.listarColaboracaAprovar(idBlog);
-				System.out.println("Lista Colaborativa "+ lista);
-				request.setAttribute("listaPublicacaoBlog",lista);
-				this.rd = request.getRequestDispatcher("aprovarColaboracao.jsp");
+				list = subDAO.listCollaborationApprove(idBlog);
+				System.out.println("Lista Colaborativa "+ list);
+				request.setAttribute("listPublicationBlog",list);
+				this.rd = request.getRequestDispatcher("approveCollaboration.jsp");
 				this.rd.forward(request, response);
 				break;
 
-			case "AceitarPublicacao":
+			case "AcceptPublication":
 				idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
-				pubColaborativa.setIdPublication( Integer.parseInt(request.getParameter("idPublication")));
-				pubColaborativa.setTitlePublication(request.getParameter("titlePublication"));
-				pubColaborativa.setCategoryPublication(request.getParameter(request.getParameter("categoryPublication")));
-				pubColaborativa.setContentPublication(request.getParameter(request.getParameter("contentPublication")));
-				subDAO.AprovarPublicacao(idBlog, pubColaborativa);
+				pubCollaborative.setIdPublication( Integer.parseInt(request.getParameter("idPublication")));
+				pubCollaborative.setTitlePublication(request.getParameter("titlePublication"));
+				pubCollaborative.setCategoryPublication(request.getParameter(request.getParameter("categoryPublication")));
+				pubCollaborative.setContentPublication(request.getParameter(request.getParameter("contentPublication")));
+				subDAO.AprovarPublicacao(idBlog, pubCollaborative);
 				System.out.println("aprovar");
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
-			case "ListaComentario":
-				CommentDAO comentarioDAO = new CommentDAO();
-				String idPostagem = request.getParameter("idPostagem");
-				List<Comment> comentarios = comentarioDAO.listBlogComment(idPostagem);
-				request.setAttribute("comentarios", comentarios);
-				this.rd = request.getRequestDispatcher("deletarComentario.jsp");
+			case "ListComment":
+				CommentDAO commentDAO = new CommentDAO();
+				String idPost = request.getParameter("idPost");
+				List<Comment> comment = commentDAO.listBlogComment(idPost);
+				request.setAttribute("comentarios", comment);
+				this.rd = request.getRequestDispatcher("deleteComment.jsp");
 				this.rd.forward(request, response);
 
 				break;
