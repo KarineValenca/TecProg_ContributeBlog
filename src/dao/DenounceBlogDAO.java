@@ -47,7 +47,7 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		}
 	}
 
-	public Denounce pesquisaBlogDenuncia(String idDenuncia) {
+	public Denounce searchBlogDenounce(String idDenounce) {
 
 		Denounce denounceBlog = new Denounce();
 		try {
