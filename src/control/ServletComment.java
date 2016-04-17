@@ -30,17 +30,19 @@ public class ServletComment extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
+		
 		doPost(request, response);
 	}
 	
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-			
-		
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
 		
 		String action = request.getParameter("action");
-
 		
 		Comment comment = new Comment();
 		CommentDAO commentDAO = new CommentDAO();
