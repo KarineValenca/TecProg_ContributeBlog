@@ -1,18 +1,18 @@
 package model;
 
-public class PublicacaoColaborativa extends Publication {
+public class CollaborativePublication extends Publication {
 
 
 	boolean statusPublication;
 	User utilizador;
 
 
-	public PublicacaoColaborativa() {
+	public CollaborativePublication() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public PublicacaoColaborativa(int idPublication, String titlePublication,
+	public CollaborativePublication(int idPublication, String titlePublication,
 			String categoryPublication, String contentPublication, Blog idBlog,
 			int gradePublication) {
 		super(idPublication, titlePublication, categoryPublication, contentPublication,
