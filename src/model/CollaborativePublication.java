@@ -4,7 +4,7 @@ public class CollaborativePublication extends Publication {
 
 
 	boolean statusPublication;
-	User utilizador;
+	User user;
 
 
 	public CollaborativePublication() {
