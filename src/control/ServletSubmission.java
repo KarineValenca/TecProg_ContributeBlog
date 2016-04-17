@@ -22,7 +22,7 @@ import dao.CommentDAO;
 /**
  * Servlet implementation class ServletSubmissao
  */
-@WebServlet("/ServletSubmissao")
+@WebServlet("/ServletSubmission")
 public class ServletSubmission extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -66,7 +66,7 @@ public class ServletSubmission extends HttpServlet {
 				System.out.println(request.getParameter("contentPublication"));
 				pubCollaborative.setTitlePublication(request.getParameter("titlePublication"));
 				System.out.println(request.getParameter("titlePublication"));
-				subDAO.createPublication(idBlog, pubColaborativa);
+				subDAO.createPublication(idBlog, pubCollaborative);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
