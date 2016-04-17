@@ -29,7 +29,7 @@
                         <span style="float:right;">
                         <input name='Voltar' type='button' class="btn btn- btn-sm" onclick='javascript:history.back();self.location.reload();' value='Voltar' ></span><br/>
                     </div>
-                    <c:forEach var="publicacao" items="${listaPublicacaoBlog}">
+                    <c:forEach var="publication" items="${listPublicationBlog}">
                         <div class="panel-body">
                             <ul class="list-group">
                                 <li class="list-group-item">
@@ -37,18 +37,18 @@
                                         <div class="col-xs-10 col-md-11">
                                             <div>
                                                 <a href="#">
-                                                    <h4><label>Título: ${publicacao.titlePublication}</label></h4>
+                                                    <h4><label>Título: ${publication.titlePublication}</label></h4>
                                                 </a>
                                             </div>
                                             <div class="comment-text">
                                                 <h5>
-                                                    <label>ID:</label> ${publicacao.idPublication}<br/>
-                                                    <label>Categoria:</label> ${publicacao.categoryPublication}<br/>
-                                                    <label>Descrição:</label><br/>${publicacao.contentPublication}<br/>
+                                                    <label>ID:</label> ${publication.idPublication}<br/>
+                                                    <label>Categoria:</label> ${publication.categoryPublication}<br/>
+                                                    <label>Descrição:</label><br/>${publication.contentPublication}<br/>
                                                 </h5>
                                             </div>
                                             <div class="action">
-                                                <a href="ServletSubmissao?acao=AceitarPublicacao&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button">Aprovar Publicação</a>
+                                                <a href="ServletSubmission?action=AcceptPublication&idPublication=${publication.idPublication}" class="btn btn-success btn-xs" role="button">Aprovar Publicação</a>
                                             </div>
                                         </div>
                                     </div>
