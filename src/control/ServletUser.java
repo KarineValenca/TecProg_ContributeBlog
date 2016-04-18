@@ -1,3 +1,10 @@
+/*
+ * Class name: ServletUser.java
+ * Purpose of class: This class is used to the methods list, include, delete,
+ * edit and show related with user.
+ * Copyright: This software follows GPL license.
+ */
+
 package control;
 
 import java.io.IOException;
@@ -36,8 +43,6 @@ public class ServletUser extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 	
 		String action = request.getParameter("action");
-		//String destino = "sucesso.jsp";
-		String message = "";
 		List<User> userList = new ArrayList<>();
 		UserDAO userDAO = new UserDAO();
 		User user = new User();
@@ -47,14 +52,13 @@ public class ServletUser extends HttpServlet {
 		
 		try {
 			switch (action) {
-				
 			case "ListUser":
 				userList = userDAO.listUser();
 				request.setAttribute("listUsers", userList);
+				
 				this.rd = request.getRequestDispatcher("usersList.jsp");
 				this.rd.forward(request, response);
 				break;
-				
 			case "CreateUser":
 				user.setName(request.getParameter("name"));
 				user.setLastName(request.getParameter("lastName"));
@@ -63,25 +67,24 @@ public class ServletUser extends HttpServlet {
 				user.setPassword(request.getParameter("password"));
 				user.setNickname(request.getParameter("nickname"));
 				
-				
 				Date date = (Date) formatter.parse(birthDate);
 				user.setBirthDate(date);				
 			
-				int occurence = 0;
-
+				int validadeUser = 0;
+				String nickname = user.getNickname();
+				String email = user.getEmail();
+				validadeUser = userDAO.validateUser(nickname, email, validadeUser);
 				
-				occurence = userDAO.validateUser(user.getNickname(), user.getEmail(), occurence);
-				
-				if(occurence == 0){
+				if(validadeUser == 0) {
 					userDAO.createUser(user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
-				}else{
-					message = "Email ou Apelido já utilizado";
+				}
+				else{
 					this.rd = request.getRequestDispatcher("user.jsp");
 					this.rd.forward(request, response);
 				}
-				
+
 				break;
 			case "DeleteUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
@@ -110,16 +113,17 @@ public class ServletUser extends HttpServlet {
 				this.rd.forward(request, response);
 				
 				break;
-			
 			case "ListProfile":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
 				user = userDAO.showUserProfile(id);
+				
 				request.setAttribute("user", user);
 				this.rd = request.getRequestDispatcher("editUser.jsp");
 				this.rd.forward(request, response);
-				
+				break;
 			case "SubmeterPostagem":
+				// FIX-ME: THIS METHOD IS INCOMPLETE.
 				/*
 				 * Pegar o Id do Blog e o id do usuário 
 				 * e cria uma solicitação de postagem que vai ser aprovada pelo Dono do blog.
@@ -131,22 +135,14 @@ public class ServletUser extends HttpServlet {
 				 * 
 				 * 
 				 * */	
-				
-				
-				
+				break;
 			default:
 				break;
-				
 			}
-			
-			
-			
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 	}			
-		
-	
 	
 }
