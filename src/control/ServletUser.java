@@ -78,7 +78,7 @@ public class ServletUser extends HttpServlet {
 					this.rd.forward(request, response);
 				}else{
 					message = "Email ou Apelido já utilizado";
-					this.rd = request.getRequestDispatcher("utilizador.jsp");
+					this.rd = request.getRequestDispatcher("user.jsp");
 					this.rd.forward(request, response);
 				}
 				

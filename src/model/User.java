@@ -1,3 +1,9 @@
+/*
+ * Class name: User.java
+ * Purpose of class: This class is used to store all attributes from a user.
+ * Copyright: This software follows GPL license.
+ */
+
 package model;
 import java.util.Date;
 
@@ -12,10 +18,8 @@ public class User {
 	private String nickname;
 	private Date birthDate;
 	
-	
 	public User() {
 	}
-
 
 	public User(int id, String name, String lastName, String email,
 			String gender, String password, String nickname, Date birthDate) {
@@ -29,8 +33,6 @@ public class User {
 		this.nickname = nickname;
 		this.birthDate = birthDate;
 	}
-
-
 
 	public int getId() {
 		return id;
