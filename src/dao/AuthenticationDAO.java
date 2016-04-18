@@ -15,17 +15,19 @@ public class AuthenticationDAO extends ConnectionFactory{
 	
 	public User authenticateUser(String email, String password){
 		assert(email != null ) : "Unexpected error: the email is receiving null";
-		assert(password != null) : "Unexpected error: the password is receiving null";
-		
+		assert(password != null) : "Unexpected error: the password is receiving"
+									+ " null";
 		this.user.setEmail("");
 		this.user.setPassword("");
 		
 		try{
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("select * from Utilizador where email='"+ email+"' and senha='"+password+"'" );
-			while(rs.next()){
+			String sql = "select * from Utilizador where email='"+ email+"' "
+							+ "and senha='"+password+"'";
+			ResultSet rs = stm.executeQuery(sql);
 			
+			while(rs.next()){
 				this.user.setId(rs.getInt("id"));
 				this.user.setName(rs.getString("nome"));
 				this.user.setLastName(rs.getString("sobrenome"));
@@ -35,12 +37,14 @@ public class AuthenticationDAO extends ConnectionFactory{
 				this.user.setPassword(rs.getString("senha"));
 				this.user.setBirthDate(rs.getDate("dataNascimento"));
 			}
+			
 			rs.close();
 			connection.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-			
 		}
+		catch(Exception e) {
+			e.printStackTrace();	
+		}
+		
 		return this.user;
 	}
 }
