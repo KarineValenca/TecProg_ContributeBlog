@@ -19,6 +19,8 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 
 
 	public void createPublication(int idBlog, Publication publication){
+		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
+		assert(publication != null ) : "Unexpected error: the publication object is receiving null";
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.
@@ -45,6 +47,7 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 
 
 	public List<Publication> listCollaborationApprove(int idBlog){
+		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
 		List<Publication>  pubCollaborative= new ArrayList<>();
 		System.out.println("Listar Colaboração");
 		System.out.println(idBlog + "fdffff");
@@ -73,6 +76,8 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	}
 
 	public void ApprovePublication(int idPublication, CollaborativePublication publicationCollaborative){
+		assert(idPublication > 0 ) : "Unexpected error: the publication identifier less than 0";
+		assert(publicationCollaborative != null ) : "Unexpected error: the publicationCollaborative object is receiving null";
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("update Publicacao set tituloPublicacao=?,"
@@ -96,6 +101,7 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 
 
 	public Publication listPublication(String idPublication) {
+		assert(idPublication != null) : "Unexpected error: the attribute idPublication is receiving null";
 		Publication publication = new Publication();
 		publication.setTitlePublication("");
 		try {
