@@ -1,3 +1,9 @@
+/*
+ * Class name: Publication.java
+ * Purpose of class: This class is used to store all attributes from publication.
+ * Copyright: This software follows GPL license.
+ */
+
 package model;
 
 public class Publication {
@@ -8,21 +14,20 @@ public class Publication {
 	private Blog idBlog;
 	private int gradePublication;
 	private boolean statusPublication; //VERIFY THE NEED AND USE OF THIS ATTRIBUTE
-	private User idUser; //VERIFY THE NEED AND USE OF THIS ATTRIBUTE
 
 	public Publication(){
 
 	}
 
 	public Publication(int idPublication, String titlePublication, String categoryPublication,
-			String contentPublication, Blog idBlog, int gradePublication){
+			   String contentPublication, Blog idBlog, int gradePublication, boolean  statusPublication){
 		this.idPublication = idPublication;
 		this.titlePublication = titlePublication;
 		this.categoryPublication = categoryPublication;
 		this.contentPublication = contentPublication;
 		this.idBlog = idBlog;
 		this.gradePublication = gradePublication;
-
+		this. statusPublication =  statusPublication;
 	}
 
 	public int getIdPublication() {
@@ -58,4 +63,11 @@ public class Publication {
 		this.gradePublication = gradePublication;
 	}
 
+	public int getStatusPublication() {
+		return statusPublication;
+	}
+
+	public void setStatusPublication(int statusPublication) {
+		this.statusPublication = statusPublication;
+	}
 }
