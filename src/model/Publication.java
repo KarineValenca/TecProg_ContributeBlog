@@ -36,18 +36,21 @@ public class Publication {
 	public void setIdPublication(int idPublication) {
 		this.idPublication = idPublication;
 	}
+
 	public String getTitlePublication() {
 		return titlePublication;
 	}
 	public void setTitlePublication(String titlePublication) {
 		this.titlePublication = titlePublication;
 	}
+
 	public String getCategoryPublication() {
 		return categoryPublication;
 	}
 	public void setCategoryPublication(String categoryPublication) {
 		this.categoryPublication = categoryPublication;
 	}
+
 	public String getContentPublication() {
 		return contentPublication;
 	}
@@ -58,7 +61,6 @@ public class Publication {
 	public int getGradePublication() {
 		return gradePublication;
 	}
-
 	public void setGradePublication(int gradePublication) {
 		this.gradePublication = gradePublication;
 	}
@@ -66,7 +68,6 @@ public class Publication {
 	public int getStatusPublication() {
 		return statusPublication;
 	}
-
 	public void setStatusPublication(int statusPublication) {
 		this.statusPublication = statusPublication;
 	}
