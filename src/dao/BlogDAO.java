@@ -1,3 +1,9 @@
+/*
+ * Class name: PublicationGeneral.java
+ * Purpose of class: This file corresponds to persistence class Blog.
+ * Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import java.sql.Connection;
@@ -23,11 +29,12 @@ public class BlogDAO extends ConnectionFactory {
 		assert(donoBlog != null ) : "Unexpected error: the donoBlog is receiving null";
 		try {
 			Connection connetion = getConnection();
-			PreparedStatement pstm = connetion
-					.prepareStatement("INSERT INTO Blog (titulo"
-						                   +",categoria"
-						                   +", dataCriacao"
-						                   +", idUtilizador) VALUES(?,?,?,?);");
+			PreparedStatement pstm = connetion.prepareStatement("INSERT INTO Blog"
+										   +" (titulo"
+						                   			   +",categoria"
+						                		                +", dataCriacao"
+						                 		                +", idUtilizador)"
+						                 		                +" VALUES(?,?,?,?);");
 			pstm.setString(1, blog.getTitle());
 			pstm.setString(2, blog.getCategorie());
 			pstm.setDate(3, sqlDate);
@@ -35,7 +42,8 @@ public class BlogDAO extends ConnectionFactory {
 			pstm.execute();
 			pstm.close();
 			connetion.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,11 +65,10 @@ public class BlogDAO extends ConnectionFactory {
 			}
 			stm.close();
 			connetion.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(listBlog);
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
 		return listBlog;
 	}
 
@@ -77,7 +84,8 @@ public class BlogDAO extends ConnectionFactory {
 			pstm.execute();
 			pstm.close();
 			connetion.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -104,7 +112,8 @@ public class BlogDAO extends ConnectionFactory {
 			}
 			stm.close();
 			connetion.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listPublicationBlog;

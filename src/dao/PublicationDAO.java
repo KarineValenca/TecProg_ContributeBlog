@@ -3,6 +3,7 @@
  * Purpose of class: This file corresponds to persistence class Publication.
  * Copyright: This software follows GPL license.
  */
+
 package dao;
 
 import java.sql.Connection;
@@ -43,7 +44,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.close();
 			connection.close();
 
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 
@@ -68,7 +70,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -91,7 +94,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			}
 			stm.close();
 			connection.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return publication;
@@ -108,7 +112,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -130,7 +135,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -158,7 +164,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			}
 			stm.close();
 			connection.close();
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return comments;
@@ -176,7 +183,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 				System.out.println(nickname);
 
 			}
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return nickname;
