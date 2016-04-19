@@ -1,3 +1,9 @@
+/*
+ * Class name: PublicationGeneral.java
+ * Purpose of class: This file corresponds to persistence class Publication.
+ * Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import model.Publication;
