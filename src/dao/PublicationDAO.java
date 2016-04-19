@@ -53,7 +53,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		assert(publication != null ) : "Unexpected error: the publication is receiving null";
 		try{
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("update Publicacao set tituloPublicacao=?, "
+			PreparedStatement pstm = connection.prepareStatement("update Publicacao"
+										      +"set tituloPublicacao=?, "
 					                                                                      + "categoriaPublicacao=?,"
 					                                                                      + "conteudoPublicacao=? "
 					                                                                      + "where idPublicacao=?");
@@ -79,7 +80,8 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="+idPublication);
+			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="
+				                                           +idPublication);
 			while (rs.next()) {
 				publication.setIdPublication(rs.getInt("idPublication"));
 				publication.setTitlePublication(rs.getString("titlePublication"));
@@ -99,8 +101,9 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		assert(publication != null ) : "Unexpected error: the publication is receiving null";
 		try{
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("Delete from Publicacao where idPublicacao ="
-			                                                                                          +idPublication);
+			PreparedStatement pstm = connection.prepareStatement("Delete from"
+									                  +"Publicacao where idPublicacao ="
+			                                                                                               +idPublication);
 			pstm.execute();
 			pstm.close();
 			connection.close();
@@ -117,7 +120,10 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		// FIX-ME: THERE IS AN ERROR, THE GRADEPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		try{
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("Update Publicacao set notaPublicacao = notaPublicacao + ? where idPublicacao = ?");
+			PreparedStatement pstm = connection.prepareStatement("Update Publicacao"
+										     +" set notaPublicacao = "
+										     +"notaPublicacao + ? "
+										     +"where idPublicacao = ?");
 			pstm.setInt(1, publication.getGradePublication());
 			pstm.setString(2, idPublication);
 			pstm.execute();
