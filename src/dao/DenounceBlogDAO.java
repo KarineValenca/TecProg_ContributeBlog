@@ -34,6 +34,7 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 	}
 
 	public void deleteDenounce(String idDenounce) {
+		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";		
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection
@@ -48,7 +49,7 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 	}
 
 	public Denounce searchBlogDenounce(String idDenounce) {
-
+		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";
 		Denounce denounceBlog = new Denounce();
 		try {
 			Connection connection = getConnection();
