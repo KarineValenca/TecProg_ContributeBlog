@@ -1,8 +1,14 @@
+/*
+ * Class name: ServletPublication.java
+ * Purpose of class: This class is used to the methods of control Publication
+ * edit and show related with user.
+ * Copyright: This software follows GPL license.
+ */
+
 package control;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.GenericServlet;
@@ -41,25 +47,25 @@ public class ServletPublication extends HttpServlet{
 
 		try{
 			switch(action){
-
-
 			case "CreatePublication":
+				int idBlogInsert = ( Integer.parseInt(request.getParameter("idBlog")));
+
 				publication.setTitlePublication(request.getParameter("titlePublication"));
 				publication.setCategoryPublication(request.getParameter("categoryPublication"));
 				publication.setContentPublication(request.getParameter("contentPublication"));
-				int idBlogInsert =( Integer.parseInt(request.getParameter("idBlog")));
-
 				publicationDAO.createPublication(idBlogInsert, publication);
+
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 			case "PublicationInstance":
 				String idBlog = request.getParameter("idBlog");
+
 				request.setAttribute("idBlog", idBlog);
+
 				this.rd = request.getRequestDispatcher("createPublication.jsp");
 				this.rd.forward(request, response);
 				break;
-
 			case "EditPublication":
 				String idPublication = request.getParameter("idPublication");
 
@@ -70,48 +76,50 @@ public class ServletPublication extends HttpServlet{
 				publicationDAO.editPublication(publication, idPublication);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
-
 				break;
-
 			case "ListPublication":
 				idPublication = request.getParameter("idPublication");
 				publication = publicationDAO.listPublication(idPublication);
+
 				request.setAttribute("publicacao", publication);
+
 				this.rd = request.getRequestDispatcher("editPublication.jsp");
 				this.rd.forward(request, response);
 				break;
-
 			case "DeletePublication":
 				idPublication = request.getParameter("idPublication");
 				publicationDAO.deletePublication(idPublication);
+
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
-
 			case "RatePublication":
-				idPublication = request.getParameter("idPublication");
 				String gradePublication = request.getParameter("gradePublication");
 				int currentRate = publication.getGradePublication();
 				int endRate = currentRate+Integer.parseInt(gradePublication);
+				idPublication = request.getParameter("idPublication");
+
 				publication.setGradePublication(endRate);
 				publicationDAO.ratePublication(publication, gradePublication, idPublication);
+
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
-
 			case "ListComments":
 				idPublication = request.getParameter("idPublication");
 				listComments = publicationDAO.listComents(idPublication);
+
 				request.setAttribute("listaComentariosPublicacao", listComments);
+
 				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
 				this.rd.forward(request, response);
 				break;
 			}
 
 
-		}catch(Exception e){
+		}
+		catch(Exception e){
 			// TODO: handle exception
-
 		}
 	}
 }

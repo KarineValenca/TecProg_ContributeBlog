@@ -1,5 +1,5 @@
 /*
- * Class name: PublicationGeneral.java
+ * Class name: PublicationDAO.java
  * Purpose of class: This file corresponds to persistence class Publication.
  * Copyright: This software follows GPL license.
  */

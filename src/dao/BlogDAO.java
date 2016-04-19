@@ -1,5 +1,5 @@
 /*
- * Class name: PublicationGeneral.java
+ * Class name: BlogDAO.java
  * Purpose of class: This file corresponds to persistence class Blog.
  * Copyright: This software follows GPL license.
  */
@@ -108,7 +108,6 @@ public class BlogDAO extends ConnectionFactory {
 				publication.setContentPublication(rs.getString("contentPublication"));
 				publication.setGradePublication(rs.getInt("gradePublication"));
 				listPublicationBlog.add(publication);
-
 			}
 			stm.close();
 			connetion.close();
