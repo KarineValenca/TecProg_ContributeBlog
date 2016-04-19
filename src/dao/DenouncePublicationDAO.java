@@ -34,6 +34,7 @@ public class DenouncePublicationDAO extends ConnectionFactory implements Denounc
 	}
 	
 	public void deleteDenounce(String idDenounce) {
+		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection
