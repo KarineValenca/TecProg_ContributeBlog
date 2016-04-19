@@ -20,7 +20,7 @@ import dao.CollaborationDAO;
 import dao.CommentDAO;
 
 /**
- * Servlet implementation class ServletSubmissao
+ * Servlet implementation class ServletSubmission
  */
 @WebServlet("/ServletSubmission")
 public class ServletSubmission extends HttpServlet {
@@ -39,6 +39,8 @@ public class ServletSubmission extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
 		doPost(request, response);
 	}
 
@@ -46,6 +48,8 @@ public class ServletSubmission extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		assert (request != null) : "The request from user is null";
+		assert (response != null) : "The response to user is null";
 		List<Publication> list= new ArrayList<>();
 		String action = request.getParameter("action");
 		System.out.println(action);
