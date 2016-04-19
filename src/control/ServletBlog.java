@@ -18,30 +18,24 @@ import model.Blog;
 import model.BlogOwner;
 import model.Publication;
 
-
-
-
 @WebServlet("/ServletBlog")
 public class ServletBlog extends HttpServlet {
 
-
-
 	private static final long serialVersionUID = 1L;
-	private RequestDispatcher rd;
 
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse
+		                                                               response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse
+		                                                               response) throws ServletException, IOException {
+		private RequestDispatcher rd;
 		String action = request.getParameter("action");
 		String destino = "sucesso.jsp";
-		String message = "";
+		String message = "Inicializada"; // FIX-ME: THIS IS IMPORTANT?
 		List<Blog> listBlog = new ArrayList<>();
 		List<Publication> listPublication = new ArrayList<>();
 		BlogDAO blogdao = new BlogDAO();
@@ -51,26 +45,24 @@ public class ServletBlog extends HttpServlet {
 		try {
 			switch (action) {
 
-
 			case "CreateBlog":
 				blog.setTitle(request.getParameter("title"));
 				blog.setCategorie(request.getParameter("categorie"));
 				ownerBlog.setId( Integer.parseInt(request.getParameter("idOwnerBlog")));
 				blogdao.createBlog(blog, ownerBlog );
-				this.rd = request.getRequestDispatcher("ServletBlogOwner?action=ListOwner&idOwnerBlog.jsp");
+				this.rd = request.getRequestDispatcher("ServletBlogOwner?action="
+									 +"ListOwner&idOwnerBlog.jsp");
 				this.rd.forward(request, response);
 
-				break;
+			break;
 
 			case "ListBlog":
-			System.out.println("EEEEEEEEEEEEEEEEEEEE");
 				listBlog = blogdao.listBlog();
 				request.setAttribute("listBlog", listBlog);
 				this.rd = request.getRequestDispatcher("listBlogs.jsp");
 				this.rd.forward(request, response);
 
-
-				break;
+			break;
 
 			case "DeleteBlog":
 				String idBlog = request.getParameter("idBlog");
@@ -81,7 +73,6 @@ public class ServletBlog extends HttpServlet {
 			break;
 
 			case "ListPublications":
-
 				String idBlogP =  request.getParameter("idBlog") ;
 				listPublication = blogdao.listPublicationBlog(idBlogP);
 				request.setAttribute("listaPublicacaoBlog", listPublication);
@@ -91,7 +82,6 @@ public class ServletBlog extends HttpServlet {
 			break;
 
 			case "ListPublicationsBlog":
-
 				idBlogP =  request.getParameter("idBlog") ;
 				listPublication = blogdao.listPublicationBlog(idBlogP);
 				request.setAttribute("listaPublicacaoBlog", listPublication);
@@ -105,11 +95,12 @@ public class ServletBlog extends HttpServlet {
 				request.setAttribute("idBlog", idBlogI);
 				this.rd = request.getRequestDispatcher("painelAdministrativoBlog.jsp");
 				this.rd.forward(request, response);
-				break;
+			break;
 
 
 			default:
-				break;
+				//nothing to do
+			break;
 			}
 
 		} catch (Exception e) {
