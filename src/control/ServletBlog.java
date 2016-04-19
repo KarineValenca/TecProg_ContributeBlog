@@ -22,6 +22,7 @@ import model.Publication;
 public class ServletBlog extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private RequestDispatcher rd;
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse
@@ -32,7 +33,6 @@ public class ServletBlog extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 		                                                               response) throws ServletException, IOException {
-		private RequestDispatcher rd;
 		String action = request.getParameter("action");
 		String destino = "sucesso.jsp";
 		String message = "Inicializada"; // FIX-ME: THIS IS IMPORTANT?

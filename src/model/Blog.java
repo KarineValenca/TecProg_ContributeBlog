@@ -21,7 +21,7 @@ public class Blog {
 	public Blog() {
 	}
 
-	public Blog(int idBlog, String title, String categorie; Date creationDate,
+	public Blog(int idBlog, String title, String categorie, Date creationDate,
 		      BlogOwner idOwnerBlog, List<Publication> publications) {
 		this.idBlog = idBlog;
 		this.title = title;

@@ -23,18 +23,15 @@ import model.Publication;
 public class ServletPublication extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-
-
+	private RequestDispatcher rd;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                                                               response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 		                                                               response) throws ServletException, IOException {
-		private RequestDispatcher rd;
 		String action = request.getParameter("action");
 		Publication publication = new Publication();
 		PublicationDAO publicationDAO = new PublicationDAO();

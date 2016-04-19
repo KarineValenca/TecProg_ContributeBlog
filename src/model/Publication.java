@@ -65,10 +65,10 @@ public class Publication {
 		this.gradePublication = gradePublication;
 	}
 
-	public int getStatusPublication() {
+	public boolean getStatusPublication() {
 		return statusPublication;
 	}
-	public void setStatusPublication(int statusPublication) {
+	public void setStatusPublication(boolean statusPublication) {
 		this.statusPublication = statusPublication;
 	}
 }

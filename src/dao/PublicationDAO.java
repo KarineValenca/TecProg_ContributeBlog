@@ -1,3 +1,8 @@
+/*
+ * Class name: PublicationGeneral.java
+ * Purpose of class: This file corresponds to persistence class Publication.
+ * Copyright: This software follows GPL license.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -5,15 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import javax.swing.plaf.synth.SynthScrollBarUI;
 
 import model.Blog;
 import model.Comment;
 import model.Publication;
-import model.User;
 
 public class PublicationDAO extends ConnectionFactory implements PublicationGeneral{
 
@@ -41,7 +43,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.close();
 			connection.close();
 
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
@@ -66,8 +68,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
-
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -129,8 +130,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
-
-		} catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -147,26 +147,21 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 				                                          +idPublication);
 			while (rs.next()) {
 				Comment comment = new Comment();
+				int idUser = rs.getInt("idUser");
+				String nickUser = findUser(idUser);
 
 				comment.setIdComment(rs.getInt("idComentario"));
 				comment.setCommentContent(rs.getString("conteudoComentario"));
 				comment.setCommentDate(rs.getDate("dataCriacaoComentario"));
-
-				int idUser = rs.getInt("idUser");
-				String nickUser = findUser(idUser);
 				comment.setCommentUser(nickUser);
-
 				comments.add(comment);
 			}
 			stm.close();
 			connection.close();
-
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-
 		return comments;
-
 	}
 
 	public String findUser(int idUser){
@@ -181,7 +176,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 				System.out.println(nickname);
 
 			}
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return nickname;
