@@ -1,7 +1,7 @@
 /*
  * Class name: ServletPublication.java
- * Purpose of class: This class is used to the methods of control Publication
- * edit and show related with user.
+ * Purpose of class: This class is used to the methods of control Publication,
+ * used to the methods create,list, include, delete,rate, edit and show list comments.
  * Copyright: This software follows GPL license.
  */
 

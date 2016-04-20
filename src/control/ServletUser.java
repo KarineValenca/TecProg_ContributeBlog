@@ -28,7 +28,7 @@ import model.User;
 @WebServlet("/ServletUser")
 public class ServletUser extends HttpServlet {
 
-	
+
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
@@ -37,25 +37,25 @@ public class ServletUser extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-	
-	
+
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-	
+
 		String action = request.getParameter("action");
 		List<User> userList = new ArrayList<>();
 		UserDAO userDAO = new UserDAO();
 		User user = new User();
-		
+
 		String birthDate = request.getParameter("birthDate");
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		try {
 			switch (action) {
 			case "ListUser":
 				userList = userDAO.listUser();
 				request.setAttribute("listUsers", userList);
-				
+
 				this.rd = request.getRequestDispatcher("usersList.jsp");
 				this.rd.forward(request, response);
 				break;
@@ -66,15 +66,15 @@ public class ServletUser extends HttpServlet {
 				user.setEmail(request.getParameter("email"));
 				user.setPassword(request.getParameter("password"));
 				user.setNickname(request.getParameter("nickname"));
-				
+
 				Date date = (Date) formatter.parse(birthDate);
-				user.setBirthDate(date);				
-			
+				user.setBirthDate(date);
+
 				int validadeUser = 0;
 				String nickname = user.getNickname();
 				String email = user.getEmail();
 				validadeUser = userDAO.validateUser(nickname, email, validadeUser);
-				
+
 				if(validadeUser == 0) {
 					userDAO.createUser(user);
 					this.rd = request.getRequestDispatcher("index.jsp");
@@ -89,35 +89,35 @@ public class ServletUser extends HttpServlet {
 			case "DeleteUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
-				
+
 				userDAO.deleteUser(id);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
-				
+
 			break;
 			case "EditUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
-				
+
 				user.setName(request.getParameter("name"));
 				user.setLastName(request.getParameter("lastName"));
 				user.setGender(request.getParameter("gender"));
 				user.setPassword(request.getParameter("password"));
 				user.setNickname(request.getParameter("nickname"));
-				
+
 				Date data = (Date) formatter.parse(birthDate);
 				user.setBirthDate(data);
-				
+
 				userDAO.editUser(user, id);
 				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
-				
+
 				break;
 			case "ListProfile":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
 				user = userDAO.showUserProfile(id);
-				
+
 				request.setAttribute("user", user);
 				this.rd = request.getRequestDispatcher("editUser.jsp");
 				this.rd.forward(request, response);
@@ -125,24 +125,24 @@ public class ServletUser extends HttpServlet {
 			case "SubmeterPostagem":
 				// FIX-ME: THIS METHOD IS INCOMPLETE.
 				/*
-				 * Pegar o Id do Blog e o id do usuário 
+				 * Pegar o Id do Blog e o id do usuário
 				 * e cria uma solicitação de postagem que vai ser aprovada pelo Dono do blog.
 				 * Tabela Blog tem varias ou nenhuma postagem submetidas
 				 * Criar tabela de postagens Submetidas com o indice do blog
 				 * Criar função para Adicionar postatgemSubmetida ao blog
 				 * Adicionar postagem submetida a postagem do BLog
 				 * Lista todas as postagens do blog incluindo as submetidas
-				 * 
-				 * 
-				 * */	
+				 *
+				 *
+				 * */
 				break;
 			default:
 				break;
 			}
-		} 
+		}
 		catch (Exception e) {
 			// TODO: handle exception
 		}
-	}			
-	
+	}
+
 }
