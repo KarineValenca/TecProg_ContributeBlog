@@ -16,7 +16,10 @@ import model.User;
 public class FactoryDenouncePublicationDAO extends ConnectionFactory implements FactoryDenounceDAO {
 	Date now = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-	public void createDenounce(int id, Denounce denounce, User user){
+	public void createDenounce(int idPublication, Denounce denounce, User user){
+		assert(idPublication >= 0 ) : "Unexpected error: the publication identifier is receiving null";
+		assert (denounce != null) : "unexpected error: the denounce object is null";
+		assert (user != null) : "unexpected error: the user object is null";		
 		try{
 
 			Connection connection = getConnection();
@@ -24,7 +27,7 @@ public class FactoryDenouncePublicationDAO extends ConnectionFactory implements 
 					prepareStatement("INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, idPublicacao, idUtilizador) VALUES (?,?,?,?)");
 			pstm.setDate(1, sqlDate);
 			pstm.setString(2, denounce.getContentDenounce());
-			pstm.setInt(3, id);
+			pstm.setInt(3, idPublication);
 			pstm.setInt(4, user.getId());
 			pstm.execute();
 			pstm.close();
