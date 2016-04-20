@@ -19,15 +19,17 @@ public class FactoryDenounceBlogDAO extends ConnectionFactory implements Factory
 	Date now = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 	
-	public void createDenounce(int id, Denounce denounce, User user){
-		try{
-			
+	public void createDenounce(int idBlog, Denounce denounce, User user){
+		assert(idBlog >= 0 ) : "Unexpected error: the blog identifier is receiving null";
+		assert (denounce != null) : "unexpected error: the denounce object is null";
+		assert (user != null) : "unexpected error: the user object is null";
+		try{			
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.
 					prepareStatement("INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, idBlog, idUtilizador) VALUES (?,?,?,?)");
 			pstm.setDate(1, sqlDate);
 			pstm.setString(2, denounce.getContentDenounce());
-			pstm.setInt(3, id);
+			pstm.setInt(3, idBlog);
 			pstm.setInt(4, user.getId());
 			pstm.execute();
 			pstm.close();
