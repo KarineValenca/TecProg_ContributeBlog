@@ -52,7 +52,6 @@
                                                 <a href="ServletComentario?acao=InstancePublication&idPublication=${publicacao.idPublication}" class="btn btn-success btn-xs" role="button"> Comentar</a>
                                                 <a href="ServletPublication?action=ListComments&idPublication=${publicacao.idPublication}" class="btn btn-primary btn-xs" role="button"> Ver comentários</a>
                                                 <a href="ServletDenuncia?acao=InstancePublication&idPublication=${publicacao.idPublication}" class="btn btn-danger btn-xs" role="button"> Denunciar Publicacao</a>
-
                                             </div>
                                         </div>
                                     </div>
