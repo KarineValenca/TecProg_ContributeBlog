@@ -21,18 +21,14 @@ import model.User;
 public class ServletAuthentication extends HttpServlet{	
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
-	private String email = "";
-	private String password = "";
+	private String email = "Not authorized";
+	private String password = "Not authorized";
 	
 	public ServletAuthentication(){
 		super();
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse 
-							response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-	
+	// this method do the actions that the user doesn't need to fill any data
 	protected void doPost(HttpServletRequest request, HttpServletResponse 
 							response) throws ServletException, IOException {
 		this.email = request.getParameter("email");
@@ -46,7 +42,7 @@ public class ServletAuthentication extends HttpServlet{
         
         user = authenticacaoDAO.authenticateUser(this.email, this.password);
         
-        boolean autorization = verifyUser(user, this.email, this.password);
+        boolean autorization = verifyUser(user, this.email);
         
         if(autorization==true) {
         	this.rd = request.getRequestDispatcher("userAdministrationPanel.jsp");
@@ -59,14 +55,15 @@ public class ServletAuthentication extends HttpServlet{
         }        
 	}
 	
-	public boolean verifyUser(User user, String email, String password) {
+	/* this method receives the user and verify if the email is authorized,
+	 if it is authorized, returns true */
+	public boolean verifyUser(User user, String email) {
 		assert(user != null) : "Unexpected error: the object user is null";
 		assert(email != null) : "Unexpected error: the email is receiving null";
-		assert(password != null) : "Unexpected error: the password is receiving null";
 		
 		String userEmail = user.getEmail();
 		
-		if(userEmail != "" ) {
+		if(userEmail != "Not authorized" ) {
 			return true;
 		}
 		else{

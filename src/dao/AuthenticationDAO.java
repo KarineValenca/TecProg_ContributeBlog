@@ -20,8 +20,10 @@ public class AuthenticationDAO extends ConnectionFactory{
 		assert(email != null ) : "Unexpected error: the email is receiving null";
 		assert(password != null) : "Unexpected error: the password is receiving"
 									+ " null";
-		this.user.setEmail("");
-		this.user.setPassword("");
+		
+		// this user.setEmail will change if the email and password are correct
+		this.user.setEmail("Not authorized");
+		this.user.setPassword("Not authorized");
 		
 		try{
 			Connection connection = getConnection();
