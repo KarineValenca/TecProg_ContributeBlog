@@ -15,7 +15,7 @@ import model.User;
 public class AuthenticationDAO extends ConnectionFactory{
 	User user = new User();
 	
-	
+	// this method allows the user login in system
 	public User authenticateUser(String email, String password){
 		assert(email != null ) : "Unexpected error: the email is receiving null";
 		assert(password != null) : "Unexpected error: the password is receiving"
