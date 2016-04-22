@@ -8,7 +8,6 @@ package model;
 import java.util.Date;
 
 public class User {
-
 	private int id;
 	private String name;
 	private String lastName;
@@ -23,7 +22,6 @@ public class User {
 
 	public User(int id, String name, String lastName, String email,
 			String gender, String password, String nickname, Date birthDate) {
-
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;

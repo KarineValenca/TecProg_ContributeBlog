@@ -1,6 +1,7 @@
 /*
- * Class name: User.java
- * Purpose of class: This class is used to store all attributes from a user.
+ * Class name: UserDAO.java
+ * Purpose of class: This class is used to create, edit, delete, validate and 
+ * list users. 
  * Copyright: This software follows GPL license.
  */
 
@@ -19,7 +20,10 @@ import model.User;
 public class UserDAO  extends ConnectionFactory{
 	User user = new User();
 	
-	public int validateUser(String nickname, String email, int value){
+	/* this method is used to verify if exists a user with the nickname or 
+	email at moment to create an account. It returns int because if exists a
+	user with the same email or nickname the variable value is added in one */ 
+	public int 	validateUser(String nickname, String email, int value){
 		assert(nickname != null) : "unexpected error: the nickname is recieving"
 									+ " null";
 		assert(email != null) : "unexpected error: the email is recieving null";
@@ -33,6 +37,9 @@ public class UserDAO  extends ConnectionFactory{
 			
 			ResultSet rs = stm.executeQuery(sql);
 			rs.next();
+			
+			/* at this moment is verified if the email or nickname is in use,
+			if the nickname or email is in use, value will be more than 0 */
 			value = rs.getInt("rowcount");
 			
 			rs.close();
@@ -45,6 +52,7 @@ public class UserDAO  extends ConnectionFactory{
 		return value;
 	}
 	
+	// this method is used to allow the user create an account at the system
 	public void createUser(User user) {
 		assert(user != null) : "Unexpected error: the object User is null";
 		
@@ -73,7 +81,8 @@ public class UserDAO  extends ConnectionFactory{
 			e.printStackTrace();
 		}
 	}
-
+	
+	// this method generate a list of all registered users 
 	public List<User> listUser() {
 		List<User> usersList = new ArrayList<>();
 		try {
@@ -104,7 +113,9 @@ public class UserDAO  extends ConnectionFactory{
 		
 		return usersList;
 	}
-		
+	
+	/* this method is used to remove a user when they want delete their account
+	 or when an administrator want do it */
 	public void deleteUser(String id) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		try {
@@ -122,6 +133,7 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
+	// this method allows the user changing some informations from their profile
 	public void editUser(User user, String id){
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert(user != null) : "Unexpected error: The object user is null";
@@ -146,13 +158,13 @@ public class UserDAO  extends ConnectionFactory{
 			pstm.close();
 			connection.close();
 			
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	// this method shows to the user their profile
 	public User showUserProfile(String id) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		User user = new User();
