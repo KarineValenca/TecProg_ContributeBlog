@@ -31,34 +31,54 @@ public class ServletUser extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
-
-
+	
+	// this method do the actions that the user doesn't need to fill any data 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
 		String action = request.getParameter("action");
-		List<User> userList = new ArrayList<>();
 		UserDAO userDAO = new UserDAO();
-		User user = new User();
-
-		String birthDate = request.getParameter("birthDate");
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-		try {
-			switch (action) {
+		
+		try{
+			switch(action){
 			case "ListUser":
+				List<User> userList = new ArrayList<>();
 				userList = userDAO.listUser();
 				request.setAttribute("listUsers", userList);
 
 				this.rd = request.getRequestDispatcher("usersList.jsp");
 				this.rd.forward(request, response);
 				break;
+			case "ListProfile":
+				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+				String id = request.getParameter("id");
+				id = request.getParameter("id");
+				
+				User user = new User();
+				user = userDAO.showUserProfile(id);
+
+				request.setAttribute("user", user);
+				this.rd = request.getRequestDispatcher("editUser.jsp");
+				this.rd.forward(request, response);
+				break;
+			}
+		}
+		catch(Exception e){
+			
+		}
+	}
+
+	// this method do the actions that the user need to fill some data
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		
+		UserDAO userDAO = new UserDAO();
+		User user = new User();
+		String birthDate = request.getParameter("birthDate");
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+		try {
+			switch (action) {
 			case "CreateUser":
 				user.setName(request.getParameter("name"));
 				user.setLastName(request.getParameter("lastName"));
@@ -112,15 +132,6 @@ public class ServletUser extends HttpServlet {
 				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
 
-				break;
-			case "ListProfile":
-				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
-				id = request.getParameter("id");
-				user = userDAO.showUserProfile(id);
-
-				request.setAttribute("user", user);
-				this.rd = request.getRequestDispatcher("editUser.jsp");
-				this.rd.forward(request, response);
 				break;
 			case "SubmeterPostagem":
 				// FIX-ME: THIS METHOD IS INCOMPLETE.
