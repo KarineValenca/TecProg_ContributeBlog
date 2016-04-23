@@ -1,3 +1,9 @@
+/*
+ * Class name: BlogOwnerDAO.java
+ * Purpose of class: This class is responsible to create a blogs list.
+ * Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import java.sql.Connection;
@@ -13,7 +19,12 @@ public class BlogOwnerDAO extends ConnectionFactory{
 	public BlogOwnerDAO() {
 		
 	}
-			
+	
+	/*
+	 * this method is used to trys to stablish a connection database and 
+	 * creates a blogs list. The list is composed by id, title, creation
+	 * date and category.
+	 */
 	public List<Blog> listBlogOwner(String blogOwner) {
 		assert (blogOwner != null) : "The blogOwner parameter is null";
 		
@@ -39,5 +50,4 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		return listBlog;
 	}
 	
-
 }
