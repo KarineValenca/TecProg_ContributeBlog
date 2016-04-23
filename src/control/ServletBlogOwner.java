@@ -1,3 +1,9 @@
+/*
+ * Class name: ServletBlogOwner
+ * Purpose of class: This class is responsible for, using the RequestDispatcher
+ * objetc, acess the blogs list views pages, according to the requested action.
+ * Copyright: This software follows GPL license.
+ */
 package control;
 
 import java.io.IOException;
@@ -15,16 +21,14 @@ import dao.BlogOwnerDAO;
 import model.Blog;
 import model.BlogOwner;
 
-@WebServlet("/ServletBlogOwner")
 public class ServletBlogOwner extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
-
+	/*this method is used to intercept HTTP GET requests. The HTTP GET 
+	 requests are used when you get the same result everytime you execute the 
+	 request*/
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
@@ -33,6 +37,8 @@ public class ServletBlogOwner extends HttpServlet {
 		doPost(request, response);
 	}
 	
+	/*this method is used to intercept HTTP POST requests. The HTTP POST 
+	  request are used when the results of the requests will not be the same*/
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
