@@ -1,12 +1,18 @@
+/*
+ *Class name: ConnectionFactory.java
+ *Purpose of class: This class is responsible for the database connections.
+ *Used by other data persistence classes. 
+ *Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**
- * Classe responsável pela Conexão com o Banco de dados. É utilizada por outras
- * classes de persistência de dados.
- * 
+/*
+ * this method trys to stablish database connections passing user, password and
+ * name databases.
  */
 public class ConnectionFactory {
 	public static synchronized Connection getConnection() {
