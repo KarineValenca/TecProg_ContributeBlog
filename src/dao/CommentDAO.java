@@ -1,3 +1,10 @@
+/*
+ * Class name: CommentDao.java
+ * Purpose of class: This class is responsible to establish database conection 
+ * and execute methods for create and delete comments and list of comments.
+ * Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import java.sql.Connection;
@@ -22,6 +29,8 @@ public class CommentDAO extends ConnectionFactory{
 	Date now = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 	
+	/* this method establishs a connection database and creates a comment using
+	   the comment, user and publication ID. */
 	public void createComment(Comment comment, User user, int idPublication){
 		assert (comment != null) : "The comment paramater is null";
 		assert (user != null) : "The user paramater is null";
@@ -45,7 +54,10 @@ public class CommentDAO extends ConnectionFactory{
 		}
 	}
 	
+	/* this method establishs a connection database and deletes a comment of 
+	   database using the comment ID. */
 	public void deleteComment(String idComment){
+		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idComment != null) : "The idComment paramater is null";
 		
 		try{
@@ -59,7 +71,10 @@ public class CommentDAO extends ConnectionFactory{
 		}
 	}
 	
+	/* this method establishs a connection database to adds a comment in a 
+	   comments list using the publication ID and returns a comment list. */
 	public List<Comment> listBlogComment(String idPublication) {
+		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idPublication != null) : "The idPublication paramater is null";
 		
 		List<Comment> listComment = new ArrayList<Comment>();
@@ -85,7 +100,11 @@ public class CommentDAO extends ConnectionFactory{
 		}
 		return listComment;
 	}
+	
+	/* this method establishs a connection database to delete a comment of a 
+	   comments list and return a comments list. */
 	public List<Comment> listBlogCommentDelete(String idBlog) {
+		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idBlog != null) : "The idBlog paramater is null";
 		
 		List<Comment> listComment = new ArrayList<Comment>();
