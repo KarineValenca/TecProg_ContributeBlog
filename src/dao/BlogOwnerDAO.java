@@ -20,11 +20,9 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		
 	}
 	
-	/*
-	 * this method is used to trys to stablish a connection database and 
-	 * creates a blogs list. The list is composed by id, title, creation
-	 * date and category.
-	 */
+	/* this method is used to trys to stablish a connection database and 
+	   creates a blogs list. The list is composed by id, title, creation
+	   date and category. */
 	public List<Blog> listBlogOwner(String blogOwner) {
 		assert (blogOwner != null) : "The blogOwner parameter is null";
 		
