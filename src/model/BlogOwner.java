@@ -1,3 +1,10 @@
+/*
+ * Class name: BlogOwner.java
+ * Purpose of class: This class is an extension of User class. Creates a list 
+ * of blogs.
+ * Copyright: This software follows GPL license.
+ */
+
 package model;
 
 import java.util.*;
