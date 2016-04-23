@@ -1,3 +1,9 @@
+/*
+ * Class name: Comment.java
+ * Purpose of class: This class defines the attributes of a comment.
+ * Copyright: This software follows GPL license.
+ */
+
 package model;
 
 import java.util.Date;
@@ -32,6 +38,5 @@ public class Comment {
 	public void setCommentUser(String commentUser) {
 		this.commentUser = commentUser;
 	}
-	
-	
+		
 }
