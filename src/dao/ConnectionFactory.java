@@ -10,10 +10,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/*
- * this method trys to stablish database connections passing user, password and
- * name databases.
- */
+/* this method trys to stablish database connections passing user, password and
+   name databases. */
 public class ConnectionFactory {
 	public static synchronized Connection getConnection() {
 		Connection connection = null;
