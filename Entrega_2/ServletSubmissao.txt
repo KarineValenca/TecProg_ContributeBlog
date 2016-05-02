@@ -36,7 +36,7 @@
 
 ------------------------------
 * Class Name: ServletSubmissao
-* Class Description:This class responsible for publications.
+* Class Description:This class is responsible for implementation of submission of publication post, create collaboration, approve publication, accept publication and list comments.
 
 
 
