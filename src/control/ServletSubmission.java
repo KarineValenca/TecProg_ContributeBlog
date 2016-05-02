@@ -1,3 +1,9 @@
+/** 
+* File name: ServletSubmission.java
+* Purpose of file: this file contains the ServletSubmission class and its methods.   
+* Copyright: Copyright: This software follows GPL license.
+**/
+
 package control;
 
 import java.io.IOException;
@@ -20,33 +26,45 @@ import dao.CollaborationDAO;
 import dao.CommentDAO;
 
 /**
- * Servlet implementation class ServletSubmission
- */
+* Class name: ServletDenounce
+* Purpose of class: This class is responsible for implementation of submission 
+* of publication post, create collaboration, approve publication, accept 
+* publication and list comments.
+**/
 @WebServlet("/ServletSubmission")
 public class ServletSubmission extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-
-		CollaborationDAO subDAO = new CollaborationDAO();
-		CollaborativePublication pubCollaborative = new CollaborativePublication();
-		private RequestDispatcher rd;
-		int idBlog = 0;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	CollaborationDAO subDAO = new CollaborationDAO();
+	CollaborativePublication pubCollaborative = new CollaborativePublication();
+	private RequestDispatcher rd;
+	int idBlog = 0;
+	/** 
+	* Method name: doGet
+	* Purpose of method: this method is used to intercept HTTP GET requests. 
+	* The HTTP GET requests are used when you get the same result everytime 
+	* you execute the request.  
+	* @param request: used to represent the HTTP request that a browser sends
+	* to the application.
+	* @param response: used to represent the HTTP response that the application
+	* sends to a browser. 
+	* @return there is no return.
+	**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
 		doPost(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	/** 
+	* Method name: doPost
+	* Purpose of method: this method is used to intercept HTTP POST requests. 
+	* The HTTP POST request are used when the results of the requests will 
+	* not be the same.  
+	* @param request: used to represent the HTTP request that a browser sends
+    * to the application.
+	* @param response: used to represent the HTTP response that the application
+    * sends to a browser. 
+	* @return there is no return.
+	**/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
