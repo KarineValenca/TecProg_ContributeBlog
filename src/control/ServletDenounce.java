@@ -30,13 +30,13 @@ import model.DenounceBlog;
 import model.DenouncePublication;
 import model.User;
 
-@WebServlet("/ServletDenounce")
 /**
 * Class name: ServletDenounce
 * Purpose of class: This class keeps denounces. It has some specific tasks such
 * as denounce a publication, denounce a blog and delete a denounce of 
 * publication or blog.
 **/
+@WebServlet("/ServletDenounce")
 public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
