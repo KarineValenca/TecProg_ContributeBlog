@@ -1,9 +1,9 @@
-/*
- * Class name: ServletUser.java
- * Purpose of class: This class is used to the methods list, include, delete,
- * edit and show related with user.
+/**
+ * File name: ServletAuthenticacion.java 
+ * Purpose of file: This file contains the ServletAuthentication class and its
+ * methods.
  * Copyright: This software follows GPL license.
- */
+ **/
 
 package control;
 
@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.AuthenticationDAO;
 import model.User;
 
+/**
+ * Class name: ServletUser
+ * Purpose of class: This class is used to the methods list, include, delete,
+ * edit and show related with user.
+ **/
 @WebServlet("/ServletAuthentication")
 public class ServletAuthentication extends HttpServlet{	
 	private static final long serialVersionUID = 1L;
@@ -28,7 +33,15 @@ public class ServletAuthentication extends HttpServlet{
 		super();
 	}
 	
-	// this method do the actions that the user doesn't need to fill any data
+	/**
+	 * Method name: doPost
+	 * Purpose of method: This method is used to intercept HTTP POST requests. 
+ -	 * The HTTP POST request are used when the results of the requests will
+  	 * not be the same. 
+	 * @param request: used to represent the HTTP request that a browser sends.
+	 * @param response: used to represent the HTTP response that the application. 
+	 * @return: there is no return
+	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse 
 							response) throws ServletException, IOException {
 		this.email = request.getParameter("email");
@@ -42,7 +55,7 @@ public class ServletAuthentication extends HttpServlet{
         
         user = authenticacaoDAO.authenticateUser(this.email, this.password);
         
-        boolean autorization = verifyUser(user, this.email);
+        boolean autorization = verifyUser(user);
         
         if(autorization==true) {
         	this.rd = request.getRequestDispatcher("userAdministrationPanel.jsp");
@@ -55,11 +68,17 @@ public class ServletAuthentication extends HttpServlet{
         }        
 	}
 	
-	/* this method receives the user and verify if the email is authorized,
-	 if it is authorized, returns true */
-	public boolean verifyUser(User user, String email) {
+	/**
+	 * Method name: verifyUser
+	 * Purpose of method: This method is used to verify if the email is 
+	 * authorized, if it is authorized, returns true
+	 * @param user: This is an object of User type that is used to verify if the
+	 * userEmail is authorized.
+	 * @return: true if the email is authorized, false if the email is not
+	 * authorized.
+	 **/
+	public boolean verifyUser(User user) {
 		assert(user != null) : "Unexpected error: the object user is null";
-		assert(email != null) : "Unexpected error: the email is receiving null";
 		
 		String userEmail = user.getEmail();
 		
