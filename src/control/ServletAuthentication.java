@@ -18,9 +18,8 @@ import dao.AuthenticationDAO;
 import model.User;
 
 /**
- * Class name: ServletUser
- * Purpose of class: This class is used to the methods list, include, delete,
- * edit and show related with user.
+ * Class name: ServletAuthentication
+ * Purpose of class: This class is used to authorize a user at the system.
  **/
 @WebServlet("/ServletAuthentication")
 public class ServletAuthentication extends HttpServlet{	

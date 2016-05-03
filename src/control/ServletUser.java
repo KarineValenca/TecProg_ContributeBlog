@@ -1,9 +1,9 @@
-/*
- * Class name: ServletUser.java
- * Purpose of class: This class is used to the methods list, include, delete,
- * edit and show related with user.
+/**
+ * File name: ServletUser.java 
+ * Purpose of file: This file contains the ServletUser class and its
+ * methods.
  * Copyright: This software follows GPL license.
- */
+ **/
 
 package control;
 
@@ -24,7 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 import model.User;
 
-
+/**
+ * Class name: ServletUser
+ * Purpose of class: This class is used to the methods list, include, delete,
+ * edit and show related with user.
+ **/
 @WebServlet("/ServletUser")
 public class ServletUser extends HttpServlet {
 
@@ -32,7 +36,14 @@ public class ServletUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 	
-	// this method do the actions that the user doesn't need to fill any data 
+	/**
+	 * Method name: doGet
+	 * Purpose of method: This method is used to intercept HTTP GET requests.
+	 * The HTTP GET requests are used when you get the same result everytime. 
+	 * @param request: used to represent the HTTP request that a browser sends.
+	 * @param response: used to represent the HTTP response that the application. 
+	 * @return: there is no return
+	 **/
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
@@ -40,6 +51,7 @@ public class ServletUser extends HttpServlet {
 		
 		try{
 			switch(action){
+			// this case is used to list all registered users
 			case "ListUser":
 				List<User> userList = new ArrayList<>();
 				userList = userDAO.listUser();
@@ -48,6 +60,8 @@ public class ServletUser extends HttpServlet {
 				this.rd = request.getRequestDispatcher("usersList.jsp");
 				this.rd.forward(request, response);
 				break;
+				
+			// this case is used to show the user profile
 			case "ListProfile":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
@@ -67,7 +81,15 @@ public class ServletUser extends HttpServlet {
 		}
 	}
 
-	// this method do the actions that the user need to fill some data
+	/**
+	 * Method name: doPost
+	 * Purpose of method: This method is used to intercept HTTP POST requests. 
+ -	 * The HTTP POST request are used when the results of the requests will
+  	 * not be the same. 
+	 * @param request: used to represent the HTTP request that a browser sends.
+	 * @param response: used to represent the HTTP response that the application. 
+	 * @return: there is no return
+	 **/
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
@@ -79,6 +101,7 @@ public class ServletUser extends HttpServlet {
 
 		try {
 			switch (action) {
+			// this case is used to allow the user to create an account
 			case "CreateUser":
 				user.setName(request.getParameter("name"));
 				user.setLastName(request.getParameter("lastName"));
@@ -106,6 +129,8 @@ public class ServletUser extends HttpServlet {
 				}
 
 				break;
+			
+			// this case is used to allow the user delete their account
 			case "DeleteUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
@@ -115,6 +140,8 @@ public class ServletUser extends HttpServlet {
 				this.rd.forward(request, response);
 
 			break;
+			
+			// this case is used to allow the user update data in their account
 			case "EditUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				id = request.getParameter("id");
@@ -133,6 +160,8 @@ public class ServletUser extends HttpServlet {
 				this.rd.forward(request, response);
 
 				break;
+			
+			// TODO: this method is incomplete
 			case "SubmeterPostagem":
 				// FIX-ME: THIS METHOD IS INCOMPLETE.
 				/*
