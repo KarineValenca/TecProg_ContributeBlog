@@ -1,7 +1,7 @@
 /** 
 * File name: ServletDenounce.java
 * Purpose of file: this file contains the ServletDenounce class and its methods.   
-* Copyright: Copyright: This software follows GPL license.
+* Copyright: This software follows GPL license.
 **/
 
 package control;
@@ -37,6 +37,7 @@ import model.User;
 public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
+
 	/** 
 	* Method name: doGet
 	* Purpose of method: this method is used to intercept HTTP GET requests. 
@@ -55,6 +56,7 @@ public class ServletDenounce extends HttpServlet{
 		assert (response != null) : "The response to user is null";
 		doPost(request, response);
 	}
+
 	/** 
 	* Method name: doPost
 	* Purpose of method: this method is used to intercept HTTP POST requests. 
@@ -88,6 +90,7 @@ public class ServletDenounce extends HttpServlet{
 
 		try {
 			switch (action) {
+				//implementation of create blog denounce
 				case "CreateDenounceBlog":
 					denounceBlog.setContentDenounce(request.getParameter("content"
 																+ "Denounce"));
@@ -99,12 +102,16 @@ public class ServletDenounce extends HttpServlet{
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of blog instance
 				case "InstanceBlog":
 					String idBlogD= request.getParameter("idBlog");
 					request.setAttribute("idBlog", idBlogD);
 					this.rd = request.getRequestDispatcher("denounceBlog.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of create publication denounce
 				case "CreateDenouncePublication":
 					denouncePublication.setContentDenounce(request.getParameter(""
 						+ "contentDenounce"));
@@ -117,6 +124,8 @@ public class ServletDenounce extends HttpServlet{
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation publication instance
 				case "InstancePublication":
 					String idPublicationD= request.getParameter("idPublication");
 					request.setAttribute("idPublication", idPublicationD);
@@ -124,6 +133,8 @@ public class ServletDenounce extends HttpServlet{
 						+ "Publication.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of list denounces
 				case "ListDenounce":
 					listDenounceBlog = denounceBlogDAO.listDenounce();
 					request.setAttribute("listDenounceBlog", listDenounceBlog);
@@ -132,11 +143,15 @@ public class ServletDenounce extends HttpServlet{
 									  	  listDenouncePublication);
 					this.rd = request.getRequestDispatcher("listDenounce.jsp");
 					this.rd.forward(request, response);
+				
+				//implementation of delete blog denounce
 				case "DeleteDenounceBlog":
 					String idDenounce = request.getParameter("idDenounce");
 					denounceBlogDAO.deleteDenounce(idDenounce);
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of delete publication denounce
 				case "DeleteDenouncePublication":
 					idDenounce = request.getParameter("idDenounce");
 					denouncePublicationDAO.deleteDenounce(idDenounce);
@@ -144,6 +159,8 @@ public class ServletDenounce extends HttpServlet{
 						+ "ListDenounce");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of delete blog of denounce
 				case "DeleteBlogDenounce":
 					System.out.println("Delete");
 					idDenounce = request.getParameter("idDenounce");
@@ -157,6 +174,7 @@ public class ServletDenounce extends HttpServlet{
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
+				
 				default:
 					// nothing to do
 					break;
