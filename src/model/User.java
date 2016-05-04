@@ -1,12 +1,16 @@
-/*
- * Class name: User.java
- * Purpose of class: This class is used to store all attributes from a user.
- * Copyright: This software follows GPL license.
- */
+/**
+ * File name: User.java 
+ * Purpose of file: This file contains the User class and its methods.
+ * Copyright: This software follows GPL license. 
+ **/
 
 package model;
 import java.util.Date;
 
+/**
+ * Class name: User
+ * Purpose of class: This class is used to store all attributes from a user.
+ **/
 public class User {
 	private int id;
 	private String name;

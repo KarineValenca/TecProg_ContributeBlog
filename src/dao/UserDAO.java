@@ -1,7 +1,6 @@
 /**
  * File name: UserDAO.java 
- * Purpose of file: This file contains the UserDAO class and its
- * methods.
+ * Purpose of file: This file contains the UserDAO class and its methods.
  * Copyright: This software follows GPL license. 
  **/
 
