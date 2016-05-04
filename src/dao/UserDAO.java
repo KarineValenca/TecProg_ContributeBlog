@@ -1,9 +1,9 @@
-/*
- * Class name: UserDAO.java
- * Purpose of class: This class is used to create, edit, delete, validate and 
- * list users. 
- * Copyright: This software follows GPL license.
- */
+/**
+ * File name: UserDAO.java 
+ * Purpose of file: This file contains the UserDAO class and its
+ * methods.
+ * Copyright: This software follows GPL license. 
+ **/
 
 package dao;
 
@@ -16,14 +16,28 @@ import java.util.List;
 
 import model.User;
 
-
+/**
+ * Class name: UserDAO
+ * Purpose of class: This class is used to create, edit, delete, validate and 
+ * list users. 
+ **/
 public class UserDAO  extends ConnectionFactory{
 	User user = new User();
 	
-	/* this method is used to verify if exists a user with the nickname or 
-	email at moment to create an account. It returns int because if exists a
-	user with the same email or nickname the variable value is added in one */ 
-	public int 	validateUser(String nickname, String email, int value){
+	/**
+	 * Method name: validateUser
+	 * Purpose of method: This method is used to verify if exists a user with
+	 * the nickname or	email at moment to create an account. It returns int 
+	 * because if exists an user with the same email or nickname the variable
+	 * value is added in one.
+	 * @param nickname: used to check if the nickname is already in use.
+	 * @param email: used to check if the email is already in use.
+	 * @param value: if the nickname or email is already in use, this attribute
+	 * is incremented in 1.
+	 * @return: it returns a int. If it returns 0, the email or nickname isn't
+	 * in use. If it returns 1, the email or nickname is in use.
+	 **/
+	public int validateUser(String nickname, String email, int value) {
 		assert(nickname != null) : "unexpected error: the nickname is recieving"
 									+ " null";
 		assert(email != null) : "unexpected error: the email is recieving null";
@@ -52,7 +66,13 @@ public class UserDAO  extends ConnectionFactory{
 		return value;
 	}
 	
-	// this method is used to allow the user create an account at the system
+	/**
+	 * Method name: createUser
+	 * Purpose of method: This method is used to allow the user create an 
+	 * account at the system.
+	 * @param User: instance of the object User that will be created.
+	 * @return: there is no return.
+	 **/
 	public void createUser(User user) {
 		assert(user != null) : "Unexpected error: the object User is null";
 		
@@ -82,7 +102,12 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
-	// this method generate a list of all registered users 
+	/**
+	 * Method name: listUser
+	 * Purpose of method: This method generate a list of all registered users. 
+	 * @param: there is no param.
+	 * @return: there is no return.
+	 **/
 	public List<User> listUser() {
 		List<User> usersList = new ArrayList<>();
 		try {
@@ -114,8 +139,14 @@ public class UserDAO  extends ConnectionFactory{
 		return usersList;
 	}
 	
-	/* this method is used to remove a user when they want delete their account
-	 or when an administrator want do it */
+	/**
+	 * Method name: deleteUser
+	 * Purpose of method: This method is used to remove a user when they want 
+	 * delete their account or when an administrator want do it.
+	 * @param id: this attribute is the identifier of the user that will be
+	 * deleted.
+	 * @return: there is no return.
+	 **/
 	public void deleteUser(String id) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		try {
@@ -133,7 +164,15 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
-	// this method allows the user changing some informations from their profile
+	/**
+	 * Method name: editUser
+	 * Purpose of method: This method allows the user changing some informations
+	 * from their profile
+	 * @param id: this attribute is the identifier of the user that will be
+	 * edited.
+	 * @param User: instance of the object User that will be edited.
+	 * @return: there is no return.
+	 **/
 	public void editUser(User user, String id){
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert(user != null) : "Unexpected error: The object user is null";
@@ -164,7 +203,13 @@ public class UserDAO  extends ConnectionFactory{
 		}
 	}
 	
-	// this method shows to the user their profile
+	/**
+	 * Method name: showUserProfile
+	 * Purpose of method: This method shows to the user their profile.
+	 * @param id: this attribute is the identifier of the user that will be
+	 * shown.
+	 * @return: it returns an User object, which is the user recovered by id.
+	 **/ 
 	public User showUserProfile(String id) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		User user = new User();
