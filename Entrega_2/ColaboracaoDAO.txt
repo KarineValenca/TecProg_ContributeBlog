@@ -34,7 +34,7 @@
 * Atribute Description: Is the type "string". Parameter of listar method. Unique identifier of a publication. 
 
 ------------------------------
-* Method Name: publicar
+* Method Name: createPublicacao
 * Method Description: Method responsible to insert the publication in the database.
 
 * Method Name: listarColaboracaAprovar
@@ -48,7 +48,7 @@
 
 ------------------------------
 * Class Name: ColaboracaoDAO
-* Class Description: This class has the methods used to connect to the database and execute methods to list and make changes related publications.
+* Class Description: This class has the methods used to connect to the database and execute methods to list and make changes related collaboration.
 
 
 

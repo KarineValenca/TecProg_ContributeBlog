@@ -1,7 +1,7 @@
 /** 
 * File name: ServletSubmission.java
 * Purpose of file: this file contains the ServletSubmission class and its methods.   
-* Copyright: Copyright: This software follows GPL license.
+* Copyright: This software follows GPL license.
 **/
 
 package control;
@@ -35,7 +35,7 @@ public class ServletSubmission extends HttpServlet {
 	CollaborationDAO subDAO = new CollaborationDAO();
 	CollaborativePublication pubCollaborative = new CollaborativePublication();
 	private RequestDispatcher rd;
-	int idBlog = 0;
+
 	/** 
 	* Method name: doGet
 	* Purpose of method: this method is used to intercept HTTP GET requests. 
@@ -53,6 +53,7 @@ public class ServletSubmission extends HttpServlet {
 		assert (response != null) : "The response to user is null";
 		doPost(request, response);
 	}
+
 	/** 
 	* Method name: doPost
 	* Purpose of method: this method is used to intercept HTTP POST requests. 
@@ -71,9 +72,11 @@ public class ServletSubmission extends HttpServlet {
 		List<Publication> list= new ArrayList<>();
 		String action = request.getParameter("action");
 		System.out.println(action);
+		int idBlog = 0;
 
 		try {
 			switch (action) {
+				//implementation of post submission
 				case "SubmissionPost":
 					System.out.println("Entrou");
 					idBlog = Integer.parseInt(request.getParameter("idBlog"));
@@ -95,6 +98,8 @@ public class ServletSubmission extends HttpServlet {
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of the create of collaboration
 				case "CreateCollaboration":
 					System.out.println("Criar");
 					System.out.println(request.getParameter("idBlog"));
@@ -103,6 +108,8 @@ public class ServletSubmission extends HttpServlet {
 							+ "Publication.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of the approve of publication
 				case "ApprovePublication":
 					idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
 					list = subDAO.listCollaborationApprove(idBlog);
@@ -112,6 +119,8 @@ public class ServletSubmission extends HttpServlet {
 							+ "Collaboration.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of the accept of publication	
 				case "AcceptPublication":
 					idBlog = Integer.parseInt(request.getParameter("idBlog")) ;
 					pubCollaborative.setIdPublication( Integer.parseInt(request.
@@ -127,6 +136,8 @@ public class ServletSubmission extends HttpServlet {
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
+				
+				//implementation of list comments	
 				case "ListComment":
 					CommentDAO commentDAO = new CommentDAO();
 					String idPost = request.getParameter("idPost");
@@ -135,6 +146,7 @@ public class ServletSubmission extends HttpServlet {
 					this.rd = request.getRequestDispatcher("deleteComment.jsp");
 					this.rd.forward(request, response);
 					break;
+					
 				default:
 					// nothing to do
 					break;
