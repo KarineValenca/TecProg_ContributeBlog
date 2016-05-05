@@ -1,6 +1,6 @@
 /** 
 * File name: DenouncePublicarionDAO.java
-* Purpose of file: this file contains the DenouncePublicationDAO and its methods.   
+* Purpose of file: this file contains the DenouncePublicationDAO class and its methods.   
 * Copyright: This software follows GPL license.
 **/
 
