@@ -17,19 +17,7 @@ import model.Denounce;
 **/
 public interface DenounceDAO {
 	
-	/** 
-	* Method name: listDenounce
-	* Purpose of method: setting method listarDenuncia.  
-	* @param: there is no param.
-	* @return there is no return.
-	**/
 	public List<Denounce> listDenounce ();
 	
-	/** 
-	* Method name: deleteDenounce
-	* Purpose of method: setting method listarDenuncia.  
-	* @param id denounce: unique identify of denounce to be deleted.
-	* @return there is no return.
-	**/
 	public void deleteDenounce(String idDenounce);
 }
