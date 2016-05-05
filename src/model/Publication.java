@@ -6,6 +6,10 @@
 
 package model;
 
+/**
+ * Class name: Publication
+ * Purpose of class: This class is used to store all attributes from a publication.
+ **/
 public class Publication {
 	private int idPublication;
 	private String titlePublication;
