@@ -1,3 +1,9 @@
+/** 
+* File name: DenouncePublication.java
+* Purpose of file: this file contains the DenouncePublication class and methods.   
+* Copyright: This software follows GPL license.
+**/
+
 package model;
 
 import java.util.Date;
