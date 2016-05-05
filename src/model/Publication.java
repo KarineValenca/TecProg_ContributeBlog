@@ -1,6 +1,6 @@
 /*
  * Class name: Publication.java
- * Purpose of class: This class is used to store all attributes from publication.
+ * Purpose of file: This file contains the Publication class and its methods.
  * Copyright: This software follows GPL license.
  */
 

@@ -1,6 +1,6 @@
 /*
  * Class name: Blog.java
- * Purpose of class: This class is used to store all attributes from blog.
+ * Purpose of file: This file contains the Blog class and its methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -10,6 +10,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class name: Blog
+ * Purpose of class: This class is used to store all attributes from a blog.
+ **/
 public class Blog {
 	private int idBlog;
 	private String title;
