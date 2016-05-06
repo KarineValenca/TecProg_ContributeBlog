@@ -32,7 +32,6 @@ import model.User;
 @WebServlet("/ServletUser")
 public class ServletUser extends HttpServlet {
 
-
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
@@ -47,14 +46,15 @@ public class ServletUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		UserDAO userDAO = new UserDAO();
 
 		try{
 			switch(action){
 			// this case is used to list all registered users
 			case "ListUser":
 				List<User> userList = new ArrayList<>();
-				userList = userDAO.listUser();
+				UserDAO userDAOList = new UserDAO();
+
+				userList = userDAOList.listUser();
 				request.setAttribute("listUsers", userList);
 
 				this.rd = request.getRequestDispatcher("usersList.jsp");
@@ -65,10 +65,10 @@ public class ServletUser extends HttpServlet {
 			case "ListProfile":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
-				id = request.getParameter("id");
-
 				User user = new User();
-				user = userDAO.showUserProfile(id);
+				UserDAO userDAOProfile = new UserDAO();
+
+				user = userDAOProfile.showUserProfile(id);
 
 				request.setAttribute("user", user);
 				this.rd = request.getRequestDispatcher("editUser.jsp");
@@ -83,8 +83,8 @@ public class ServletUser extends HttpServlet {
 
 	/**
 	 * Method name: doPost
-	 * Purpose of method: This xmethod is used to intercept HTTP POST requests.
- 	 * The HTTP POST request are used when the results of the requests will
+	 * Purpose of method: This method is used to intercept HTTP POST requests.
+ -	 * The HTTP POST request are used when the results of the requests will
   	 * not be the same.
 	 * @param request: used to represent the HTTP request that a browser sends.
 	 * @param response: used to represent the HTTP response that the application.
@@ -94,32 +94,34 @@ public class ServletUser extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 
-		UserDAO userDAO = new UserDAO();
-		User user = new User();
-		String birthDate = request.getParameter("birthDate");
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
 		try {
 			switch (action) {
 			// this case is used to allow the user to create an account
 			case "CreateUser":
-				user.setName(request.getParameter("name"));
-				user.setLastName(request.getParameter("lastName"));
-				user.setGender(request.getParameter("gender"));
-				user.setEmail(request.getParameter("email"));
-				user.setPassword(request.getParameter("password"));
-				user.setNickname(request.getParameter("nickname"));
+				User userCreate = new User();
 
-				Date date = (Date) formatter.parse(birthDate);
-				user.setBirthDate(date);
+				userCreate.setName(request.getParameter("name"));
+				userCreate.setLastName(request.getParameter("lastName"));
+				userCreate.setGender(request.getParameter("gender"));
+				userCreate.setEmail(request.getParameter("email"));
+				userCreate.setPassword(request.getParameter("password"));
+				userCreate.setNickname(request.getParameter("nickname"));
+
+				// getting date from view and converting to correct format
+				String birthDateCreate = request.getParameter("birthDate");
+				DateFormat formatterCreate = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = (Date) formatterCreate.parse(birthDateCreate);
+				userCreate.setBirthDate(date);
 
 				int validadeUser = 0;
-				String nickname = user.getNickname();
-				String email = user.getEmail();
+				String nickname = userCreate.getNickname();
+				String email = userCreate.getEmail();
+				UserDAO userDAO = new UserDAO();
+
 				validadeUser = userDAO.validateUser(nickname, email, validadeUser);
 
 				if(validadeUser == 0) {
-					userDAO.createUser(user);
+					userDAO.createUser(userCreate);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 				}
@@ -134,8 +136,9 @@ public class ServletUser extends HttpServlet {
 			case "DeleteUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
+				UserDAO userDAODelete = new UserDAO();
+				userDAODelete.deleteUser(id);
 
-				userDAO.deleteUser(id);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 
@@ -144,18 +147,22 @@ public class ServletUser extends HttpServlet {
 			// this case is used to allow the user update data in their account
 			case "EditUser":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+				User userEdit = new User();
+
+				userEdit.setName(request.getParameter("name"));
+				userEdit.setLastName(request.getParameter("lastName"));
+				userEdit.setGender(request.getParameter("gender"));
+				userEdit.setPassword(request.getParameter("password"));
+				userEdit.setNickname(request.getParameter("nickname"));
+
+				String birthDateEdit = request.getParameter("birthDate");
+				DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");
+				Date data = (Date) formatterEdit.parse(birthDateEdit);
+				userEdit.setBirthDate(data);
+
 				id = request.getParameter("id");
-
-				user.setName(request.getParameter("name"));
-				user.setLastName(request.getParameter("lastName"));
-				user.setGender(request.getParameter("gender"));
-				user.setPassword(request.getParameter("password"));
-				user.setNickname(request.getParameter("nickname"));
-
-				Date data = (Date) formatter.parse(birthDate);
-				user.setBirthDate(data);
-
-				userDAO.editUser(user, id);
+				UserDAO userDAOEdit = new UserDAO();
+				userDAOEdit.editUser(userEdit, id);
 				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
 

@@ -19,8 +19,6 @@ import model.User;
  * connection with database.
  **/
 public class AuthenticationDAO extends ConnectionFactory{
-	User user = new User();
-	
 	/**
 	 * Method name: authenticateUser
 	 * Purpose of method: This method allows the user login at the system. 
@@ -34,9 +32,11 @@ public class AuthenticationDAO extends ConnectionFactory{
 		assert(password != null) : "Unexpected error: the password is receiving"
 									+ " null";
 		
+		User user = new User();
+		
 		// this user.setEmail will change if the email and password are correct
-		this.user.setEmail("Not authorized");
-		this.user.setPassword("Not authorized");
+		user.setEmail("Not authorized");
+		user.setPassword("Not authorized");
 		
 		try{
 			Connection connection = getConnection();
@@ -46,14 +46,14 @@ public class AuthenticationDAO extends ConnectionFactory{
 			ResultSet rs = stm.executeQuery(sql);
 			
 			while(rs.next()){
-				this.user.setId(rs.getInt("id"));
-				this.user.setName(rs.getString("nome"));
-				this.user.setLastName(rs.getString("sobrenome"));
-				this.user.setGender(rs.getString("genero"));
-				this.user.setNickname(rs.getString("apelido"));
-				this.user.setEmail(rs.getString("email"));
-				this.user.setPassword(rs.getString("senha"));
-				this.user.setBirthDate(rs.getDate("dataNascimento"));
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("nome"));
+				user.setLastName(rs.getString("sobrenome"));
+				user.setGender(rs.getString("genero"));
+				user.setNickname(rs.getString("apelido"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("senha"));
+				user.setBirthDate(rs.getDate("dataNascimento"));
 			}
 			
 			rs.close();
@@ -63,6 +63,6 @@ public class AuthenticationDAO extends ConnectionFactory{
 			e.printStackTrace();	
 		}
 		
-		return this.user;
+		return user;
 	}
 }
