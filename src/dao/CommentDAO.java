@@ -1,7 +1,6 @@
-/*
- * Class name: CommentDao.java
- * Purpose of class: This class is responsible to establish database conection 
- * and execute methods for create and delete comments and list of comments.
+/**
+ * File name: CommentDao.java
+ * Purpose of file: This file is composed by CommentDAO class and methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -20,6 +19,11 @@ import model.Comment;
 import model.Publication;
 import model.User;
 
+/**
+ * Class name: CommentDao
+ * Purpose of class: This class is responsible to establish database conection 
+ * and execute methods for create and delete comments and list of comments.
+ */
 public class CommentDAO extends ConnectionFactory{
 	
 	Comment comment = new Comment();
@@ -29,8 +33,15 @@ public class CommentDAO extends ConnectionFactory{
 	Date now = new Date();
 	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 	
-	/* this method establishs a connection database and creates a comment using
-	   the comment, user and publication ID. */
+	/**
+	 * Method name: createComment
+	 * Purpose of method: This method establishs a connection database and 
+	 * creates a comment.
+	 * @param comment Comment The comment to be published.
+	 * @param user The name of who published the comment.
+	 * @param idPublication Unique identifier of a publication for receive a 
+	 * comment.
+	 */
 	public void createComment(Comment comment, User user, int idPublication){
 		assert (comment != null) : "The comment paramater is null";
 		assert (user != null) : "The user paramater is null";
@@ -54,8 +65,12 @@ public class CommentDAO extends ConnectionFactory{
 		}
 	}
 	
-	/* this method establishs a connection database and deletes a comment of 
-	   database using the comment ID. */
+	/**
+	 * Method name: deleteComment
+	 * Purpose of method: This method establishs a connection database and 
+	 * deletes a comment of database.
+	 * @param idComment Unique identifier of a comment. 
+	 */
 	public void deleteComment(String idComment){
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idComment != null) : "The idComment paramater is null";
@@ -71,8 +86,15 @@ public class CommentDAO extends ConnectionFactory{
 		}
 	}
 	
-	/* this method establishs a connection database to adds a comment in a 
-	   comments list using the publication ID and returns a comment list. */
+	/**
+	 * Method name: listBlogComment
+	 * Purpose of method: This method establishs a connection database to adds 
+	 * a comment in a comments list.
+	 * @param idPublication Unique identifier of a publication for receive a 
+	 * comment.
+	 * @return listComment ArrayList of Comment object instance to store the 
+	 * comments of a publication.
+	 */
 	public List<Comment> listBlogComment(String idPublication) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idPublication != null) : "The idPublication paramater is null";
@@ -101,8 +123,14 @@ public class CommentDAO extends ConnectionFactory{
 		return listComment;
 	}
 	
-	/* this method establishs a connection database to delete a comment of a 
-	   comments list and return a comments list. */
+	/**
+	 * Method name: listBlogCommentDelete
+	 * Purpose of method: This method establishs a connection database to 
+	 * delete a comment of a comments list.
+	 * @param idBlog Unique identifier of a blog.
+	 * @return listComment ArrayList of Comment object instance to store the 
+	 * comments of a publication.
+	 */
 	public List<Comment> listBlogCommentDelete(String idBlog) {
 		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert (idBlog != null) : "The idBlog paramater is null";
