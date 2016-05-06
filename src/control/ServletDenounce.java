@@ -1,8 +1,8 @@
 /** 
-* File name: ServletDenounce.java
-* Purpose of file: this file contains the ServletDenounce class and its methods.   
-* Copyright: This software follows GPL license.
-**/
+ * File name: ServletDenounce.java
+ * Purpose of file: this file contains the ServletDenounce class and its methods.   
+ * Copyright: This software follows GPL license.
+ */
 
 package control;
 
@@ -28,27 +28,26 @@ import model.DenouncePublication;
 import model.User;
 
 /**
-* Class name: ServletDenounce
-* Purpose of class: This class keeps denounces. It has some specific tasks such
-* as denounce a publication, denounce a blog and delete a denounce of 
-* publication or blog.
-**/
+ * Class name: ServletDenounce
+ * Purpose of class: This class keeps denounces. It has some specific tasks such
+ * as denounce a publication, denounce a blog and delete a denounce of 
+ * publication or blog.
+ */
 @WebServlet("/ServletDenounce")
 public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
 	/** 
-	* Method name: doGet
-	* Purpose of method: this method is used to intercept HTTP GET requests. 
-	* The HTTP GET requests are used when you get the same result everytime 
-	* you execute the request.  
-	* @param request: used to represent the HTTP request that a browser sends
-    * to the application.
-	* @param response: used to represent the HTTP response that the application
-    * sends to a browser. 
-	* @return there is no return.
-	**/
+	 * Method name: doGet
+	 * Purpose of method: this method is used to intercept HTTP GET requests. 
+	 * The HTTP GET requests are used when you get the same result everytime 
+	 * you execute the request.  
+	 * @param request: used to represent the HTTP request that a browser sends
+     * to the application.
+	 * @param response: used to represent the HTTP response that the application
+     * sends to a browser. 
+     */
 	protected void doGet(HttpServletRequest request,
 						 HttpServletResponse response) 
 						 throws ServletException, IOException {
@@ -58,16 +57,15 @@ public class ServletDenounce extends HttpServlet{
 	}
 
 	/** 
-	* Method name: doPost
-	* Purpose of method: this method is used to intercept HTTP POST requests. 
-	* The HTTP POST request are used when the results of the requests will 
-	* not be the same.  
-	* @param request: used to represent the HTTP request that a browser sends
-    * to the application.
-	* @param response: used to represent the HTTP response that the application
-    * sends to a browser. 
-	* @return there is no return.
-	**/
+	 * Method name: doPost
+	 * Purpose of method: this method is used to intercept HTTP POST requests. 
+	 * The HTTP POST request are used when the results of the requests will 
+	 * not be the same.  
+	 * @param request: used to represent the HTTP request that a browser sends
+     * to the application.
+	 * @param response: used to represent the HTTP response that the application
+     * sends to a browser. 
+	 */
 	protected void doPost(HttpServletRequest request,
 						  HttpServletResponse response) 
 						  throws ServletException, IOException {

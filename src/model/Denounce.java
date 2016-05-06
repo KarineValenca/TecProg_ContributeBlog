@@ -1,8 +1,8 @@
 /** 
-* File name: Denounce.java
-* Purpose of file: this file contains the Denounce class, attributes and its methods.   
-* Copyright: This software follows GPL license.
-**/
+ * File name: Denounce.java
+ * Purpose of file: this file contains the Denounce class, attributes and its methods.   
+ * Copyright: This software follows GPL license.
+ */
 
 package model;
 
@@ -10,9 +10,9 @@ import java.util.Date;
 
 
 /**
-* Class name: Denounce
-* Purpose of class: This class is used to store all attributes from a denounce.
-**/
+ * Class name: Denounce
+ * Purpose of class: This class is used to store all attributes from a denounce.
+ */
 public class Denounce {
 	private int idDenounce;
 	private Date dateDenounce;

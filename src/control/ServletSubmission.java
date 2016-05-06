@@ -1,8 +1,8 @@
 /** 
-* File name: ServletSubmission.java
-* Purpose of file: this file contains the ServletSubmission class and its methods.   
-* Copyright: This software follows GPL license.
-**/
+ * File name: ServletSubmission.java
+ * Purpose of file: this file contains the ServletSubmission class and its methods.   
+ * Copyright: This software follows GPL license.
+ */
 
 package control;
 
@@ -24,11 +24,11 @@ import dao.CollaborationDAO;
 import dao.CommentDAO;
 
 /**
-* Class name: ServletDenounce
-* Purpose of class: This class is responsible for implementation of submission 
-* of publication post, create collaboration, approve publication, accept 
-* publication and list comments.
-**/
+ * Class name: ServleSubmission
+ * Purpose of class: This class is responsible for implementation of submission 
+ * of publication post, create collaboration, approve publication, accept 
+ * publication and list comments.
+ */
 @WebServlet("/ServletSubmission")
 public class ServletSubmission extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,16 +37,16 @@ public class ServletSubmission extends HttpServlet {
 	private RequestDispatcher rd;
 
 	/** 
-	* Method name: doGet
-	* Purpose of method: this method is used to intercept HTTP GET requests. 
-	* The HTTP GET requests are used when you get the same result everytime 
-	* you execute the request.  
-	* @param request: used to represent the HTTP request that a browser sends
-	* to the application.
-	* @param response: used to represent the HTTP response that the application
-	* sends to a browser. 
-	* @return there is no return.
-	**/
+	 * Method name: doGet
+	 * Purpose of method: this method is used to intercept HTTP GET requests. 
+	 * The HTTP GET requests are used when you get the same result everytime 
+	 * you execute the request.  
+	 * @param request: used to represent the HTTP request that a browser sends
+	 * to the application.
+	 * @param response: used to represent the HTTP response that the application
+	 * sends to a browser. 
+	 * @return there is no return.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 						throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
@@ -55,16 +55,15 @@ public class ServletSubmission extends HttpServlet {
 	}
 
 	/** 
-	* Method name: doPost
-	* Purpose of method: this method is used to intercept HTTP POST requests. 
-	* The HTTP POST request are used when the results of the requests will 
-	* not be the same.  
-	* @param request: used to represent the HTTP request that a browser sends
-    * to the application.
-	* @param response: used to represent the HTTP response that the application
-    * sends to a browser. 
-	* @return there is no return.
-	**/
+	 * Method name: doPost
+	 * Purpose of method: this method is used to intercept HTTP POST requests. 
+	 * The HTTP POST request are used when the results of the requests will 
+	 * not be the same.  
+	 * @param request: used to represent the HTTP request that a browser sends
+     * to the application.
+	 * @param response: used to represent the HTTP response that the application
+     * sends to a browser. 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 						  throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";

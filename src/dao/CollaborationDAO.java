@@ -1,8 +1,8 @@
 /** 
-* File name: CollaborationDAO.java
-* Purpose of file: this file contains the CollaborationDAO class and its methods.   
-* Copyright: This software follows GPL license.
-**/
+ * File name: CollaborationDAO.java
+ * Purpose of file: this file contains the CollaborationDAO class and its methods.   
+ * Copyright: This software follows GPL license.
+ */
 
 package dao;
 
@@ -18,24 +18,23 @@ import model.Publication;
 import model.CollaborativePublication;
 
 /**
-* Class name: CollaborationDAO
-* Purpose of class: This class has the methods used to connect to the database 
-* and execute methods to list and make changes related publications.
-**/
+ * Class name: CollaborationDAO
+ * Purpose of class: This class has the methods used to connect to the database 
+ * and execute methods to list and make changes related publications.
+ */
 public class CollaborationDAO  extends ConnectionFactory implements PublicationGeneral{
 
 	Publication publicationCollaborative = new Publication();
 	Blog blog = new Blog();
 
 	/** 
-	* Method name: createPublication
-	* Purpose of method: Method responsible to insert the publication in the 
-	* database.  
-	* @param idBlog: unique identifier for the blog to be included publication..
-	* @param publication: instance the object publication that will be included
-	* in blog.
-	* @return there is no return.
-	**/
+	 * Method name: createPublication
+	 * Purpose of method: Method responsible to insert the publication in the 
+	 * database.  
+	 * @param idBlog: unique identifier for the blog to be included publication..
+	 * @param publication: instance the object publication that will be included
+	 * in blog.
+	 */
 	public void createPublication(int idBlog, Publication publication){
 		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
 		assert(publication != null ) : "Unexpected error: the publication object "
@@ -67,13 +66,13 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	}
 
 	/** 
-	* Method name: listCollaborationApprove
-	* Purpose of method: Method responsible for listing the publications for 
-	* approval.  
-	* @param idBlog: unique identifier for the blog to be listing the 
-	* publications for approval.
-	* @return pubCollaborative: list of publications for aproval.
-	**/
+	 * Method name: listCollaborationApprove
+	 * Purpose of method: Method responsible for listing the publications for 
+	 * approval.  
+	 * @param idBlog: unique identifier for the blog to be listing the 
+	 * publications for approval.
+	 * @return pubCollaborative: list of publications for aproval.
+	 */
 	public List<Publication> listCollaborationApprove(int idBlog){
 		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
 		List<Publication>  pubCollaborative= new ArrayList<>();
@@ -104,13 +103,12 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	}
 
 	/** 
-	* Method name: ApprovePublication
-	* Purpose of method: Method responsible for approving publications.  
-	* @param idPublication: unique identifier for the publication to be approval
-	* @param publicationCollaborative: instance the object CollaborativePublication
-	* that will be approve publication
-	* @return there is no return.
-	**/
+	 * Method name: ApprovePublication
+	 * Purpose of method: Method responsible for approving publications.  
+	 * @param idPublication: unique identifier for the publication to be approval
+	 * @param publicationCollaborative: instance the object CollaborativePublication
+	 * that will be approve publication
+	 */
 	public void ApprovePublication(int idPublication, CollaborativePublication 
 			publicationCollaborative){
 		assert(idPublication > 0 ) : "Unexpected error: the publication identifier "
@@ -139,11 +137,11 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	}
 
 	/** 
-	* Method name: listPublication
-	* Purpose of method: Method responsible for listing publication.  
-	* @param idPublication: unique identifier for the publication to be listed.
-	* @return publication: return the publication
-	**/
+	 * Method name: listPublication
+	 * Purpose of method: Method responsible for listing publication.  
+	 * @param idPublication: unique identifier for the publication to be listed.
+	 * @return publication: return the publication
+	 */
 	public Publication listPublication(String idPublication) {
 		assert(idPublication != null) : "Unexpected error: the attribute "
 										+ "idPublication is receiving null";
