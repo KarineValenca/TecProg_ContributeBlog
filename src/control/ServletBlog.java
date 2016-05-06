@@ -1,7 +1,6 @@
 /*
- * Class name: ServletBlog.java
- * Purpose of class: This class is used to the methods list, create and delete, blog.
- * And some other methods such list and instance, publication.
+ * File name: ServletBlog.java
+ * Purpose of class: This file contains the ServletBlog class and its methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -25,17 +24,37 @@ import model.Blog;
 import model.BlogOwner;
 import model.Publication;
 
+/*
+ * Class name: ServletBlog.java
+ * Purpose of class: This class is used to the methods list, create and delete, blog.
+ * And some other methods such list and instance, publication.
+ */
 @WebServlet("/ServletBlog")
 public class ServletBlog extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
+	/**
+	 * Method name: doGet
+	 * Purpose of method: This method is used to intercept HTTP GET requests.
+	 * The HTTP GET requests are used when you get the same result everytime.
+	 * @param request: used to represent the HTTP request that a browser sends.
+	 * @param response: used to represent the HTTP response that the application.
+	 **/
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                                                               response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	/**
+	 * Method name: doPost
+	 * Purpose of method: This method is used to intercept HTTP POST requests.
+ 	 * The HTTP POST request are used when the results of the requests will
+  	 * not be the same.
+	 * @param request: used to represent the HTTP request that a browser sends.
+	 * @param response: used to represent the HTTP response that the application.
+	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 		                                                               response) throws ServletException, IOException {
 		String action = request.getParameter("action");
@@ -49,6 +68,7 @@ public class ServletBlog extends HttpServlet {
 
 		try {
 			switch (action) {
+			// this case is used for the User to create a blog
 			case "CreateBlog":
 				blog.setTitle(request.getParameter("title"));
 				blog.setCategorie(request.getParameter("categorie"));
@@ -58,18 +78,24 @@ public class ServletBlog extends HttpServlet {
 									 +"ListOwner&idOwnerBlog.jsp");
 				this.rd.forward(request, response);
 			break;
+
+			// this case is used to show all your blogs
 			case "ListBlog":
 				listBlog = blogdao.listBlog();
 				request.setAttribute("listBlog", listBlog);
 				this.rd = request.getRequestDispatcher("listBlogs.jsp");
 				this.rd.forward(request, response);
 			break;
+
+			// this case is used to allow the user delete their blog
 			case "DeleteBlog":
 				String idBlog = request.getParameter("idBlog");
 				blogdao.deleteBlog(idBlog);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 			break;
+
+			// this case is used to show the all your publications
 			case "ListPublications":
 				String idBlogPublication =  request.getParameter("idBlog") ;
 				listPublication = blogdao.listPublicationBlog(idBlogPublication);
@@ -77,6 +103,8 @@ public class ServletBlog extends HttpServlet {
 				this.rd = request.getRequestDispatcher("listPublication.jsp");
 				this.rd.forward(request, response);
 			break;
+
+			// this case is used to show the all publications about your blog
 			case "ListPublicationsBlog":
 				idBlogPublication =  request.getParameter("idBlog") ;
 				listPublication = blogdao.listPublicationBlog(idBlogPublication);
@@ -84,6 +112,8 @@ public class ServletBlog extends HttpServlet {
 				this.rd = request.getRequestDispatcher("listPublicationsBlog.jsp");
 				this.rd.forward(request, response);
 			break;
+
+			// Instantiates only one publication
 			case "InstancePublication":
 				String idBlogInstance = request.getParameter("idBlog");
 				request.setAttribute("idBlog", idBlogInstance);

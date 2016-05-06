@@ -41,7 +41,6 @@ public class ServletPublication extends HttpServlet{
 	 * The HTTP GET requests are used when you get the same result everytime.
 	 * @param request: used to represent the HTTP request that a browser sends.
 	 * @param response: used to represent the HTTP response that the application.
-	 * @return: there is no return
 	 **/
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                       response) throws ServletException, IOException {
@@ -55,7 +54,6 @@ public class ServletPublication extends HttpServlet{
   	 * not be the same.
 	 * @param request: used to represent the HTTP request that a browser sends.
 	 * @param response: used to represent the HTTP response that the application.
-	 * @return: there is no return
 	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 		                        response) throws ServletException, IOException {
