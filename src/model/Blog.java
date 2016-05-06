@@ -1,8 +1,8 @@
-/*
+/**
  * Class name: Blog.java
  * Purpose of file: This file contains the Blog class and its methods.
  * Copyright: This software follows GPL license.
- */
+ **/
 
 package model;
 

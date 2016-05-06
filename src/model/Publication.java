@@ -1,8 +1,8 @@
-/*
+/**
  * Class name: Publication.java
  * Purpose of file: This file contains the Publication class and its methods.
  * Copyright: This software follows GPL license.
- */
+ **/
 
 package model;
 
