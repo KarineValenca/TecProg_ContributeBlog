@@ -1,3 +1,9 @@
+/**
+ * File name: BlogDAO.java
+ * Purpose of file: This file is composed by a DenounceBlogDAO class and methods.
+ * Copyright: This software follows GPL license.
+ */
+
 package dao;
 
 import java.sql.Connection;
@@ -10,7 +16,19 @@ import java.util.List;
 import model.Denounce;
 import model.DenounceBlog;
 
+/**
+ * Class name: DenounceBlogDAO
+ * Purpose of class: This class has the methods used to connect to the database
+ * and execute methods to list and make changes related to denounces. It is 
+ * used by other classes of data persistence.
+ */
 public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
+
+	/**
+	 * Method name: listDenounce
+	 * Purpose of method: This method is responsible for listing the denounces.
+	 * @return list: array list of denounces blog.
+	 */
 	public List<Denounce> listDenounce() {
 		List<Denounce> list = new ArrayList<>();
 		try {
@@ -33,8 +51,16 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		return list;
 	}
 
+	/**
+	 * Method name: deleteDenounce
+	 * Purpose of method: This method is responsible for for making the exclusion
+	 * of a denounce database.
+	 * @param idDenounce: unique identifier of denounce will be deleted.
+	 * @return list: array list of denounces blog.
+	 */	
 	public void deleteDenounce(String idDenounce) {
-		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";		
+		assert(idDenounce != null ) : "Unexpected error: the denounce identifier"
+									  + " is receiving null";		
 		try {
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection
@@ -48,23 +74,28 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		}
 	}
 
+	/**
+	 * Method name: searchBlogDenounce
+	 * Purpose of method: This method is responsible for for making the exclusion
+	 * of a denounce database.
+	 * @param idDenounce: unique identifier of denounce will be searched.
+	 * @return denounce: denounce searched.
+	 */	
 	public Denounce searchBlogDenounce(String idDenounce) {
-		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";
+		assert(idDenounce != null ) : "Unexpected error: the denounce identifier"
+									  + " is receiving null";
 		Denounce denounceBlog = new Denounce();
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Denuncia where idDenuncia ="+idDenounce);
+			ResultSet rs = stm.executeQuery("Select * from Denuncia where "
+											+ "idDenuncia ="+idDenounce);
 
 			while (rs.next()) {
-
 				denounceBlog.setIdDenounce(rs.getInt("idDenounce"));
 				denounceBlog.setContentDenounce(rs.getString("contentDenunce"));
 				denounceBlog.setIdBlog( rs.getInt("idBlog"));
 			}
-
-
-
 			stm.close();
 			connection.close();
 		} catch (Exception e) {
@@ -72,5 +103,4 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		}
 		return denounceBlog;
 	}
-
 }
