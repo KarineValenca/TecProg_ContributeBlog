@@ -1,5 +1,5 @@
 /**
- * Class name: PublicationDAO.java
+ * File name: PublicationDAO.java
  * Purpose of class: This file contains the PublicationDAO class and its methods.
  * Copyright: This software follows GPL license.
  **/
@@ -34,7 +34,6 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
              * @param idBlog: used to identify the blog.
              * @param publicacao: The text of the publication that will be associated with the blog
              * @param idPublication: the text identifier in the system
-             * @return: there is no return.
              **/
 	public void createPublication( int blog, Publication publication){
 		assert(blog >= 0) : "Unexpected error: the attribute blog less than 0";
@@ -69,7 +68,6 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
              * Purpose of method: This method allows the User edit publication data.
              * @param publicacao: The text of the publication that will be associated with the blog
              * @param idPublication: the text identifier in the system
-             * @return: there is no return.
              **/
 	public void editPublication(Publication publication, String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
@@ -133,7 +131,6 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
              * Purpose of method: This method allows the User to delete a publication that he does not
              * want to continue on a blog
              * @param idPublication: used to identify the publication.
-             * @return: there is no return.
              **/
 	public void deletePublication(String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
@@ -158,7 +155,6 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
              * @param idPublication: used to identify the publication.
              * @param publicacao: The text of the publication that will be associated with the blog
              * @param gradePublication: Used to give the rate.
-             * @return: there is no return.
              **/
 	public void ratePublication(Publication publication, String gradePublication, String idPublication){
 		assert(publication!= null) : "Unexpected error: the attribute publication is receiving null";

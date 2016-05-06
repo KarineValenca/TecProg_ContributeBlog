@@ -1,5 +1,5 @@
 /**
- * Class name: PublicationGeneral.java
+ * File name:PublicationGeneral.java
  * Purpose of file: This file contains the PublicationGeneral DAO class and its methods.
  * Copyright: This software follows GPL license.
  **/
@@ -20,7 +20,6 @@ public interface PublicationGeneral {
              * @param idBlog: used to identify the blog.
              * @param publicacao: The text of the publication that will be associated with the blog
              * @param idPublication: the text identifier in the system
-             * @return: there is no return.
              **/
 	public void createPublication(int idBlog, Publication publication);
 
