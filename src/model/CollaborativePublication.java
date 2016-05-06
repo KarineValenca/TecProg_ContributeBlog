@@ -1,8 +1,8 @@
 /** 
-* File name: CollaborativePublication.java
-* Purpose of file: this file contains the class CollaborativePublication and its methods.   
-* Copyright: This software follows GPL license.
-**/
+ * File name: CollaborativePublication.java
+ * Purpose of file: this file contains the class CollaborativePublication and its methods.   
+ * Copyright: This software follows GPL license.
+ */
 
 package model;
 
