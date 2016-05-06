@@ -1,7 +1,6 @@
-/*
- *Class name: ConnectionFactory.java
- *Purpose of class: This class is responsible for the database connections.
- *Used by other data persistence classes. 
+/**
+ *File name: ConnectionFactory.java
+ *Purpose of File: This file is composed by ConnectionFactory class and methods.
  *Copyright: This software follows GPL license.
  */
 
@@ -10,9 +9,19 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/* this method trys to stablish database connections passing user, password and
-   name databases. */
+/**
+ *Class name: ConnectionFactory
+ *Purpose of class: This class is responsible for the database connections.
+ *Used by other data persistence classes. 
+ */
 public class ConnectionFactory {
+	
+	/**
+	 * Method name: getConnection
+	 * Purpose of method: This method trys to stablish database connections. 
+	 * @return connection The method trys to stablish a connection to return 
+	 * the variable connection. Connection states is equal null.  
+	 */
 	public static synchronized Connection getConnection() {
 		Connection connection = null;
 		String user = "root";
