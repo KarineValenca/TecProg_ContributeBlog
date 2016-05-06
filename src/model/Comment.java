@@ -1,6 +1,6 @@
-/*
- * Class name: Comment.java
- * Purpose of class: This class defines the attributes of a comment.
+/**
+ * File name: Comment
+ * Purpose of file: This file is composed by a Comment class and methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -8,6 +8,10 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Class name: Comment.java
+ * Purpose of class: This class defines the attributes of a comment.
+ */
 public class Comment {
 	private int idComment;
 	private String commentContent;
