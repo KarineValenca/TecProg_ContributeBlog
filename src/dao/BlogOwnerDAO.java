@@ -1,6 +1,6 @@
-/*
- * Class name: BlogOwnerDAO.java
- * Purpose of class: This class is responsible to create a blogs list.
+/**
+ * File name: BlogOwnerDAO.java
+ * Purpose of file: This file is composed by a BlogOwner class and methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -14,15 +14,27 @@ import java.util.List;
 
 import model.Blog;
 
+/**
+ * Class name: BlogOwnerDAO
+ * Purpose of class: This class is responsible to create a blogs list.
+ */
 public class BlogOwnerDAO extends ConnectionFactory{
-
+	
+	/**
+	 * Method name: BlogOwnerDAO
+	 * Purpose of method: This is a constructor method of class.
+	 */
 	public BlogOwnerDAO() {
 		
 	}
 	
-	/* this method is used to trys to stablish a connection database and 
-	   creates a blogs list. The list is composed by id, title, creation
-	   date and category. */
+	/**
+	 * Method name: listBlogOwner
+	 * Purpose of method: This method is used to trys to stablish a connection 
+	 * database and creates a blogs list.
+	 * @param blogOwner Type of blog user (string).
+	 * @return listBlog ArrayList of Blog object instance to store the blogs.
+	 */
 	public List<Blog> listBlogOwner(String blogOwner) {
 		assert (blogOwner != null) : "The blogOwner parameter is null";
 		
