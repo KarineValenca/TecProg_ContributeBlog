@@ -83,9 +83,14 @@ public class ServletComment extends HttpServlet{
 			switch (action) {
 			
 			case "Create":
-				comment.setCommentContent(request.getParameter("commentContent"));
-				user.setId(Integer.parseInt(request.getParameter("idUser")));
-				int idPublicationCreate = (Integer.parseInt(request.getParameter("idPublication")));
+				String commentContentParameter = request.getParameter("commentContent");
+				comment.setCommentContent(commentContentParameter);
+				
+				String idUserParameter = request.getParameter("idUser");
+				user.setId(Integer.parseInt(idUserParameter));
+				
+				String idPublicationParameter = request.getParameter("idPublication");
+				int idPublicationCreate = (Integer.parseInt(idPublicationParameter));
 				
 				commentDAO.createComment(comment, user, idPublicationCreate);
 				this.rd = request.getRequestDispatcher("index.jsp");
