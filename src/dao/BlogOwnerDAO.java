@@ -70,5 +70,4 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		}
 		return listBlog;
 	}
-	return met
 }
