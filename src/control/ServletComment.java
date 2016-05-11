@@ -71,22 +71,22 @@ public class ServletComment extends HttpServlet{
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
 		
-		String action = request.getParameter("action");
 		
-		Comment comment = new Comment();
-		CommentDAO commentDAO = new CommentDAO();
-		User user = new User();
-		Publication publication = new Publication();
-		java.util.List<Comment> comments = new ArrayList<Comment>();
 		
 		try {
+			String action = request.getParameter("action");
+			
+			CommentDAO commentDAO = new CommentDAO();
+			
 			switch (action) {
 			
 			case "Create":
+				Comment comment = new Comment();
 				String commentContentParameter = request.getParameter("commentContent");
 				comment.setCommentContent(commentContentParameter);
 				
 				String idUserParameter = request.getParameter("idUser");
+				User user = new User();
 				user.setId(Integer.parseInt(idUserParameter));
 				
 				String idPublicationParameter = request.getParameter("idPublication");
@@ -107,7 +107,7 @@ public class ServletComment extends HttpServlet{
 				
 			case "ListCommentDelete":
 				String idPost = request.getParameter("idPost");
-				String idBlog = request.getParameter("idBlog");
+				java.util.List<Comment> comments = new ArrayList<Comment>();
 				comments = commentDAO.listBlogComment(idPost);
 				request.setAttribute("comments", comments);
 				this.rd = request.getRequestDispatcher("deleteComment.jsp");
