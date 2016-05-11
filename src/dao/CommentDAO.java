@@ -51,7 +51,9 @@ public class CommentDAO extends ConnectionFactory{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("INSERT INTO Comment (commentContent, "
 					+ "commentCreateDate, idUser, idPublication) VALUES (?,?,?,?);");
-			pstm.setString(1, comment.getCommentContent());
+			
+			String commentContentString = comment.getCommentContent();
+			pstm.setString(1, commentContentString);
 			pstm.setDate(2, sqlDate);
 			pstm.setInt(3, user.getId());
 			pstm.setInt(4, idPublication);
@@ -105,13 +107,23 @@ public class CommentDAO extends ConnectionFactory{
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("select * from Comentario where idPublication=" + idPublication);
 			
-			while (rs.next()) {
+			Boolean nextComment = rs.next();
+			while (nextComment) {
 				Comment comment = new Comment();
-				comment.setIdComment(rs.getInt("idComment"));
-				System.out.println(comment.getIdComment());
-				comment.setCommentContent(rs.getString("commentContent"));
-				comment.setCommentUser(rs.getString("idUser"));
-				System.out.println(comment.getCommentContent());
+				
+				Integer idCommentColumn = rs.getInt("idComment");
+				comment.setIdComment(idCommentColumn);
+				Integer integeridComment = comment.getIdComment();
+				System.out.println(integeridComment);
+				
+				String commentContentColumn = rs.getString("commentContent");
+				comment.setCommentContent(commentContentColumn);
+				String stringCommentContent = comment.getCommentContent();
+				System.out.println(stringCommentContent);
+				
+				String idUserColumn = rs.getString("idUser");
+				comment.setCommentUser(idUserColumn);		
+				
 				listComment.add(comment);
 				
 			}
@@ -141,13 +153,23 @@ public class CommentDAO extends ConnectionFactory{
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("select * from Comentario where idBlog" + idBlog);
 			
-			while (rs.next()) {
+			Boolean nextComment = rs.next();
+			while (nextComment) {
 				Comment comment = new Comment();
-				comment.setIdComment(rs.getInt("idComment"));
-				System.out.println(comment.getIdComment());
-				comment.setCommentContent(rs.getString("commentContent"));
-				comment.setCommentUser(rs.getString("idUser"));
-				System.out.println(comment.getCommentContent());
+				
+				Integer idCommentColumn = rs.getInt("idComment");
+				comment.setIdComment(idCommentColumn);
+				Integer integeridComment = comment.getIdComment();
+				System.out.println(integeridComment);
+				
+				String commentContentColumn = rs.getString("commentContent");
+				comment.setCommentContent(commentContentColumn);
+				String stringCommentContent = comment.getCommentContent();
+				System.out.println(stringCommentContent);
+				
+				String idUserColumn = rs.getString("idUser");
+				comment.setCommentUser(idUserColumn);		
+				
 				listComment.add(comment);
 				
 			}
