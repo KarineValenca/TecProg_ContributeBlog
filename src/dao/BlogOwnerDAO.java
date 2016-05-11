@@ -47,8 +47,8 @@ public class BlogOwnerDAO extends ConnectionFactory{
 			
 			Boolean nextBlog = rs.next();
 			while (nextBlog) {
-				Blog blog = new Blog();
 				
+				Blog blog = new Blog();
 				Integer getIntegerIdBlog = rs.getInt("idBlog");
 				blog.setIdBlog(getIntegerIdBlog);
 				
@@ -70,5 +70,5 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		}
 		return listBlog;
 	}
-	
+	return met
 }
