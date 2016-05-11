@@ -2,7 +2,7 @@
  * File name: PublicationDAO.java
  * Purpose of class: This file contains the PublicationDAO class and its methods.
  * Copyright: This software follows GPL license.
- **/
+ */
 
 package dao;
 
@@ -22,19 +22,18 @@ import model.Publication;
  * Class name: PublicationDAO
  * Purpose of class: Establish database conection and execute methods for create and delete and
  * list publications and review publication and comment list and identify User.
- **/
+ */
 public class PublicationDAO extends ConnectionFactory implements PublicationGeneral{
 
-	Publication publication = new Publication();
 	Blog blog = new Blog();
 
-            /**
-             * Method name: createPublication
-             * Purpose of method: Represents the association of a text publication with a blog.
-             * @param idBlog: used to identify the blog.
-             * @param publicacao: The text of the publication that will be associated with the blog
-             * @param idPublication: the text identifier in the system
-             **/
+	/**
+	 * Method name: createPublication
+	 * Purpose of method: Represents the association of a text publication with a blog.
+	 * @param idBlog: used to identify the blog.
+	 * @param publicacao: The text of the publication that will be associated with the blog
+	 * @param idPublication: the text identifier in the system
+	 */
 	public void createPublication( int blog, Publication publication){
 		assert(blog >= 0) : "Unexpected error: the attribute blog less than 0";
 		assert(publication != null ) : "Unexpected error: the publication is receiving null";
@@ -63,12 +62,12 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 
 	}
 
-            /**
-             * Method name: editPublication
-             * Purpose of method: This method allows the User edit publication data.
-             * @param publicacao: The text of the publication that will be associated with the blog
-             * @param idPublication: the text identifier in the system
-             **/
+    /**
+     * Method name: editPublication
+     * Purpose of method: This method allows the User edit publication data.
+     * @param publicacao: The text of the publication that will be associated with the blog
+     * @param idPublication: the text identifier in the system
+     */
 	public void editPublication(Publication publication, String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert(idPublication != null) : "Unexpected error: the attribute idPublication is receiving null";
@@ -94,28 +93,28 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		}
 	}
 
-            /**
-             * Method name: listPublication
-             * Purpose of method: Matches the publication of Data Display you want to input the
-             * identification attribute it.
-             * @param idPublication: used to identify the publication.
-             * @return: Returns a list of publications
-             **/
+    /**
+     * Method name: listPublication
+     * Purpose of method: Matches the publication of Data Display you want to input the
+     * identification attribute it.
+     * @param idPublication: used to identify the publication.
+     * @return: Returns a list of publications
+     */
 	public Publication listPublication (String idPublication) {
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
-		Publication publication = new Publication();
-		publication.setTitlePublication("");
+		Publication publicationListPublication = new Publication();
+		publicationListPublication.setTitlePublication("");
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="
 				                                           +idPublication);
 			while (rs.next()) {
-				publication.setIdPublication(rs.getInt("idPublication"));
-				publication.setTitlePublication(rs.getString("titlePublication"));
-				publication.setCategoryPublication(rs.getString("categoryPublication"));
-				publication.setContentPublication(rs.getString("contentPublication"));
+				publicationListPublication.setIdPublication(rs.getInt("idPublication"));
+				publicationListPublication.setTitlePublication(rs.getString("titlePublication"));
+				publicationListPublication.setCategoryPublication(rs.getString("categoryPublication"));
+				publicationListPublication.setContentPublication(rs.getString("contentPublication"));
 			}
 			stm.close();
 			connection.close();
@@ -123,18 +122,18 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return publication;
+		return publicationListPublication;
 	}
 
-            /**
-             * Method name: listPublication
-             * Purpose of method: This method allows the User to delete a publication that he does not
-             * want to continue on a blog
-             * @param idPublication: used to identify the publication.
-             **/
+    /**
+     * Method name: listPublication
+     * Purpose of method: This method allows the User to delete a publication that he does not
+     * want to continue on a blog
+     * @param idPublication: used to identify the publication.
+     */
 	public void deletePublication(String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
-		assert(publication != null ) : "Unexpected error: the publication is receiving null";
+		assert(idPublication != null) : "Unexpected error: the publication less than 1";
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.prepareStatement("Delete from"
@@ -149,17 +148,17 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		}
 	}
 
-            /**
-             * Method name: ratePublication
-             * Purpose of method: This method allows the User to evaluate a publication of someone blog.
-             * @param idPublication: used to identify the publication.
-             * @param publicacao: The text of the publication that will be associated with the blog
-             * @param gradePublication: Used to give the rate.
-             **/
+    /**
+     * Method name: ratePublication
+     * Purpose of method: This method allows the User to evaluate a publication of someone blog.
+     * @param idPublication: used to identify the publication.
+     * @param publicacao: The text of the publication that will be associated with the blog
+     * @param gradePublication: Used to give the rate.
+     */
 	public void ratePublication(Publication publication, String gradePublication, String idPublication){
 		assert(publication!= null) : "Unexpected error: the attribute publication is receiving null";
 		assert(gradePublication!= null) : "Unexpected error: the attribute gradePublication is receiving null";
-		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
+		assert(idPublication != null) : "Unexpected error: the attribute idPublication is less than 1";
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		// FIX-ME: THERE IS AN ERROR, THE GRADEPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
 		try{
@@ -168,7 +167,7 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 										     +" set notaPublicacao = "
 										     +"notaPublicacao + ? "
 										     +"where idPublicacao = ?");
-			pstm.setInt(1, publication.getGradePublication());
+			pstm.setInt(1,  publication.getGradePublication());
 			pstm.setString(2, idPublication);
 			pstm.execute();
 			pstm.close();
@@ -179,15 +178,15 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		}
 	}
 
-            /**
-             * Method name: listComents
-             * Purpose of method: This method allows you to list comments of a publication.
-             * @param idPublication: used to identify the publication.
-             * @return: Returns a list of comments
-             **/
+    /**
+     * Method name: listComents
+     * Purpose of method: This method allows you to list comments of a publication.
+     * @param idPublication: used to identify the publication.
+     * @return: Returns a list of comments
+     */
 	public List<Comment> listComents(String idPublication){
 		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
-		assert(idPublication!= null) : "Unexpected error: the attribute idPublication is receiving null";
+		assert(idPublication != null) : "Unexpected error: the attribute idPublication is receiving null";
 		List<Comment> comments = new  ArrayList<>();
 
 		try{
@@ -215,12 +214,12 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 		return comments;
 	}
 
-            /**
-             * Method name: findUser
-             * Purpose of method: This method looks for a User with id
-             * @param idUser: used to identify the user.
-             * @return: Returns the nickname used.
-             **/
+    /**
+     * Method name: findUser
+     * Purpose of method: This method looks for a User with id
+     * @param idUser: used to identify the user.
+     * @return: Returns the nickname used.
+     */
 	public String findUser(int idUser){
 		assert(idUser >= 0) : "Unexpected error: the attribute idUser is less than 0";
 		String nickname = null;
