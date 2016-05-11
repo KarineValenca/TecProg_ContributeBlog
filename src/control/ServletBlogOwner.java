@@ -64,24 +64,24 @@ public class ServletBlogOwner extends HttpServlet {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
 	
-		List<Blog> listBlog = new ArrayList<>();
-		
 		String action = request.getParameter("action");
-		BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
+		
 		switch (action) {
 		
-		case "ListOwner":
-			System.out.println("Listarblogservlet");
-			String idBlogOwner =  request.getParameter("idBlogOwner") ;				
-			listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
-			request.setAttribute("listBlogOwner", listBlog);
-			this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
-			this.rd.forward(request, response);
-		
-		break;
-		
-			default:
+			case "ListOwner":
+				System.out.println("Listarblogservlet");
+				String idBlogOwner =  request.getParameter("idBlogOwner") ;	
+				List<Blog> listBlog = new ArrayList<>();
+				BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
+				listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
+				request.setAttribute("listBlogOwner", listBlog);
+				this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
+				this.rd.forward(request, response);
+			
 			break;
+			
+				default:
+				break;
 		}
 		
 	}
