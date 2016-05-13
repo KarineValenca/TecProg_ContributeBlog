@@ -40,7 +40,7 @@ public class FactoryDenounceBlogDAO extends ConnectionFactory implements Factory
 	 * @param user: object of user. User is responsible of denounce.
 	 */		
 	public void createDenounce(int idBlog, Denounce denounce, User user){
-		assert(idBlog >= 0 ) : "Unexpected error: the blog identifier is receiving null";
+		assert(idBlog >= 1 ) : "Unexpected error: the blog identifier is receiving null";
 		assert (denounce != null) : "unexpected error: the denounce object is null";
 		assert (user != null) : "unexpected error: the user object is null";
 		try{			
