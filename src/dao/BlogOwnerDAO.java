@@ -7,6 +7,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -44,12 +45,22 @@ public class BlogOwnerDAO extends ConnectionFactory{
 			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery("Select * from Blog where idUtilizador=" + blogOwner);
 			
-			while (rs.next()) {
+			Boolean nextBlog = rs.next();
+			while (nextBlog) {
+				
 				Blog blog = new Blog();
-				blog.setIdBlog(rs.getInt("idBlog"));
-				blog.setTitle(rs.getString("titulo"));
-				blog.setCategorie(rs.getString("categoria"));
-				blog.setCreationDate(rs.getDate("dataCriacao"));
+				Integer getIntegerIdBlog = rs.getInt("idBlog");
+				blog.setIdBlog(getIntegerIdBlog);
+				
+				String getStringTitle = rs.getString("titulo");
+				blog.setTitle(getStringTitle);
+				
+				String getStringCategorie = rs.getString("categoria");				
+				blog.setCategorie(getStringCategorie);
+				
+				Date getDateCreation = rs.getDate("dataCriacao");
+				blog.setCreationDate(getDateCreation);
+				
 				listBlog.add(blog);
 			}
 			stm.close();
@@ -59,5 +70,4 @@ public class BlogOwnerDAO extends ConnectionFactory{
 		}
 		return listBlog;
 	}
-	
 }

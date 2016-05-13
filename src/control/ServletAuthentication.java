@@ -25,8 +25,6 @@ import model.User;
 public class ServletAuthentication extends HttpServlet{	
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
-	private String email = "Not authorized";
-	private String password = "Not authorized";
 	
 	public ServletAuthentication(){
 		super();
@@ -43,16 +41,21 @@ public class ServletAuthentication extends HttpServlet{
 	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse 
 							response) throws ServletException, IOException {
-		this.email = request.getParameter("email");
+		/* it is defined as "Not authorized" initially, but if the email matches
+		with the password these values are updated */
+		String email = "Not authorized";
+		String password = "Not authorized";
+		
+		email = request.getParameter("email");
 		assert(email != null) : "Unexpected error: the email is receiving null from view";
 		
-        this.password = request.getParameter("password");
+        password = request.getParameter("password");
         assert(password != null) : "Unexpected error: the password is receinving null from view";
                
         AuthenticationDAO authenticacaoDAO = new AuthenticationDAO(); 
         User user = new User();
         
-        user = authenticacaoDAO.authenticateUser(this.email, this.password);
+        user = authenticacaoDAO.authenticateUser(email, password);
         
         boolean autorization = verifyUser(user);
         

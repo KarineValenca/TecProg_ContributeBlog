@@ -14,9 +14,6 @@ import java.util.Date;
  */
 public class Comment {
 	private int idComment;
-	private String commentContent;
-	private Date commentDate;
-	private String commentUser;
 	
 	public int getIdComment() {
 		return idComment;
@@ -24,18 +21,27 @@ public class Comment {
 	public void setIdComment(int idComment) {
 		this.idComment = idComment;
 	}
+	
+	private String commentContent;
+	
 	public String getCommentContent() {
 		return commentContent;
 	}
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
+	
+	private Date commentDate;
+	
 	public Date getCommentDate() {
 		return commentDate;
 	}
 	public void setCommentDate(Date commentDate) {
 		this.commentDate = commentDate;
 	}
+	
+	private String commentUser;
+	
 	public String getCommentUser() {
 		return commentUser;
 	}
