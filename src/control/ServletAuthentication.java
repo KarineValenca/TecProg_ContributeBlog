@@ -87,7 +87,7 @@ public class ServletAuthentication extends HttpServlet{
 		if(userEmail != "Not authorized" ) {
 			return true;
 		}
-		else{
+		else {
 			return false;
 		}
 	}
