@@ -8,16 +8,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import model.Blog;
 import model.Denounce;
-import model.DenounceBlog;
-import model.DenouncePublication;
 import model.User;
 
 /**
@@ -45,8 +38,9 @@ public class FactoryDenounceBlogDAO extends ConnectionFactory implements Factory
 		assert (user != null) : "unexpected error: the user object is null";
 		try{			
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.
-					prepareStatement("INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, idBlog, idUtilizador) VALUES (?,?,?,?)");
+			String sqlInsert = "INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, "
+					+ "idBlog, idUtilizador) VALUES (?,?,?,?)";
+			PreparedStatement pstm = connection.prepareStatement(sqlInsert);
 			pstm.setDate(1, sqlDate);
 			pstm.setString(2, denounce.getContentDenounce());
 			pstm.setInt(3, idBlog);
