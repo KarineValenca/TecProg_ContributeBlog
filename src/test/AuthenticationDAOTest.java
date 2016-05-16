@@ -53,4 +53,18 @@ public class AuthenticationDAOTest {
 		assertEquals("Not authorized", user.getPassword());
 	}
 
+	@Test
+	public void testFailAuthenticationWrongPassword() {
+		AuthenticationDAO authenticationDAO = new AuthenticationDAO();
+		User user = new User();
+		String email = "admin@admin.com";
+		String password = "error";
+		
+		user = authenticationDAO.authenticateUser(email, password);
+		
+		assertNotEquals("admin@admin.com", user.getEmail());
+		assertEquals("Not authorized", user.getEmail());
+		assertNotEquals("error", user.getPassword());
+		assertEquals("Not authorized", user.getPassword());
+	}
 }
