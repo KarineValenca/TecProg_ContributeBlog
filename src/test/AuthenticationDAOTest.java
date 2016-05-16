@@ -11,7 +11,7 @@ import model.User;
 public class AuthenticationDAOTest {
 
 	@Test
-	public void testSucessAuthentication() {
+	public void testSuccessAuthentication() {
 		AuthenticationDAO authenticationDAO = new AuthenticationDAO();
 		User user = new User();
 		String email = "admin@admin.com";
@@ -21,6 +21,21 @@ public class AuthenticationDAOTest {
 		
 		assertEquals("admin@admin.com", user.getEmail());
 		assertEquals("admin", user.getPassword());
+	}
+	
+	@Test
+	public void testFailAuthentication() {
+		AuthenticationDAO authenticationDAO = new AuthenticationDAO();
+		User user = new User();
+		String email = "error@error.com";
+		String password = "error";
+				
+		user = authenticationDAO.authenticateUser(email, password);
+		
+		assertNotEquals("erro@error.com", user.getEmail());
+		assertEquals("Not authorized", user.getEmail());
+		assertNotEquals("error@erro.com", user.getPassword());
+		assertEquals("Not authorized", user.getPassword());
 	}
 
 }
