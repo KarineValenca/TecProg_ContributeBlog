@@ -11,9 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import model.Blog;
 import model.Publication;
 import model.CollaborativePublication;
 
@@ -25,7 +23,6 @@ import model.CollaborativePublication;
 public class CollaborationDAO  extends ConnectionFactory implements PublicationGeneral{
 
 	Publication publicationCollaborative = new Publication();
-	Blog blog = new Blog();
 
 	/** 
 	 * Method name: createPublication
@@ -36,20 +33,16 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	 * in blog.
 	 */
 	public void createPublication(int idBlog, Publication publication){
-		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
+		assert(idBlog >= 1 ) : "Unexpected error: the blog identifier less than 0";
 		assert(publication != null ) : "Unexpected error: the publication object "
 				                       + "is receiving null";
 		
 		try {
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.
-					prepareStatement("INSERT INTO Publicacao (tituloPublicacao, "
-									 + "categoriaPublicacao, "
-							         + "conteudoPublicacao,"
-							         + "idBlog, "
-							         + "notaPublicacao,"
-							         + "statusPublicacao)"
-							         + "VALUES (?,?,?,?,0,false)");
+			String sqlInsert = "INSERT INTO Publicacao (tituloPublicacao, "
+					+ "categoriaPublicacao, conteudoPublicacao, idBlog, notaPublicacao,"
+			        + "statusPublicacao) VALUES (?,?,?,?,0,false)";
+			PreparedStatement pstm = connection.prepareStatement(sqlInsert);
 
 			pstm.setString(1, publicationCollaborative.getTitlePublication());
 			pstm.setString(2, publicationCollaborative.getCategoryPublication());
@@ -74,7 +67,7 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	 * @return pubCollaborative: list of publications for aproval.
 	 */
 	public List<Publication> listCollaborationApprove(int idBlog){
-		assert(idBlog > 0 ) : "Unexpected error: the blog identifier less than 0";
+		assert(idBlog >= 1 ) : "Unexpected error: the blog identifier less than 0";
 		List<Publication>  pubCollaborative= new ArrayList<>();
 		System.out.println("Listar Colaboração");
 		System.out.println(idBlog + "fdffff");
@@ -82,9 +75,10 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Publicacao where statusPublicacao=0 and idBlog="
-				                                          +idBlog+"");
-			System.out.println("Select * from Publicacao where statusPublicacao=0 and idBlog="+idBlog+"");
+			String sqlSelect = "Select * from Publicacao where statusPublicacao=0 "
+					+ "and idBlog="+idBlog+"";
+			ResultSet rs = stm.executeQuery(sqlSelect);
+			System.out.println(sqlSelect);
 			while (rs.next()) {
 				publicationCollaborative.setIdPublication(rs.getInt("idPublication"));
 				publicationCollaborative.setTitlePublication(rs.getString("titlePublication"));
@@ -111,18 +105,19 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	 */
 	public void ApprovePublication(int idPublication, CollaborativePublication 
 			publicationCollaborative){
-		assert(idPublication > 0 ) : "Unexpected error: the publication identifier "
+		assert(idPublication >= 1 ) : "Unexpected error: the publication identifier "
 								     + "less than 0";
 		assert(publicationCollaborative != null ) : "Unexpected error: the "
 							+ "publicationCollaborative object is receiving null";
 		try {
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("update "
-									+ "Publicacao set tituloPublicacao=?,"
-					                + "categoriaPublicacao=?,"
-					                + "conteudoPublicacao=?,"
-					                + "notaPublicacao=?"
-					                + "where idPublicacao=?");
+			String sqlUpdate = "update "
+					+ "Publicacao set tituloPublicacao=?,"
+	                + "categoriaPublicacao=?,"
+	                + "conteudoPublicacao=?,"
+	                + "notaPublicacao=?"
+	                + "where idPublicacao=?";
+			PreparedStatement pstm = connection.prepareStatement(sqlUpdate);
 			pstm.setString(1, publicationCollaborative.getTitlePublication());
 			pstm.setString(2, publicationCollaborative.getCategoryPublication());
 			pstm.setString(3, publicationCollaborative.getContentPublication());
@@ -151,8 +146,9 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Publicacao where idPublicacao="
-				                                         +idPublication);
+			String sqlSelectPublication = "Select * from Publicacao where "
+					+ "idPublicacao="+idPublication;
+			ResultSet rs = stm.executeQuery(sqlSelectPublication);
 			while (rs.next()) {
 				publication.setIdPublication(rs.getInt("idPublication"));
 				publication.setTitlePublication(rs.getString("titlePublication"));
@@ -164,7 +160,6 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return publication;}
-
-
+		return publication;
+	}
 }
