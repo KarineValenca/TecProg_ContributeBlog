@@ -32,9 +32,24 @@ public class AuthenticationDAOTest {
 				
 		user = authenticationDAO.authenticateUser(email, password);
 		
-		assertNotEquals("erro@error.com", user.getEmail());
+		assertNotEquals("error@error.com", user.getEmail());
 		assertEquals("Not authorized", user.getEmail());
-		assertNotEquals("error@erro.com", user.getPassword());
+		assertNotEquals("error", user.getPassword());
+		assertEquals("Not authorized", user.getPassword());
+	}
+	
+	@Test
+	public void testFailAuthenticationWrongEmail() {
+		AuthenticationDAO authenticationDAO = new AuthenticationDAO();
+		User user = new User();
+		String email = "error@admin.com";
+		String password = "admin";
+		
+		user = authenticationDAO.authenticateUser(email, password);
+		
+		assertNotEquals("error@admin.com", user.getEmail());
+		assertEquals("Not authorized", user.getEmail());
+		assertNotEquals("admin", user.getPassword());
 		assertEquals("Not authorized", user.getPassword());
 	}
 
