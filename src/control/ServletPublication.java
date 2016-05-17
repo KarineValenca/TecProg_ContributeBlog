@@ -60,6 +60,7 @@ public class ServletPublication extends HttpServlet{
 		String action = request.getParameter("action");
 		Publication publication = new Publication();
 		PublicationDAO publicationDAO = new PublicationDAO();
+		String idPublication = request.getParameter("idPublication");
 
 		try{
 			switch(action){
@@ -88,8 +89,6 @@ public class ServletPublication extends HttpServlet{
 
 			// this case is used to allow the user update data in their publication
 			case "EditPublication":
-				String idPublication = request.getParameter("idPublication");
-
 				publication.setTitlePublication(request.getParameter("titlePublication"));
 				publication.setCategoryPublication(request.getParameter("categoryPublication"));
 				publication.setContentPublication(request.getParameter("contentPublication"));
@@ -143,6 +142,10 @@ public class ServletPublication extends HttpServlet{
 
 				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
 				this.rd.forward(request, response);
+				break;
+				
+			default:
+				// nothing to do
 				break;
 			}
 		}
