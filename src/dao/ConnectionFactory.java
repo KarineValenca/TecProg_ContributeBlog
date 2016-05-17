@@ -24,12 +24,12 @@ public class ConnectionFactory {
 	 */
 	public static synchronized Connection getConnection() {
 		Connection connection = null;
-		String user = "root";
-		String password = "root";
-		String dataBaseName = "teste";
-
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			String user = "root";
+			String password = "root";
+			String dataBaseName = "teste";
 			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+dataBaseName,user,password);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +27,8 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">
                                 <span class="glyphicon glyphicon-bookmark"></span> Bem vindo ao seu painel administrativo,
-                            ${user.name}!</h3>
+                                ${user.name}!
+                            </h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">

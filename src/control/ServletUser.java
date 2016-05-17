@@ -34,7 +34,6 @@ public class ServletUser extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
-
 	/**
 	 * Method name: doGet
 	 * Purpose of method: This method is used to intercept HTTP GET requests.

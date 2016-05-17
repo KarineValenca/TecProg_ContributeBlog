@@ -26,13 +26,6 @@ import model.User;
  */
 public class CommentDAO extends ConnectionFactory{
 	
-	Comment comment = new Comment();
-	User user = new User();
-	Publication publication = new Publication();
-	
-	Date now = new Date();
-	java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-	
 	/**
 	 * Method name: createComment
 	 * Purpose of method: This method establishs a connection database and 
@@ -54,7 +47,12 @@ public class CommentDAO extends ConnectionFactory{
 			
 			String commentContentString = comment.getCommentContent();
 			pstm.setString(1, commentContentString);
+			
+			Date now = new Date();
+			java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 			pstm.setDate(2, sqlDate);
+			
+			
 			pstm.setInt(3, user.getId());
 			pstm.setInt(4, idPublication);
 			

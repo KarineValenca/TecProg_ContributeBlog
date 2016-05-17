@@ -34,7 +34,8 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Denuncia where idPublicacao IS NULL");
+			String sqlSelect = "Select * from Denuncia where idPublicacao IS NULL";
+			ResultSet rs = stm.executeQuery(sqlSelect);
 
 			while (rs.next()) {
 				Denounce denounceBlog = new DenounceBlog();
@@ -63,8 +64,8 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 									  + " is receiving null";		
 		try {
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection
-			.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenounce);
+			String sqlDelete = "Delete from Denuncia where idDenuncia ="+idDenounce;
+			PreparedStatement pstm = connection.prepareStatement(sqlDelete);
 
 			pstm.execute();
 			pstm.close();
@@ -88,8 +89,9 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Denuncia where "
-											+ "idDenuncia ="+idDenounce);
+			String sqlSelectDenounce = "Select * from Denuncia where "
+					+ "idDenuncia ="+idDenounce;
+			ResultSet rs = stm.executeQuery(sqlSelectDenounce);
 
 			while (rs.next()) {
 				denounceBlog.setIdDenounce(rs.getInt("idDenounce"));

@@ -21,8 +21,6 @@ import model.User;
  * list users. 
  **/
 public class UserDAO  extends ConnectionFactory{
-	User user = new User();
-	
 	/**
 	 * Method name: validateUser
 	 * Purpose of method: This method is used to verify if exists a user with
@@ -41,13 +39,12 @@ public class UserDAO  extends ConnectionFactory{
 									+ " null";
 		assert(email != null) : "unexpected error: the email is recieving null";
 		
-		try {
-			Connection connection = getConnection();
-			Statement stm = connection.createStatement();
-			
+		try {		
 			String sql = "select count(*) as rowcount from Utilizador where "
 							+ "apelido='"+nickname+"' or email='"+email+"'";
 			
+			Connection connection = getConnection();
+			Statement stm = connection.createStatement();
 			ResultSet rs = stm.executeQuery(sql);
 			rs.next();
 			
@@ -75,21 +72,21 @@ public class UserDAO  extends ConnectionFactory{
 	public void createUser(User user) {
 		assert(user != null) : "Unexpected error: the object User is null";
 		
-		try {
-			java.util.Date utilDate = user.getBirthDate();
-			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			
+		try {			
 			Connection connection = getConnection();
 			String sql = "INSERT INTO Utilizador (nome,sobrenome,email,genero,"
 						+ "senha,apelido, dataNascimento) VALUES(?,?,?,?,?,?,?);";
-			PreparedStatement pstm = connection
-					.prepareStatement(sql);
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			
 			pstm.setString(1, user.getName());
 			pstm.setString(2, user.getLastName());
 			pstm.setString(3, user.getEmail());
 			pstm.setString(4, user.getGender());
 			pstm.setString(5, user.getPassword());
 			pstm.setString(6, user.getNickname());
+			
+			java.util.Date utilDate = user.getBirthDate();
+			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			pstm.setDate(7, sqlDate);
 			
 			pstm.execute();
@@ -108,10 +105,11 @@ public class UserDAO  extends ConnectionFactory{
 	 * @return: there is no return.
 	 **/
 	public List<User> listUser() {
-		List<User> usersList = new ArrayList<>();
+		List<User> usersList = new ArrayList<>(); 	
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
+			
 			String sql = "Select * from Utilizador";
 			ResultSet rs = stm.executeQuery(sql);
 			
@@ -151,8 +149,7 @@ public class UserDAO  extends ConnectionFactory{
 		try {
 			Connection connection = getConnection();
 			String sql = "Delete from Utilizador where id =";
-			PreparedStatement pstm = connection
-					.prepareStatement(sql+id);
+			PreparedStatement pstm = connection.prepareStatement(sql+id);
 		
 			pstm.execute();
 			pstm.close();
@@ -177,25 +174,26 @@ public class UserDAO  extends ConnectionFactory{
 		assert(user != null) : "Unexpected error: The object user is null";
 		
 		try{
-			java.util.Date utilDate = user.getBirthDate();
-			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			
 			Connection connection = getConnection();
 			String sql = "update Utilizador set nome=?, sobrenome=?, genero=?, "
 					+ "senha=?, apelido=?, dataNascimento=? where id=?";
 			PreparedStatement pstm = connection.prepareStatement(sql);
+			
 			pstm.setString(1, user.getName());
 			pstm.setString(2, user.getLastName());
 			pstm.setString(3, user.getGender());
 			pstm.setString(4, user.getPassword());
 			pstm.setString(5, user.getNickname());
+			
+			java.util.Date utilDate = user.getBirthDate();
+			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			pstm.setDate(6, sqlDate);
+			
 			pstm.setString(7, id);
 			
 			pstm.execute();
 			pstm.close();
 			connection.close();
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -210,10 +208,8 @@ public class UserDAO  extends ConnectionFactory{
 	 * @return: it returns an User object, which is the user recovered by id.
 	 **/ 
 	public User showUserProfile(String id) {
-		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING
 		User user = new User();
-		user.setName("");
-		
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
@@ -221,6 +217,8 @@ public class UserDAO  extends ConnectionFactory{
 			String sql = "Select * from Utilizador where id=";
 			ResultSet rs = stm.executeQuery(sql+id);
 			
+			// FIX-ME: DISCOVERY WHY IT IS NECCESSARY
+			user.setName("");
 			while (rs.next()) {
 				user.setId(rs.getInt("id"));
 				user.setName(rs.getString("nome"));

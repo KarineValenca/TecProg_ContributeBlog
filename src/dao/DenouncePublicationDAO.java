@@ -34,7 +34,8 @@ public class DenouncePublicationDAO extends ConnectionFactory implements Denounc
 		try {
 			Connection connection = getConnection();
 			Statement stm = connection.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from Denuncia where idPublicacao IS NOT NULL");
+			String sqlSelect = "Select * from Denuncia where idPublicacao IS NOT NULL";
+			ResultSet rs = stm.executeQuery(sqlSelect);
 			
 			while (rs.next()) {
 				Denounce denouncePublication = new DenouncePublication();
@@ -59,8 +60,8 @@ public class DenouncePublicationDAO extends ConnectionFactory implements Denounc
 		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";
 		try {
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection
-					.prepareStatement("Delete from Denuncia where idDenuncia ="+idDenounce);
+			String sqlDelete = "Delete from Denuncia where idDenuncia ="+idDenounce;
+			PreparedStatement pstm = connection.prepareStatement(sqlDelete);
 		
 			pstm.execute();
 			pstm.close();
