@@ -1,4 +1,4 @@
-/*
+/**
  * Class file: ServletPublication.java
  * Purpose of class: This file contains the ServletPublication class and its methods.
  * Copyright: This software follows GPL license.
@@ -28,7 +28,7 @@ import model.Publication;
  * Class name: ServletPublication
  * Purpose of class: This used to the methods create, list, include, delete, rate, edit and
  * show list comments.
- **/
+ */
 @WebServlet("/ServletPublication")
 public class ServletPublication extends HttpServlet{
 
@@ -41,7 +41,7 @@ public class ServletPublication extends HttpServlet{
 	 * The HTTP GET requests are used when you get the same result everytime.
 	 * @param request: used to represent the HTTP request that a browser sends.
 	 * @param response: used to represent the HTTP response that the application.
-	 **/
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                       response) throws ServletException, IOException {
 		doPost(request, response);
@@ -54,15 +54,13 @@ public class ServletPublication extends HttpServlet{
   	 * not be the same.
 	 * @param request: used to represent the HTTP request that a browser sends.
 	 * @param response: used to represent the HTTP response that the application.
-	 **/
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 		                        response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		Publication publication = new Publication();
 		PublicationDAO publicationDAO = new PublicationDAO();
-		Blog blog = new Blog();
-		List<Comment> listComments = new ArrayList();
-		CommentDAO commentsDAO = new CommentDAO();
+		String idPublication = request.getParameter("idPublication");
 
 		try{
 			switch(action){
@@ -91,8 +89,6 @@ public class ServletPublication extends HttpServlet{
 
 			// this case is used to allow the user update data in their publication
 			case "EditPublication":
-				String idPublication = request.getParameter("idPublication");
-
 				publication.setTitlePublication(request.getParameter("titlePublication"));
 				publication.setCategoryPublication(request.getParameter("categoryPublication"));
 				publication.setContentPublication(request.getParameter("contentPublication"));
@@ -138,6 +134,7 @@ public class ServletPublication extends HttpServlet{
 
 			// this case is used to show the all comments about publication
 			case "ListComments":
+				List<Comment> listComments = new ArrayList();
 				idPublication = request.getParameter("idPublication");
 				listComments = publicationDAO.listComents(idPublication);
 
@@ -145,6 +142,10 @@ public class ServletPublication extends HttpServlet{
 
 				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
 				this.rd.forward(request, response);
+				break;
+				
+			default:
+				// nothing to do
 				break;
 			}
 		}
