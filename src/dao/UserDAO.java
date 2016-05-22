@@ -69,9 +69,10 @@ public class UserDAO  extends ConnectionFactory{
 	 * @param User: instance of the object User that will be created.
 	 * @return: there is no return.
 	 **/
-	public void createUser(User user) {
+	public boolean createUser(User user) {
 		assert(user != null) : "Unexpected error: the object User is null";
 		
+		boolean wasCreated = false;
 		try {			
 			Connection connection = getConnection();
 			String sql = "INSERT INTO Utilizador (nome,sobrenome,email,genero,"
@@ -92,10 +93,15 @@ public class UserDAO  extends ConnectionFactory{
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			
+			wasCreated = true;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
+			
 		}
+		
+		return wasCreated;
 	}
 	
 	/**

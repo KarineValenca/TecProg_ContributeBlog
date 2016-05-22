@@ -118,9 +118,10 @@ public class ServletUser extends HttpServlet {
 				UserDAO userDAO = new UserDAO();
 
 				validadeUser = userDAO.validateUser(nickname, email, validadeUser);
-
+				
 				if(validadeUser == 0) {
-					userDAO.createUser(userCreate);
+					boolean wasCreated = false;
+					wasCreated = userDAO.createUser(userCreate);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 				}
