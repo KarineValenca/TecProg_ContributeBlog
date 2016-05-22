@@ -15,7 +15,7 @@ import model.User;
 public class UserDAOTest {
 
 	@Test
-	public void testCreateUser() throws ParseException {
+	public void testSuccessCreateUser() throws ParseException {
 		User user = new User();
 		user.setName("test");
 		user.setLastName("test");
@@ -38,4 +38,25 @@ public class UserDAOTest {
 		
 	}
 
+	@Test
+	public void testFailCreateUser() throws ParseException{
+		User user = new User();
+		user.setLastName("test");
+		user.setEmail("test@test.com");
+		user.setGender("Feminino");
+		user.setPassword("test");
+		user.setNickname("test");
+		
+		String date = "2014-10-03";
+		DateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date birthDate = formatDate.parse(date);
+		user.setBirthDate(birthDate);
+		
+		UserDAO userDAO = new UserDAO();
+		boolean wasCreated = false;
+		
+		wasCreated = userDAO.createUser(user);
+		
+		assertFalse(wasCreated);
+	}
 }
