@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import dao.AuthenticationDAO;
-import dao.UserDAO;
 import model.User;
 
 public class AuthenticationDAOTest {
