@@ -122,6 +122,7 @@ public class ServletUser extends HttpServlet {
 				if(validadeUser == 0) {
 					boolean wasCreated = false;
 					wasCreated = userDAO.createUser(userCreate);
+					
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 				}
@@ -137,7 +138,8 @@ public class ServletUser extends HttpServlet {
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
 				UserDAO userDAODelete = new UserDAO();
-				userDAODelete.deleteUser(id);
+				boolean wasDeleted = false;
+				wasDeleted = userDAODelete.deleteUser(id);
 
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);

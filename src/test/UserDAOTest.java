@@ -59,4 +59,14 @@ public class UserDAOTest {
 		
 		assertFalse(wasCreated);
 	}
+	
+	@Test
+	public void testSuccessDeleteUser(){
+		boolean wasDeleted = false;
+		UserDAO userDAO = new UserDAO();
+		
+		wasDeleted = userDAO.deleteUser("1284");
+		
+		assertTrue(wasDeleted);	
+	}
 }
