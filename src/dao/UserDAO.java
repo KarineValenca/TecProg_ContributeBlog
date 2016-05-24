@@ -151,6 +151,7 @@ public class UserDAO  extends ConnectionFactory{
 	 * @return: there is no return.
 	 **/
 	public boolean deleteUser(int id) {
+		assert(id >= 0) : "Unexpected error: Id is equals or less than 0"; 
 		boolean wasDeleted = false;
 		
 		try {
@@ -161,7 +162,7 @@ public class UserDAO  extends ConnectionFactory{
 			pstm.execute();
 			pstm.close();
 			connection.close();
-			//wasDeleted = true;
+			wasDeleted = true;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
