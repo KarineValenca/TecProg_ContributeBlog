@@ -30,11 +30,12 @@ public class BlogDAO extends ConnectionFactory {
 	 * @param Blog: Used to receive blog you want to create
 	 * @param donoBlog: Given regarding the blog owner object
 	 */
-	public void createBlog(Blog blog, BlogOwner donoBlog) {
+	public boolean createBlog(Blog blog, BlogOwner donoBlog) {
 		assert(blog != null) : "Unexpected error: the attribute blog is receiving null";
 		assert(donoBlog != null ) : "Unexpected error: the donoBlog is receiving null";
 		Date now = new Date();
 		java.sql.Date sqlDate = new java.sql.Date(now.getTime());
+		boolean wasCreated = false;
 		try {
 			Connection connetion = getConnection();
 			PreparedStatement pstm = connetion.prepareStatement("INSERT INTO Blog"
@@ -50,10 +51,12 @@ public class BlogDAO extends ConnectionFactory {
 			pstm.execute();
 			pstm.close();
 			connetion.close();
+			wasCreated = true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wasCreated;
 	}
 
 	/**
