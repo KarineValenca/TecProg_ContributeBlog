@@ -45,7 +45,7 @@ public class ServletUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-
+		
 		try{
 			switch(action){
 			// this case is used to list all registered users
@@ -78,6 +78,8 @@ public class ServletUser extends HttpServlet {
 		catch(Exception e){
 
 		}
+		
+		doPost(request, response);
 	}
 
 	/**
@@ -92,7 +94,6 @@ public class ServletUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-
 		try {
 			switch (action) {
 			// this case is used to allow the user to create an account
@@ -135,11 +136,12 @@ public class ServletUser extends HttpServlet {
 
 			// this case is used to allow the user delete their account
 			case "DeleteUser":
-				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
-				String id = request.getParameter("id");
+				String id = request.getParameter("idUser");
+				int convertId = Integer.parseInt(id);
+				
 				UserDAO userDAODelete = new UserDAO();
 				boolean wasDeleted = false;
-				wasDeleted = userDAODelete.deleteUser(id);
+				wasDeleted = userDAODelete.deleteUser(convertId);
 
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);

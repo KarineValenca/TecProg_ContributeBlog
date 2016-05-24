@@ -150,8 +150,7 @@ public class UserDAO  extends ConnectionFactory{
 	 * deleted.
 	 * @return: there is no return.
 	 **/
-	public boolean deleteUser(String id) {
-		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+	public boolean deleteUser(int id) {
 		boolean wasDeleted = false;
 		
 		try {
@@ -162,7 +161,7 @@ public class UserDAO  extends ConnectionFactory{
 			pstm.execute();
 			pstm.close();
 			connection.close();
-			wasDeleted = true;
+			//wasDeleted = true;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

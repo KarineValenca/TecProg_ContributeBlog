@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-xs-6 col-md-6">
                                     <a href="ServletUser?action=ListProfile&id=${user.id}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Editar Perfil</a>
-                                    <a href="ServletUser?action=DeleteUser&id=${user.id}" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-remove"></span> <br/>Excluir Perfil</a>
+                                    <a href="ServletUser?action=DeleteUser&idUser=${user.id}" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-remove"></span> <br/>Excluir Perfil</a>
                                 </div>
                                 <div class="col-xs-6 col-md-6">
                                     <a href="ServletBlogOwner?action=ListOwner&idBlogOwner=${user.id}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Meus Blogs</a>

@@ -65,7 +65,7 @@ public class UserDAOTest {
 		boolean wasDeleted = false;
 		UserDAO userDAO = new UserDAO();
 		
-		wasDeleted = userDAO.deleteUser("1284");
+		wasDeleted = userDAO.deleteUser(1282);
 		
 		assertTrue(wasDeleted);	
 	}
