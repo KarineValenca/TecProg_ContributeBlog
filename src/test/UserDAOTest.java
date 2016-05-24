@@ -7,13 +7,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import dao.UserDAO;
 import model.User;
 
 public class UserDAOTest {
-
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+	
 	@Test
 	public void testSuccessCreateUser() throws ParseException {
 		User user = new User();
@@ -65,8 +69,19 @@ public class UserDAOTest {
 		boolean wasDeleted = false;
 		UserDAO userDAO = new UserDAO();
 		
-		wasDeleted = userDAO.deleteUser("1284");
+		wasDeleted = userDAO.deleteUser(1292);
 		
 		assertTrue(wasDeleted);	
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void testFailDeleteUser(){
+		boolean wasDeleted = false;
+		UserDAO userDAO = new UserDAO();
+		
+		wasDeleted = userDAO.deleteUser(-1);
+		
+		assertFalse(wasDeleted);
+		
 	}
 }

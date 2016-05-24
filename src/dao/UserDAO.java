@@ -150,8 +150,8 @@ public class UserDAO  extends ConnectionFactory{
 	 * deleted.
 	 * @return: there is no return.
 	 **/
-	public boolean deleteUser(String id) {
-		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+	public boolean deleteUser(int id) {
+		assert(id >= 0) : "Unexpected error: Id is equals or less than 0"; 
 		boolean wasDeleted = false;
 		
 		try {
