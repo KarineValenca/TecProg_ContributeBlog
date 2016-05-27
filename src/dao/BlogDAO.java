@@ -94,10 +94,11 @@ public class BlogDAO extends ConnectionFactory {
      * Purpose of method: This method allows you to permanently delete a system blog
      * @param idBlog: Unique identification of a blog
      */
-	public void deleteBlog(String idBlog) {
-		// FIX-ME: THERE IS AN ERROR, THE IDBLOG ATTRIBUTE SHOULD BE INT NOT STRING.
-		assert(idBlog!= null) : "Unexpected error: the attribute idBlog is receiving null";
+	public boolean deleteBlog(int idBlog) {
+		assert(idBlog >= 0) : "Unexpected error: the attribute idBlog is receiving null";
+		boolean wasDeleted = false;
 		try {
+			if (idBlog > 0){
 			Connection connetion = getConnection();
 			PreparedStatement pstm = connetion
 					.prepareStatement("Delete from Blog where idBlog ="+idBlog);
@@ -105,10 +106,16 @@ public class BlogDAO extends ConnectionFactory {
 			pstm.execute();
 			pstm.close();
 			connetion.close();
+			wasDeleted = true;
+			} 
+			else {
+				//nothing to do 
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wasDeleted;
 	}
 
 	/**

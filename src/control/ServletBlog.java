@@ -59,7 +59,7 @@ public class ServletBlog extends HttpServlet {
 		                  response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		BlogDAO blogdao = new BlogDAO();
-		
+
 		try {
 			switch (action) {
 			// this case is used for the User to create a blog
@@ -119,7 +119,7 @@ public class ServletBlog extends HttpServlet {
 				this.rd = request.getRequestDispatcher("painelAdministrativoBlog.jsp");
 				this.rd.forward(request, response);
 				break;
-			
+
 			default:
 				// nothing to do
 				break;

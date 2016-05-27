@@ -1,6 +1,6 @@
-/** 
+/**
  * File name: ServletDenounce.java
- * Purpose of file: this file contains the ServletDenounce class and its methods.   
+ * Purpose of file: this file contains the ServletDenounce class and its methods.
  * Copyright: This software follows GPL license.
  */
 
@@ -30,7 +30,7 @@ import model.User;
 /**
  * Class name: ServletDenounce
  * Purpose of class: This class keeps denounces. It has some specific tasks such
- * as denounce a publication, denounce a blog and delete a denounce of 
+ * as denounce a publication, denounce a blog and delete a denounce of
  * publication or blog.
  */
 @WebServlet("/ServletDenounce")
@@ -38,48 +38,48 @@ public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
 
-	/** 
+	/**
 	 * Method name: doGet
-	 * Purpose of method: this method is used to intercept HTTP GET requests. 
-	 * The HTTP GET requests are used when you get the same result everytime 
-	 * you execute the request.  
+	 * Purpose of method: this method is used to intercept HTTP GET requests.
+	 * The HTTP GET requests are used when you get the same result everytime
+	 * you execute the request.
 	 * @param request: used to represent the HTTP request that a browser sends
      * to the application.
 	 * @param response: used to represent the HTTP response that the application
-     * sends to a browser. 
+     * sends to a browser.
      */
 	protected void doGet(HttpServletRequest request,
-						 HttpServletResponse response) 
+						 HttpServletResponse response)
 						 throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
 		doPost(request, response);
 	}
 
-	/** 
+	/**
 	 * Method name: doPost
-	 * Purpose of method: this method is used to intercept HTTP POST requests. 
-	 * The HTTP POST request are used when the results of the requests will 
-	 * not be the same.  
+	 * Purpose of method: this method is used to intercept HTTP POST requests.
+	 * The HTTP POST request are used when the results of the requests will
+	 * not be the same.
 	 * @param request: used to represent the HTTP request that a browser sends
      * to the application.
 	 * @param response: used to represent the HTTP response that the application
-     * sends to a browser. 
+     * sends to a browser.
 	 */
 	protected void doPost(HttpServletRequest request,
-						  HttpServletResponse response) 
+						  HttpServletResponse response)
 						  throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
 		String action = request.getParameter("action");
 		DenounceBlog denounceBlog = new DenounceBlog();
 		DenouncePublication denouncePublication = new DenouncePublication();
-		FactoryDenounceBlogDAO factoryDenounceBlogDAO = new 
+		FactoryDenounceBlogDAO factoryDenounceBlogDAO = new
 				FactoryDenounceBlogDAO();
 		DenounceBlogDAO denounceBlogDAO = new DenounceBlogDAO();
-		FactoryDenouncePublicationDAO factoryDenouncePublicationDAO = new 
+		FactoryDenouncePublicationDAO factoryDenouncePublicationDAO = new
 				FactoryDenouncePublicationDAO();
-		DenouncePublicationDAO denouncePublicationDAO = new 
+		DenouncePublicationDAO denouncePublicationDAO = new
 				DenouncePublicationDAO();
 		User user = new User();
 		Blog blog = new Blog();
@@ -95,12 +95,12 @@ public class ServletDenounce extends HttpServlet{
 					System.out.println(request.getParameter("contentDenounce"));
 					user.setId(Integer.parseInt(request.getParameter("id")));
 					int idBlog = Integer.parseInt(request.getParameter("idBlog"));
-					factoryDenounceBlogDAO.createDenounce(idBlog, denounceBlog, 
+					factoryDenounceBlogDAO.createDenounce(idBlog, denounceBlog,
 													  	  user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation of blog instance
 				case "InstanceBlog":
 					String idBlogD= request.getParameter("idBlog");
@@ -108,7 +108,7 @@ public class ServletDenounce extends HttpServlet{
 					this.rd = request.getRequestDispatcher("denounceBlog.jsp");
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation of create publication denounce
 				case "CreateDenouncePublication":
 					denouncePublication.setContentDenounce(request.getParameter(""
@@ -117,12 +117,12 @@ public class ServletDenounce extends HttpServlet{
 					user.setId(Integer.parseInt(request.getParameter("id")));
 					int idPublication = Integer.parseInt(request.getParameter("id"
 						+ "Publication"));
-					factoryDenouncePublicationDAO.createDenounce(idPublication, 
+					factoryDenouncePublicationDAO.createDenounce(idPublication,
 						denouncePublication, user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation publication instance
 				case "InstancePublication":
 					String idPublicationD= request.getParameter("idPublication");
@@ -131,24 +131,24 @@ public class ServletDenounce extends HttpServlet{
 						+ "Publication.jsp");
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation of list denounces
 				case "ListDenounce":
 					listDenounceBlog = denounceBlogDAO.listDenounce();
 					request.setAttribute("listDenounceBlog", listDenounceBlog);
 					listDenouncePublication = denouncePublicationDAO.listDenounce();
-					request.setAttribute("listDenouncePublication", 
+					request.setAttribute("listDenouncePublication",
 									  	  listDenouncePublication);
 					this.rd = request.getRequestDispatcher("listDenounce.jsp");
 					this.rd.forward(request, response);
-				
+
 				//implementation of delete blog denounce
 				case "DeleteDenounceBlog":
 					String idDenounce = request.getParameter("idDenounce");
 					denounceBlogDAO.deleteDenounce(idDenounce);
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation of delete publication denounce
 				case "DeleteDenouncePublication":
 					idDenounce = request.getParameter("idDenounce");
@@ -157,7 +157,7 @@ public class ServletDenounce extends HttpServlet{
 						+ "ListDenounce");
 					this.rd.forward(request, response);
 					break;
-				
+
 				//implementation of delete blog of denounce
 				case "DeleteBlogDenounce":
 					System.out.println("Delete");
@@ -168,11 +168,11 @@ public class ServletDenounce extends HttpServlet{
 					Denounce denounce = denounceDAO.searchBlogDenounce(idDenounce);
 					System.out.println(denounce.getContentDenounce());
 					System.out.println("Aint"+denounce.getIdBlog());
-					blogDao.deleteBlog( String.valueOf(denounce.getIdBlog()));
+					blogDao.deleteBlog(denounce.getIdBlog());
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
-				
+
 				default:
 					// nothing to do
 					break;

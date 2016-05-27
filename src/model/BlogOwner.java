@@ -16,6 +16,10 @@ import java.util.*;
 public class BlogOwner extends User {
 
 	private List<Blog> blogs;
+	
+	public BlogOwner() {
+
+	}
 
 	public List<Blog> getBlogs() {
 		return blogs;
@@ -23,10 +27,6 @@ public class BlogOwner extends User {
 
 	public void setBlogs(List<Blog> blogs) {
 		this.blogs = blogs;
-	}
-
-	public BlogOwner() {
-
 	}
 
 }
