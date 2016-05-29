@@ -82,7 +82,6 @@ public class ServletDenounce extends HttpServlet{
 		DenouncePublicationDAO denouncePublicationDAO = new
 				DenouncePublicationDAO();
 		User user = new User();
-		Blog blog = new Blog();
 		List<Denounce> listDenounceBlog = new ArrayList<>();
 		List<Denounce> listDenouncePublication = new ArrayList<>();
 
