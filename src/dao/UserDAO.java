@@ -180,10 +180,9 @@ public class UserDAO  extends ConnectionFactory{
 	 * @param User: instance of the object User that will be edited.
 	 * @return: there is no return.
 	 **/
-	public void editUser(User user, String id){
-		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
+	public boolean editUser(User user, int id){
 		assert(user != null) : "Unexpected error: The object user is null";
-		
+		boolean wasEdited = false;
 		try{
 			Connection connection = getConnection();
 			String sql = "update Utilizador set nome=?, sobrenome=?, genero=?, "
@@ -200,15 +199,19 @@ public class UserDAO  extends ConnectionFactory{
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			pstm.setDate(6, sqlDate);
 			
-			pstm.setString(7, id);
+			pstm.setInt(7, id);
 			
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			
+			wasEdited = true;
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		return wasEdited;
 	}
 	
 	/**

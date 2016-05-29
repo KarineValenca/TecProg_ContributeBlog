@@ -84,4 +84,26 @@ public class UserDAOTest {
 		assertFalse(wasDeleted);
 		
 	}
+	
+	@Test
+	public void testSuccessEditUser() throws ParseException{
+		User user = new User();
+		user.setName("test");
+		user.setLastName("test");
+		user.setEmail("test@test.com");
+		user.setGender("Feminino");
+		user.setPassword("test");
+		user.setNickname("test");
+		
+		String date = "2014-10-03";
+		DateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date birthDate = formatDate.parse(date);
+		user.setBirthDate(birthDate);
+		
+		UserDAO userDAO = new UserDAO();
+		boolean wasEdited = false;
+		wasEdited = userDAO.editUser(user, 1);
+		
+		assertTrue(wasEdited);
+	}
 }

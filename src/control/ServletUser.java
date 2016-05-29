@@ -165,8 +165,10 @@ public class ServletUser extends HttpServlet {
 				userEdit.setBirthDate(data);
 
 				id = request.getParameter("id");
+				int convertedId = Integer.parseInt(id);
 				UserDAO userDAOEdit = new UserDAO();
-				userDAOEdit.editUser(userEdit, id);
+				boolean wasEdited = false;
+				wasEdited = userDAOEdit.editUser(userEdit, convertedId);
 				this.rd = request.getRequestDispatcher("ServletAuthentication");
 				this.rd.forward(request, response);
 
