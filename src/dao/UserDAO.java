@@ -221,8 +221,7 @@ public class UserDAO  extends ConnectionFactory{
 	 * shown.
 	 * @return: it returns an User object, which is the user recovered by id.
 	 **/ 
-	public User showUserProfile(String id) {
-		// FIX-ME: HERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING
+	public User showUserProfile(int id) {
 		User user = new User();
 		try {
 			Connection connection = getConnection();

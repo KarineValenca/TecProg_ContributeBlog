@@ -106,4 +106,14 @@ public class UserDAOTest {
 		
 		assertTrue(wasEdited);
 	}
+	
+	@Test
+	public void testSuccessShowUser(){
+		UserDAO userDAO = new UserDAO();
+		User user = new User();
+		
+		user = userDAO.showUserProfile(1228);
+		
+		assertEquals(user.getName(), "ppooooee");
+	}
 }

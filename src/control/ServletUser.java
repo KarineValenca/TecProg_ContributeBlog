@@ -64,10 +64,11 @@ public class ServletUser extends HttpServlet {
 			case "ListProfile":
 				// FIX-ME: THERE IS AN ERROR, THE ID ATTRIBUTE SHOULD BE INT NOT STRING.
 				String id = request.getParameter("id");
+				int showId = Integer.parseInt(id);
 				User user = new User();
 				UserDAO userDAOProfile = new UserDAO();
 
-				user = userDAOProfile.showUserProfile(id);
+				user = userDAOProfile.showUserProfile(showId);
 
 				request.setAttribute("user", user);
 				this.rd = request.getRequestDispatcher("editUser.jsp");
