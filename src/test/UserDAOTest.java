@@ -112,8 +112,8 @@ public class UserDAOTest {
 		UserDAO userDAO = new UserDAO();
 		User user = new User();
 		
-		user = userDAO.showUserProfile(1228);
+		user = userDAO.showUserProfile(1);
 		
-		assertEquals(user.getName(), "ppooooee");
+		assertEquals(user.getName(), "test");
 	}
 }
