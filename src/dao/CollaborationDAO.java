@@ -32,10 +32,12 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	 * @param publication: instance the object publication that will be included
 	 * in blog.
 	 */
-	public void createPublication(int idBlog, Publication publication){
+	public boolean createPublication(int idBlog, Publication publication){
 		assert(idBlog >= 1 ) : "Unexpected error: the blog identifier less than 0";
 		assert(publication != null ) : "Unexpected error: the publication object "
 				                       + "is receiving null";
+		
+		boolean wasCreated = false;
 		
 		try {
 			Connection connection = getConnection();
@@ -51,11 +53,15 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			
+			wasCreated = true;
 
 		} catch (Exception e) {
 			System.out.println("Erro adicionar Publicação Colaborativa");
 			e.printStackTrace();
 		}
+		
+		return wasCreated;
 	}
 
 	/** 
@@ -103,12 +109,15 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 	 * @param publicationCollaborative: instance the object CollaborativePublication
 	 * that will be approve publication
 	 */
-	public void ApprovePublication(int idPublication, CollaborativePublication 
+	public boolean ApprovePublication(int idPublication, CollaborativePublication 
 			publicationCollaborative){
 		assert(idPublication >= 1 ) : "Unexpected error: the publication identifier "
 								     + "less than 0";
 		assert(publicationCollaborative != null ) : "Unexpected error: the "
 							+ "publicationCollaborative object is receiving null";
+		
+		boolean wasAproved = false;
+		
 		try {
 			Connection connection = getConnection();
 			String sqlUpdate = "update "
@@ -124,11 +133,15 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			
+			wasAproved = true;
 
 		} catch (Exception e) {
 			System.out.println("Erro ao aprovar Publicação Colaborativa");
 			e.printStackTrace();
 		}
+		
+		return wasAproved;
 	}
 
 	/** 
@@ -157,9 +170,12 @@ public class CollaborationDAO  extends ConnectionFactory implements PublicationG
 			}
 			stm.close();
 			connection.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return publication;
+	
 	}
 }
