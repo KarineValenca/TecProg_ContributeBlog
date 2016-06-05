@@ -20,8 +20,9 @@ public interface PublicationGeneral {
              * @param idBlog: used to identify the blog.
              * @param publicacao: The text of the publication that will be associated with the blog
              * @param idPublication: the text identifier in the system
+             * @return 
              */
-	public void createPublication(int idBlog, Publication publication);
+	public boolean createPublication(int idBlog, Publication publication);
 
             /**
              * Method name: listPublication
