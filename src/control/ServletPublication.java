@@ -111,8 +111,8 @@ public class ServletPublication extends HttpServlet{
 
 			// this case is used to allow the user delete their publication
 			case "DeletePublication":
-				idPublication = request.getParameter("idPublication");
-				publicationDAO.deletePublication(idPublication);
+				int idPublicationInt = Integer.parseInt(request.getParameter("idPublication"));
+				publicationDAO.deletePublication(idPublicationInt);
 
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
