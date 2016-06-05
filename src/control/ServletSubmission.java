@@ -8,7 +8,6 @@ package control;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Blog;
 import model.Comment;
 import model.Publication;
 import model.CollaborativePublication;
@@ -77,11 +75,8 @@ public class ServletSubmission extends HttpServlet {
 			switch (action) {
 				//implementation of post submission
 				case "SubmissionPost":
-					System.out.println("Entrou");
 					idBlog = Integer.parseInt(request.getParameter("idBlog"));
 					System.out.println(request.getParameter("idBlog"));
-					System.out.println("Entrou1");
-					String idUser = request.getParameter("idUser");
 					pubCollaborative.setCategoryPublication(request.
 							getParameter("categoryPublication"));
 					System.out.println(request.getParameter("category"
@@ -100,7 +95,6 @@ public class ServletSubmission extends HttpServlet {
 				
 				//implementation of the create of collaboration
 				case "CreateCollaboration":
-					System.out.println("Criar");
 					System.out.println(request.getParameter("idBlog"));
 					request.setAttribute("idBlog", request.getParameter("idBlog"));
 					this.rd = request.getRequestDispatcher("collaborative"
