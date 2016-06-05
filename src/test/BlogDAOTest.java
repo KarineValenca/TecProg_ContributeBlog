@@ -34,19 +34,19 @@ public class BlogDAOTest {
 		java.sql.Date sqlDate = new java.sql.Date(now.getTime());
 		
 		User user = new User();
-		user.setName("testtest");
-		user.setLastName("test");
-		user.setEmail("test@test.com");
-		user.setGender("Feminino");
-		user.setPassword("test");
-		user.setNickname("test");
+		user.setName("test2");
+		user.setLastName("test2");
+		user.setEmail("test2@test.com");
+		user.setGender("Masculino");
+		user.setPassword("test2");
+		user.setNickname("test2");
 		user.setBirthDate(sqlDate);
 		
 		UserDAO userDAO = new UserDAO();
 		userDAO.createUser(user);
         
 		BlogOwner donoBlog = new BlogOwner();
-		donoBlog.setId(1267);
+		donoBlog.setId(100);
         
 		List<Publication> publications = new ArrayList<>();
 		
@@ -90,7 +90,7 @@ public class BlogDAOTest {
 		boolean wasDeleted = false;
 		BlogDAO blogDAO = new BlogDAO();
 		
-		wasDeleted = blogDAO.deleteBlog(3);
+		wasDeleted = blogDAO.deleteBlog(100);
 		
 		assertTrue(wasDeleted);	
 	}
@@ -101,7 +101,6 @@ public class BlogDAOTest {
 		BlogDAO blogDAO = new BlogDAO();
 		
 		wasDeleted = blogDAO.deleteBlog(-1);
-		System.out.println(wasDeleted);
 		
 		assertFalse(wasDeleted);	
 		
