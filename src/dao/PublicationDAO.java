@@ -34,9 +34,10 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 	 * @param publicacao: The text of the publication that will be associated with the blog
 	 * @param idPublication: the text identifier in the system
 	 */
-	public void createPublication( int blog, Publication publication){
+	public boolean createPublication( int blog, Publication publication){
 		assert(blog >= 0) : "Unexpected error: the attribute blog less than 0";
 		assert(publication != null ) : "Unexpected error: the publication is receiving null";
+		boolean wasCreated = false;
 		try{
 			Connection connection = getConnection();
 			PreparedStatement pstm = connection.
@@ -54,12 +55,13 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			wasCreated = true;
 
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-
+		return wasCreated;
 	}
 
     /**
@@ -131,21 +133,27 @@ public class PublicationDAO extends ConnectionFactory implements PublicationGene
      * want to continue on a blog
      * @param idPublication: used to identify the publication.
      */
-	public void deletePublication(String idPublication){
-		// FIX-ME: THERE IS AN ERROR, THE IDPUBLICATION ATTRIBUTE SHOULD BE INT NOT STRING.
-		assert(idPublication != null) : "Unexpected error: the publication less than 1";
+	public boolean deletePublication(int idPublication){
+		//assert(idPublication >= 1) : "Unexpected error: the publication less than 1";
+		boolean wasDeleted = false;
 		try{
-			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("Delete from"
-									                  +"Publicacao where idPublicacao ="
-			                                                                                               +idPublication);
-			pstm.execute();
-			pstm.close();
-			connection.close();
+			if(idPublication >= 1){
+				Connection connection = getConnection();
+				String sql = "Delete from Publicacao where idPublicacao =";
+				PreparedStatement pstm = connection.prepareStatement(sql+idPublication);
+				pstm.execute();
+				pstm.close();
+				connection.close();
+				wasDeleted = true;
+			} 
+			else {
+				wasDeleted = false;
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wasDeleted;
 	}
 
     /**
