@@ -20,7 +20,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body class="landing">
-		<fmt:setBundle basename="resourses.messages" var="msg"/>
+		<fmt:setBundle basename="resources.messages" var="msg"/>
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
