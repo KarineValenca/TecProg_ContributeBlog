@@ -4,11 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
 <html>
 	<head>
 		<title>Contribute Blog</title>
@@ -26,6 +29,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
+						<a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
 						<h1><a href="index.html">Contribute</a></h1>
 						<nav id="nav">
 							<ul>
