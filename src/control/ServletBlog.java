@@ -86,7 +86,7 @@ public class ServletBlog extends HttpServlet {
 
 			// this case is used to allow the user delete their blog
 			case "DeleteBlog":
-				String idBlog = request.getParameter("idBlog");
+				int idBlog = Integer.parseInt(request.getParameter("idBlog"));
 				blogdao.deleteBlog(idBlog);
 				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
