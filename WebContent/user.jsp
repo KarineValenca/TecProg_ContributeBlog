@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+ <c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -17,40 +28,43 @@
     </head>
     <body background="images/cinza.png" bgproperties="fixed">
         <div class="container">
+		<fmt:setBundle basename="resources.messages" var="msg"/>
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                	<a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
                     <div class="panel panel-default">
+                    
                         <div class="panel-heading">
-                            <h3 class="panel-title">Cadastro de Utilizadores</h3>
+                            <h3 class="panel-title"><fmt:message key="user.users_register" bundle="${msg}"/></h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post" action="ServletUser?action=CreateUser" onsubmit="return checkForm(this);">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="name" id="name" value="${user.name}" class="form-control input-sm" placeholder="Nome" required>
+                                            <input type="text" name="name" id="name" value="${user.name}" class="form-control input-sm" placeholder="<fmt:message key="user.users_name" bundle="${msg}"/>" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="lastName" id="lastName" class="form-control input-sm" value="${user.lastName}" placeholder="Sobrenome" required>
+                                            <input type="text" name="lastName" id="lastName" class="form-control input-sm" value="${user.lastName}" placeholder="<fmt:message key="user.users_lastname" bundle="${msg}"/>"  required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="nickname" id="nickname" class="form-control input-sm" value="${user.nickname}" placeholder="Apelido" required>
+                                            <input type="text" name="nickname" id="nickname" class="form-control input-sm" value="${user.nickname}" placeholder="<fmt:message key="user.users_nickname" bundle="${msg}"/>" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="gender" id="genero" value="${user.gender}" class="form-control input-sm" placeholder="Masc. / Fem." required>
+                                            <input type="text" name="gender" id="genero" value="${user.gender}" class="form-control input-sm" placeholder="<fmt:message key="user.users_gender" bundle="${msg}"/>"  required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control input-sm" value="${user.email}" placeholder="Email: exemplo@exemplo.com" required>
+                                    <input type="email" name="email" id="email" class="form-control input-sm" value="${user.email}" placeholder="<fmt:message key="user.users_email" bundle="${msg}"/>" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -61,12 +75,12 @@
                                     <label></label>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" value="${user.password}" placeholder="Senha" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
+                                            <input type="password" name="password" id="password" class="form-control input-sm" value="${user.password}" placeholder="<fmt:message key="user.users_password" bundle="${msg}"/>" pattern=".{5,}" title="Deve possuir no mínimo cinco caracteres" required>
                                         </div>
                                     </div>
                                 </div>
                                 <input type="checkbox" id="test7" data-toggle="modal" data-target="#myModal" class="form-control" required>
-                                <label for="test7">Eu concordo com os termos de uso</label>
+                                <label for="test7"><fmt:message key="user.users_agree" bundle="${msg}"/></label>
                                 <br /><br />
                                 <!-- Modal -->
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -123,7 +137,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Enviar" class="btn btn-info btn-block">
+                                <input type="submit" value="<fmt:message key="user.users_send" bundle="${msg}"/>" class="btn btn-info btn-block">
                             </form>
                         </div>
                     </div>
