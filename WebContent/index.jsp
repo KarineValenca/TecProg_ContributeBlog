@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!--
 	Spectral by HTML5 UP
 	html5up.net | @n33co
@@ -18,7 +20,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body class="landing">
-
+		<fmt:setBundle basename="resourses.messages" var="msg"/>
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
@@ -72,7 +74,7 @@
 					<section id="banner">
 						<div class="inner">
 							<h2>Contribute</h2>
-							<p>Um outro Jeito de compartilhar<br />
+							<p><fmt:message key="index.title" bundle="${msg}"/><br />
 							</p>
 							<ul class="actions">
 								<li><a href="login.jsp" class="button special">Sign up </a></li>
