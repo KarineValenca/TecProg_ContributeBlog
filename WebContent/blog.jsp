@@ -26,7 +26,7 @@
                         <div class="panel-body">
                             <form form method="post" action="ServletBlog?action=CreateBlog">
                                 <div class="form-group">
-                                    <input type="hidden" name="idOwnerBlog" id="idOwnerBlog" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
+                                    <input type="hidden" name="idBlogOwner" id="idBlogOwner" class="form-control input-sm" value="${user.id}" placeholder="ID" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Título</label>

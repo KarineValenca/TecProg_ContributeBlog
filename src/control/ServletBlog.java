@@ -68,10 +68,8 @@ public class ServletBlog extends HttpServlet {
 				Blog blog = new Blog();
 				blog.setTitle(request.getParameter("title"));
 				blog.setCategorie(request.getParameter("categorie"));
-				ownerBlog.setId( Integer.parseInt(request.getParameter("idOwnerBlog")));
-				blogdao.createBlog(blog, ownerBlog );
-				this.rd = request.getRequestDispatcher("ServletBlogOwner?action="
-									 +"ListOwner&idOwnerBlog.jsp");
+				ownerBlog.setId( Integer.parseInt(request.getParameter("idBlogOwner")));
+				this.rd = request.getRequestDispatcher("index.jsp");
 				this.rd.forward(request, response);
 				break;
 
