@@ -44,7 +44,7 @@
 									</div>
 								</li>
 								<li class="special">
-									<a href="ServletBlog?action=ListBlog" class=""><span>Listar Blogs</span></a>
+									<a href="ServletBlog?action=ListBlog" class=""><span><fmt:message key="index.list_blogs" bundle="${msg}"/></span></a>
 								</li>
 
 								<c:choose>
@@ -61,10 +61,10 @@
 
 
 								<li class="special">
-									<a href="user.jsp" class=""><span>Cadastre-se</span></a>
+									<a href="user.jsp" class=""><span><fmt:message key="index.sign_up" bundle="${msg}"/></span></a>
 								</li>
 								<li class="special">
-									<a href="login.jsp" class=""><span>Login</span></a>
+									<a href="login.jsp" class=""><span><fmt:message key="index.sign_in" bundle="${msg}"/></span></a>
 								</li>
 
 							</ul>
@@ -81,10 +81,10 @@
 							<p><fmt:message key="index.title" bundle="${msg}"/><br />
 							</p>
 							<ul class="actions">
-								<li><a href="login.jsp" class="button special">Sign up </a></li>
+								<li><a href="login.jsp" class="button special"><fmt:message key="index.sign_in" bundle="${msg}"/></a></li>
 							</ul>
 						</div>
-						<a href="#one" class="more scrolly">Saiba Mais ...</a>
+						<a href="#one" class="more scrolly"><fmt:message key="index.know_more" bundle="${msg}"/></a>
 					</section>
 
 				<!-- One -->
