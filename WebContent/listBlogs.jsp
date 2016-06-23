@@ -30,8 +30,8 @@
                     <tr>
                         <c:forEach var="blog" items="${listBlog}">
                     <tr>
-                    <td>${blog.titulo}</td>
-                    <td>${blog.categoria}</td>
+                    <td>${blog.title}</td>
+                    <td>${blog.categorie}</td>
                     <td class="text-center">
                     <a class='btn btn-info btn-xs' href="ServletBlog?action=ListPublicationsBlog&idBlog=${blog.idBlog}"> Ver</a>
                     <a href="ServletDenuncia?acao=InstanciaBlog&idBlog=${blog.idBlog}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Denunciar</a>
