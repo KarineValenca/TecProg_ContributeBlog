@@ -49,7 +49,30 @@ public class ServletSubmission extends HttpServlet {
 						throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
+		String action = request.getParameter("action");
+		System.out.println(action);
+		
+		try{
+			switch(action){
+			//implementation of list comments	
+			case "ListComment":
+				CommentDAO commentDAO = new CommentDAO();
+				String idPost = request.getParameter("idPost");
+				List<Comment> comment = commentDAO.listBlogComment(idPost);
+				request.setAttribute("comentarios", comment);				
+				this.rd = request.getRequestDispatcher("deleteComment.jsp");
+				this.rd.forward(request, response);
+			default:
+				// nothing to do
+				break;
+
+			}
+		}
+			catch(Exception e){
+				// TODO: handle exception
+			}
 		doPost(request, response);
+		
 	}
 
 	/** 
@@ -130,15 +153,7 @@ public class ServletSubmission extends HttpServlet {
 					this.rd.forward(request, response);
 					break;
 				
-				//implementation of list comments	
-				case "ListComment":
-					CommentDAO commentDAO = new CommentDAO();
-					String idPost = request.getParameter("idPost");
-					List<Comment> comment = commentDAO.listBlogComment(idPost);
-					request.setAttribute("comentarios", comment);
-					this.rd = request.getRequestDispatcher("deleteComment.jsp");
-					this.rd.forward(request, response);
-					break;
+				//implementation of list comment
 					
 				default:
 					// nothing to do
