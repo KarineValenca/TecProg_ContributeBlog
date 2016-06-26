@@ -42,7 +42,7 @@
 					<div class="panel-heading">
 						<a href="?locale=pt_BR">Português</a> | <a href="?locale=en_US">English</a>
 						<h3 class="panel-title">
-							<fmt:message key="createComment.title" bundle="${msg}" />
+							<fmt:message key="comment.coments_title" bundle="${msg}" />
 						</h3>
 					</div>
 					<div class="panel-body">
@@ -56,7 +56,7 @@
 							</div>
 
 							<div class="form-group">
-								<label><fmt:message key="createComment.label"
+								<label><fmt:message key="comment.label"
 										bundle="${msg}" /></label>
 								<textarea class="form-control" maxlength="150" rows="3"
 									name="commentContent" id="content"
