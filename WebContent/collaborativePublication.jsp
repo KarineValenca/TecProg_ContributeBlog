@@ -5,6 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+ <c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
+
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -29,13 +39,15 @@
     </head>
     <body body background="images/cinza.png" bgproperties="fixed">
         <div class="container">
+        <fmt:setBundle basename="resources.messages" var="msg"/>
             <div class="row centered-form">
-                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 
-                		    col-md-offset-4">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                        <a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
+                        <br><br>
                             <h3 class="panel-title">
-                            	Nova Publicação
+                            	<fmt:message key="collaborativePublication.title" bundle="${msg}"/>
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -50,40 +62,43 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	Título
+                                    	<fmt:message key="collaborativePublication.titlePubliction" bundle="${msg}"/>
                                     </label>
                                     <input type="text" name="titlePublication" 
                                     	   id="titlePublication" 
                                     	   class="form-control input-sm" 
                                     	   value="${publication.titlePublication}"
-                                    	   placeholder="Combate a Lesões" required>
+                                    	   required>
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	Categoria
+                                   		<fmt:message key="collaborativePublication.category" bundle="${msg}"/>
                                     </label>
                                     <input type="text" name="categoryPublication" 
                                     	   id="categoryPublication" 
                                     	   class="form-control input-sm" 
                                     	   value="${publication.categoryPublication}" 
-                                    	   placeholder="Categoria" required>
+                                    	   required>
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	Conteúdo
+                                    	 <fmt:message key="collaborativePublication.content" bundle="${msg}"/>
                                     </label>
                                     <textarea class="form-control" maxlength="150"
                                     		  rows="3" name="contentPublication" 
                                     		  id="categoria" 
                                     		  value="${publication.contentPublication}" 
-                                    		  placeholder="Escreva o conteúdo aqui" 
                                     		  required>
                                     </textarea>
                                 </div>
-                                <input type="submit" value="Enviar" class="btn btn-info btn-sm">
-                                <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
+                                <input type="submit" value="
+									<fmt:message key="collaborativePublication.submit" bundle="${msg}"/>
+									" class="btn btn-info btn-sm">
+                                <input type="reset" value="
+                                	<fmt:message key="collaborativePublication.reset" bundle="${msg}"/>
+                                	" class="btn btn-warning btn-sm">
                                 <a href="index.jsp" class="btn btn-success btn-sm" role="button">
-                                	Voltar
+                                	<fmt:message key="collaborativePublication.back" bundle="${msg}"/>
                                 </a>
                             </form>
                         </div>
