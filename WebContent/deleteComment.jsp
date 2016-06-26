@@ -4,6 +4,16 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
+
 <html>
 
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -15,21 +25,20 @@ pageEncoding="UTF-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
-
-
-
+<fmt:setBundle basename="resources.messages" var="msg"/>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Gerenciar Comentários</title>
+    <title><fmt:message key="deleteComment.title" bundle="${msg}"/></title>
 </head>
 <body>
     <div class="container">
+   	    <fmt:setBundle basename="resources.messages" var="msg"/>
         <div class="row">
             <div class="panel panel-default widget">
+                <a href="?locale=pt_BR">Português</a> | <a href="?locale=en_US">English</a>
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span>
-                    <h3 class="panel-title">
-                        Comentários Recentes</h3>
+                    <h3 class="panel-title"><fmt:message key="deleteComment.recent_comments" bundle="${msg}"/></h3>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
@@ -52,7 +61,7 @@ pageEncoding="UTF-8"%>
                                 </c:forEach>
                             </li>
                         </ul>
-                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Mais</a>
+                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span><fmt:message key="deleteComment.more_comments" bundle="${msg}"/></a>
                     </div>
                 </div>
             </div>
