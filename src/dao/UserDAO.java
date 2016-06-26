@@ -71,7 +71,8 @@ public class UserDAO  extends ConnectionFactory{
 	 **/
 	public boolean createUser(User user) {
 		assert(user != null) : "Unexpected error: the object User is null";
-		
+		assert(user.getPassword().length() >= 5 ) : "Unexpected error: the "
+				+ "password length is incorrect";
 		boolean wasCreated = false;
 		try {			
 			Connection connection = getConnection();
@@ -182,6 +183,9 @@ public class UserDAO  extends ConnectionFactory{
 	 **/
 	public boolean editUser(User user, int id){
 		assert(user != null) : "Unexpected error: The object user is null";
+		assert(user.getPassword().length() >= 5 ) : "Unexpected error: the "
+		+ "password length is incorrect";
+		
 		boolean wasEdited = false;
 		try{
 			Connection connection = getConnection();
