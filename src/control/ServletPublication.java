@@ -44,6 +44,47 @@ public class ServletPublication extends HttpServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                       response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		Publication publication = new Publication();
+		PublicationDAO publicationDAO = new PublicationDAO();
+		String idPublication = request.getParameter("idPublication");
+
+
+		try{
+			switch(action){
+
+			// this case is used to show the all publications
+			case "ListPublication":
+				idPublication = request.getParameter("idPublication");
+				publication = publicationDAO.listPublication(idPublication);
+
+				request.setAttribute("publicacao", publication);
+
+				this.rd = request.getRequestDispatcher("editPublication.jsp");
+				this.rd.forward(request, response);
+				break;
+
+			// this case is used to show the all comments about publication
+			case "ListComments":
+				List<Comment> listComments = new ArrayList();
+				idPublication = request.getParameter("idPublication");
+				listComments = publicationDAO.listComents(idPublication);
+
+				request.setAttribute("listaComentariosPublicacao", listComments);
+
+				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
+				this.rd.forward(request, response);
+				break;
+
+			default:
+				// nothing to do
+				break;
+
+			}
+		}
+			catch(Exception e){
+				// TODO: handle exception
+			}
 		doPost(request, response);
 	}
 
@@ -98,16 +139,7 @@ public class ServletPublication extends HttpServlet{
 				this.rd.forward(request, response);
 				break;
 
-			// this case is used to show the all publications
-			case "ListPublication":
-				idPublication = request.getParameter("idPublication");
-				publication = publicationDAO.listPublication(idPublication);
 
-				request.setAttribute("publicacao", publication);
-
-				this.rd = request.getRequestDispatcher("editPublication.jsp");
-				this.rd.forward(request, response);
-				break;
 
 			// this case is used to allow the user delete their publication
 			case "DeletePublication":
@@ -132,18 +164,6 @@ public class ServletPublication extends HttpServlet{
 				this.rd.forward(request, response);
 				break;
 
-			// this case is used to show the all comments about publication
-			case "ListComments":
-				List<Comment> listComments = new ArrayList();
-				idPublication = request.getParameter("idPublication");
-				listComments = publicationDAO.listComents(idPublication);
-
-				request.setAttribute("listaComentariosPublicacao", listComments);
-
-				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
-				this.rd.forward(request, response);
-				break;
-				
 			default:
 				// nothing to do
 				break;
