@@ -45,7 +45,7 @@
 				<div class="panel-heading">
 					<span class="glyphicon glyphicon-comment"></span>
 					<h3 class="panel-title">
-						<fmt:message key="listCommentsPublication.recent_comments"
+						<fmt:message key="comment.recent_comments"
 							bundle="${msg}" />
 					</h3>
 				</div>
@@ -82,7 +82,7 @@
 					</c:forEach>
 					<a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span
 						class="glyphicon glyphicon-refresh"></span>
-					<fmt:message key="listCommentsPublication.more_comments"
+					<fmt:message key="button.button_more"
 							bundle="${msg}" /></a>
 				</div>
 			</div>
