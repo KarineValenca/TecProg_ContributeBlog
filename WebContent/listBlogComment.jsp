@@ -29,7 +29,7 @@
 				<div class="panel-heading">
 					<span class="glyphicon glyphicon-comment"></span>
 					<h3 class="panel-title">
-						<fmt:message key="listBlogComment.recent_comments" bundle="${msg}" />
+						<fmt:message key="comment.recent_comments" bundle="${msg}" />
 					</h3>
 				</div>
 				<div class="panel-body">
@@ -56,7 +56,7 @@
 					</ul>
 					<a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span
 						class="glyphicon glyphicon-refresh"></span>
-					<fmt:message key="listBlogComment.more_comments" bundle="${msg}" /></a>
+					<fmt:message key="button.button_more" bundle="${msg}" /></a>
 				</div>
 			</div>
 		</div>
