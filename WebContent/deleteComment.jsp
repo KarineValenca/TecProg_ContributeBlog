@@ -61,7 +61,8 @@ pageEncoding="UTF-8"%>
                                 </c:forEach>
                             </li>
                         </ul>
-                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span><fmt:message key="deleteComment.more_comments" bundle="${msg}"/></a>
+                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span><fmt:message
+							key="deleteComment.more_comments" bundle="${msg}" /></a>
                     </div>
                 </div>
             </div>
