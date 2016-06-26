@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
+
 <html>
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -24,12 +34,13 @@
 </head>
 <body>
         <div class="container">
+        <fmt:setBundle basename="resources.messages" var="msg"/>
     <div class="row">
+    <a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
         <div class="panel panel-default widget">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-comment"></span>
-                <h3 class="panel-title">
-                    Comentários Recentes</h3>
+                <h3 class="panel-title"><fmt:message key="listCommentsPublication.recent_comments" bundle="${msg}"/></h3>
             </div>
             <div class="panel-body">
                 <ul class="list-group">
@@ -49,7 +60,7 @@
                                 </div>     
                                     <div class="action">
                                      <c:if test="${user.nickname == comment.userComment}">
-                                    <a href="ServletComment?action=DeleteComment&idComment=${comment.idComment}" class="btn btn-danger btn-xs" >Excluir Comentário</a>
+                                    <a href="ServletComment?action=DeleteComment&idComment=${comment.idComment}" class="btn btn-danger btn-xs" ><fmt:message key="button.button_delete_comment" bundle="${msg}"/></a>
                                    </c:if>
                                     </div>
                             </div>
@@ -57,7 +68,7 @@
                     </li>
                 </ul>
             </c:forEach>
-                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Mais</a>
+                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span><fmt:message key="listCommentsPublication.more_comments" bundle="${msg}"/></a>
             </div>
         </div>
     </div>
