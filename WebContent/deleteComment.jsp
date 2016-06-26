@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%>
 <fmt:setBundle basename="resources.messages" var="msg"/>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><fmt:message key="deleteComment.title" bundle="${msg}"/></title>
+    <title><fmt:message key="comment.coments_title" bundle="${msg}"/></title>
 </head>
 <body>
     <div class="container">
@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
                 <a href="?locale=pt_BR">Português</a> | <a href="?locale=en_US">English</a>
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span>
-                    <h3 class="panel-title"><fmt:message key="deleteComment.recent_comments" bundle="${msg}"/></h3>
+                    <h3 class="panel-title"><fmt:message key="comment.recent_comments" bundle="${msg}"/></h3>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
                             </li>
                         </ul>
                         <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span><fmt:message
-							key="deleteComment.more_comments" bundle="${msg}" /></a>
+							key="button.button_more" bundle="${msg}" /></a>
                     </div>
                 </div>
             </div>
