@@ -72,7 +72,7 @@ public class ServletPublication extends HttpServlet{
 
 				request.setAttribute("listaComentariosPublicacao", listComments);
 
-				this.rd = request.getRequestDispatcher("listarComentariosPublicacao.jsp");
+				this.rd = request.getRequestDispatcher("listCommentsPublication.jsp");
 				this.rd.forward(request, response);
 				break;
 
