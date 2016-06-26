@@ -4,6 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
+
 <html>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -20,11 +29,13 @@
     </head>
     <body body background="images/cinza.png" bgproperties="fixed">
         <div class="container">
+        <fmt:setBundle basename="resources.messages" var="msg"/>
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Nova Comentário</h3>
+                        <a href="?locale=pt_BR">Português</a> | <a href="?locale=en_US">English</a>
+                            <h3 class="panel-title"><fmt:message key="createComment.title" bundle="${msg}"/></h3>
                         </div>
                         <div class="panel-body">
                             <form form method="post" action="ServletComment?action=Create">
@@ -35,12 +46,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Conteúdo</label>
+                                    <label><fmt:message key="createComment.label" bundle="${msg}"/></label>
                                     <textarea class="form-control" maxlength="150" rows="3" name="commentContent" id="content" value="${comment.commentContent}" placeholder="Escreva o conteúdo aqui" required></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" class="btn btn-info btn-sm">
                                 <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
-                                <a href="ServletBlog?action=ListBlogPublications&idBlog=9" class="btn btn-success btn-sm" role="button">Voltar</a>
+                                <a href="ServletBlog?action=ListBlogPublications&idBlog=9" class="btn btn-success btn-sm" role="button"><fmt:message key="button.button_back" bundle="${msg}"/></a>
                             </form>
                         </div>
                     </div>
