@@ -1,6 +1,6 @@
 /**
  * File name: ServletBlogOwner.java
- * Purpose of file: This file is composed by a ServletBlogOwner class and 
+ * Purpose of file: This file is composed by a ServletBlogOwner class and
  * methods.
  * Copyright: This software follows GPL license.
  */
@@ -34,43 +34,42 @@ public class ServletBlogOwner extends HttpServlet {
 	/**
 	 * Method name: doGet
 	 * Purpose of method: This method is used to intercept HTTP GET requests.
-	 * The HTTP GET requests are used when you get the same result everytime 
+	 * The HTTP GET requests are used when you get the same result everytime
 	 * you execute the request.
-	 * @param request Represent the HTTP request that a browser sends to the 
+	 * @param request Represent the HTTP request that a browser sends to the
 	 * application.
-	 * @param response Represent the HTTP response that the application sends 
+	 * @param response Represent the HTTP response that the application sends
 	 * to a browser.
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		//assert (request != null) : "The request from user is null";
 		//assert (response != null) : "The response to user is null";
-		System.out.println("Aqui+++++++++++++");
-		
+
 		doPost(request, response);
 	}
-	
+
 	/**
 	 * Method name: doPost
-	 * Purpose of method: This method is used to intercept HTTP POST requests. 
+	 * Purpose of method: This method is used to intercept HTTP POST requests.
 	 * The HTTP POST request are used when the results of the requests will not
 	 * be the same.
-	 * @param request Represent the HTTP request that a browser sends to the 
+	 * @param request Represent the HTTP request that a browser sends to the
 	 * application.
-	 * @param response Represent the HTTP response that the application sends 
-	 * to a browser. 
+	 * @param response Represent the HTTP response that the application sends
+	 * to a browser.
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		//assert (request != null) : "The request from user is null";
 		//assert (response != null) : "The response to user is null";
-	
+
 		String action = request.getParameter("action");
-		
+
 		switch (action) {
-		
+
 			case "ListOwner":
-				String idBlogOwner =  request.getParameter("idBlogOwner") ;	
+				String idBlogOwner =  request.getParameter("idBlogOwner") ;
 				List<Blog> listBlog = new ArrayList<>();
 				BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
 				listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
@@ -78,11 +77,11 @@ public class ServletBlogOwner extends HttpServlet {
 				this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
 				this.rd.forward(request, response);
 			break;
-			
+
 				default:
 				break;
 		}
-		
+
 	}
 
 }

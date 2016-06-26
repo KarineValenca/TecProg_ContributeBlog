@@ -44,6 +44,50 @@ public class ServletBlog extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 		                 response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		BlogDAO blogdao = new BlogDAO();
+
+		try {
+			switch (action) {
+
+				// this case is used to show all your blogs
+			case "ListBlog":
+				List<Blog> listBlog = new ArrayList<>();
+				listBlog = blogdao.listBlog();
+				request.setAttribute("listBlog", listBlog);
+				this.rd = request.getRequestDispatcher("listBlogs.jsp");
+				this.rd.forward(request, response);
+				break;
+
+
+			// this case is used to show the all your publications
+			case "ListPublications":
+				List<Publication> listPublication = new ArrayList<>();
+				String idBlogPublication =  request.getParameter("idBlog") ;
+				listPublication = blogdao.listPublicationBlog(idBlogPublication);
+				request.setAttribute("listaPublicacaoBlog", listPublication);
+				this.rd = request.getRequestDispatcher("listPublication.jsp");
+				this.rd.forward(request, response);
+				break;
+
+			// this case is used to show the all publications about your blog
+			case "ListPublicationsBlog":
+				List<Publication> listPublicationBlog = new ArrayList<>();
+				idBlogPublication =  request.getParameter("idBlog") ;
+				listPublicationBlog = blogdao.listPublicationBlog(idBlogPublication);
+				request.setAttribute("listaPublicacaoBlog", listPublicationBlog);
+				this.rd = request.getRequestDispatcher("listPublicationsBlog.jsp");
+				this.rd.forward(request, response);
+				break;
+
+			default:
+				// nothing to do
+				break;
+					}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		doPost(request, response);
 	}
 
@@ -73,40 +117,11 @@ public class ServletBlog extends HttpServlet {
 				this.rd.forward(request, response);
 				break;
 
-			// this case is used to show all your blogs
-			case "ListBlog":
-				List<Blog> listBlog = new ArrayList<>();
-				listBlog = blogdao.listBlog();
-				request.setAttribute("listBlog", listBlog);
-				this.rd = request.getRequestDispatcher("listBlogs.jsp");
-				this.rd.forward(request, response);
-				break;
-
 			// this case is used to allow the user delete their blog
 			case "DeleteBlog":
 				int idBlog = Integer.parseInt(request.getParameter("idBlog"));
 				blogdao.deleteBlog(idBlog);
 				this.rd = request.getRequestDispatcher("index.jsp");
-				this.rd.forward(request, response);
-				break;
-
-			// this case is used to show the all your publications
-			case "ListPublications":
-				List<Publication> listPublication = new ArrayList<>();
-				String idBlogPublication =  request.getParameter("idBlog") ;
-				listPublication = blogdao.listPublicationBlog(idBlogPublication);
-				request.setAttribute("listaPublicacaoBlog", listPublication);
-				this.rd = request.getRequestDispatcher("listPublication.jsp");
-				this.rd.forward(request, response);
-				break;
-
-			// this case is used to show the all publications about your blog
-			case "ListPublicationsBlog":
-				List<Publication> listPublicationBlog = new ArrayList<>();
-				idBlogPublication =  request.getParameter("idBlog") ;
-				listPublicationBlog = blogdao.listPublicationBlog(idBlogPublication);
-				request.setAttribute("listaPublicacaoBlog", listPublicationBlog);
-				this.rd = request.getRequestDispatcher("listPublicationsBlog.jsp");
 				this.rd.forward(request, response);
 				break;
 
