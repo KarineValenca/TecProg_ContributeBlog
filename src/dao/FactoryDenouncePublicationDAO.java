@@ -31,11 +31,12 @@ public class FactoryDenouncePublicationDAO extends ConnectionFactory implements 
 	 * @param denounce: object denounce.
 	 * @param user: object user. User is responsible of denounce. 
 	 */	
-	public void createDenounce(int idPublication, Denounce denounce, User user){
+	public boolean createDenounce(int idPublication, Denounce denounce, User user){
 		assert(idPublication >= 1 ) : "Unexpected error: the publication identifier"
 				+ " is receiving null";
 		assert (denounce != null) : "unexpected error: the denounce object is null";
 		assert (user != null) : "unexpected error: the user object is null";		
+		boolean wasCreated = false;
 		try{
 
 			Connection connection = getConnection();
@@ -49,9 +50,10 @@ public class FactoryDenouncePublicationDAO extends ConnectionFactory implements 
 			pstm.execute();
 			pstm.close();
 			connection.close();
-
+			wasCreated = true;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return wasCreated;
 	}
 }

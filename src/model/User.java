@@ -12,7 +12,7 @@ import java.util.Date;
  * Purpose of class: This class is used to store all attributes from a user.
  **/
 public class User {
-	private int id;
+	public int id;
 	private String name;
 	private String lastName;
 	private String email;

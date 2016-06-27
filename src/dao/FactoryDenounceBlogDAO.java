@@ -32,10 +32,11 @@ public class FactoryDenounceBlogDAO extends ConnectionFactory implements Factory
 	 * @param denounce: object of denounce.
 	 * @param user: object of user. User is responsible of denounce.
 	 */		
-	public void createDenounce(int idBlog, Denounce denounce, User user){
+	public boolean createDenounce(int idBlog, Denounce denounce, User user){
 		assert(idBlog >= 1 ) : "Unexpected error: the blog identifier is receiving null";
 		assert (denounce != null) : "unexpected error: the denounce object is null";
 		assert (user != null) : "unexpected error: the user object is null";
+		boolean wasCreated = false;
 		try{			
 			Connection connection = getConnection();
 			String sqlInsert = "INSERT INTO Denuncia (dataDenuncia, conteudoDenuncia, "
@@ -48,11 +49,12 @@ public class FactoryDenounceBlogDAO extends ConnectionFactory implements Factory
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			wasCreated = true;
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		return wasCreated;
 	}
 	
 }

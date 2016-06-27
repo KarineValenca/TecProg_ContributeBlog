@@ -14,10 +14,10 @@ import java.util.Date;
  * Purpose of class: This class is used to store all attributes from a denounce.
  */
 public class Denounce {
-	private int idDenounce;
-	private Date dateDenounce;
-	private String contentDenounce;
-	private int idBlog; 
+	public int idDenounce;
+	public Date dateDenounce;
+	public String contentDenounce;
+	public int idBlog; 
 	
 	public Denounce(){		
 	}

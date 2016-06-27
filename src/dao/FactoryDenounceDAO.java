@@ -16,6 +16,6 @@ import model.User;
  */
 public interface FactoryDenounceDAO {
 	
-	void createDenounce(int id, Denounce denounce, User user);
+	boolean createDenounce(int id, Denounce denounce, User user);
 	
 }
