@@ -5,7 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
 <html>
+	<fmt:setBundle basename="resources.messages" var="msg"/>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/utilizador.css" rel="stylesheet">
@@ -24,7 +33,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
-        	Contribute Blog - Denunciar Publicação
+        	<fmt:message key="denounce_publication.title" bundle="${msg}"/>
         </title>
     </head>
     <body body background="images/cinza.png" bgproperties="fixed">
@@ -33,8 +42,9 @@
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                        <a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
                             <h3 class="panel-title">
-                            	Nova Denuncia
+                            	<fmt:message key="denounce.title" bundle="${msg}"/>
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -52,20 +62,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	Conteúdo
+                                    	<fmt:message key="publication.content" bundle="${msg}"/>
                                     </label>
                                		<textarea class="form-control" 
                                				  maxlength="150" rows="3" 
                                				  name="conteudoDenuncia" 
                                				  id="conteudo" 
-                               				  value="${denounce.contentDenounce}" 
-                               				  placeholder="Escreva a denuncia aqui" required>
+                               				  value="${denounce.contentDenounce}" required>
                                		</textarea>
                                 </div>
-                                <input type="submit" value="Enviar" class="btn btn-info btn-sm">
-                                <input type="reset" value="Limpar" class="btn btn-warning btn-sm">
+                                <input type="submit" value="
+                                	<fmt:message key="button.button_submit" bundle="${msg}"/>
+                                	" class="btn btn-info btn-sm">
+                                <input type="reset" value="
+                                	<fmt:message key="button.button_reset" bundle="${msg}"/>
+                                	" class="btn btn-warning btn-sm">
                                 <a href="ServletBlog?action=ListPublicationsBlog&idBlog=9" 
-                                   class="btn btn-success btn-sm" role="button">Voltar</a>
+                                	class="btn btn-success btn-sm" role="button">
+                                   	<fmt:message key="button.button_back" bundle="${msg}"/>
+                                </a>
                             </form>
                         </div>
                     </div>

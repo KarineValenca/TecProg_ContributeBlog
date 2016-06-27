@@ -33,7 +33,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
-        	Contribute Blog - Denunciar Blog
+        	<fmt:message key="denounce.title" bundle="${msg}"/>
         </title>
     </head>
     <body body background="images/cinza.png" bgproperties="fixed">
