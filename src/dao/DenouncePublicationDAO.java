@@ -56,8 +56,9 @@ public class DenouncePublicationDAO extends ConnectionFactory implements Denounc
 	 * Purpose of method: This method is responsible for making the exclusion of a denounce database.  
 	 * @param idDenounce: unique identify of denounce to be deleted.
 	 */	
-	public void deleteDenounce(String idDenounce) {
+	public boolean deleteDenounce(String idDenounce) {
 		assert(idDenounce != null ) : "Unexpected error: the denounce identifier is receiving null";
+		boolean wasDelete = false;
 		try {
 			Connection connection = getConnection();
 			String sqlDelete = "Delete from Denuncia where idDenuncia ="+idDenounce;
@@ -66,9 +67,11 @@ public class DenouncePublicationDAO extends ConnectionFactory implements Denounc
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			wasDelete = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wasDelete;
 	}
 
 }
