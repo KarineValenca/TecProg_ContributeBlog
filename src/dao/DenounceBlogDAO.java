@@ -59,9 +59,10 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 	 * @param idDenounce: unique identifier of denounce will be deleted.
 	 * @return list: array list of denounces blog.
 	 */	
-	public void deleteDenounce(String idDenounce) {
+	public boolean deleteDenounce(String idDenounce) {
 		assert(idDenounce != null ) : "Unexpected error: the denounce identifier"
-									  + " is receiving null";		
+									  + " is receiving null";	
+		boolean wasDelete = false;
 		try {
 			Connection connection = getConnection();
 			String sqlDelete = "Delete from Denuncia where idDenuncia ="+idDenounce;
@@ -70,9 +71,11 @@ public class DenounceBlogDAO extends ConnectionFactory implements DenounceDAO{
 			pstm.execute();
 			pstm.close();
 			connection.close();
+			wasDelete = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return wasDelete;
 	}
 
 	/**

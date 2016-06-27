@@ -19,5 +19,5 @@ public interface DenounceDAO {
 	
 	public List<Denounce> listDenounce ();
 	
-	public void deleteDenounce(String idDenounce);
+	public boolean deleteDenounce(String idDenounce);
 }
