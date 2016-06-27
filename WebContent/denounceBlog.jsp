@@ -5,7 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:choose>
+	<c:when test="${param.locale eq 'pt_BR'}">
+		<fmt:setLocale value="pt_BR"/>
+	</c:when>
+	<c:otherwise>
+		<fmt:setLocale value="en_US"/>
+	</c:otherwise>
+</c:choose>
 <html>
+	<fmt:setBundle basename="resources.messages" var="msg"/>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/utilizador.css" rel="stylesheet">
@@ -34,8 +43,10 @@
                 	  		col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                        <a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
+                        <br><br>
                             <h3 class="panel-title">
-                            	Nova Denuncia
+                            	<fmt:message key="denounce.title" bundle="${msg}"/>
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -50,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	Conteúdo
+                                    	<fmt:message key="publication.content" bundle="${msg}"/>
                                     </label>
                                		<textarea class="form-control" 
                                				  maxlength="150" rows="3" 
@@ -61,14 +72,14 @@
                                				  required>
                                		</textarea>
                                 </div>
-                                <input type="submit" value="Enviar" 
-                                	   class="btn btn-info btn-sm">
-                                <input type="reset" value="Limpar" 
-                                	   class="btn btn-warning btn-sm">
-                                <a href="ServletBlog?action=List" 
-                                		class="btn btn-success btn-sm" 
-                                		role="button">
-                                	Voltar
+                                <input type="submit" value="
+                                		<fmt:message key="button.button_submit" bundle="${msg}"/>
+                                		" class="btn btn-info btn-sm">
+                                <input type="reset" value="
+                                		<fmt:message key="button.button_reset" bundle="${msg}"/>
+                                		" class="btn btn-warning btn-sm">
+                                <a href="ServletBlog?action=List" class="btn btn-success btn-sm" role="button">
+                                	<fmt:message key="button.button_back" bundle="${msg}"/>
                                 </a>
                             </form>
                         </div>
