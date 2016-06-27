@@ -45,6 +45,25 @@ public class ServletBlogOwner extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		//assert (request != null) : "The request from user is null";
 		//assert (response != null) : "The response to user is null";
+		
+		String action = request.getParameter("action");
+
+		switch (action) {
+
+			case "ListOwner":
+				String idBlogOwner =  request.getParameter("idBlogOwner") ;
+				List<Blog> listBlog = new ArrayList<>();
+				BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
+				listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
+				request.setAttribute("listBlogOwner", listBlog);
+				this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
+				this.rd.forward(request, response);
+			break;
+
+				default:
+				break;
+		}
+
 
 		doPost(request, response);
 	}
@@ -64,24 +83,7 @@ public class ServletBlogOwner extends HttpServlet {
 		//assert (request != null) : "The request from user is null";
 		//assert (response != null) : "The response to user is null";
 
-		String action = request.getParameter("action");
-
-		switch (action) {
-
-			case "ListOwner":
-				String idBlogOwner =  request.getParameter("idBlogOwner") ;
-				List<Blog> listBlog = new ArrayList<>();
-				BlogOwnerDAO blogOwnerDAO = new BlogOwnerDAO();
-				listBlog = blogOwnerDAO.listBlogOwner(idBlogOwner);
-				request.setAttribute("listBlogOwner", listBlog);
-				this.rd = request.getRequestDispatcher("listBlogsOwners.jsp");
-				this.rd.forward(request, response);
-			break;
-
-				default:
-				break;
-		}
-
+		
 	}
 
 }
