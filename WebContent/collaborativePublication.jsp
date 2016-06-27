@@ -47,7 +47,7 @@
                         <a href="?locale=pt_BR">Português</a>|<a href="?locale=en_US">English</a>
                         <br><br>
                             <h3 class="panel-title">
-                            	<fmt:message key="collaborativePublication.title" bundle="${msg}"/>
+                            	<fmt:message key="publication.title" bundle="${msg}"/>
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	<fmt:message key="collaborativePublication.titlePubliction" bundle="${msg}"/>
+                                    	<fmt:message key="blog.blog_title" bundle="${msg}"/>
                                     </label>
                                     <input type="text" name="titlePublication" 
                                     	   id="titlePublication" 
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                   		<fmt:message key="collaborativePublication.category" bundle="${msg}"/>
+                                   		<fmt:message key="publication.category" bundle="${msg}"/>
                                     </label>
                                     <input type="text" name="categoryPublication" 
                                     	   id="categoryPublication" 
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                    	 <fmt:message key="collaborativePublication.content" bundle="${msg}"/>
+                                    	 <fmt:message key="publication.content" bundle="${msg}"/>
                                     </label>
                                     <textarea class="form-control" maxlength="150"
                                     		  rows="3" name="contentPublication" 
@@ -92,13 +92,13 @@
                                     </textarea>
                                 </div>
                                 <input type="submit" value="
-									<fmt:message key="collaborativePublication.submit" bundle="${msg}"/>
+									<fmt:message key="button.button_submit" bundle="${msg}"/>
 									" class="btn btn-info btn-sm">
                                 <input type="reset" value="
-                                	<fmt:message key="collaborativePublication.reset" bundle="${msg}"/>
+                                	<fmt:message key="button.button_reset" bundle="${msg}"/>
                                 	" class="btn btn-warning btn-sm">
                                 <a href="index.jsp" class="btn btn-success btn-sm" role="button">
-                                	<fmt:message key="collaborativePublication.back" bundle="${msg}"/>
+                                	<fmt:message key="button.button_back" bundle="${msg}"/>
                                 </a>
                             </form>
                         </div>
