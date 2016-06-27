@@ -35,7 +35,8 @@ import model.User;
 public class ServletDenounce extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher rd;
-
+	DenounceBlogDAO denounceBlogDAO = new DenounceBlogDAO();
+	DenouncePublicationDAO denouncePublicationDAO = new DenouncePublicationDAO();
 	/**
 	 * Method name: doGet
 	 * Purpose of method: this method is used to intercept HTTP GET requests.
@@ -51,6 +52,28 @@ public class ServletDenounce extends HttpServlet{
 						 throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
+		List<Denounce> listDenounceBlog = new ArrayList<>();
+		List<Denounce> listDenouncePublication = new ArrayList<>();
+		String action = request.getParameter("action");
+		
+		try{
+			switch(action){
+			//implementation of list denounces
+			case "ListDenounce":
+				listDenounceBlog = denounceBlogDAO.listDenounce();
+				request.setAttribute("listDenounceBlog", listDenounceBlog);
+				listDenouncePublication = denouncePublicationDAO.listDenounce();
+				request.setAttribute("listDenouncePublication",listDenouncePublication);
+				this.rd = request.getRequestDispatcher("listDenounce.jsp");
+				this.rd.forward(request, response);
+			default:
+				// nothing to do
+				break;
+			}
+		}
+		catch(Exception e){
+
+		}
 		doPost(request, response);
 	}
 
@@ -69,31 +92,21 @@ public class ServletDenounce extends HttpServlet{
 						  throws ServletException, IOException {
 		assert (request != null) : "The request from user is null";
 		assert (response != null) : "The response to user is null";
-		String action = request.getParameter("action");
 		DenounceBlog denounceBlog = new DenounceBlog();
 		DenouncePublication denouncePublication = new DenouncePublication();
-		FactoryDenounceBlogDAO factoryDenounceBlogDAO = new
-				FactoryDenounceBlogDAO();
-		DenounceBlogDAO denounceBlogDAO = new DenounceBlogDAO();
-		FactoryDenouncePublicationDAO factoryDenouncePublicationDAO = new
-				FactoryDenouncePublicationDAO();
-		DenouncePublicationDAO denouncePublicationDAO = new
-				DenouncePublicationDAO();
+		FactoryDenounceBlogDAO factoryDenounceBlogDAO = new	FactoryDenounceBlogDAO();
+		FactoryDenouncePublicationDAO factoryDenouncePublicationDAO = new FactoryDenouncePublicationDAO();
 		User user = new User();
-		List<Denounce> listDenounceBlog = new ArrayList<>();
-		List<Denounce> listDenouncePublication = new ArrayList<>();
-
+		String action = request.getParameter("action");
 		try {
 			switch (action) {
 				//implementation of create blog denounce
 				case "CreateDenounceBlog":
-					denounceBlog.setContentDenounce(request.getParameter("content"
-																+ "Denounce"));
+					denounceBlog.setContentDenounce(request.getParameter("contentDenounce"));
 					System.out.println(request.getParameter("contentDenounce"));
 					user.setId(Integer.parseInt(request.getParameter("id")));
 					int idBlog = Integer.parseInt(request.getParameter("idBlog"));
-					factoryDenounceBlogDAO.createDenounce(idBlog, denounceBlog,
-													  	  user);
+					factoryDenounceBlogDAO.createDenounce(idBlog, denounceBlog, user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
@@ -108,36 +121,24 @@ public class ServletDenounce extends HttpServlet{
 
 				//implementation of create publication denounce
 				case "CreateDenouncePublication":
-					denouncePublication.setContentDenounce(request.getParameter(""
-						+ "contentDenounce"));
+					denouncePublication.setContentDenounce(request.getParameter("contentDenounce"));
 					System.out.println(denouncePublication.getContentDenounce());
 					user.setId(Integer.parseInt(request.getParameter("id")));
-					int idPublication = Integer.parseInt(request.getParameter("id"
-						+ "Publication"));
+					int idPublication = Integer.parseInt(request.getParameter("idPublication"));
 					factoryDenouncePublicationDAO.createDenounce(idPublication,
 						denouncePublication, user);
 					this.rd = request.getRequestDispatcher("index.jsp");
 					this.rd.forward(request, response);
 					break;
 
-				//implementation publication instance
+					//implementation publication instance
 				case "InstancePublication":
 					String idPublicationD= request.getParameter("idPublication");
 					request.setAttribute("idPublication", idPublicationD);
-					this.rd = request.getRequestDispatcher("denounce"
-						+ "Publication.jsp");
+					this.rd = request.getRequestDispatcher("denouncePublication.jsp");
 					this.rd.forward(request, response);
 					break;
 
-				//implementation of list denounces
-				case "ListDenounce":
-					listDenounceBlog = denounceBlogDAO.listDenounce();
-					request.setAttribute("listDenounceBlog", listDenounceBlog);
-					listDenouncePublication = denouncePublicationDAO.listDenounce();
-					request.setAttribute("listDenouncePublication",
-									  	  listDenouncePublication);
-					this.rd = request.getRequestDispatcher("listDenounce.jsp");
-					this.rd.forward(request, response);
 
 				//implementation of delete blog denounce
 				case "DeleteDenounceBlog":
@@ -150,8 +151,7 @@ public class ServletDenounce extends HttpServlet{
 				case "DeleteDenouncePublication":
 					idDenounce = request.getParameter("idDenounce");
 					denouncePublicationDAO.deleteDenounce(idDenounce);
-					this.rd = request.getRequestDispatcher("ServletDenounce?action="
-						+ "ListDenounce");
+					this.rd = request.getRequestDispatcher("ServletDenounce?action=ListDenounce");
 					this.rd.forward(request, response);
 					break;
 
@@ -176,7 +176,7 @@ public class ServletDenounce extends HttpServlet{
 			}
 		}
 		catch(Exception e){
-			// TODO: handle exception)
+			// TODO: handle exception
 		}
 	}
 }
